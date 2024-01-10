@@ -1,0 +1,1 @@
+SELECT sum(ride_distance) FROM ride WHERE user_id = 1;
