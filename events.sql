@@ -1,0 +1,3 @@
+INSERT INTO events (events_startdate, events_challengedescrib, events_photo, events_enddate, events_challengename, enterprise_id)
+VALUES 
+('2024-02-01', 'Relevez le défi de cumuler des kilomètres écolo en marchant ou en pédalant lors de notre événement exclusif ! Que ce soit pour le travail ou les loisirs, adoptez un mode de déplacement respectueux de l\'environnement. En avant vers une vie active, durable et pleine d\'aventures !', 'picture01.jpeg', '2024-05-31', 'ÉcoMouv\' Challenge', '2'); 
