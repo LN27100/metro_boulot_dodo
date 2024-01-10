@@ -1,1 +1,1 @@
-SELECT count(user_id) AS 'Total utilisateurs actifs' FROM userprofil WHERE user_validate = 1
+SELECT  count(DISTINCT user_id) AS 'Total utilisateurs actifs' FROM ride WHERE ride_distance > 0
