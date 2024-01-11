@@ -108,5 +108,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // AFFICHER le formulaire si il est vide et ne l'affiche pas quand il est soumis
 if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
-    include_once __DIR__ . '/view-signup.php';
+    include_once __DIR__ . '../../views/view-signup.php';
 }
