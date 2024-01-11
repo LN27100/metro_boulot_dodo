@@ -1,9 +1,31 @@
 <?php
 
+// Fonction de connexion à la base de données
+function connectToDatabase() {
+    $dsn = "mysql:host=localhost;dbname=metro_boulot_dodo";
+    $username = "LN27100";
+    $password = "02111979Lh#";
+
+    try {
+        $db = new PDO($dsn, $username, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $db;
+    } catch (PDOException $e) {
+        echo "Erreur de connexion à la base de données : " . $e->getMessage();
+        die();
+    }
+}
+
+// Fonction d'exécution de requête
+function executeQuery($db, $sql) {
+    $query = $db->prepare($sql);
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // VERIFICATION DE LA SOUMISSION DU FORMULAIRE
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
-
     // Contrôle du nom
     if (empty($_POST["nom"])) {
         $errors["nom"] = "Le champ Nom ne peut pas être vide";
@@ -59,23 +81,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["cgu"] = "Veuillez accepter les conditions générales d'utilisation pour continuer.";
     }
 
-    // Si aucune erreur, traiter les données et soumettre le formulaire
     if (empty($errors)) {
+        $db = connectToDatabase();
 
-        // VERIFICATION si les CGU sont acceptées
-        $cguAccepted = isset($_POST["cgu"]) && $_POST["cgu"] === "on";
+        // Récupération des données du formulaire
+        $nom = trim(htmlspecialchars($_POST['nom']));
+        $prenom = trim(htmlspecialchars($_POST['prenom']));
+        $pseudo = trim(htmlspecialchars($_POST['pseudo']));
+        $date_naissance = trim(htmlspecialchars($_POST['date_naissance']));
+        $email = trim(htmlspecialchars($_POST['email']));
+        $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
 
-        if ($cguAccepted) {
+         // Assurez-vous d'avoir l'identifiant de l'entreprise associée
+         $enterprise_name = $_POST["entreprise"];
+         $enterprise_id = null;
+ 
+         // Logique pour obtenir l'identifiant de l'entreprise en fonction du nom
+         if ($enterprise_name === "plume_futee") {
+             $enterprise_id = 1;
+         } elseif ($enterprise_name === "dream_stones") {
+             $enterprise_id = 2;
+         }
+ 
+         if ($enterprise_id !== null) {
+             // Requête d'insertion avec enterprise_id
+             $sql_insert_user = 'INSERT INTO `userprofil` (`user_name`, `user_firstname`, `user_pseudo`, `user_dateofbirth`, `user_email`, `user_password`, `user_validate`, `enterprise_id`) 
+                                 VALUES (?, ?, ?, ?, ?, ?, 0, ?)';
+ 
+             try {
+                 $query_insert_user = $db->prepare($sql_insert_user);
+                 $query_insert_user->execute([$nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id]);
 
-            // RECUPERATION des données du formulaire
-            $nom = $_POST["nom"];
-            $prenom = $_POST["prenom"];
-            $pseudo = $_POST["pseudo"];
-            $date_naissance = $_POST["date_naissance"];
-            $email = $_POST["email"];
-            $mot_de_passe = $_POST["mot_de_passe"];
-            $entreprise = $_POST["entreprise"];
-
+                
             echo '<div style="text-align: center;">';
             echo '<style>';
             echo 'h2 {';
@@ -95,40 +132,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p>Email : " . $email . "</p>";
             // Affichage de la confirmation de mot de passe (on masque le mot de passe)
             echo "<p>Mot de passe reçu</p>";
-            echo "<p>Entreprise choisie: " . htmlspecialchars($entreprise) . "</p>";
+            echo '<p>Entreprise choisie: ' . htmlspecialchars($_POST["entreprise"]) . '</p>';
             echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
             echo '<button class="button" style="background-color: #28a745; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer;">Connexion</button>'; // Style directement dans l'attribut "style"
             echo '</div>';
+
+        } catch (PDOException $e) {
+            echo "Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage();
         }
     } else {
-        // Si les CGU ne sont pas acceptées, ajoute une erreur spécifique pour les CGU
-        $errors["cgu"] = "Veuillez accepter les conditions générales d'utilisation pour continuer.";
+        echo "Erreur : Entreprise non reconnue.";
     }
+} else {
+    // Afficher les erreurs
+    print_r($errors);
+}
 }
 
-// AFFICHER le formulaire si il est vide et ne l'affiche pas quand il est soumis
+
+// Affichage du formulaire ou des erreurs
 if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
     include_once __DIR__ . '../../views/view-signup.php';
 }
 
+// Exécution des requêtes pour récupérer les données de la base de données
+$db = connectToDatabase();
 
-// BASE DE DONNEES
-// Connexion à la base de données
-$dsn = "mysql:host=localhost;dbname=metro_boulot_dodo";
-$username = "LN27100";
-$password = "02111979Lh#";
-
-try {
-    $db = new PDO($dsn, $username, $password);
-    // Définir le mode d'erreur PDO à exception
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    // Gérer les erreurs de connexion ici
-    echo "Erreur de connexion à la base de données : " . $e->getMessage();
-    die();
-}
-
-// deconnexion de la base de données
 $sql_enterprise = 'SELECT * FROM `enterprise`';
 $sql_userprofil = 'SELECT * FROM `userprofil`';
 $sql_admin = 'SELECT * FROM `admin`';
@@ -186,4 +215,5 @@ $result_transport_pris_en_compte = $query_transport_pris_en_compte->fetchAll(PDO
 // var_dump($result_transport);
 
 // var_dump($result_transport_pris_en_compte);
+
 ?>
