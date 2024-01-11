@@ -112,11 +112,21 @@ if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
 }
 
 
+// BASE DE DONNEES
+// Connexion à la base de données
+$dsn = "mysql:host=localhost;dbname=metro_boulot_dodo";
+$username = "LN27100";
+$password = "02111979Lh#";
+
 try {
-    // connexion à la base de données
-    $db = new PDO('mysql:host=localhost;dbname=metro_boulot_dodo', 'LN27100', '02111979Lh#');
-    $db->exec('SET NAMES "UTF8"');
+    $db = new PDO($dsn, $username, $password);
+    // Définir le mode d'erreur PDO à exception
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    // Gérer les erreurs de connexion ici
+    echo "Erreur de connexion à la base de données : " . $e->getMessage();
     die();
 }
+
+// deconnexion de la base de données
+$db = null;
