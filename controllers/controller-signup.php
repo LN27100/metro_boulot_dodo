@@ -110,3 +110,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
     include_once __DIR__ . '../../views/view-signup.php';
 }
+
+
+try {
+    // connexion à la base de données
+    $db = new PDO('mysql:host=localhost;dbname=metro_boulot_dodo', 'LN27100', '02111979Lh#');
+    $db->exec('SET NAMES "UTF8"');
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    die();
+}
