@@ -59,7 +59,7 @@ CREATE TABLE events(
 CREATE TABLE ride(
    ride_id INT AUTO_INCREMENT,
    ride_date DATE,
-   ride_distance DECIMAL(3,2),
+   ride_distance FLOAT (3,2),
    ride_photo VARCHAR(50),
    user_id INT NOT NULL,
    transport_id INT NOT NULL,

@@ -1,7 +1,7 @@
 
 INSERT INTO ride (ride_date, ride_distance, ride_photo, user_id, transport_id)
 VALUES 
-('2024-02-01', 138.50, 'photo_ride1.jpg', 1, 5),   
+('2024-02-01', 138.5, 'photo_ride1.jpg', 1, 5),   
 ('2024-02-10', 35.2, 'photo_ride2.jpg', 2, 1),  
 ('2024-03-05', 10.0, 'photo_ride3.jpg', 3, 4),  
 ('2024-03-15', 20.5, 'photo_ride4.jpg', 4, 3),  
