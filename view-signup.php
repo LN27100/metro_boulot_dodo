@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <title>Formulaire d'inscription</title>
+    <title>Eco'Mouv !</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <h1>Formulaire d'inscription</h1>
     <div class="container">
 
-        <form class="row" method="POST" action="../metro_boulot_dodo/controller-signup.php" novalidate>
+        <form class="row" method="POST" action="/controller-signup.php" novalidate>
 
             <div class="col-md-4">
                 <label for="validationServer01" class="form-label">Nom: </label>
@@ -28,6 +28,12 @@
                 <label for="validationServer02" class="form-label">Prénom: </label>
                 <input type="text" class="form-control <?php if (isset($errors['prenom'])) echo 'is-invalid'; ?>" id="validationServer02" name="prenom" placeholder="ex.Hélène" required>
                 <div class="invalid-feedback" id="prenomValidationFeedback">Champ obligatoire</div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="validationServer03" class="form-label">Pseudo: </label>
+                <input type="text" class="form-control <?php if (isset($errors['pseudo'])) echo 'is-invalid'; ?>" id="validationServer03" name="pseudo" placeholder="ex.LNwarrior" required>
+                <div class="invalid-feedback" id="pseudoValidationFeedback">Champ obligatoire</div>
             </div>
 
             <div class="col-md-4">
@@ -90,6 +96,13 @@
                     <div class="valid-feedback"></div>
                 </div>
             </div>
+
+            <select class="form-select <?php if (isset($errors['entreprise'])) echo 'is-invalid'; ?>" aria-label="Default select example" name="entreprise" id="entreprise">
+                <option value="" selected>Sélectionnez une entreprise pour les challenges</option>
+                <option value="Plume Futée">Plume Futée</option>
+                <option value="Dream Stones">Dream Stones</option>
+            </select>
+            <div class="invalid-feedback" id="entrepriseValidationFeedback">Veuillez choisir une entreprise.</div>
 
             <div class="texte form-check">
                 <input class="form-check-input" type="checkbox" value="on" id="cgu" name="cgu" required>
@@ -206,13 +219,21 @@
 
             const nomInput = document.getElementById("validationServer01");
             const prenomInput = document.getElementById("validationServer02");
+            const pseudoInput = document.getElementById("validationServer03");
             const emailInput = document.getElementById("email");
             const dateInput = document.getElementById("start");
 
             const nomFeedback = document.getElementById("nomValidationFeedback");
             const prenomFeedback = document.getElementById("prenomValidationFeedback");
+            const pseudoFeedback = document.getElementById("pseudoValidationFeedback");
             const emailFeedback = document.getElementById("emailValidationFeedback");
             const dateFeedback = document.getElementById("dateValidationFeedback");
+            const entrepriseSelect = document.getElementById("entreprise");
+            const entrepriseFeedback = document.getElementById("entrepriseValidationFeedback");
+
+            entrepriseSelect.addEventListener("input", function() {
+                toggleValidity(entrepriseSelect, entrepriseFeedback);
+            });
 
             nomInput.addEventListener("input", function() {
                 toggleValidity(nomInput, nomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom");
@@ -220,6 +241,10 @@
 
             prenomInput.addEventListener("input", function() {
                 toggleValidity(prenomInput, prenomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom");
+            });
+
+            pseudoInput.addEventListener("input", function() {
+                toggleValidity(pseudoInput, pseudoFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Pseudo");
             });
 
             emailInput.addEventListener("input", function() {
@@ -231,7 +256,11 @@
             });
 
             function toggleValidity(input, feedback, regex, errorMessage) {
-                if (input.validity.valid && input.value.match(regex)) {
+                if (input.id === "entreprise" && input.value !== "") {
+                    input.classList.remove("is-invalid");
+                    input.classList.add("is-valid");
+                    feedback.style.display = "none";
+                } else if (input.validity.valid && input.value.match(regex)) {
                     input.classList.remove("is-invalid");
                     input.classList.add("is-valid");
                     feedback.style.display = "none";
@@ -260,6 +289,12 @@
                     toggleValidity(prenomInput, prenomFeedback);
                 }
 
+                // Vérification du champ Pseudo
+                if (!pseudoInput.value) {
+                    formIsValid = false;
+                    toggleValidity(pseudoInput, pseudoFeedback);
+                }
+
                 // Vérification du champ Email
                 if (!emailInput.value) {
                     formIsValid = false;
@@ -281,6 +316,13 @@
                 if (!confirmPassword.value || confirmPassword.classList.contains("is-invalid")) {
                     formIsValid = false;
                 }
+
+                // Vérification du champ sélection d'entreprise
+                if (!entrepriseSelect.value) {
+                    formIsValid = false;
+                    toggleValidity(entrepriseFeedback);
+                }
+
                 // Validation des CGU
                 const cguCheckbox = document.getElementById("cgu");
                 const cguValidationFeedback = document.getElementById("cguValidationFeedback");
