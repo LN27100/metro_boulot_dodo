@@ -1,149 +1,150 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
 /* font-family: 'Exo', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Marhey&display=swap');
 /* font-family: 'Marhey', sans-serif; */
 
 h1 {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: #28a745;
-  }
-  
-  
-  /* mot de passe */
-  .valid-feedback,
-  .invalid-feedback {
-    margin-left: calc(2em + 0.25rem + 1.5rem);
-  }
-  
-  /* formulaire */
-  
+  font-family: 'Marhey', sans-serif;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #28a745;
+  margin-top: 1rem;
+}
+
+
+/* mot de passe */
+.valid-feedback,
+.invalid-feedback {
+  margin-left: calc(2em + 0.25rem + 1.5rem);
+}
+
+/* formulaire */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  width: 70rem;
+  height: 30rem;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des champs de saisie */
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-control[type="password"] {
+  width: 100%;
+}
+
+/* Style du bouton */
+.button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #62c479;
+}
+
+/* Style des messages de validation */
+.valid-feedback {
+  color: #28a745;
+  display: none;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  display: none;
+}
+
+/* Style des messages d'alerte */
+.alert {
+  width: 100%;
+  margin-top: 10px;
+  display: block;
+}
+
+.alert ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.alert .requirements {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.alert .requirements i {
+  margin-right: 5px;
+}
+
+.alert .requirements .text-success {
+  display: inline-block;
+}
+
+
+/* RESPONSIVE */
+
+/* Responsive */
+@media screen and (max-width: 1086px) {
   .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    max-width: 90%;
+    padding: 1rem;
   }
-  
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
   form {
-    width: 70rem;
-    height: 30rem;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 100%;
+    height: auto;
   }
-  
-  /* Style des champs de saisie */
+
   input[type="text"],
   input[type="email"],
-  input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
+  input[type="date"],
   input[type="password"] {
-    width: 100%; 
-    padding: 10px; 
-    margin-bottom: 15px; 
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-width: 100%;
+    margin-right: 0;
   }
-  
-  .form-control[type="password"] {
-    width: 100%;
-  }
-  
-  /* Style du bouton */
+
   .button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .button:hover {
-    background-color: #62c479;
-  }
-  
-  /* Style des messages de validation */
-  .valid-feedback {
-    color: #28a745;
-    display: none;
-  }
-  
-  .invalid-feedback {
-    color: #dc3545;
-    display: none;
-  }
-  
-  /* Style des messages d'alerte */
-  .alert {
     width: 100%;
-    margin-top: 10px;
-    display: block;
+    max-width: 100%;
   }
-  
-  .alert ul {
-    list-style: none;
-    padding-left: 0;
+
+  input,
+  select,
+  label {
+    margin-bottom: 1rem;
   }
-  
-  .alert .requirements {
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .alert .requirements i {
-    margin-right: 5px;
-  }
-  
-  .alert .requirements .text-success {
-    display: inline-block;
-  }
-  
-  
-  /* RESPONSIVE */
-  
-  /* Responsive */
-  @media screen and (max-width: 1086px) {
-    .container {
-      max-width: 90%;
-      padding: 1rem;
-    }
-  
-    h1 {
-      font-size: 1.5rem;
-    }
-  
-    form {
-      width: 90%;
-      max-width: 100%;
-      height: auto;
-    }
-  
-    input[type="text"],
-    input[type="email"],
-    input[type="date"],
-    input[type="password"] {
-      max-width: 100%;
-      margin-right: 0;
-    }
-  
-    .button {
-      width: 100%;
-      max-width: 100%;
-    }
-  
-    input,
-    select,
-    label {
-      margin-bottom: 1rem;
-    }
-  }
+}

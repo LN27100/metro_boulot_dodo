@@ -129,4 +129,61 @@ try {
 }
 
 // deconnexion de la base de données
-$db = null;
+$sql_enterprise = 'SELECT * FROM `enterprise`';
+$sql_userprofil = 'SELECT * FROM `userprofil`';
+$sql_admin = 'SELECT * FROM `admin`';
+$sql_events = 'SELECT * FROM `events`';
+$sql_ride = 'SELECT * FROM `ride`';
+$sql_transport = 'SELECT * FROM `transport`';
+$sql_transport_pris_en_compte = 'SELECT * FROM `transport_pris_en_compte`';
+
+// Exécuter la première requête
+$query_enterprise = $db->prepare($sql_enterprise);
+$query_enterprise->execute();
+$result_enterprise = $query_enterprise->fetchAll(PDO::FETCH_ASSOC);
+
+// Exécuter la deuxième requête
+$query_userprofil = $db->prepare($sql_userprofil);
+$query_userprofil->execute();
+$result_userprofil = $query_userprofil->fetchAll(PDO::FETCH_ASSOC);
+
+// Exécuter la troisième requête
+$query_admin = $db->prepare($sql_admin);
+$query_admin->execute();
+$result_admin = $query_admin->fetchAll(PDO::FETCH_ASSOC);
+
+// Exécuter la quatrième requête
+$query_events = $db->prepare($sql_events);
+$query_events->execute();
+$result_events = $query_events->fetchAll(PDO::FETCH_ASSOC);
+
+// Exécuter la cinquième requête
+$query_ride = $db->prepare($sql_ride);
+$query_ride->execute();
+$result_ride = $query_ride->fetchAll(PDO::FETCH_ASSOC);
+
+// Exécuter la sixième requête
+$query_transport = $db->prepare($sql_transport);
+$query_transport->execute();
+$result_transport = $query_transport->fetchAll(PDO::FETCH_ASSOC);
+
+// Exécuter la septième requête
+$query_transport_pris_en_compte = $db->prepare($sql_transport_pris_en_compte);
+$query_transport_pris_en_compte->execute();
+$result_transport_pris_en_compte = $query_transport_pris_en_compte->fetchAll(PDO::FETCH_ASSOC);
+
+// Afficher les résultats 
+// var_dump($result_enterprise);
+
+// var_dump($result_userprofil);
+
+// var_dump($result_admin);
+
+// var_dump($result_events);
+
+// var_dump($result_ride);
+
+// var_dump($result_transport);
+
+// var_dump($result_transport_pris_en_compte);
+?>
