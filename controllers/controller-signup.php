@@ -2,7 +2,8 @@
 
 // Fonction de connexion à la base de données
 // La méthode PDO permet de changer facilement de BDD si besoin.
-function connectToDatabase() {
+function connectToDatabase()
+{
     $dsn = "mysql:host=localhost;dbname=metro_boulot_dodo";
     $username = "LN27100";
     $password = "02111979Lh#";
@@ -22,7 +23,8 @@ function connectToDatabase() {
 }
 
 // FONCTION d'exécution de requête
-function executeQuery($db, $sql) {
+function executeQuery($db, $sql)
+{
     $query = $db->prepare($sql);
     $query->execute();
     return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -48,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Contrôle du pseudo
     if (empty($_POST["pseudo"])) {
         $errors["pseudo"] = "Le champ Pseudo ne peut pas être vide";
-    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["pseudo"])) {
-        $errors["pseudo"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Pseudo";
+    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
+        $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
     }
 
     // Contrôle de l'email
@@ -78,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Contrôle du choix de l'entreprise
     if (empty($_POST["entreprise"])) {
-            $errors["entreprise"] = "Veuillez choisir une entreprise";
+        $errors["entreprise"] = "Veuillez choisir une entreprise";
     }
 
     // Contrôle des CGU
@@ -98,58 +100,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
         $enterprise_name = $_POST["entreprise"];
         $enterprise_id = null;
- 
-         // OBTENIR L'ID DE L'ENTREPRISE EN FONCTION DE SON NOM
-         if ($enterprise_name === "Plume Futée") {
-             $enterprise_id = 1;
-         } elseif ($enterprise_name === "Dream Stones") {
-             $enterprise_id = 2;
-         }
- 
-         if ($enterprise_id !== null) {
-             // Requête d'insertion avec enterprise_id
-             $sql_insert_user = 'INSERT INTO `userprofil` (`user_name`, `user_firstname`, `user_pseudo`, `user_dateofbirth`, `user_email`, `user_password`, `user_validate`, `enterprise_id`) 
+
+        // OBTENIR L'ID DE L'ENTREPRISE EN FONCTION DE SON NOM
+        if ($enterprise_name === "Plume Futée") {
+            $enterprise_id = 1;
+        } elseif ($enterprise_name === "Dream Stones") {
+            $enterprise_id = 2;
+        }
+
+        if ($enterprise_id !== null) {
+            // Requête d'insertion avec enterprise_id
+            $sql_insert_user = 'INSERT INTO `userprofil` (`user_name`, `user_firstname`, `user_pseudo`, `user_dateofbirth`, `user_email`, `user_password`, `user_validate`, `enterprise_id`) 
                                  VALUES (?, ?, ?, ?, ?, ?, 0, ?)';
- 
-             try {
-                 $query_insert_user = $db->prepare($sql_insert_user);
-                 $query_insert_user->execute([$nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id]);
 
-                
-            echo '<div style="text-align: center;">';
-            echo '<style>';
-            echo 'h2 {';
-            echo '  background-color: #93c47d;';
-            echo '  color: white;';
-            echo '  padding: 10px;';
-            echo '  width: 20rem;';
-            echo '  margin: 0 auto; /* Utilisation de la marge pour centrer horizontalement */';
-            echo '}';
-            echo '</style>';
-            echo "<h2>Inscription réussie</h2>";
-            echo "<h3>Données soumises :</h3>";
-            echo "<p>Nom : " . $nom . "</p>";
-            echo "<p>Prénom : " . $prenom . "</p>";
-            echo "<p>Pseudo : " . $pseudo . "</p>";
-            echo "<p>Date de naissance : " . $date_naissance . "</p>";
-            echo "<p>Email : " . $email . "</p>";
-            // Affichage de la confirmation de mot de passe (on masque le mot de passe)
-            echo "<p>Mot de passe reçu</p>";
-            echo '<p>Entreprise choisie: ' . htmlspecialchars($_POST["entreprise"]) . '</p>';
-            echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
-            echo '<button class="button" style="background-color: #28a745; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer;">Connexion</button>'; // Style directement dans l'attribut "style"
-            echo '</div>';
+            try {
+                $query_insert_user = $db->prepare($sql_insert_user);
+                $query_insert_user->execute([$nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id]);
 
-        } catch (PDOException $e) {
-            echo "Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage();
+
+                echo '<div style="text-align: center;">';
+                echo '<style>';
+                echo 'h2 {';
+                echo '  background-color: #B5CA69 ;';
+                echo '  color: white;';
+                echo '  padding: 10px;';
+                echo '  width: 20rem;';
+                echo '  margin: 0 auto; /* Utilisation de la marge pour centrer horizontalement */';
+                echo '}';
+                echo '</style>';
+                echo "<h2>Inscription réussie</h2>";
+                echo "<h3>Données soumises :</h3>";
+                echo "<p>Nom : " . $nom . "</p>";
+                echo "<p>Prénom : " . $prenom . "</p>";
+                echo "<p>Pseudo : " . $pseudo . "</p>";
+                echo "<p>Date de naissance : " . $date_naissance . "</p>";
+                echo "<p>Email : " . $email . "</p>";
+                // Affichage de la confirmation de mot de passe (on masque le mot de passe)
+                echo "<p>Mot de passe reçu</p>";
+                echo '<p>Entreprise choisie: ' . htmlspecialchars($_POST["entreprise"]) . '</p>';
+                echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
+                echo '<button class="button" style="background-color: #28a745; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer;">Connexion</button>'; // Style directement dans l'attribut "style"
+                echo '</div>';
+            } catch (PDOException $e) {
+                echo "Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage();
+            }
+        } else {
+            echo "Erreur : Entreprise non reconnue.";
         }
     } else {
-        echo "Erreur : Entreprise non reconnue.";
+        // Afficher les erreurs
+        print_r($errors);
     }
-} else {
-    // Afficher les erreurs
-    print_r($errors);
-}
 }
 
 

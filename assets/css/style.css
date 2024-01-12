@@ -3,13 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Marhey&display=swap');
 /* font-family: 'Marhey', sans-serif; */
 
-
+body{
+  background-color: #7A9855 ;
+}
 
 h1 {
   font-family: 'Marhey', sans-serif;
   text-align: center;
   margin-bottom: 3rem;
-  color: #28a745;
+  color:     #B5CA69;
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-top: 1rem;
 }
 
@@ -21,6 +25,10 @@ h1 {
 }
 
 /* formulaire */
+
+.container form {
+  background-color: #D7C5A8  ; 
+}
 
 .container {
   display: flex;
@@ -37,6 +45,10 @@ form {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: auto;
+  font-family: 'Exo', sans-serif;
+  color:    #206D3C   ;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
 
 }
 
@@ -66,14 +78,14 @@ input[type="password"] {
 /* Style du bouton */
 .button {
   padding: 10px 20px;
-  background-color: #28a745;
+  background-color: #206D3C  ;
   color: #fff;
   border: none;
   border-radius: 5px;
 }
 
 .button:hover {
-  background-color: #62c479;
+  background-color: #7A9855 ;
 }
 
 /* Style des messages de validation */

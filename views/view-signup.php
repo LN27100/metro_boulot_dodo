@@ -32,7 +32,7 @@
 
             <div class="col-md-4">
                 <label for="validationServer03" class="form-label">Pseudo: </label>
-                <input type="text" class="form-control <?php if (isset($errors['pseudo'])) echo 'is-invalid'; ?>" id="validationServer03" name="pseudo" placeholder="ex.LNwarrior" required>
+                <input type="text" class="form-control <?php if (isset($errors['pseudo'])) echo 'is-invalid'; ?>" id="validationServer03" name="pseudo" pattern="^[a-zA-ZÀ-ÿ\d]*$" placeholder="ex.LNwarrior" required>
                 <div class="invalid-feedback" id="pseudoValidationFeedback">Champ obligatoire</div>
             </div>
 
@@ -87,10 +87,7 @@
 
             <div class="col-12 mt-4 mt-xxl-0  h-auto">
                 <div class="input-group d-flex">
-                    <label for="confirm-password-input" class="form-label">Confirmer Mot de passe: </label>
-                    <span class="input-group-text border-0" id="confirm-password">
-                        <i class="bi bi-x fa-2x me-1 d-none"></i>
-                    </span>
+                    <label for="confirm-password-input" class="form-label">Confirmer Mot de passe:</label>
                     <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['conf_mot_de_passe'])) echo 'is-invalid'; ?>" name="conf_mot_de_passe" placeholder="Confirmez votre mot de passe" aria-label="confirm-password" aria-describedby="confirm-password" id="confirm-password-input" />
                     <div class="invalid-feedback" id="confirmPasswordValidationFeedback"></div>
                     <div class="valid-feedback"></div>
