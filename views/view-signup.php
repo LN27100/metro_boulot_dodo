@@ -241,7 +241,7 @@
             });
 
             pseudoInput.addEventListener("input", function() {
-                toggleValidity(pseudoInput, pseudoFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Pseudo");
+                toggleValidity(pseudoInput, pseudoFeedback, /^[a-zA-ZÀ-ÿ\d]+$/, "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo");
             });
 
             emailInput.addEventListener("input", function() {

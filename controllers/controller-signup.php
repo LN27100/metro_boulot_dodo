@@ -118,16 +118,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $query_insert_user->execute([$nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id]);
 
 
-                echo '<div style="text-align: center;">';
                 echo '<style>';
+                echo 'body {';
+                echo '  background-color: #7A9855;';
+                echo '}';
                 echo 'h2 {';
-                echo '  background-color: #B5CA69 ;';
+                echo '  background-color: #D7C5A8;';
                 echo '  color: white;';
                 echo '  padding: 10px;';
                 echo '  width: 20rem;';
                 echo '  margin: 0 auto; /* Utilisation de la marge pour centrer horizontalement */';
                 echo '}';
+                echo '.button {';
+                echo '  background-color: #206D3C;';
+                echo '  color: #fff;';
+                echo '  border: none;';
+                echo '  border-radius: 5px;';
+                echo '  padding: 10px 20px;';
+                echo '  cursor: pointer;';
+                echo '}';
+                echo '.button:hover {';
+                echo '  background-color: #B5CA69 ;';
+                echo '}';
                 echo '</style>';
+
+                echo '<div style="text-align: center;">';
                 echo "<h2>Inscription réussie</h2>";
                 echo "<h3>Données soumises :</h3>";
                 echo "<p>Nom : " . $nom . "</p>";
@@ -135,11 +150,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<p>Pseudo : " . $pseudo . "</p>";
                 echo "<p>Date de naissance : " . $date_naissance . "</p>";
                 echo "<p>Email : " . $email . "</p>";
-                // Affichage de la confirmation de mot de passe (on masque le mot de passe)
                 echo "<p>Mot de passe reçu</p>";
                 echo '<p>Entreprise choisie: ' . htmlspecialchars($_POST["entreprise"]) . '</p>';
                 echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
-                echo '<button class="button" style="background-color: #28a745; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer;">Connexion</button>'; // Style directement dans l'attribut "style"
+                echo '<button class="button">Connexion</button>';
                 echo '</div>';
             } catch (PDOException $e) {
                 echo "Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage();
