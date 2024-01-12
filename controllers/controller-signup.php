@@ -1,22 +1,27 @@
 <?php
 
 // Fonction de connexion à la base de données
+// La méthode PDO permet de changer facilement de BDD si besoin.
 function connectToDatabase() {
     $dsn = "mysql:host=localhost;dbname=metro_boulot_dodo";
     $username = "LN27100";
     $password = "02111979Lh#";
 
     try {
+        // nouvelle instance permettant d'entrée le serveur, la base de données, le nom d'utilisateur et mot de passe de l'admin de la BDD)
         $db = new PDO($dsn, $username, $password);
+        $db->exec('SET NAMES "UTF8"');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $db;
+        // si la requête ci-dessus échoue, on renvoie une erreur
     } catch (PDOException $e) {
         echo "Erreur de connexion à la base de données : " . $e->getMessage();
+        // arrêt de l'exécution de la suite du code
         die();
     }
 }
 
-// Fonction d'exécution de requête
+// FONCTION d'exécution de requête
 function executeQuery($db, $sql) {
     $query = $db->prepare($sql);
     $query->execute();
@@ -71,10 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["conf_mot_de_passe"] = "Les mots de passe ne correspondent pas";
     }
 
-        // Contrôle du choix de l'entreprise
-        if (empty($_POST["entreprise"])) {
+    // Contrôle du choix de l'entreprise
+    if (empty($_POST["entreprise"])) {
             $errors["entreprise"] = "Veuillez choisir une entreprise";
-        }
+    }
 
     // Contrôle des CGU
     if (empty($_POST["cgu"]) || $_POST["cgu"] !== "on") {
@@ -91,12 +96,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $date_naissance = trim(htmlspecialchars($_POST['date_naissance']));
         $email = trim(htmlspecialchars($_POST['email']));
         $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
-
-         // Assurez-vous d'avoir l'identifiant de l'entreprise associée
-         $enterprise_name = $_POST["entreprise"];
-         $enterprise_id = null;
+        $enterprise_name = $_POST["entreprise"];
+        $enterprise_id = null;
  
-         // Logique pour obtenir l'identifiant de l'entreprise en fonction du nom
+         // OBTENIR L'ID DE L'ENTREPRISE EN FONCTION DE SON NOM
          if ($enterprise_name === "Plume Futée") {
              $enterprise_id = 1;
          } elseif ($enterprise_name === "Dream Stones") {
@@ -155,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
     include_once __DIR__ . '../../views/view-signup.php';
 }
 
-// Exécution des requêtes pour récupérer les données de la base de données
+// RECUPERATION DES DONNEES DE LA BDD
 $db = connectToDatabase();
 
 $sql_enterprise = 'SELECT * FROM `enterprise`';
@@ -166,37 +169,34 @@ $sql_ride = 'SELECT * FROM `ride`';
 $sql_transport = 'SELECT * FROM `transport`';
 $sql_transport_pris_en_compte = 'SELECT * FROM `transport_pris_en_compte`';
 
-// Exécuter la première requête
+// REQUETE DE RECUPERATION
+// on prépare la requête
 $query_enterprise = $db->prepare($sql_enterprise);
+// on exécute la requête
 $query_enterprise->execute();
+// On stocke le résultat dans un tableau
 $result_enterprise = $query_enterprise->fetchAll(PDO::FETCH_ASSOC);
 
-// Exécuter la deuxième requête
 $query_userprofil = $db->prepare($sql_userprofil);
 $query_userprofil->execute();
 $result_userprofil = $query_userprofil->fetchAll(PDO::FETCH_ASSOC);
 
-// Exécuter la troisième requête
 $query_admin = $db->prepare($sql_admin);
 $query_admin->execute();
 $result_admin = $query_admin->fetchAll(PDO::FETCH_ASSOC);
 
-// Exécuter la quatrième requête
 $query_events = $db->prepare($sql_events);
 $query_events->execute();
 $result_events = $query_events->fetchAll(PDO::FETCH_ASSOC);
 
-// Exécuter la cinquième requête
 $query_ride = $db->prepare($sql_ride);
 $query_ride->execute();
 $result_ride = $query_ride->fetchAll(PDO::FETCH_ASSOC);
 
-// Exécuter la sixième requête
 $query_transport = $db->prepare($sql_transport);
 $query_transport->execute();
 $result_transport = $query_transport->fetchAll(PDO::FETCH_ASSOC);
 
-// Exécuter la septième requête
 $query_transport_pris_en_compte = $db->prepare($sql_transport_pris_en_compte);
 $query_transport_pris_en_compte->execute();
 $result_transport_pris_en_compte = $query_transport_pris_en_compte->fetchAll(PDO::FETCH_ASSOC);
@@ -204,16 +204,19 @@ $result_transport_pris_en_compte = $query_transport_pris_en_compte->fetchAll(PDO
 // Afficher les résultats 
 // var_dump($result_enterprise);
 
-// var_dump($result_userprofil);
-
-// var_dump($result_admin);
-
-// var_dump($result_events);
-
-// var_dump($result_ride);
-
-// var_dump($result_transport);
-
-// var_dump($result_transport_pris_en_compte);
-
 ?>
+
+
+<!-- LEXIQUE ET EXPLICATIONS UTILES -->
+
+<!-- trim(): Cette fonction en PHP est utilisée pour supprimer les espaces (ou d'autres caractères spécifiés) du début et de la fin d'une chaîne. Cela est utile pour nettoyer les éventuels espaces en trop qui pourraient être saisis accidentellement. -->
+
+<!-- htmlspecialchars(): Cette fonction PHP est utilisée pour convertir certains caractères spéciaux en entités HTML équivalentes. Cela est fait pour éviter les attaques par injection de code. Par exemple, si quelqu'un saisit du code HTML ou JavaScript malveillant dans le champ 'nom', cette fonction va convertir les caractères spéciaux en entités HTML, rendant le code inoffensif lorsqu'il est affiché dans une page web. -->
+
+<!-- PDO, qui signifie PHP Data Objects, est une extension de PHP qui fournit une interface uniforme pour accéder à différentes bases de données.
+Permet aux développeurs de travailler avec différentes bases de données sans avoir à modifier significativement leur code. Vous pouvez changer de SGBD simplement en ajustant la chaîne de connexion (DSN) sans toucher au reste du code.
+Support multi-bases de données : PDO prend en charge plusieurs types de bases de données, notamment MySQL, PostgreSQL, SQLite, MS SQL Server, Oracle, et d'autres. Cela rend PDO particulièrement utile pour les projets qui pourraient éventuellement être déployés sur différentes plateformes de bases de données. -->
+
+<!-- password_hash(): C'est une fonction de hachage sécurisée intégrée à PHP. Elle prend en entrée le mot de passe que vous souhaitez hacher et génère une version hachée sécurisée à stocker en base de données. -->
+
+<!-- PASSWORD_DEFAULT: C'est une constante utilisée comme coût de hachage pour la fonction password_hash. Cette constante représente l'algorithme de hachage recommandé par défaut au moment de la mise à jour de PHP. Elle garantit que la méthode de hachage utilisée est à jour avec les meilleures pratiques de sécurité. -->
