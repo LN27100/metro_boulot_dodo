@@ -241,10 +241,6 @@
                 toggleValidity(prenomInput, prenomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom");
             });
 
-            pseudoInput.addEventListener("input", function() {
-                toggleValidity(pseudoInput, pseudoFeedback, /^[a-zA-ZÀ-ÿ\d]+$/, "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo");
-            });
-
             emailInput.addEventListener("input", function() {
                 toggleValidity(emailInput, emailFeedback);
             });
@@ -270,7 +266,14 @@
                 }
             }
 
-
+            pseudoInput.addEventListener("input", function() {
+                toggleValidity(pseudoInput, pseudoFeedback, /^[a-zA-ZÀ-ÿ\d]+$/, "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo");
+                if (pseudoInput.value.length < 6) {
+                    formIsValid = false;
+                    toggleValidity(pseudoInput, pseudoFeedback, null, "Le pseudo doit contenir au moins 6 caractères");
+                }
+            });
+            
             const submitButton = document.getElementById("submitButton");
             submitButton.addEventListener("click", function(event) {
                 let formIsValid = true;

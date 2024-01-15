@@ -1,5 +1,6 @@
 <?php
 
+
 // Fonction de connexion à la base de données
 // La méthode PDO permet de changer facilement de BDD si besoin.
 function connectToDatabase()
@@ -52,6 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["pseudo"] = "Le champ Pseudo ne peut pas être vide";
     } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
         $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
+    } elseif (strlen($_POST["pseudo"]) < 6) {
+        $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
     }
 
     // Contrôle de l'email
@@ -218,6 +221,8 @@ $result_transport_pris_en_compte = $query_transport_pris_en_compte->fetchAll(PDO
 
 // Afficher les résultats 
 // var_dump($result_enterprise);
+// Donne toutes les propriétés du serveur
+// var_dump($_SERVER)
 
 ?>
 
