@@ -20,32 +20,32 @@
 
             <div class="col-md-4">
                 <label for="validationServer01" class="form-label">Nom: </label>
-                <input type="text" class="form-control <?php if (isset($errors['nom'])) echo 'is-invalid'; ?>" id="validationServer01" name="nom" placeholder="ex.Poirier-Halley" required>
+                <input type="text" class="form-control <?php if (isset($errors['nom'])) echo 'is-invalid'; ?>" id="validationServer01" name="nom" placeholder="ex.Poirier-Halley" value="<?= isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '' ?>" required>
                 <div class="invalid-feedback" id="nomValidationFeedback">Champ obligatoire</div>
             </div>
 
             <div class="col-md-4">
                 <label for="validationServer02" class="form-label">Prénom: </label>
-                <input type="text" class="form-control <?php if (isset($errors['prenom'])) echo 'is-invalid'; ?>" id="validationServer02" name="prenom" placeholder="ex.Hélène" required>
+                <input type="text" class="form-control <?php if (isset($errors['prenom'])) echo 'is-invalid'; ?>" id="validationServer02" name="prenom" placeholder="ex.Hélène" value="<?= isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '' ?>" required>
                 <div class="invalid-feedback" id="prenomValidationFeedback">Champ obligatoire</div>
             </div>
 
             <div class="col-md-4">
                 <label for="validationServer03" class="form-label">Pseudo: </label>
-                <input type="text" class="form-control <?php if (isset($errors['pseudo'])) echo 'is-invalid'; ?>" id="validationServer03" name="pseudo" pattern="^[a-zA-ZÀ-ÿ\d]*$" placeholder="ex.LNwarrior" required>
+                <input type="text" class="form-control <?php if (isset($errors['pseudo'])) echo 'is-invalid'; ?>" id="validationServer03" name="pseudo" pattern="^[a-zA-ZÀ-ÿ\d]*$" placeholder="ex.LNwarrior" value="<?= isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '' ?>" required>
                 <div class="invalid-feedback" id="pseudoValidationFeedback">Champ obligatoire</div>
             </div>
 
             <div class="col-md-4">
                 <label for="start" class="form-label">Date de naissance:</label>
-                <input type="date" id="start" name="date_naissance" value="" min="1940-01-01" max="2024-12-31" class="form-control <?php if (isset($errors['date_naissance'])) echo 'is-invalid'; ?>" required>
+                <input type="date" id="start" name="date_naissance" value="<?= isset($_POST['date_naissance']) ? htmlspecialchars($_POST['date_naissance']) : '' ?>" min="1940-01-01" max="2024-12-31" class="form-control <?php if (isset($errors['date_naissance'])) echo 'is-invalid'; ?>" required>
                 <div class="invalid-feedback" id="dateValidationFeedback">Champ obligatoire</div>
             </div>
 
             <form method="post" action="votre_script.php">
                 <div class="form-group col-md-6">
                     <label for="email" class="form-label">Courriel: </label>
-                    <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="email" name="email" placeholder="adresse email" required>
+                    <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="email" name="email" placeholder="adresse email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" required>
                     <div class="invalid-feedback" id="emailValidationFeedback">
                         <?php
                         if (isset($errors['email'])) {
@@ -56,7 +56,6 @@
                         ?>
                     </div>
                 </div>
-
                 <div class="form-group col-md-12">
                     <label for="password-input" class="form-label">Mot de passe: </label>
                     <div class="input-group d-flex">
@@ -64,7 +63,6 @@
                         <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
                     </div>
                 </div>
-
 
                 <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
                     <div class="alert px-4 py-3 mb-0 d-none" role="alert" data-mdb-color="warning" id="password-alert">
@@ -103,11 +101,11 @@
                     </div>
                 </div>
 
-                <label for="confirm-password-input" class="form-label">Choix de l'entreprise:</label>
+                <label for="entreprise" class="form-label">Choix de l'entreprise:</label>
                 <select class="form-select <?php if (isset($errors['entreprise'])) echo 'is-invalid'; ?>" aria-label="Default select example" name="entreprise" id="entreprise">
                     <option value="" selected>Sélectionnez une entreprise pour les challenges</option>
-                    <option value="1" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 1 ? 'select' : '' ?>>Plume Futée</option>
-                    <option value="2" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 2 ? 'select' : '' ?>>Dream Stones</option>
+                    <option value="1" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 1 ? 'selected' : '' ?>>Plume Futée</option>
+                    <option value="2" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 2 ? 'selected' : '' ?>>Dream Stones</option>
                 </select>
                 <div class="invalid-feedback" id="entrepriseValidationFeedback">Veuillez choisir une entreprise.</div>
 

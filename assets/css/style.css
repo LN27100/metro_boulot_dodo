@@ -18,11 +18,12 @@ h1 {
 }
 
 
-/* mot de passe */
+/* validation champs */
 .valid-feedback,
 .invalid-feedback {
   margin-left: calc(2em + 0.25rem + 1.5rem);
 }
+
 
 /* formulaire */
 

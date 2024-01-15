@@ -105,9 +105,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $enterprise_id = null;
 
         // OBTENIR L'ID DE L'ENTREPRISE EN FONCTION DE SON NOM
-        if ($enterprise_name === "Plume Futée") {
+        if ($enterprise_name === "1") {
             $enterprise_id = 1;
-        } elseif ($enterprise_name === "Dream Stones") {
+        } elseif ($enterprise_name === "2") {
             $enterprise_id = 2;
         }
 
