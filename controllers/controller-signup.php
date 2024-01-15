@@ -90,12 +90,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["cgu"]) || $_POST["cgu"] !== "on") {
         $errors["cgu"] = "Veuillez accepter les conditions générales d'utilisation pour continuer.";
     }
-    
+
     // On s'assure qu'il n'y a pas d'erreur dans le formuaire
     if (empty($errors)) {
         $db = connectToDatabase();
 
-        // Récupération des données du formulaire
+        // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
         $nom = trim(htmlspecialchars($_POST['nom']));
         $prenom = trim(htmlspecialchars($_POST['prenom']));
         $pseudo = trim(htmlspecialchars($_POST['pseudo']));
@@ -113,10 +113,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($enterprise_id !== null) {
-            // Requête d'insertion avec enterprise_id
+            // REQUÊTES D'INSERTION
             $sql_insert_user = 'INSERT INTO `userprofil` (`user_name`, `user_firstname`, `user_pseudo`, `user_dateofbirth`, `user_email`, `user_password`, `user_validate`, `enterprise_id`) 
-                                 VALUES (?, ?, ?, ?, ?, ?, 0, ?)';
-
+                                 VALUES (?, ?, ?, ?, ?, ?, 1, ?)';
+            // values (:lastname, :firstname, :pseudo, :birthday, :email, :passwords, :id_entreprise, :validate_participant) BONNE PRATIQUE
             try {
                 $query_insert_user = $db->prepare($sql_insert_user);
                 $query_insert_user->execute([$nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id]);
