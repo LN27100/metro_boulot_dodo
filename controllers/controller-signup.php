@@ -164,10 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Erreur : Entreprise non reconnue.";
         }
-    } else {
-        // Afficher les erreurs
-        print_r($errors);
-    }
+    } 
 }
 
 
@@ -180,12 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
 $db = connectToDatabase();
 
 $sql_enterprise = 'SELECT * FROM `enterprise`';
-$sql_userprofil = 'SELECT * FROM `userprofil`';
-$sql_admin = 'SELECT * FROM `admin`';
-$sql_events = 'SELECT * FROM `events`';
-$sql_ride = 'SELECT * FROM `ride`';
 $sql_transport = 'SELECT * FROM `transport`';
-$sql_transport_pris_en_compte = 'SELECT * FROM `transport_pris_en_compte`';
 
 // REQUETE DE RECUPERATION
 // on prépare la requête
@@ -195,29 +187,10 @@ $query_enterprise->execute();
 // On stocke le résultat dans un tableau
 $result_enterprise = $query_enterprise->fetchAll(PDO::FETCH_ASSOC);
 
-$query_userprofil = $db->prepare($sql_userprofil);
-$query_userprofil->execute();
-$result_userprofil = $query_userprofil->fetchAll(PDO::FETCH_ASSOC);
-
-$query_admin = $db->prepare($sql_admin);
-$query_admin->execute();
-$result_admin = $query_admin->fetchAll(PDO::FETCH_ASSOC);
-
-$query_events = $db->prepare($sql_events);
-$query_events->execute();
-$result_events = $query_events->fetchAll(PDO::FETCH_ASSOC);
-
-$query_ride = $db->prepare($sql_ride);
-$query_ride->execute();
-$result_ride = $query_ride->fetchAll(PDO::FETCH_ASSOC);
-
 $query_transport = $db->prepare($sql_transport);
 $query_transport->execute();
 $result_transport = $query_transport->fetchAll(PDO::FETCH_ASSOC);
 
-$query_transport_pris_en_compte = $db->prepare($sql_transport_pris_en_compte);
-$query_transport_pris_en_compte->execute();
-$result_transport_pris_en_compte = $query_transport_pris_en_compte->fetchAll(PDO::FETCH_ASSOC);
 
 // Afficher les résultats 
 // var_dump($result_enterprise);
