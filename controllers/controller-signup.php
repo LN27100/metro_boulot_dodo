@@ -1,17 +1,15 @@
 <?php
 
+//lier le fichier config
+require_once '../config.php';
 
 // Fonction de connexion à la base de données
 // La méthode PDO permet de changer facilement de BDD si besoin.
 function connectToDatabase()
 {
-    $dsn = "mysql:host=localhost;dbname=metro_boulot_dodo";
-    $username = "LN27100";
-    $password = "02111979Lh#";
-
     try {
         // nouvelle instance permettant d'entrée le serveur, la base de données, le nom d'utilisateur et mot de passe de l'admin de la BDD)
-        $db = new PDO($dsn, $username, $password);
+        $db = new PDO(DBNAME, DBUSER, DBPASSWORD );
         $db->exec('SET NAMES "UTF8"');
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $db;
