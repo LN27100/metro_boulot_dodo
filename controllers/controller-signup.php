@@ -90,7 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["cgu"]) || $_POST["cgu"] !== "on") {
         $errors["cgu"] = "Veuillez accepter les conditions générales d'utilisation pour continuer.";
     }
-
+    
+    // On s'assure qu'il n'y a pas d'erreur dans le formuaire
     if (empty($errors)) {
         $db = connectToDatabase();
 
@@ -164,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Erreur : Entreprise non reconnue.";
         }
-    } 
+    }
 }
 
 
