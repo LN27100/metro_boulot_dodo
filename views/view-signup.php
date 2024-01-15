@@ -42,79 +42,88 @@
                 <div class="invalid-feedback" id="dateValidationFeedback">Champ obligatoire</div>
             </div>
 
-            <div class="form-group col-md-6">
-                <label for="email" class="form-label">Courriel: </label>
-                <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="email" name="email" placeholder="adresse email" required>
-                <div class="invalid-feedback" id="emailValidationFeedback">Champ obligatoire</div>
-            </div>
-
-            <div class="form-group col-md-12">
-                <label for="password-input" class="form-label">Mot de passe: </label>
-                <div class="input-group d-flex">
-                    <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="password-input" />
-                    <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
+            <form method="post" action="votre_script.php">
+                <div class="form-group col-md-6">
+                    <label for="email" class="form-label">Courriel: </label>
+                    <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="email" name="email" placeholder="adresse email" required>
+                    <div class="invalid-feedback" id="emailValidationFeedback">
+                        <?php
+                        if (isset($errors['email'])) {
+                            echo $errors['email'];
+                        } else {
+                            echo "Champ obligatoire";
+                        }
+                        ?>
+                    </div>
                 </div>
-            </div>
 
-
-            <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
-                <div class="alert px-4 py-3 mb-0 d-none" role="alert" data-mdb-color="warning" id="password-alert">
-                    <ul class="list-unstyled mb-0">
-                        <div class="requirements leng">
-                            <i class="bi bi-check text-success me-2 d-none"></i>
-                            <i class="bi bi-x text-danger me-3"></i>
-                            Votre mot de passe doit contenir au moins 8 caractères.
-                        </div>
-                        <div class="requirements big-letter">
-                            <i class="bi bi-check text-success me-2 d-none"></i>
-                            <i class="bi bi-x text-danger me-3"></i>
-                            Votre mot de passe doit contenir une lettre majuscule.
-                        </div>
-                        <div class="requirements num">
-                            <i class="bi bi-check text-success me-2 d-none"></i>
-                            <i class="bi bi-x text-danger me-3"></i>
-                            Votre mot de passe doit contenir un chiffre.
-                        </div>
-                        <div class="requirements special-char">
-                            <i class="bi bi-check text-success me-2 d-none"></i>
-                            <i class="bi bi-x text-danger me-3"></i>
-                            Votre mot de passe doit contenir un caractère spécial.
-                        </div>
-                    </ul>
+                <div class="form-group col-md-12">
+                    <label for="password-input" class="form-label">Mot de passe: </label>
+                    <div class="input-group d-flex">
+                        <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="password-input" />
+                        <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="col-12 mt-4 mt-xxl-0  h-auto">
-                <div class="input-group d-flex">
-                    <label for="confirm-password-input" class="form-label">Confirmer Mot de passe:</label>
-                    <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['conf_mot_de_passe'])) echo 'is-invalid'; ?>" name="conf_mot_de_passe" placeholder="Confirmez votre mot de passe" aria-label="confirm-password" aria-describedby="confirm-password" id="confirm-password-input" />
-                    <div class="invalid-feedback" id="confirmPasswordValidationFeedback"></div>
-                    <div class="valid-feedback"></div>
+                <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
+                    <div class="alert px-4 py-3 mb-0 d-none" role="alert" data-mdb-color="warning" id="password-alert">
+                        <ul class="list-unstyled mb-0">
+                            <div class="requirements leng">
+                                <i class="bi bi-check text-success me-2 d-none"></i>
+                                <i class="bi bi-x text-danger me-3"></i>
+                                Votre mot de passe doit contenir au moins 8 caractères.
+                            </div>
+                            <div class="requirements big-letter">
+                                <i class="bi bi-check text-success me-2 d-none"></i>
+                                <i class="bi bi-x text-danger me-3"></i>
+                                Votre mot de passe doit contenir une lettre majuscule.
+                            </div>
+                            <div class="requirements num">
+                                <i class="bi bi-check text-success me-2 d-none"></i>
+                                <i class="bi bi-x text-danger me-3"></i>
+                                Votre mot de passe doit contenir un chiffre.
+                            </div>
+                            <div class="requirements special-char">
+                                <i class="bi bi-check text-success me-2 d-none"></i>
+                                <i class="bi bi-x text-danger me-3"></i>
+                                Votre mot de passe doit contenir un caractère spécial.
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-            </div>
 
-            <label for="confirm-password-input" class="form-label">Choix de l'entreprise:</label>
-            <select class="form-select <?php if (isset($errors['entreprise'])) echo 'is-invalid'; ?>" aria-label="Default select example" name="entreprise" id="entreprise">
-                <option value="" selected>Sélectionnez une entreprise pour les challenges</option>
-                <option value="Plume Futée">Plume Futée</option>
-                <option value="Dream Stones">Dream Stones</option>
-            </select>
-            <div class="invalid-feedback" id="entrepriseValidationFeedback">Veuillez choisir une entreprise.</div>
 
-            <div class="texte form-check">
-                <input class="form-check-input" type="checkbox" value="on" id="cgu" name="cgu" required>
-                <label class="form-check-label" for="cgu">
-                    J'accepte les conditions d'utilisation
-                </label>
-                <div class="invalid-feedback" id="cguValidationFeedback">Veuillez accepter les conditions d'utilisation</div>
-            </div>
+                <div class="col-12 mt-4 mt-xxl-0  h-auto">
+                    <div class="input-group d-flex">
+                        <label for="confirm-password-input" class="form-label">Confirmer Mot de passe:</label>
+                        <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['conf_mot_de_passe'])) echo 'is-invalid'; ?>" name="conf_mot_de_passe" placeholder="Confirmez votre mot de passe" aria-label="confirm-password" aria-describedby="confirm-password" id="confirm-password-input" />
+                        <div class="invalid-feedback" id="confirmPasswordValidationFeedback"></div>
+                        <div class="valid-feedback"></div>
+                    </div>
+                </div>
 
-            <div class="col-12 mt-4 mt-xxl-0 w-auto">
-                <button class="button" type="submit" id="submitButton">S'enregistrer</button>
-            </div>
+                <label for="confirm-password-input" class="form-label">Choix de l'entreprise:</label>
+                <select class="form-select <?php if (isset($errors['entreprise'])) echo 'is-invalid'; ?>" aria-label="Default select example" name="entreprise" id="entreprise">
+                    <option value="" selected>Sélectionnez une entreprise pour les challenges</option>
+                    <option value="1" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 1 ? 'select' : '' ?>>Plume Futée</option>
+                    <option value="2" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 2 ? 'select' : '' ?>>Dream Stones</option>
+                </select>
+                <div class="invalid-feedback" id="entrepriseValidationFeedback">Veuillez choisir une entreprise.</div>
 
-        </form>
+                <div class="texte form-check">
+                    <input class="form-check-input" type="checkbox" value="on" id="cgu" name="cgu" required>
+                    <label class="form-check-label" for="cgu">
+                        J'accepte les conditions d'utilisation
+                    </label>
+                    <div class="invalid-feedback" id="cguValidationFeedback">Veuillez accepter les conditions d'utilisation</div>
+                </div>
+
+                <div class="col-12 mt-4 mt-xxl-0 w-auto">
+                    <button class="button" type="submit" id="submitButton">S'enregistrer</button>
+                </div>
+
+            </form>
 
     </div>
 
@@ -241,9 +250,6 @@
                 toggleValidity(prenomInput, prenomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom");
             });
 
-            emailInput.addEventListener("input", function() {
-                toggleValidity(emailInput, emailFeedback);
-            });
 
             dateInput.addEventListener("input", function() {
                 toggleValidity(dateInput, dateFeedback);
@@ -273,7 +279,26 @@
                     toggleValidity(pseudoInput, pseudoFeedback, null, "Le pseudo doit contenir au moins 6 caractères");
                 }
             });
-            
+
+
+            emailInput.addEventListener("input", function() {
+
+                var emailValue = emailInput.value;
+
+                // vérifier la validité de l'email
+                if (filter_var(emailValue, FILTER_VALIDATE_EMAIL)) {
+                    emailInput.classList.remove("is-invalid");
+                    emailInput.classList.add("is-valid");
+                    emailFeedback.style.display = "none";
+                } else {
+                    emailInput.classList.remove("is-valid");
+                    emailInput.classList.add("is-invalid");
+
+                    emailFeedback.innerText = "Email non valide";
+                    emailFeedback.style.display = "block";
+                }
+            });
+
             const submitButton = document.getElementById("submitButton");
             submitButton.addEventListener("click", function(event) {
                 let formIsValid = true;
