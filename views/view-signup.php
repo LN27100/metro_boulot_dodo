@@ -94,6 +94,7 @@
                 </div>
             </div>
 
+            <label for="confirm-password-input" class="form-label">Choix de l'entreprise:</label>
             <select class="form-select <?php if (isset($errors['entreprise'])) echo 'is-invalid'; ?>" aria-label="Default select example" name="entreprise" id="entreprise">
                 <option value="" selected>Sélectionnez une entreprise pour les challenges</option>
                 <option value="Plume Futée">Plume Futée</option>
