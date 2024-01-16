@@ -1,6 +1,7 @@
 <?php
 
-class Userprofil {
+class Userprofil
+{
     /**
      * Méthode permettant de créer un utilisateur
      * @param string $nom Nom de l'utilisateur
@@ -13,7 +14,8 @@ class Userprofil {
      * @param int $user_validate Validation de l'utilisateur
      */
 
-    public static function create(string $nom, string $prenom, string $pseudo, string $date_naissance, string $email, string $mot_de_passe, string $enterprise_id, int $user_validate){
+    public static function create(string $nom, string $prenom, string $pseudo, string $date_naissance, string $email, string $mot_de_passe, string $enterprise_id, int $user_validate)
+    {
         try {
 
             // Conexion à la base de données
@@ -42,4 +44,5 @@ class Userprofil {
             echo 'Erreur :' . $e->getMessage();
             die();
         }
-    }}
+    }
+}

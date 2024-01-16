@@ -106,14 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 echo '<div style="text-align: center;">';
                 echo "<h2>Inscription réussie</h2>";
-                echo "<h3>Données soumises :</h3>";
-                echo "<p>Nom : " . $nom . "</p>";
-                echo "<p>Prénom : " . $prenom . "</p>";
-                echo "<p>Pseudo : " . $pseudo . "</p>";
-                echo "<p>Date de naissance : " . $date_naissance . "</p>";
-                echo "<p>Email : " . $email . "</p>";
-                echo "<p>Mot de passe reçu</p>";
-                echo '<p>Entreprise choisie: ' . htmlspecialchars($_POST["entreprise"]) . '</p>';
+               
                 echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
                 echo '<button class="button">Connexion</button>';
                 echo '</div>';
