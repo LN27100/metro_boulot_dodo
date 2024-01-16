@@ -98,6 +98,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '  border-radius: 5px;';
                 echo '  padding: 10px 20px;';
                 echo '  cursor: pointer;';
+                echo '  text-decoration: none;';
+
                 echo '}';
                 echo '.button:hover {';
                 echo '  background-color: #B5CA69 ;';
@@ -108,29 +110,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<h2>Inscription réussie</h2>";
                
                 echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
-                echo '<button class="button">Connexion</button>';
+                echo '<a href="../views/view-signin.php" class="button" >Connexion</a>';
                 echo '</div>';
            
 }
 
 
 
-// RECUPERATION DES DONNEES DE LA BDD
-
-$sql_enterprise = 'SELECT * FROM `enterprise`';
-$sql_transport = 'SELECT * FROM `transport`';
-
-// REQUETE DE RECUPERATION
-// on prépare la requête
-$query_enterprise = $db->prepare($sql_enterprise);
-// on exécute la requête
-$query_enterprise->execute();
-// On stocke le résultat dans un tableau
-$result_enterprise = $query_enterprise->fetchAll(PDO::FETCH_ASSOC);
-
-$query_transport = $db->prepare($sql_transport);
-$query_transport->execute();
-$result_transport = $query_transport->fetchAll(PDO::FETCH_ASSOC);
 
 
 // Donne toutes les propriétés du serveur
