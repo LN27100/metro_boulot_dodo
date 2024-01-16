@@ -2,36 +2,22 @@
 
 //lier le fichier config
 require_once '../config.php';
-
-// Fonction de connexion à la base de données
-// La méthode PDO permet de changer facilement de BDD si besoin.
-function connectToDatabase()
-{
-    try {
-        // nouvelle instance permettant d'entrée le serveur, la base de données, le nom d'utilisateur et mot de passe de l'admin de la BDD)
-        $db = new PDO(DBNAME, DBUSER, DBPASSWORD );
-        $db->exec('SET NAMES "UTF8"');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $db;
-        // si la requête ci-dessus échoue, on renvoie une erreur
-    } catch (PDOException $e) {
-        echo "Erreur de connexion à la base de données : " . $e->getMessage();
-        // arrêt de l'exécution de la suite du code
-        die();
-    }
-}
-
-// FONCTION d'exécution de requête
-function executeQuery($db, $sql)
-{
-    $query = $db->prepare($sql);
-    $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
-}
+require_once '../models/Userprofil.php';
 
 // VERIFICATION DE LA SOUMISSION DU FORMULAIRE
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
+
+     // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
+     $nom = trim(htmlspecialchars($_POST['nom']));
+     $prenom = trim(htmlspecialchars($_POST['prenom']));
+     $pseudo = trim(htmlspecialchars($_POST['pseudo']));
+     $date_naissance = trim(htmlspecialchars($_POST['date_naissance']));
+     $email = trim(htmlspecialchars($_POST['email']));
+     $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
+     $enterprise_id = $_POST['entreprise'];
+
+
     // Contrôle du nom
     if (empty($_POST["nom"])) {
         $errors["nom"] = "Le champ Nom ne peut pas être vide";
@@ -91,34 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // On s'assure qu'il n'y a pas d'erreur dans le formuaire
     if (empty($errors)) {
-        $db = connectToDatabase();
 
-        // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
-        $nom = trim(htmlspecialchars($_POST['nom']));
-        $prenom = trim(htmlspecialchars($_POST['prenom']));
-        $pseudo = trim(htmlspecialchars($_POST['pseudo']));
-        $date_naissance = trim(htmlspecialchars($_POST['date_naissance']));
-        $email = trim(htmlspecialchars($_POST['email']));
-        $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
-        $enterprise_name = $_POST["entreprise"];
-        $enterprise_id = null;
-
-        // OBTENIR L'ID DE L'ENTREPRISE EN FONCTION DE SON NOM
-        if ($enterprise_name === "1") {
-            $enterprise_id = 1;
-        } elseif ($enterprise_name === "2") {
-            $enterprise_id = 2;
-        }
-
-        if ($enterprise_id !== null) {
-            // REQUÊTES D'INSERTION
-            $sql_insert_user = 'INSERT INTO `userprofil` (`user_name`, `user_firstname`, `user_pseudo`, `user_dateofbirth`, `user_email`, `user_password`, `user_validate`, `enterprise_id`) 
-                                 VALUES (?, ?, ?, ?, ?, ?, 1, ?)';
-            // values (:lastname, :firstname, :pseudo, :birthday, :email, :passwords, :id_entreprise, :validate_participant) BONNE PRATIQUE
-            try {
-                $query_insert_user = $db->prepare($sql_insert_user);
-                $query_insert_user->execute([$nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id]);
-
+    Userprofil::create ($nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id, 1);
 
                 echo '<style>';
                 echo 'body {';
@@ -157,23 +117,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
                 echo '<button class="button">Connexion</button>';
                 echo '</div>';
-            } catch (PDOException $e) {
-                echo "Erreur lors de l'ajout de l'utilisateur : " . $e->getMessage();
-            }
-        } else {
-            echo "Erreur : Entreprise non reconnue.";
-        }
-    }
+           
 }
 
 
-// Affichage du formulaire ou des erreurs
-if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
-    include_once __DIR__ . '../../views/view-signup.php';
-}
+
 
 // RECUPERATION DES DONNEES DE LA BDD
-$db = connectToDatabase();
 
 $sql_enterprise = 'SELECT * FROM `enterprise`';
 $sql_transport = 'SELECT * FROM `transport`';
@@ -195,6 +145,13 @@ $result_transport = $query_transport->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($result_enterprise);
 // Donne toutes les propriétés du serveur
 // var_dump($_SERVER)
+}
+
+
+// Affichage du formulaire ou des erreurs
+if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
+    include_once __DIR__ . '../../views/view-signup.php';
+}
 
 ?>
 

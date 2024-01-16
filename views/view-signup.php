@@ -56,10 +56,11 @@
                         ?>
                     </div>
                 </div>
+                
                 <div class="form-group col-md-12">
                     <label for="password-input" class="form-label">Mot de passe: </label>
                     <div class="input-group d-flex">
-                        <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="password-input" />
+                        <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="password-input" >
                         <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
                     </div>
                 </div>
@@ -205,13 +206,13 @@
                     if (isPasswordMatching) {
                         confirmPassword.classList.remove("is-invalid");
                         confirmPassword.classList.add("is-valid");
-                        confirmPassword.nextElementSibling.innerText = "Les mots de passe sont identiques"; // Modifier le texte
+                        confirmPassword.nextElementSibling.innerText = "Les mots de passe sont identiques"; 
                         confirmPassword.nextElementSibling.classList.remove("invalid-feedback");
                         confirmPassword.nextElementSibling.classList.add("valid-feedback");
                     } else {
                         confirmPassword.classList.remove("is-valid");
                         confirmPassword.classList.add("is-invalid");
-                        confirmPassword.nextElementSibling.innerText = "Les mots de passe ne sont pas identiques"; // Modifier le texte
+                        confirmPassword.nextElementSibling.innerText = "Les mots de passe ne sont pas identiques"; 
                         confirmPassword.nextElementSibling.classList.remove("valid-feedback");
                         confirmPassword.nextElementSibling.classList.add("invalid-feedback");
                     }

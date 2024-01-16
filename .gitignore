@@ -1,4 +1,4 @@
-# permet de ne pas alourdir le git et d'ignorer les mots de passe par exemple
+# permet de ne pas alourdir le git et de ne pas inclure certaines page comme celles des mots de passe par exemple
 node_modules/
 
 config.php
