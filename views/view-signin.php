@@ -13,16 +13,22 @@
 
 <body>
     <h1>Veuillez vous connecter</h1>
+    <?php
+        if ($showform) {
+        ?>
+
     <form>
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example1">Email: </label>
             <input type="email" id="form2Example1" class="form-control" />
-
+            <div class="invalid-feedback" id="emailValidationFeedback">
+            </div>
         </div>
 
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example2">Mot de passe :</label>
             <input type="password" id="form2Example2" class="form-control" />
+            <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
 
         </div>
 
@@ -32,12 +38,21 @@
         </div>
         </div>
 
-        <!-- Submit button -->
-        <button type="button" class="button btn-block mb-4">Connexion</button>
+        <a href="../controllers/controller-home.php" type="button" class="button btn-block mb-4">Connexion</a>
 
+        <div class="text-center">
+            <p>Pas encore membre? <a href="../controllers/controller-signup.php">Inscrivez-vous!</a></p>
+            
 
         </div>
     </form>
+
+    <?php } else { ?>
+        <p>ACCUEIL</p>
+            <?php } ?>
+
+
+
 
 </body>
 
