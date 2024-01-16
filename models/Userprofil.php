@@ -17,7 +17,7 @@ class Userprofil {
         try {
 
             // Conexion à la base de données
-            $db = new PDO("mysql:host=localhost;dbname=" . DBNAME, DBUSER, DBPASSWORD);
+            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Stockage de la requete dans variable

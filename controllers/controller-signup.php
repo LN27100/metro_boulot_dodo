@@ -122,7 +122,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-
 // RECUPERATION DES DONNEES DE LA BDD
 
 $sql_enterprise = 'SELECT * FROM `enterprise`';
@@ -141,8 +140,6 @@ $query_transport->execute();
 $result_transport = $query_transport->fetchAll(PDO::FETCH_ASSOC);
 
 
-// Afficher les résultats 
-// var_dump($result_enterprise);
 // Donne toutes les propriétés du serveur
 // var_dump($_SERVER)
 }
