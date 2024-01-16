@@ -14,43 +14,50 @@
 <body>
     <h1>Veuillez vous connecter</h1>
     <?php
-        if ($showform) {
-        ?>
+    if ($showform) {
+    ?>
 
-    <form>
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example1">Email: </label>
-            <input type="email" id="form2Example1" class="form-control" />
-            <div class="invalid-feedback" id="emailValidationFeedback">
+        <form class="row" method="POST" action="../controllers/controller-signin.php" novalidate>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example1">Email: </label>
+                <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="email" name="email" placeholder="adresse email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" required>
+                <div class="invalid-feedback" id="emailValidationFeedback">
+                    <?php
+                    if (isset($errors['email'])) {
+                        echo $errors['email'];
+                    } else {
+                        echo "Champ obligatoire";
+                    }
+                    ?>
+                </div>
             </div>
-        </div>
+            </div>
 
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example2">Mot de passe :</label>
-            <input type="password" id="form2Example2" class="form-control" />
-            <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example2">Mot de passe :</label>
+                <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="password-input">
+                <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
 
-        </div>
+            </div>
 
 
-        <div class="col">
-            <a href="#!">Mot de passe perdu?</a>
-        </div>
-        </div>
+            <div class="col">
+                <a href="#!">Mot de passe perdu?</a>
+            </div>
+            </div>
 
-        <a href="../controllers/controller-home.php" type="button" class="button btn-block mb-4">Connexion</a>
+            <button class="button" type="submit" id="submitButton">Se connecter</button>
 
-        <div class="text-center">
-            <p>Pas encore membre? <a href="../controllers/controller-signup.php">Inscrivez-vous!</a></p>
-            
+            <div class="text-center">
+                <p>Pas encore membre? <a href="../controllers/controller-signup.php">Inscrivez-vous!</a></p>
 
-        </div>
-    </form>
+
+            </div>
+        </form>
 
     <?php } else { ?>
         <p>ACCUEIL</p>
-            <?php } ?>
-
+    <?php } ?>
 
 
 
