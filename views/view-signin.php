@@ -66,32 +66,33 @@
 
 <script>
     function toggleValidity(inputElement, feedbackElement) {
-        var inputValue = inputElement.value;
+    var inputValue = inputElement.value;
 
-        // Vérifier la validité de l'entrée
-        if (filter_var(inputValue, FILTER_VALIDATE_EMAIL)) {
-            inputElement.classList.remove("is-invalid");
-            inputElement.classList.add("is-valid");
-            feedbackElement.classList.remove("invalid-feedback");
-            feedbackElement.classList.add("valid-feedback");
-            feedbackElement.innerText = "Email valide";
-            feedbackElement.style.display = "block";
-        } else {
-            inputElement.classList.remove("is-valid");
-            inputElement.classList.add("is-invalid");
-            feedbackElement.classList.remove("valid-feedback");
-            feedbackElement.classList.add("invalid-feedback");
-            feedbackElement.innerText = "Email non valide";
-            feedbackElement.style.display = "block";
-        }
+    // Vérifier la validité de l'entrée et si elle n'est pas vide
+    if (inputValue.trim() !== "" && filter_var(inputValue, FILTER_VALIDATE_EMAIL)) {
+        inputElement.classList.remove("is-invalid");
+        inputElement.classList.add("is-valid");
+        feedbackElement.classList.remove("invalid-feedback");
+        feedbackElement.classList.add("valid-feedback");
+        feedbackElement.innerText = "Email valide";
+        feedbackElement.style.display = "block";
+    } else {
+        inputElement.classList.remove("is-valid");
+        inputElement.classList.add("is-invalid");
+        inputElement.style.borderColor = ""; 
+        feedbackElement.classList.remove("valid-feedback");
+        feedbackElement.classList.add("invalid-feedback");
+        feedbackElement.innerText = inputValue.trim() === "" ? "Champ requis" : "Email non valide";
+        feedbackElement.style.display = "block";
     }
+}
 
-    const emailInput = document.getElementById("validationServer01");
-    const emailFeedback = document.getElementById("emailValidationFeedback");
+const emailInput = document.getElementById("validationServer01");
+const emailFeedback = document.getElementById("emailValidationFeedback");
 
-    emailInput.addEventListener("input", function() {
-        toggleValidity(emailInput, emailFeedback);
-    });
+emailInput.addEventListener("input", function() {
+    toggleValidity(emailInput, emailFeedback);
+});
 </script>
 
 </body>
