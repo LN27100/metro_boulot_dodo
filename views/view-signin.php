@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+
     <title>Connexion</title>
 </head>
 
 <body>
-
+    <h1>Veuillez vous connecter</h1>
     <form>
         <div class="form-outline mb-4">
             <label class="form-label" for="form2Example1">Email: </label>
@@ -22,22 +26,14 @@
 
         </div>
 
-        <div class="row mb-4">
-            <div class="col d-flex justify-content-center">
-                <!-- Checkbox pour rester connecté -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                    <label class="form-check-label" for="form2Example31"> Se rappeler de moi ! </label>
-                </div>
-            </div>
 
-            <div class="col">
-                <a href="#!">Mot de passe perdu?</a>
-            </div>
+        <div class="col">
+            <a href="#!">Mot de passe perdu?</a>
+        </div>
         </div>
 
         <!-- Submit button -->
-        <button type="button" class="btn btn-primary btn-block mb-4">Connexion</button>
+        <button type="button" class="button btn-block mb-4">Connexion</button>
 
 
         </div>
