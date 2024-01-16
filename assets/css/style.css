@@ -99,6 +99,16 @@ select#entreprise {
   background-color: #7A9855;
 }
 
+body > div > a {
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 /* Style des messages de validation */
 .valid-feedback {
   color: #28a745;

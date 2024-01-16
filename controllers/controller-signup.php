@@ -4,18 +4,21 @@
 require_once '../config.php';
 require_once '../models/Userprofil.php';
 
+// permet d'afficher le formulaire
+$showform = true;
+
 // VERIFICATION DE LA SOUMISSION DU FORMULAIRE
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
 
-     // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
-     $nom = trim(htmlspecialchars($_POST['nom']));
-     $prenom = trim(htmlspecialchars($_POST['prenom']));
-     $pseudo = trim(htmlspecialchars($_POST['pseudo']));
-     $date_naissance = trim(htmlspecialchars($_POST['date_naissance']));
-     $email = trim(htmlspecialchars($_POST['email']));
-     $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
-     $enterprise_id = $_POST['entreprise'];
+    // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
+    $nom = trim(htmlspecialchars($_POST['nom']));
+    $prenom = trim(htmlspecialchars($_POST['prenom']));
+    $pseudo = trim(htmlspecialchars($_POST['pseudo']));
+    $date_naissance = trim(htmlspecialchars($_POST['date_naissance']));
+    $email = trim(htmlspecialchars($_POST['email']));
+    $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
+    $enterprise_id = $_POST['entreprise'];
 
 
     // Contrôle du nom
@@ -78,56 +81,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // On s'assure qu'il n'y a pas d'erreur dans le formuaire
     if (empty($errors)) {
 
-    Userprofil::create ($nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id, 1);
+        Userprofil::create($nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id, 1);
+        $showform = false;
+    }
 
-                echo '<style>';
-                echo 'body {';
-                echo '  background-color: #7A9855;';
-                echo '}';
-                echo 'h2 {';
-                echo '  background-color: #D7C5A8;';
-                echo '  color: white;';
-                echo '  padding: 10px;';
-                echo '  width: 20rem;';
-                echo '  margin: 0 auto; /* Utilisation de la marge pour centrer horizontalement */';
-                echo '}';
-                echo '.button {';
-                echo '  background-color: #206D3C;';
-                echo '  color: #fff;';
-                echo '  border: none;';
-                echo '  border-radius: 5px;';
-                echo '  padding: 10px 20px;';
-                echo '  cursor: pointer;';
-                echo '  text-decoration: none;';
-
-                echo '}';
-                echo '.button:hover {';
-                echo '  background-color: #B5CA69 ;';
-                echo '}';
-                echo '</style>';
-
-                echo '<div style="text-align: center;">';
-                echo "<h2>Inscription réussie</h2>";
-               
-                echo '<p><strong><em>Vous pouvez maintenant vous connecter.</em></strong></p>';
-                echo '<a href="../views/view-signin.php" class="button" >Connexion</a>';
-                echo '</div>';
-           
+    // Donne toutes les propriétés du serveur
+    // var_dump($_SERVER)
 }
-
-
-
-
-
-// Donne toutes les propriétés du serveur
-// var_dump($_SERVER)
-}
-
 
 // Affichage du formulaire ou des erreurs
-if ($_SERVER["REQUEST_METHOD"] != "POST" || !empty($errors)) {
     include_once __DIR__ . '../../views/view-signup.php';
-}
+
 
 ?>
 
