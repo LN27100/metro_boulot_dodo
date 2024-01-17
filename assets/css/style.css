@@ -5,7 +5,6 @@
 
 body {
   background-color: #7A9855;
-
 }
 
 h1 {
@@ -31,7 +30,6 @@ h1 {
   background-image: url(/assets/img/bginscription.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  
 }
 
 .container {
@@ -163,12 +161,25 @@ body > div > a {
 }
 
 
+/* PAGE CONNEXION */
 
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container2 form {
+  background-color:#D7C5A8 ;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 
 /* RESPONSIVE */
 
-/* Responsive */
+/* PAGE INSCRIPTION */
 @media screen and (max-width: 1086px) {
   .container {
     max-width: 90%;
@@ -220,6 +231,14 @@ body > div > a {
   .texte.form-check {
     margin-top: 0rem;
     margin-bottom: 0rem; 
+  }
+
+  /* PAGE CONNEXION */
+
+  .container2 {
+    max-width: 100%;
+    padding: 1rem;
+    margin-top: 0rem; 
   }
 }
 

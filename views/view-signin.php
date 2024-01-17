@@ -13,7 +13,7 @@
 
 <body>
     <h1>Veuillez vous connecter</h1>
-    <div class="container">
+    <div class="container2">
         <?php
         if ($showform) {
         ?>
