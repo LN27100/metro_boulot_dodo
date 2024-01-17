@@ -1,43 +1,37 @@
 <?php
-// Lier le fichier config
 require_once '../config.php';
 require_once '../models/Userprofil.php';
 
-// récupération info utilisateur
-// $myArray = Userprofil::getInfos('poirier.helene@outlook.fr');
-// var_dump($myArray);
+// Nous déclenchons nos vérifications uniquement lorsqu'un submit de type POST est détecté
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // tableau d'erreurs (stockage des erreurs)
+    $errors = [];
 
-$showform = true;
-$errors = array();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupération des données du formulaire en les rendant "safe" (enlever les caractères spéciaux, etc.)
-    $email = trim(htmlspecialchars($_POST['email']));
-    $mot_de_passe = $_POST['mot_de_passe'];
-
-    // Contrôle de l'email 
     if (empty($_POST["email"])) {
-        $errors["email"] = "Le champ Courriel ne peut pas être vide";
+        $errors["email"] = "Champ obligatoire";
+    } else {
+        // Récupérer la valeur de l'email depuis le formulaire
+        $email = $_POST["email"];
     }
-    // Contrôle du mot de passe
+
     if (empty($_POST["mot_de_passe"])) {
-        $errors["mot_de_passe"] = "Le champ Mot de passe ne peut pas être vide";
+        $errors["mot_de_passe"] = "Champ obligatoire";
     }
 
     if (empty($errors)) {
-        // Vérifier les identifiants de l'utilisateur
-        $userProfile = Userprofil::checkMailExists($email, $mot_de_passe);
+        // ici commence les tests
 
-        if ($userProfile) {
-            // L'utilisateur existe et les identifiants sont corrects
-            $showform = false;
-
-            // Rediriger vers la page d'accueil (ou toute autre page appropriée)
-            header("Location: ../controllers/controller-home.php");
-            exit(); // Assurez-vous de terminer le script après la redirection
+        if (!Userprofil::checkMailExists($email)) {
+            $errors['email'] = 'Utilisateur Inconnu';
         } else {
-            // L'utilisateur n'existe pas ou les identifiants sont incorrects
-            $errors["connexion"] = "Adresse email ou mot de passe incorrect";
+            $utilisateurInfos = Userprofil::getInfos($email);
+
+            if (password_verify($_POST["mot_de_passe"], $utilisateurInfos['user_password'])) {
+                header("Location: ../controllers/controller-home.php");
+                exit();
+            } else {
+                $errors['connexion'] = 'Mauvais mot de passe';
+            }
         }
     }
 }
