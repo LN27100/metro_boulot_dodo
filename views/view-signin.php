@@ -27,17 +27,17 @@
             </div>
 
             <div class="form-group col-md-12">
-                <label for="password-input" class="form-label">Mot de passe : </label>
-                <div class="input-group d-flex">
-                    <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="validationServerPassword">
-                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">Afficher le mot de passe</button>
-                    <div class="invalid-feedback" id="passwordValidationFeedback">
-                        <?php
-                        echo isset($errors['mot_de_passe']) ? $errors['mot_de_passe'] : "Champ obligatoire";
-                        ?>
-                    </div>
-                </div>
-            </div>
+    <label for="password-input" class="form-label">Mot de passe : </label>
+    <div class="input-group d-flex position-relative">
+        <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="validationServerPassword">
+        <i class="bi bi-eye password-toggle-icon" onclick="togglePasswordVisibility()"></i>
+        <div class="invalid-feedback" id="passwordValidationFeedback">
+            <?php
+            echo isset($errors['mot_de_passe']) ? $errors['mot_de_passe'] : "Champ obligatoire";
+            ?>
+        </div>
+    </div>
+</div>
 
             <div class="col">
                 <a href="#">Mot de passe perdu?</a>
@@ -55,18 +55,16 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sélectionnez les éléments nécessaires
-            var passwordInput = document.getElementById('validationServerPassword');
-            var togglePasswordButton = document.getElementById('togglePassword');
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('validationServerPassword');
 
-            // Ajoutez un gestionnaire d'événements pour le clic sur le bouton
-            togglePasswordButton.addEventListener('click', function() {
-                // Changez le type de l'entrée de mot de passe entre 'password' et 'text'
-                passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
-            });
-        });
-    </script>
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+</script>
 </body>
 
 </html>
