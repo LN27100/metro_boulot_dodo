@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets//css//style.css">
 
     <title>Eco'Mouv !</title>
 </head>
@@ -40,14 +40,14 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="start" class="form-label">Date de naissance:</label>
+                    <label for="start" class="form-label2">Date de naissance:</label>
                     <input type="date" id="start" name="date_naissance" value="<?= isset($_POST['date_naissance']) ? htmlspecialchars($_POST['date_naissance']) : '' ?>" min="1940-01-01" max="2024-12-31" class="form-control <?php if (isset($errors['date_naissance'])) echo 'is-invalid'; ?>" required>
                     <div class="invalid-feedback" id="dateValidationFeedback">Champ obligatoire</div>
                 </div>
 
                 <form method="post" action="votre_script.php">
                     <div class="form-group col-md-6">
-                        <label for="email" class="form-label">Courriel: </label>
+                        <label for="email" class="form-label2">Email: </label>
                         <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="email" name="email" placeholder="adresse email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" required>
                         <div class="invalid-feedback" id="emailValidationFeedback">
                             <?php
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="password-input" class="form-label">Mot de passe: </label>
+                        <label for="password-input" class="form-label2">Mot de passe: </label>
                         <div class="input-group d-flex">
                             <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="password-input">
                             <div class="invalid-feedback" id="passwordValidationFeedback">Champ obligatoire</div>
@@ -98,16 +98,16 @@
 
                     <div class="col-12 mt-4 mt-xxl-0  h-auto">
                         <div class="input-group d-flex">
-                            <label for="confirm-password-input" class="form-label">Confirmer Mot de passe:</label>
+                            <label for="confirm-password-input" class="form-label1">Confirmer Mot de passe:</label>
                             <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['conf_mot_de_passe'])) echo 'is-invalid'; ?>" name="conf_mot_de_passe" placeholder="Confirmez votre mot de passe" aria-label="confirm-password" aria-describedby="confirm-password" id="confirm-password-input" />
                             <div class="invalid-feedback" id="confirmPasswordValidationFeedback"></div>
                             <div class="valid-feedback"></div>
                         </div>
                     </div>
 
-                    <label for="entreprise" class="form-label">Choix de l'entreprise:</label>
+                    <label for="entreprise" class="form-labels">Choix de l'entreprise:</label>
                     <select class="form-select <?php if (isset($errors['entreprise'])) echo 'is-invalid'; ?>" aria-label="Default select example" name="entreprise" id="entreprise">
-                        <option value="" selected>Sélectionnez une entreprise pour les challenges</option>
+                        <option value="" selected>Sélectionnez une entreprise</option>
                         <option value="1" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 1 ? 'selected' : '' ?>>Plume Futée</option>
                         <option value="2" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 2 ? 'selected' : '' ?>>Dream Stones</option>
                     </select>

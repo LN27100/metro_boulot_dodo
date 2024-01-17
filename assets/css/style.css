@@ -5,8 +5,7 @@
 
 body {
   background-color: #7A9855;
-  /* -webkit-filter  : blur(5px); 
-  filter    : blur(5px);  */
+
 }
 
 h1 {
@@ -29,7 +28,10 @@ h1 {
 /* formulaire */
 
 .container form {
-  background-color: #D7C5A8;
+  background-image: url(/assets/img/bginscription.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  
 }
 
 .container {
@@ -37,6 +39,7 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
 }
 
 form {
@@ -51,7 +54,12 @@ form {
   color: #206D3C;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   font-weight: bold;
+}
 
+label {
+  background-color: rgba(215, 197, 168, 0.5); 
+  display: inline-block;
+  padding: 0.2em 0.5em; 
 }
 
 /* Style des champs de saisie */
@@ -165,10 +173,12 @@ body > div > a {
   .container {
     max-width: 90%;
     padding: 1rem;
+    margin-top: 0rem; 
   }
 
   h1 {
     font-size: 1.5rem;
+    margin-bottom: 0rem; 
   }
 
   form {
@@ -180,10 +190,17 @@ body > div > a {
   input[type="text"],
   input[type="email"],
   input[type="date"],
-  input[type="password"] {
-    max-width: 100%;
+  input[type="password"],
+  label {
+    width: 100%;
     margin-right: 0;
+    padding: 0.1rem;
   }
+  select#entreprise {
+    width: 91%;
+    margin-right: 0;
+    padding: 0.1rem;
+    }
 
   .button {
     width: 100%;
@@ -193,6 +210,54 @@ body > div > a {
   input,
   select,
   label {
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
+  }
+
+  .form-check {
+    margin-bottom: 0rem; 
+  }
+
+  .texte.form-check {
+    margin-top: 0rem;
+    margin-bottom: 0rem; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  label {
+    width: 60%;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+  }
+
+ 
+  .form-label2 {
+    width: 60%;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+    background-color: rgba(215, 197, 168, 0.9); 
+  }
+  .form-label1 {
+    width: 80%;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+    background-color: rgba(215, 197, 168, 0.9); 
+  }
+
+  .form-labels {
+    width: 65%;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+    margin-left: 0.6rem ;
+    background-color: rgba(215, 197, 168, 0.9); 
+
+  }
+
+  .form-check-label {
+    width: 110%;
+    box-sizing: border-box;
+    margin-bottom: 0.5em;
+    background-color: rgba(215, 197, 168, 0.9); 
+
   }
 }
