@@ -23,21 +23,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Contrôle du nom
     if (empty($_POST["nom"])) {
-        $errors["nom"] = "Le champ Nom ne peut pas être vide";
+        $errors["nom"] = "Champ obligatoire";
     } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["nom"])) {
         $errors["nom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom";
     }
 
     // Contrôle du prénom
     if (empty($_POST["prenom"])) {
-        $errors["prenom"] = "Le champ Prénom ne peut pas être vide";
+        $errors["prenom"] = "Champ obligatoire";
     } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["prenom"])) {
         $errors["prenom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom";
     }
 
     // Contrôle du pseudo
     if (empty($_POST["pseudo"])) {
-        $errors["pseudo"] = "Le champ Pseudo ne peut pas être vide";
+        $errors["pseudo"] = "Champ obligatoire";
     } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
         $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
     } elseif (strlen($_POST["pseudo"]) < 6) {
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Contrôle de l'email
     if (empty($_POST["email"])) {
-        $errors["email"] = "Le champ Courriel ne peut pas être vide";
+        $errors["email"] = "Champ obligatoire";
     } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $errors["email"] = "Le format de l'adresse email n'est pas valide";
     } elseif (Userprofil::checkMailExists($_POST["email"])) {
@@ -57,12 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Contrôle de la date de naissance
     if (empty($_POST["date_naissance"])) {
-        $errors["date_naissance"] = "Le champ Date de naissance ne peut pas être vide";
+        $errors["date_naissance"] = "Champ obligatoire";
     }
 
     // Contrôle du mot de passe
     if (empty($_POST["mot_de_passe"])) {
-        $errors["mot_de_passe"] = "Le champ Mot de passe ne peut pas être vide";
+        $errors["mot_de_passe"] = "Champ obligatoire";
     } elseif (strlen($_POST["mot_de_passe"]) < 8) {
         $errors["mot_de_passe"] = "Le mot de passe doit contenir au moins 8 caractères";
     }
