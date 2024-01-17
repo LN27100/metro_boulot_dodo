@@ -49,6 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["email"] = "Le champ Courriel ne peut pas être vide";
     } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $errors["email"] = "Le format de l'adresse email n'est pas valide";
+    } elseif (Userprofil::checkMailExists($_POST["email"])) {
+        $errors["email"] = 'mail déjà utilisé';
     }
 
     // Contrôle de la date de naissance
