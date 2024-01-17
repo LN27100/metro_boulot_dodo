@@ -7,31 +7,31 @@ $showform = true;
 $errors = array();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     // Récupération des données du formulaire en les rendant "safe" (enlever les caractères spéciaux, etc.)
     $email = trim(htmlspecialchars($_POST['email']));
-    $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
+    $mot_de_passe = $_POST['mot_de_passe'];
 
-    // Contrôle de l'email
+    // Contrôle de l'email 
     if (empty($_POST["email"])) {
         $errors["email"] = "Le champ Courriel ne peut pas être vide";
-    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $errors["email"] = "Le format de l'adresse email n'est pas valide";
     }
-
     // Contrôle du mot de passe
     if (empty($_POST["mot_de_passe"])) {
         $errors["mot_de_passe"] = "Le champ Mot de passe ne peut pas être vide";
-    } elseif (strlen($_POST["mot_de_passe"]) < 8) {
-        $errors["mot_de_passe"] = "Le mot de passe doit contenir au moins 8 caractères";
     }
 
     if (empty($errors)) {
+        // Vérifier les identifiants de l'utilisateur
+        $userProfile = Userprofil::checkMailExists($email, $mot_de_passe);
 
-        $userProfile = new Userprofil();
-        $showform = false;
+        if ($userProfile) {
+            // L'utilisateur existe et les identifiants sont corrects
+            $showform = false;
+        } else {
+            // L'utilisateur n'existe pas ou les identifiants sont incorrects
+            $errors["connexion"] = "Adresse email incorrect";
+        }
     }
 }
 
-include_once  '../views/view-signin.php';
-?>
+include_once '../views/view-signin.php';

@@ -49,7 +49,7 @@
 
 
                 <div class="text-center">
-                    <button class="button" type="submit" id="submitButton">Se connecter</button>
+                <button class="button" type="submit" id="submitButton">Se connecter</button>
                 </div>
 
 
