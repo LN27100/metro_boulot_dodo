@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date_naissance = trim($_POST['date_naissance']);
     $email = trim($_POST['email']);
     $mot_de_passe = trim($_POST['mot_de_passe']);
-    $entreprise_id = trim($_POST['entreprise']);
+    $enterprise_id = trim($_POST['entreprise']);
 
 
     // Contrôle du nom
