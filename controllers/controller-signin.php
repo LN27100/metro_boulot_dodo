@@ -3,6 +3,10 @@
 require_once '../config.php';
 require_once '../models/Userprofil.php';
 
+// récupération info utilisateur
+// $myArray = Userprofil::getInfos('poirier.helene@outlook.fr');
+// var_dump($myArray);
+
 $showform = true;
 $errors = array();
 
