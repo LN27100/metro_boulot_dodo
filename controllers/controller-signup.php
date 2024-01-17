@@ -42,6 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
     } elseif (strlen($_POST["pseudo"]) < 6) {
         $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
+    } elseif (Userprofil::checkPseudoExists($_POST["pseudo"])) {
+        $errors["pseudo"] = 'Pseudo déjà utilisé';
     }
 
     // Contrôle de l'email
@@ -92,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Affichage du formulaire ou des erreurs
-    include_once __DIR__ . '../../views/view-signup.php';
+include_once __DIR__ . '../../views/view-signup.php';
 
 
 ?>

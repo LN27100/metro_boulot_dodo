@@ -45,7 +45,7 @@ class Userprofil
             die();
         }
     }
-    
+
     /**
      * Methode permettant de récupérer les informations d'un utilisateur avec son mail comme paramètre
      * 
@@ -86,4 +86,35 @@ class Userprofil
             die();
         }
     }
+
+    /**
+     * Methode permettant de vérifier si le pseudo existe déjà dans la base de données
+     * 
+     * @param string $pseudo Pseudo à vérifier
+     * 
+     * @return bool
+     */
+    public static function checkPseudoExists(string $pseudo): bool
+{
+    try {
+        $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+
+        $sql = "SELECT * FROM `userprofil` WHERE `user_pseudo` = :pseudo";
+
+        $query = $db->prepare($sql);
+        $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+        $query->execute();
+
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($result)) {
+            return false;
+        } else {
+            return true;
+        }
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
+        die();
+    }
+}
 }
