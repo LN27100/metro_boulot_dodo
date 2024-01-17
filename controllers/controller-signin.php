@@ -25,12 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors['email'] = 'Utilisateur Inconnu';
         } else {
             $utilisateurInfos = Userprofil::getInfos($email);
-
+var_dump($_POST['mot_de_passe']);
+var_dump($_POST[$utilisateurInfos['user_password']]);
+            // Comparaison du mot de passe
             if (password_verify($_POST["mot_de_passe"], $utilisateurInfos['user_password'])) {
+                // Mot de passe correct
                 header("Location: ../controllers/controller-home.php");
-                exit();
+                exit(); 
             } else {
-                $errors['connexion'] = 'Mauvais mot de passe';
+            
+                $errors['mot_de_passe'] = 'Mauvais mot de passe';
             }
         }
     }

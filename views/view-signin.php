@@ -14,46 +14,59 @@
 <body>
     <h1>Veuillez vous connecter</h1>
     <div class="container2">
-            <form class="row" method="POST" action="../controllers/controller-signin.php" novalidate>
+        <form class="row" method="POST" action="../controllers/controller-signin.php" novalidate>
 
-                <div class="form-group col-md-6">
-                    <label for="email" class="form-label">Email : </label>
-                    <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="validationServerEmail" name="email" placeholder="adresse email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" required>
-                    <div class="invalid-feedback" id="emailValidationFeedback">
-                        <?php
-                        echo isset($errors['email']) ? $errors['email'] : "Champ obligatoire";
-                        ?>
-                    </div>
+            <div class="form-group col-md-6">
+                <label for="email" class="form-label">Email : </label>
+                <input type="email" class="form-control <?php if (isset($errors['email'])) echo 'is-invalid'; ?>" id="validationServerEmail" name="email" placeholder="adresse email" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>" required>
+                <div class="invalid-feedback" id="emailValidationFeedback">
+                    <?php
+                    echo isset($errors['email']) ? $errors['email'] : "Champ obligatoire";
+                    ?>
                 </div>
+            </div>
 
-                <div class="form-group col-md-12">
-                    <label for="password-input" class="form-label">Mot de passe: </label>
-                    <div class="input-group d-flex">
-                        <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="validationServerPassword">
-                        <div class="invalid-feedback" id="passwordValidationFeedback">
+            <div class="form-group col-md-12">
+                <label for="password-input" class="form-label">Mot de passe : </label>
+                <div class="input-group d-flex">
+                    <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="validationServerPassword">
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">Afficher le mot de passe</button>
+                    <div class="invalid-feedback" id="passwordValidationFeedback">
                         <?php
                         echo isset($errors['mot_de_passe']) ? $errors['mot_de_passe'] : "Champ obligatoire";
                         ?>
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col">
-                    <a href="#">Mot de passe perdu?</a>
-                </div>
+            <div class="col">
+                <a href="#">Mot de passe perdu?</a>
+            </div>
 
-                <div class="text-center">
-                    <button class="button" type="submit" id="submitButton">Se connecter</button>
-                </div>
+            <div class="text-center">
+                <button class="button" type="submit" id="submitButton">Se connecter</button>
+            </div>
 
-                <div class="text-center">
-                    <p>Pas encore membre? <a href="../controllers/controller-signup.php">Inscrivez-vous!</a></p>
-                </div>
-            </form>
+            <div class="text-center">
+                <p>Pas encore membre? <a href="../controllers/controller-signup.php">Inscrivez-vous!</a></p>
+            </div>
+        </form>
     </div>
 
-    
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sélectionnez les éléments nécessaires
+            var passwordInput = document.getElementById('validationServerPassword');
+            var togglePasswordButton = document.getElementById('togglePassword');
+
+            // Ajoutez un gestionnaire d'événements pour le clic sur le bouton
+            togglePasswordButton.addEventListener('click', function() {
+                // Changez le type de l'entrée de mot de passe entre 'password' et 'text'
+                passwordInput.type = (passwordInput.type === 'password') ? 'text' : 'password';
+            });
+        });
+    </script>
 </body>
 
 </html>

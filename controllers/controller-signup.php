@@ -12,13 +12,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
 
     // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
-    $nom = trim(htmlspecialchars($_POST['nom']));
-    $prenom = trim(htmlspecialchars($_POST['prenom']));
-    $pseudo = trim(htmlspecialchars($_POST['pseudo']));
-    $date_naissance = trim(htmlspecialchars($_POST['date_naissance']));
-    $email = trim(htmlspecialchars($_POST['email']));
-    $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_DEFAULT);
-    $enterprise_id = $_POST['entreprise'];
+    $nom = trim($_POST['nom']);
+    $prenom = trim($_POST['prenom']);
+    $pseudo = trim($_POST['pseudo']);
+    $date_naissance = trim($_POST['date_naissance']);
+    $email = trim($_POST['email']);
+    $mot_de_passe = trim($_POST['mot_de_passe']);
+    $entreprise_id = trim($_POST['entreprise']);
 
 
     // Contrôle du nom
