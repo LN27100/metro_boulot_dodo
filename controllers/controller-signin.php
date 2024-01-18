@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $utilisateurInfos = Userprofil::getInfos($email);
 
-            var_dump($_POST['mot_de_passe']);
             
             // Comparaison du mot de passe
             if (password_verify($_POST["mot_de_passe"], $utilisateurInfos['user_password'])) {
