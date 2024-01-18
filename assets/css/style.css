@@ -7,6 +7,7 @@ body {
   background-color: #7A9855;
 }
 
+/* NAVBAR */
 .navbar {
   background-color: #206D3C;
   padding: 0.5rem;
@@ -22,20 +23,25 @@ body {
 }
 
 .navbar-toggle {
-  font-size: 1.2rem; /* Réduisez la taille du texte */
+  font-size: 1.2rem; 
   cursor: pointer;
-  margin-left: 0.5rem; /* Ajustez la marge gauche */
+  margin-left: 0.5rem; 
 }
 
 .navbar-nav {
   display: none;
   flex-direction: column;
   position: absolute;
-  top: 50px; /* Ajustez la position verticale */
+  top: 50px; 
   left: 0;
   background-color: #206D3C;
   text-align: center;
-  width: 120px; /* Ajustez la largeur du menu */
+  width: 5.5rem; 
+}
+
+.navbar-nav :hover {
+  background-color: #7A9855  ;
+  color: #D7C5A8 ;
 }
 
 .navbar-nav.active {
@@ -43,19 +49,20 @@ body {
 }
 
 .nav-link {
-  color: #fff;
+  color: #D7C5A8  ;
   text-decoration: none;
-  margin: 0.3rem; /* Ajustez la marge */
+  margin: 0.3rem; 
   font-family: 'Exo', sans-serif;
-  white-space: nowrap; /* Empêche le texte de revenir à la ligne */
-  overflow: hidden; /* Masque le texte débordant */
-  text-overflow: ellipsis; /* Affiche une ellipse (...) pour le texte débordant */
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 .nav-link.multi-line {
   white-space: normal; /* Permet au texte de revenir à la ligne */
 }
 
+/* GENERAL */
 h1 {
   font-family: 'Marhey', sans-serif;
   text-align: center;
@@ -269,7 +276,7 @@ h3 {
   flex-direction: column;
 }
 
-body > div:nth-child(4) > img {
+body > div:nth-child(5) > img {
    width: 10rem;
  height: auto;
 }

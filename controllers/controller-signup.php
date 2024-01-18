@@ -2,7 +2,7 @@
 
 //lier le fichier config
 require_once '../config.php';
-require_once __DIR__ . '/models/Userprofil.php';
+require_once '../models/Userprofil.php';
 
 // permet d'afficher le formulaire
 $showform = true;
