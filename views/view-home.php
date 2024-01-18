@@ -12,10 +12,29 @@
 </head>
 
 <body>
-    <h1>Bienvenue sur Eco'Mouv !!</h1>
+    <h1 class="titreAccueil">Eco'Mouv !!</h1>
+
+    <div class="container3">
+        <script>
+            date = new Date().toLocaleDateString();
+            document.write(date);
+        </script>
+    </div>
+
+    <div class="container3">
+       <h3>Bienvenue "pseudo utilisateur"</h3>
+       <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
+    </div>
+
+    <div class="container3">
+        <button class="buttonHome">Commencer un tajet</button>
+
+        <button class="buttonHome">Historique des tajets</button>
+    </div>
+
     <script>
-    
-</script>
+
+    </script>
 </body>
 
 </html>

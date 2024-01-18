@@ -112,6 +112,7 @@ select#entreprise {
   border: none;
   border-radius: 5px;
   text-align: center;
+  font-family: 'Exo', sans-serif;
 }
 
 .button:hover {
@@ -193,6 +194,53 @@ body>div>a {
   border-radius: 7px;
   z-index: -1;
 }
+
+
+/*  PAGE ACCUEIL */
+
+.titreAccueil {
+  font-family: 'Marhey', sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #B5CA69;
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 7rem;
+}
+
+h3 {
+  font-family: 'Marhey', sans-serif;
+  margin-top: 2rem;
+}
+.container3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body > div:nth-child(3) > img{
+ width: 10rem;
+ height: auto;
+}
+
+.buttonHome {
+  padding: 10px 20px;
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  margin-top:5rem;
+  height: 5rem;
+  font-size: 1.5rem;
+  font-family: 'Exo', sans-serif;}
+
+.buttonHome:hover {
+  background-color:  rgba(215, 197, 168, 0.7); 
+}
+
+
 
 /* RESPONSIVE */
 
