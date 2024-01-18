@@ -1,3 +1,7 @@
+<?php
+require_once '../config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,6 +16,8 @@
 </head>
 
 <body>
+    <?php include('../templates/header.php'); ?>
+
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
     <div class="container3">
@@ -24,7 +30,7 @@
     <div class="container3">
 
         <?php
-        require_once '../path/to/userprofil.php';
+        require_once __DIR__ . '../../models/Userprofil.php';
 
         // Appel de la méthode pour obtenir le pseudo de l'utilisateur à partir de la session
         $pseudo = Userprofil::getPseudoFromSession();

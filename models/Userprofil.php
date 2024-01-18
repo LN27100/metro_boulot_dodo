@@ -95,30 +95,30 @@ class Userprofil
      * @return bool
      */
     public static function checkPseudoExists(string $pseudo): bool
-{
-    try {
-        $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+    {
+        try {
+            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
-        $sql = "SELECT * FROM `userprofil` WHERE `user_pseudo` = :pseudo";
+            $sql = "SELECT * FROM `userprofil` WHERE `user_pseudo` = :pseudo";
 
-        $query = $db->prepare($sql);
-        $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-        $query->execute();
+            $query = $db->prepare($sql);
+            $query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+            $query->execute();
 
-        $result = $query->fetch(PDO::FETCH_ASSOC);
+            $result = $query->fetch(PDO::FETCH_ASSOC);
 
-        if (empty($result)) {
-            return false;
-        } else {
-            return true;
+            if (empty($result)) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
         }
-    } catch (PDOException $e) {
-        echo 'Erreur : ' . $e->getMessage();
-        die();
     }
-}
 
-/**
+    /**
      * Methode permettant de récupérer les infos d'un utilisateur avec son mail comme paramètre
      * 
      * @param string $email Adresse mail de l'utilisateur
@@ -160,10 +160,13 @@ class Userprofil
      */
     public static function getPseudoFromSession(): ?string
     {
-        session_start();
-
-         // Vérifiez si la variable de session 'pseudo' est définie
-         if (isset($_SESSION['pseudo'])) {
+        // Vérifiez si la session n'est pas déjà active
+        if (session_status() === PHP_SESSION_NONE) {
+            // Si non, démarrer la session
+            session_start();
+        }
+        // Vérifiez si la variable de session 'pseudo' est définie
+        if (isset($_SESSION['pseudo'])) {
             // Récupérez le pseudo de la session et échappez les caractères spéciaux
             return htmlspecialchars($_SESSION['pseudo']);
         }

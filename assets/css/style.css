@@ -212,6 +212,7 @@ h3 {
   font-family: 'Marhey', sans-serif;
   margin-top: 2rem;
 }
+
 .container3 {
   display: flex;
   justify-content: center;
@@ -219,8 +220,8 @@ h3 {
   flex-direction: column;
 }
 
-body > div:nth-child(3) > img{
- width: 10rem;
+body > div:nth-child(4) > img {
+   width: 10rem;
  height: auto;
 }
 
