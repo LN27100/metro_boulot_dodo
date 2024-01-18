@@ -51,8 +51,15 @@
     </div>
 
     <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbarToggle = document.getElementById("navbar-toggle");
+    const navbarNav = document.getElementById("navbar-nav");
 
-    </script>
+    navbarToggle.addEventListener("click", function () {
+      navbarNav.classList.toggle("active");
+    });
+  });
+</script>
 </body>
 
 </html>

@@ -7,6 +7,55 @@ body {
   background-color: #7A9855;
 }
 
+.navbar {
+  background-color: #206D3C;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-toggle {
+  font-size: 1.2rem; /* Réduisez la taille du texte */
+  cursor: pointer;
+  margin-left: 0.5rem; /* Ajustez la marge gauche */
+}
+
+.navbar-nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 50px; /* Ajustez la position verticale */
+  left: 0;
+  background-color: #206D3C;
+  text-align: center;
+  width: 120px; /* Ajustez la largeur du menu */
+}
+
+.navbar-nav.active {
+  display: flex;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  margin: 0.3rem; /* Ajustez la marge */
+  font-family: 'Exo', sans-serif;
+  white-space: nowrap; /* Empêche le texte de revenir à la ligne */
+  overflow: hidden; /* Masque le texte débordant */
+  text-overflow: ellipsis; /* Affiche une ellipse (...) pour le texte débordant */
+}
+
+.nav-link.multi-line {
+  white-space: normal; /* Permet au texte de revenir à la ligne */
+}
+
 h1 {
   font-family: 'Marhey', sans-serif;
   text-align: center;
@@ -244,6 +293,17 @@ body > div:nth-child(4) > img {
 
 
 /* RESPONSIVE */
+
+/* NAVBAR */
+@media screen and (max-width: 768px) {
+  .navbar-nav {
+    top: 50px; /* Ajustez la position verticale */
+  }
+
+  .nav-link {
+    margin: 0.3rem 0;
+  }
+}
 
 /* PAGE INSCRIPTION */
 @media screen and (max-width: 1086px) {

@@ -1,12 +1,7 @@
-<div class="pos-f-t">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <h5 class="text-white h4">Profil</h5>
-    </div>
+<div class="navbar-brand">
+    <span class="navbar-toggle" id="navbar-toggle">&#9776;</span>
   </div>
-  <nav class="navbar navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar-nav" id="navbar-nav">
+    <a href="#" class="nav-link">Profil</a>
+    <a href="#" class="nav-link multi-line">Historique de trajets</a>
   </nav>
-</div>
