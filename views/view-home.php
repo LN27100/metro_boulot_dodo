@@ -14,17 +14,7 @@
 <body>
 
     <?php
-    // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
-    if (session_status() === PHP_SESSION_NONE) {
-        // Si non, démarrer la session
-        session_start();
-    }
-    // Vérifie si l'utilisateur est connecté
-    if (!isset($_SESSION['pseudo'])) {
-        // Rediriger vers la page de connexion si la session n'est pas définie
-        header("Location: ../controllers/controller-signin.php");
-        exit();
-    }
+    
 
     include('../templates/header.php'); ?>
 
@@ -40,8 +30,19 @@
 
     <div class="container3">
 
+    <?php
+    var_dump($_SESSION);
 
-        <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
+
+    if (isset($_SESSION['pseudo'])) {
+            $pseudo = htmlspecialchars($_SESSION['pseudo']);
+            echo "<h3>Bienvenue $pseudo</h3>";
+        } else {
+            echo "<p>Pseudo non défini</p>";
+        }?>
+       
+
+     <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
     <div class="container3">

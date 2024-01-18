@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Affichage du formulaire ou des erreurs
-include_once __DIR__ . '../../views/view-signup.php';
+include_once __DIR__ . '/../views/view-signup.php';
 
 
 ?>

@@ -14,8 +14,8 @@ class Userprofil
      * @param int $user_validate Validation de l'utilisateur
      */
 
-     public static function create(string $nom, string $prenom, string $pseudo, string $date_naissance, string $email, string $mot_de_passe, string $enterprise_id, int $user_validate)
-     {
+    public static function create(string $nom, string $prenom, string $pseudo, string $date_naissance, string $email, string $mot_de_passe, string $enterprise_id, int $user_validate)
+    {
         try {
             // Conexion à la base de données
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
@@ -30,27 +30,16 @@ class Userprofil
 
             // Relier les valeurs aux marqueurs nominatifs
             $query->bindValue(':lastname', htmlspecialchars($nom), PDO::PARAM_STR);
-        $_SESSION['nom'] = htmlspecialchars($nom);
-
-        $query->bindValue(':firstname', htmlspecialchars($prenom), PDO::PARAM_STR);
-        $_SESSION['prenom'] = htmlspecialchars($prenom);
-
-        $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
-        $_SESSION['pseudo'] = htmlspecialchars($pseudo);
-
-        $query->bindValue(':birthdate', $date_naissance, PDO::PARAM_STR);
-        $_SESSION['date_naissance'] = $date_naissance;
-
-        $query->bindValue(':email', $email, PDO::PARAM_STR);
-        $_SESSION['email'] = $email;
-
+            $query->bindValue(':firstname', htmlspecialchars($prenom), PDO::PARAM_STR);
+            $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
+            $_SESSION['pseudo'] = htmlspecialchars($pseudo);
+            $query->bindValue(':birthdate', $date_naissance, PDO::PARAM_STR);
+            $query->bindValue(':email', $email, PDO::PARAM_STR);
             $query->bindValue(':mdp', password_hash($mot_de_passe, PASSWORD_DEFAULT), PDO::PARAM_STR);
-
             $query->bindValue(':id_entreprise', $enterprise_id, PDO::PARAM_STR);
-            $_SESSION['enterprise_id'] = $enterprise_id;
-
             $query->bindValue(':valide_participant', $user_validate, PDO::PARAM_INT);
 
+            
             $query->execute();
         } catch (PDOException $e) {
             echo 'Erreur :' . $e->getMessage();
