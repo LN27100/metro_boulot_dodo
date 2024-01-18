@@ -87,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         Userprofil::create($nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id, 1);
         $showform = false;
+        
     }
 
     // Donne toutes les propriétés du serveur

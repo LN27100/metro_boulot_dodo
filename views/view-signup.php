@@ -12,8 +12,9 @@
 </head>
 
 <body>
-
+<?php if ($showform): ?>
     <h1>Formulaire d'inscription</h1>
+    <?php endif; ?>
 
     <div class="container">
         <?php
