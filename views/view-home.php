@@ -31,9 +31,6 @@
     <div class="container3">
 
     <?php
-    var_dump($_SESSION);
-
-
     if (isset($_SESSION['pseudo'])) {
             $pseudo = htmlspecialchars($_SESSION['pseudo']);
             echo "<h3>Bienvenue $pseudo</h3>";

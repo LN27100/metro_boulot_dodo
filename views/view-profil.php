@@ -25,7 +25,13 @@
             session_start();
         }
 
-    
+        if (isset($_SESSION['user_photo'])) {
+            $img = $_SESSION['user_photo'];
+            echo "<p> $img</p>";
+        } else {
+            echo "<p>Image non défini</p>";
+        }
+
         if (isset($_SESSION['pseudo'])) {
             $pseudo = $_SESSION['pseudo'];
             echo "<p>Pseudo: $pseudo</p>";
@@ -67,7 +73,14 @@
     <a href="../controllers/controller-home.php" class="returnHome">Accueil</a>
     </div>
     <script>
-  
+  document.addEventListener("DOMContentLoaded", function() {
+            const navbarToggle = document.getElementById("navbar-toggle");
+            const navbarNav = document.getElementById("navbar-nav");
+
+            navbarToggle.addEventListener("click", function() {
+                navbarNav.classList.toggle("active");
+            });
+        });
 </script>
 </body>
 

@@ -310,6 +310,43 @@ body > div:nth-child(5) > img {
   text-align: center;
 }
 
+body > div.container3 > p:nth-child(1) {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #D7C5A8;
+}
+
+body > div.container3 > p:nth-child(2) {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  color: #D7C5A8;
+}
+
+body > div.container3 > p:nth-child(3) {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  color: #D7C5A8;
+}
+
+body > div.container3 > p:nth-child(4) {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  color: #D7C5A8;
+}
+
+body > div.container3 > p:nth-child(5) {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  color: #D7C5A8;
+}
+
+body > div.container3 > p:nth-child(6) {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  color: #D7C5A8;
+}
+
 /* RESPONSIVE */
 
 /* NAVBAR */

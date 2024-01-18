@@ -32,7 +32,6 @@ class Userprofil
             $query->bindValue(':lastname', htmlspecialchars($nom), PDO::PARAM_STR);
             $query->bindValue(':firstname', htmlspecialchars($prenom), PDO::PARAM_STR);
             $query->bindValue(':pseudo', htmlspecialchars($pseudo), PDO::PARAM_STR);
-            $_SESSION['pseudo'] = htmlspecialchars($pseudo);
             $query->bindValue(':birthdate', $date_naissance, PDO::PARAM_STR);
             $query->bindValue(':email', $email, PDO::PARAM_STR);
             $query->bindValue(':mdp', password_hash($mot_de_passe, PASSWORD_DEFAULT), PDO::PARAM_STR);
@@ -169,13 +168,13 @@ class Userprofil
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
             // stockage de ma requete dans une variable
-            $sql = "SELECT `enterprise_name` FROM `enterprise` WHERE `enterprise_id` = :entreprise_id";
+            $sql = "SELECT `enterprise_name` FROM `enterprise` WHERE `enterprise_id` = :id_entreprise";
 
             // je prepare ma requête pour éviter les injections SQL
             $query = $db->prepare($sql);
 
             // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
-            $query->bindValue(':entreprise_id', $entreprise_id, PDO::PARAM_STR);
+            $query->bindValue(':id_entreprise', $entreprise_id, PDO::PARAM_STR);
 
             // on execute la requête
             $query->execute();
