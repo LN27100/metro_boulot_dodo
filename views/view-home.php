@@ -1,7 +1,3 @@
-<?php
-require_once '../config.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,8 +12,6 @@ require_once '../config.php';
 </head>
 
 <body>
-    <?php include('../templates/header.php'); ?>
-
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
     <div class="container3">
@@ -30,17 +24,16 @@ require_once '../config.php';
     <div class="container3">
 
         <?php
-        require_once __DIR__ . '../../models/Userprofil.php';
-
-        // Appel de la méthode pour obtenir le pseudo de l'utilisateur à partir de la session
-        $pseudo = Userprofil::getPseudoFromSession();
-
-        // On vérifie si l'utilisateur est connecté
-        if ($pseudo !== null) {
-            // Si oui, on affiche le message de bienvenue avec le pseudo
+        // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
+        if (session_status() === PHP_SESSION_NONE) {
+            // Si non, démarrer la session
+            session_start();
+        }
+        if (isset($_SESSION['pseudo'])) {
+            $pseudo = htmlspecialchars($_SESSION['pseudo']);
             echo "<h3>Bienvenue $pseudo</h3>";
         } else {
-            // Si non, on redirige vers la page de connexion
+            // Rediriger vers la page de connexion si la session n'est pas définie
             header("Location: ../controllers/controller-signin.php");
             exit();
         }
@@ -49,7 +42,7 @@ require_once '../config.php';
     </div>
 
     <div class="container3">
-        <button class="buttonHome">Commencer un trajet</button>
+        <button class="buttonHome">Commencer un tajet</button>
 
         <button class="buttonHome">Historique des tajets</button>
     </div>
@@ -60,7 +53,3 @@ require_once '../config.php';
 </body>
 
 </html>
-
-<!-- LEXIQUE -->
-
-<!-- exit(); est une mesure de sécurité pour s'assurer qu'aucun code supplémentaire n'est exécuté après une redirection, ce qui pourrait potentiellement causer des problèmes ou générer un contenu non désiré dans la réponse HTTP. -->
