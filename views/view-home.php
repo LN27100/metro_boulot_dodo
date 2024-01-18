@@ -38,7 +38,7 @@ require_once '../config.php';
         // On vérifie si l'utilisateur est connecté
         if ($pseudo !== null) {
             // Si oui, on affiche le message de bienvenue avec le pseudo
-            echo "<h3>Bienvenue \"$pseudo\"</h3>";
+            echo "<h3>Bienvenue $pseudo</h3>";
         } else {
             // Si non, on redirige vers la page de connexion
             header("Location: ../controllers/controller-signin.php");
