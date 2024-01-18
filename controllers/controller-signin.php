@@ -2,8 +2,11 @@
 require_once '../config.php';
 require_once '../models/Userprofil.php';
 
-// Démarrez la session
-session_start();
+        // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
+if (session_status() === PHP_SESSION_NONE) {
+    // Si non, démarrer la session
+    session_start();
+}
 
 // Vérifiez si l'utilisateur est déjà connecté
 if (isset($_SESSION['pseudo'])) {
