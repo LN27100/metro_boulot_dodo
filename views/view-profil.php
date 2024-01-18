@@ -25,27 +25,43 @@
             session_start();
         }
 
-        // Vérifie si la session existe avant d'accéder à ses valeurs
-        if (isset($_SESSION['entreprise_id'], $_SESSION['pseudo'], $_SESSION['nom'], $_SESSION['prenom'], $_SESSION['email'], $_SESSION['date_naissance'])) {
-            $entreprise_id = htmlspecialchars($_SESSION['entreprise_id']);
-            $pseudo = htmlspecialchars($_SESSION['pseudo']);
-            $nom = htmlspecialchars($_SESSION['nom']);
-            $prenom = htmlspecialchars($_SESSION['prenom']);
-            $email = htmlspecialchars($_SESSION['email']);
-            $date_naissance = htmlspecialchars($_SESSION['date_naissance']);
-
-            // Récupération du nom de l'entreprise depuis la base de données
-            $entreprise_nom = Userprofil::getEntrepriseNom($entreprise_id);
-
-            echo "<p>Nom de l'Entreprise: $entreprise_nom</p>";
+    
+        if (isset($_SESSION['pseudo'])) {
+            $pseudo = $_SESSION['pseudo'];
             echo "<p>Pseudo: $pseudo</p>";
+        } else {
+            echo "<p>Pseudo non défini</p>";
+        }
+    
+        if (isset($_SESSION['nom'])) {
+            $nom = $_SESSION['nom'];
             echo "<p>Nom: $nom</p>";
+        } else {
+            echo "<p>Nom non défini</p>";
+        }
+    
+        if (isset($_SESSION['prenom'])) {
+            $prenom = $_SESSION['prenom'];
             echo "<p>Prénom: $prenom</p>";
-            echo "<p>Adresse Mail: $email</p>";
+        } else {
+            echo "<p>Prénom non défini</p>";
+        }
+    
+        if (isset($_SESSION['date_naissance'])) {
+            $date_naissance = $_SESSION['date_naissance'];
             echo "<p>Date de naissance: $date_naissance</p>";
         } else {
-            echo "<p>Données non définies</p>";
+            echo "<p>Date de naissance non définie</p>";
         }
+    
+        if (isset($_SESSION['email'])) {
+            $email = $_SESSION['email'];
+            echo "<p>Email: $email</p>";
+        } else {
+            echo "<p>Email non défini</p>";
+        }
+    
+    
     ?>
 
     <a href="../controllers/controller-home.php" class="returnHome">Accueil</a>

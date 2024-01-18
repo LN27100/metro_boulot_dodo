@@ -13,53 +13,53 @@
 
 <body>
 
-    <?php include('../templates/header.php'); ?>
+    <?php
+    // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
+    if (session_status() === PHP_SESSION_NONE) {
+        // Si non, démarrer la session
+        session_start();
+    }
+    // Vérifie si l'utilisateur est connecté
+    if (!isset($_SESSION['pseudo'])) {
+        // Rediriger vers la page de connexion si la session n'est pas définie
+        header("Location: ../controllers/controller-signin.php");
+        exit();
+    }
+
+    include('../templates/header.php'); ?>
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
     <div class="container3">
-        <script>
-            date = new Date().toLocaleDateString();
-            document.write(date);
-        </script>
+        <?php
+        // Date avec le fuseau horaire correct
+        $dateActuelle = new DateTime('now', new DateTimeZone('Europe/Paris'));
+        echo $dateActuelle->format('d/m/Y');
+        ?>
     </div>
 
     <div class="container3">
 
-        <?php
-        // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
-        if (session_status() === PHP_SESSION_NONE) {
-            // Si non, démarrer la session
-            session_start();
-        }
-        if (isset($_SESSION['pseudo'])) {
-            $pseudo = htmlspecialchars($_SESSION['pseudo']);
-            echo "<h3>Bienvenue $pseudo</h3>";
-        } else {
-            // Rediriger vers la page de connexion si la session n'est pas définie
-            header("Location: ../controllers/controller-signin.php");
-            exit();
-        }
-        ?>
+
         <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
     <div class="container3">
-        <button class="buttonHome">Commencer un tajet</button>
+        <button class="buttonHome">Commencer un trajet</button>
 
         <button class="buttonHome">Historique des tajets</button>
     </div>
 
     <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbarToggle = document.getElementById("navbar-toggle");
-    const navbarNav = document.getElementById("navbar-nav");
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbarToggle = document.getElementById("navbar-toggle");
+            const navbarNav = document.getElementById("navbar-nav");
 
-    navbarToggle.addEventListener("click", function () {
-      navbarNav.classList.toggle("active");
-    });
-  });
-</script>
+            navbarToggle.addEventListener("click", function() {
+                navbarNav.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 
 </html>
