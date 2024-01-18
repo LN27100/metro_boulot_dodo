@@ -297,7 +297,18 @@ body > div:nth-child(5) > img {
   background-color:  rgba(215, 197, 168, 0.7); 
 }
 
+/* PAGE PROFIL */
 
+.returnHome {
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
 
 /* RESPONSIVE */
 

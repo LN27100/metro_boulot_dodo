@@ -152,6 +152,42 @@ class Userprofil
             echo 'Erreur : ' . $e->getMessage();
             die();
         }
+    
     }
 
+    /**
+ * Methode permettant de récupérer le nom de l'entreprise à partir de son ID
+ * 
+ * @param string $entreprise_id ID de l'entreprise
+ * 
+ * @return string Nom de l'entreprise
+ */
+public static function getEntrepriseNom(string $entreprise_id): string
+{
+    try {
+        // Création d'un objet $db selon la classe PDO
+        $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+
+        // stockage de ma requete dans une variable
+        $sql = "SELECT `enterprise_name` FROM `enterprise` WHERE `enterprise_id` = :entreprise_id";
+
+        // je prepare ma requête pour éviter les injections SQL
+        $query = $db->prepare($sql);
+
+        // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+        $query->bindValue(':entreprise_id', $entreprise_id, PDO::PARAM_STR);
+
+        // on execute la requête
+        $query->execute();
+
+        // on récupère le résultat de la requête dans une variable
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+        // on retourne le nom de l'entreprise
+        return $result['enterprise_name'];
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
+        die();
+    }
+}
 }
