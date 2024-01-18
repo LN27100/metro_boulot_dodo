@@ -12,6 +12,9 @@
 </head>
 
 <body>
+
+    <?php include('../templates/header.php'); ?>
+
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
     <div class="container3">
@@ -53,3 +56,6 @@
 </body>
 
 </html>
+
+<!-- LEXIQUE -->
+<!-- exit(); est une mesure de sécurité pour s'assurer qu'aucun code supplémentaire n'est exécuté après une redirection, ce qui pourrait potentiellement causer des problèmes ou générer un contenu non désiré dans la réponse HTTP. -->
