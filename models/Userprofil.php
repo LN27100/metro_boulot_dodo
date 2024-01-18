@@ -153,4 +153,22 @@ class Userprofil
             die();
         }
     }
+
+    /**
+     * Méthode pour obtenir le pseudo de l'utilisateur à partir de la session
+     * @return string|null Pseudo de l'utilisateur s'il est connecté, sinon null
+     */
+    public static function getPseudoFromSession(): ?string
+    {
+        session_start();
+
+         // Vérifiez si la variable de session 'pseudo' est définie
+         if (isset($_SESSION['pseudo'])) {
+            // Récupérez le pseudo de la session et échappez les caractères spéciaux
+            return htmlspecialchars($_SESSION['pseudo']);
+        }
+
+        // Si la session 'pseudo' n'est pas définie, retournez null
+        return null;
+    }
 }

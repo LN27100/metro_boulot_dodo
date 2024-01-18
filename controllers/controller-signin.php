@@ -2,42 +2,66 @@
 require_once '../config.php';
 require_once '../models/Userprofil.php';
 
-// Nous déclenchons nos vérifications uniquement lorsqu'un submit de type POST est détecté
+// Démarrez la session
+session_start();
+
+// Vérifiez si l'utilisateur est déjà connecté
+if (isset($_SESSION['pseudo'])) {
+    // Redirigez vers la page d'accueil si l'utilisateur est déjà connecté
+    header("Location: ../controllers/controller-home.php");
+    exit();
+}
+
+// Vérifiez si un formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // tableau d'erreurs (stockage des erreurs)
+    // Tableau d'erreurs (stockage des erreurs)
     $errors = [];
 
+    // Vérifiez si l'email est vide
     if (empty($_POST["email"])) {
         $errors["email"] = "Champ obligatoire";
     } else {
-        // Récupérer la valeur de l'email depuis le formulaire
+        // Récupérez la valeur de l'email depuis le formulaire
         $email = $_POST["email"];
     }
 
+    // Vérifiez si le mot de passe est vide
     if (empty($_POST["mot_de_passe"])) {
         $errors["mot_de_passe"] = "Champ obligatoire";
     }
 
+    // Si aucune erreur, procédez à la vérification de l'utilisateur
     if (empty($errors)) {
-        // ici commence les tests
-
+        // Vérifiez si l'email existe dans la base de données
         if (!Userprofil::checkMailExists($email)) {
             $errors['email'] = 'Utilisateur Inconnu';
         } else {
+            // Récupérez les informations de l'utilisateur
             $utilisateurInfos = Userprofil::getInfos($email);
 
-            
             // Comparaison du mot de passe
             if (password_verify($_POST["mot_de_passe"], $utilisateurInfos['user_password'])) {
                 // Mot de passe correct
+
+                // Stockez le pseudo dans la variable de session
+                $_SESSION['pseudo'] = $utilisateurInfos['user_pseudo'];
+
+                // Redirigez vers la page d'accueil
                 header("Location: ../controllers/controller-home.php");
                 exit();
             } else {
-
                 $errors['mot_de_passe'] = 'Mauvais mot de passe';
             }
         }
     }
 }
 
+// Inclure la vue du formulaire de connexion
 include_once '../views/view-signin.php';
+
+
+// LEXIQUE
+
+// "session_start()" démarre une nouvelle session ou reprend une session existante. Elle doit être appelée avant tout accès aux variables de session ou avant tout contenu HTML dans le script. Permet de maintenir une session active pour un utilisateur sur plusieurs pages
+
+// la vérification en haut $_SESSION assure que les utilisateurs déjà connectés sont redirigés vers la page d'accueil (header location) plutôt que de voir à nouveau la page de connexion.

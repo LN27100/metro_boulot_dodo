@@ -22,12 +22,28 @@
     </div>
 
     <div class="container3">
-       <h3>Bienvenue "pseudo utilisateur"</h3>
-       <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
+
+        <?php
+        require_once '../path/to/userprofil.php';
+
+        // Appel de la méthode pour obtenir le pseudo de l'utilisateur à partir de la session
+        $pseudo = Userprofil::getPseudoFromSession();
+
+        // On vérifie si l'utilisateur est connecté
+        if ($pseudo !== null) {
+            // Si oui, on affiche le message de bienvenue avec le pseudo
+            echo "<h3>Bienvenue \"$pseudo\"</h3>";
+        } else {
+            // Si non, on redirige vers la page de connexion
+            header("Location: ../controllers/controller-signin.php");
+            exit();
+        }
+        ?>
+        <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
     <div class="container3">
-        <button class="buttonHome">Commencer un tajet</button>
+        <button class="buttonHome">Commencer un trajet</button>
 
         <button class="buttonHome">Historique des tajets</button>
     </div>
@@ -38,3 +54,7 @@
 </body>
 
 </html>
+
+<!-- LEXIQUE -->
+
+<!-- exit(); est une mesure de sécurité pour s'assurer qu'aucun code supplémentaire n'est exécuté après une redirection, ce qui pourrait potentiellement causer des problèmes ou générer un contenu non désiré dans la réponse HTTP. -->
