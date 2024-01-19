@@ -196,6 +196,7 @@ body>div>a {
 .invalid-feedback {
   color: #dc3545;
   display: none;
+  background-color: #D7C5A8;
 }
 
 /* Style des messages d'alerte */

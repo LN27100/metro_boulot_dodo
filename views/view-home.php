@@ -14,7 +14,7 @@
 <body>
 
     <?php
-    
+
 
     include('../templates/header.php'); ?>
 
@@ -30,16 +30,9 @@
 
     <div class="container3">
 
-    <?php
-    if (isset($_SESSION['pseudo'])) {
-            $pseudo = htmlspecialchars($_SESSION['pseudo']);
-            echo "<h3>Bienvenue $pseudo</h3>";
-        } else {
-            echo "<p>Pseudo non défini</p>";
-        }?>
-       
+        <?php echo "<h3>Bienvenue $pseudo</h3>"; ?>
 
-     <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
+        <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
     <div class="container3">

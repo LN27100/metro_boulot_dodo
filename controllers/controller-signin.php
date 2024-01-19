@@ -3,17 +3,11 @@ require_once '../config.php';
 require_once '../models/Userprofil.php';
 
         // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
-if (session_status() === PHP_SESSION_NONE) {
-    // Si non, démarrer la session
-    session_start();
-}
+        if (session_status() === PHP_SESSION_NONE) {
+            // Si non, démarrer la session
+            session_start();
+        }
 
-// Vérifiez si l'utilisateur est déjà connecté
-if (isset($_SESSION['pseudo'])) {
-    // Redirigez vers la page d'accueil si l'utilisateur est déjà connecté
-    header("Location: ../controllers/controller-home.php");
-    exit();
-}
 
 // Vérifiez si un formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,8 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (password_verify($_POST["mot_de_passe"], $utilisateurInfos['user_password'])) {
                 // Mot de passe correct
 
-                // Stockez le pseudo dans la variable de session
-                $_SESSION['pseudo'] = $utilisateurInfos['user_pseudo'];
+                // Stockez les infos dans la variable de session
+                $_SESSION['user'] = [
+                    'email' => $utilisateurInfos['email'],
+                    'pseudo' => $utilisateurInfos['pseudo'],
+                    'nom' => $utilisateurInfos['nom'],
+                    'prenom' => $utilisateurInfos['prenom'],
+                    'date_naissance' => $utilisateurInfos['date_naissance'],
+                ];
 
                 // Redirigez vers la page d'accueil
                 header("Location: ../controllers/controller-home.php");
