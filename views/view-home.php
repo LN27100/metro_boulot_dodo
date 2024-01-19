@@ -22,7 +22,7 @@
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
-    <div class="container3">
+    <div class="container4">
         <?php
         // Date avec le fuseau horaire correct
         $dateActuelle = new DateTime('now', new DateTimeZone('Europe/Paris'));
@@ -30,14 +30,14 @@
         ?>
     </div>
 
-    <div class="container3">
+    <div class="container4">
 
         <?php echo "<h3>Bienvenue $pseudo</h3>"; ?>
 
         <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
-    <div class="container3">
+    <div class="container4">
         <button class="buttonHome">Commencer un trajet</button>
 
         <button class="buttonHome">Historique des tajets</button>

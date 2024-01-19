@@ -298,12 +298,13 @@ body > div:nth-child(6) > h3 {
 
 }
 
-.container3 {
+.container4 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 
 body > div:nth-child(6) > img {
   width: 10rem;
@@ -345,6 +346,13 @@ body > a{
 }
 
 /* PAGE PROFIL */
+
+.container3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 .returnHome {
   background-color: #206D3C;
