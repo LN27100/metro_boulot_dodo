@@ -14,13 +14,14 @@ if (!isset($_SESSION['user'])) {
     header("Location: ../controllers/controller-signin.php");
     exit();
 }
+
 // Récupère le pseudo de l'utilisateur
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
 $nom = isset($_SESSION['user']['user_name']) ? ($_SESSION['user']['user_name']) : "Nom non défini";
 $prenom = isset($_SESSION['user']['user_firstname']) ? ($_SESSION['user']['user_firstname']) : "Prénom non défini";
 $date_naissance = isset($_SESSION['user']['user_dateofbirth']) ? ($_SESSION['user']['user_dateofbirth']) : "Date de naissance non défini";
 $email = isset($_SESSION['user']['user_email']) ? ($_SESSION['user']['user_email']) : "Email non défini";
-$entreprise = isset($_SESSION['user']['enterprise_name']) ? ($_SESSION['user']['enterprise_name']) : "Entreprise non défini";
+$entreprise = isset($_SESSION['user']['enterprise_id']) ? Userprofil::getEntrepriseNom($_SESSION['user']['enterprise_id']) : "Entreprise non définie";
 $img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']) : "Photo non défini";
 
 

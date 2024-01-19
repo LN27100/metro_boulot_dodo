@@ -35,10 +35,10 @@ class Userprofil
             $query->bindValue(':birthdate', $date_naissance, PDO::PARAM_STR);
             $query->bindValue(':email', $email, PDO::PARAM_STR);
             $query->bindValue(':mdp', password_hash($mot_de_passe, PASSWORD_DEFAULT), PDO::PARAM_STR);
-            $query->bindValue(':id_entreprise', $enterprise_id, PDO::PARAM_STR);
+            $query->bindValue(':id_entreprise', $enterprise_id, PDO::PARAM_INT);
             $query->bindValue(':valide_participant', $user_validate, PDO::PARAM_INT);
 
-            
+
             $query->execute();
         } catch (PDOException $e) {
             echo 'Erreur :' . $e->getMessage();
@@ -132,7 +132,10 @@ class Userprofil
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
             // stockage de ma requete dans une variable
-            $sql = "SELECT * FROM `userprofil` WHERE `user_email` = :mail";
+            $sql = "SELECT userprofil.*, enterprise.enterprise_name 
+                FROM `userprofil` 
+                INNER JOIN `enterprise` ON userprofil.enterprise_id = enterprise.enterprise_id
+                WHERE `user_email` = :mail";
 
             // je prepare ma requête pour éviter les injections SQL
             $query = $db->prepare($sql);
@@ -147,7 +150,7 @@ class Userprofil
             $result = $query->fetch(PDO::FETCH_ASSOC);
 
             // on retourne le résultat
-            return $result;
+            return $result ?? [];
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
             die();
@@ -155,13 +158,13 @@ class Userprofil
     }
 
     /**
-     * Methode permettant de récupérer le nom de l'entreprise à partir de son ID
-     * 
-     * @param string $entreprise_id ID de l'entreprise
-     * 
-     * @return string Nom de l'entreprise
-     */
-    public static function getEntrepriseNom(string $entreprise_id): string
+ * Methode permettant de récupérer le nom de l'entreprise à partir de son ID
+ * 
+ * @param string $entreprise_id ID de l'entreprise
+ * 
+ * @return string Nom de l'entreprise
+ */
+public static function getEntrepriseNom(string $entreprise_id): string
 {
     try {
         // Création d'un objet $db selon la classe PDO
@@ -182,8 +185,10 @@ class Userprofil
         // on récupère le résultat de la requête dans une variable
         $result = $query->fetch(PDO::FETCH_ASSOC);
 
-        // on retourne le nom de l'entreprise si défini, sinon une valeur par défaut
-        return $result ? $result['enterprise_name'] : "Entreprise non définie";
+      
+
+        // on retourne le nom de l'entreprise
+        return $result['enterprise_name'];
     } catch (PDOException $e) {
         echo 'Erreur : ' . $e->getMessage();
         die();
