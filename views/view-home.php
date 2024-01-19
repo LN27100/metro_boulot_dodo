@@ -18,6 +18,8 @@
 
     include('../templates/header.php'); ?>
 
+    <button class="buttonHome2" type="button">Déconnexion</button>
+
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
     <div class="container3">

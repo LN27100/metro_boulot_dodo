@@ -290,7 +290,7 @@ h3 {
   flex-direction: column;
 }
 
-body>div:nth-child(5)>img {
+body > div:nth-child(6) > img {
   width: 10rem;
   height: auto;
 }
@@ -306,6 +306,21 @@ body>div:nth-child(5)>img {
   height: 5rem;
   font-size: 1.5rem;
   font-family: 'Exo', sans-serif;
+}
+
+.buttonHome2{
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  height: 2rem;
+  font-size: 0.8rem;
+  font-family: 'Exo', sans-serif;
+}
+
+.buttonHome2:hover {
+  background-color: rgba(215, 197, 168, 0.7);
 }
 
 .buttonHome:hover {
