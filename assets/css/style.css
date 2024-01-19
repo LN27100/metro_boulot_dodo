@@ -239,6 +239,12 @@ body>div>p>strong>em {
 }
 
 /* PAGE CONNEXION */
+body > h2 {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  color: #D7C5A8;
+  text-align: center;
+}
 
 .container2 {
   display: flex;
@@ -317,15 +323,17 @@ body > div:nth-child(6) > img {
   font-family: 'Exo', sans-serif;
 }
 
-.buttonHome2{
+body > a{
+  padding: 5px 10px;
   background-color: #206D3C;
   color: #fff;
   border: none;
   border-radius: 50px;
   text-align: center;
-  height: 2rem;
+  height: 3rem;
   font-size: 0.8rem;
   font-family: 'Exo', sans-serif;
+  text-decoration: none;
 }
 
 .buttonHome2:hover {
@@ -347,6 +355,12 @@ body > div:nth-child(6) > img {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+}
+
+body > div.container3 {
+  margin-top: 2rem;
+  background: #B5CA69;
+  border-radius: 10px;
 }
 
 body>div.container3>p:nth-child(1) {

@@ -24,7 +24,7 @@
     <?php echo "<p>Pseudo: <span style='color: black;'>$pseudo</span></p>"; ?>
     <?php echo "<p>Date de naissance:<span style='color: black;'>$date_naissance</span></p>"; ?>
     <?php echo "<p>Email: <span style='color: black;'>$email</span></p>"; ?>
-    <?php echo "<p>Entreprise de challenges: <span style='color: black;'>$entreprise</span></p>"; ?>
+    <?php echo "<p>Entreprise: <span style='color: black;'>$entreprise</span></p>"; ?>
 
 
 

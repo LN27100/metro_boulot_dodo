@@ -14,11 +14,11 @@
 <body>
 
     <?php
+    include('../templates/header.php');
 
-
-    include('../templates/header.php'); ?>
-
-    <button class="buttonHome2" type="button">Déconnexion</button>
+    // Bouton de déconnexion
+    echo '<a href="../controllers/controller-signout.php" class="buttonHome2">Déconnexion</a>';
+    ?>
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 

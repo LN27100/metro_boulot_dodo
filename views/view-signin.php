@@ -12,7 +12,9 @@
 </head>
 
 <body>
-    <h1>Veuillez vous connecter</h1>
+    <h1>Eco'Mouv !!</h1>
+    
+    <h2>Veuillez vous connecter</h2>
     <div class="container2">
         <form class="row" method="POST" action="../controllers/controller-signin.php" novalidate>
 
@@ -27,17 +29,17 @@
             </div>
 
             <div class="form-group col-md-12">
-    <label for="password-input" class="form-label">Mot de passe : </label>
-    <div class="input-group d-flex position-relative">
-        <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="validationServerPassword">
-        <i class="bi bi-eye password-toggle-icon" onclick="togglePasswordVisibility()"></i>
-        <div class="invalid-feedback" id="passwordValidationFeedback">
-            <?php
-            echo isset($errors['mot_de_passe']) ? $errors['mot_de_passe'] : "Champ obligatoire";
-            ?>
-        </div>
-    </div>
-</div>
+                <label for="password-input" class="form-label">Mot de passe : </label>
+                <div class="input-group d-flex position-relative">
+                    <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="validationServerPassword">
+                    <i class="bi bi-eye password-toggle-icon" onclick="togglePasswordVisibility()"></i>
+                    <div class="invalid-feedback" id="passwordValidationFeedback">
+                        <?php
+                        echo isset($errors['mot_de_passe']) ? $errors['mot_de_passe'] : "Champ obligatoire";
+                        ?>
+                    </div>
+                </div>
+            </div>
 
             <div class="col">
                 <a href="#">Mot de passe perdu?</a>
@@ -55,16 +57,16 @@
 
 
     <script>
-    function togglePasswordVisibility() {
-        var passwordInput = document.getElementById('validationServerPassword');
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('validationServerPassword');
 
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-        } else {
-            passwordInput.type = 'password';
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
         }
-    }
-</script>
+    </script>
 </body>
 
 </html>
