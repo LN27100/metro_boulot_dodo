@@ -362,6 +362,12 @@ body>div.container3>p:nth-child(6) {
   color: #D7C5A8;
 }
 
+body>div.container3>p:nth-child(7) {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  color: #D7C5A8;
+}
+
 /* RESPONSIVE */
 
 /* NAVBAR */

@@ -18,57 +18,15 @@
     <h1 class="titreAccueil">Votre profil</h1>
     <div class="container3">
 
-    <?php
-        // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
-        if (session_status() === PHP_SESSION_NONE) {
-            // Si non, démarrer la session
-            session_start();
-        }
+    <?php echo "<img src='" . $img . "' alt='photo de profil'>"; ?>
+    <?php echo "<p>Nom: $nom</p>"; ?>
+    <?php echo "<p>Prenom: $prenom</p>"; ?>
+    <?php echo "<p>Pseudo: $pseudo</p>"; ?>
+    <?php echo "<p>Date de naissance: $date_naissance</p>"; ?>
+    <?php echo "<p>Email: $email</p>"; ?>
+    <?php echo "<p>Entreprise de challenges: $entreprise</p>"; ?>
 
-        if (isset($_SESSION['user_photo'])) {
-            $img = $_SESSION['user_photo'];
-            echo "<p> $img</p>";
-        } else {
-            echo "<p>Image non défini</p>";
-        }
 
-        if (isset($_SESSION['pseudo'])) {
-            $pseudo = $_SESSION['pseudo'];
-            echo "<p>Pseudo: $pseudo</p>";
-        } else {
-            echo "<p>Pseudo non défini</p>";
-        }
-    
-        if (isset($_SESSION['nom'])) {
-            $nom = $_SESSION['nom'];
-            echo "<p>Nom: $nom</p>";
-        } else {
-            echo "<p>Nom non défini</p>";
-        }
-    
-        if (isset($_SESSION['prenom'])) {
-            $prenom = $_SESSION['prenom'];
-            echo "<p>Prénom: $prenom</p>";
-        } else {
-            echo "<p>Prénom non défini</p>";
-        }
-    
-        if (isset($_SESSION['date_naissance'])) {
-            $date_naissance = $_SESSION['date_naissance'];
-            echo "<p>Date de naissance: $date_naissance</p>";
-        } else {
-            echo "<p>Date de naissance non définie</p>";
-        }
-    
-        if (isset($_SESSION['email'])) {
-            $email = $_SESSION['email'];
-            echo "<p>Email: $email</p>";
-        } else {
-            echo "<p>Email non défini</p>";
-        }
-    
-    
-    ?>
 
     <a href="../controllers/controller-home.php" class="returnHome">Accueil</a>
     </div>

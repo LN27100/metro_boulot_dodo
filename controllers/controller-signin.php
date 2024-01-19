@@ -41,13 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Mot de passe correct
 
                 // Stockez les infos dans la variable de session
-                $_SESSION['user'] = [
-                    'email' => $utilisateurInfos['email'],
-                    'pseudo' => $utilisateurInfos['pseudo'],
-                    'nom' => $utilisateurInfos['nom'],
-                    'prenom' => $utilisateurInfos['prenom'],
-                    'date_naissance' => $utilisateurInfos['date_naissance'],
-                ];
+                $_SESSION['user'] = $utilisateurInfos;
 
                 // Redirigez vers la page d'accueil
                 header("Location: ../controllers/controller-home.php");
