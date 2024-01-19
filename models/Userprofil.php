@@ -162,31 +162,31 @@ class Userprofil
      * @return string Nom de l'entreprise
      */
     public static function getEntrepriseNom(string $entreprise_id): string
-    {
-        try {
-            // Création d'un objet $db selon la classe PDO
-            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+{
+    try {
+        // Création d'un objet $db selon la classe PDO
+        $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
-            // stockage de ma requete dans une variable
-            $sql = "SELECT `enterprise_name` FROM `enterprise` WHERE `enterprise_id` = :id_entreprise";
+        // stockage de ma requete dans une variable
+        $sql = "SELECT `enterprise_name` FROM `enterprise` WHERE `enterprise_id` = :id_entreprise";
 
-            // je prepare ma requête pour éviter les injections SQL
-            $query = $db->prepare($sql);
+        // je prepare ma requête pour éviter les injections SQL
+        $query = $db->prepare($sql);
 
-            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
-            $query->bindValue(':id_entreprise', $entreprise_id, PDO::PARAM_STR);
+        // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+        $query->bindValue(':id_entreprise', $entreprise_id, PDO::PARAM_STR);
 
-            // on execute la requête
-            $query->execute();
+        // on execute la requête
+        $query->execute();
 
-            // on récupère le résultat de la requête dans une variable
-            $result = $query->fetch(PDO::FETCH_ASSOC);
+        // on récupère le résultat de la requête dans une variable
+        $result = $query->fetch(PDO::FETCH_ASSOC);
 
-            // on retourne le nom de l'entreprise
-            return $result['enterprise_name'];
-        } catch (PDOException $e) {
-            echo 'Erreur : ' . $e->getMessage();
-            die();
-        }
+        // on retourne le nom de l'entreprise si défini, sinon une valeur par défaut
+        return $result ? $result['enterprise_name'] : "Entreprise non définie";
+    } catch (PDOException $e) {
+        echo 'Erreur : ' . $e->getMessage();
+        die();
     }
+}
 }

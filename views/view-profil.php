@@ -19,12 +19,12 @@
     <div class="container3">
 
     <?php echo "<img src='" . $img . "' alt='photo de profil'>"; ?>
-    <?php echo "<p>Nom: $nom</p>"; ?>
-    <?php echo "<p>Prenom: $prenom</p>"; ?>
-    <?php echo "<p>Pseudo: $pseudo</p>"; ?>
-    <?php echo "<p>Date de naissance: $date_naissance</p>"; ?>
-    <?php echo "<p>Email: $email</p>"; ?>
-    <?php echo "<p>Entreprise de challenges: $entreprise</p>"; ?>
+    <?php echo "<p>Nom: <span style='color: black;'>$nom</span></p>"; ?>
+    <?php echo "<p>Prenom: <span style='color: black;'>$prenom</span></p>"; ?>
+    <?php echo "<p>Pseudo: <span style='color: black;'>$pseudo</span></p>"; ?>
+    <?php echo "<p>Date de naissance:<span style='color: black;'>$date_naissance</span></p>"; ?>
+    <?php echo "<p>Email: <span style='color: black;'>$email</span></p>"; ?>
+    <?php echo "<p>Entreprise de challenges: <span style='color: black;'>$entreprise</span></p>"; ?>
 
 
 
