@@ -357,53 +357,75 @@ body > a{
   text-align: center;
 }
 
-body > div.container3 {
-  margin-top: 2rem;
-  background: #B5CA69;
-  border-radius: 10px;
+
+.container3 {
+  padding: 2rem 2rem;
+  margin-top: 3rem;
+  position: relative;
+  background-color: rgba(215, 197, 168, 0.7);
 }
 
+.container3 ::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/bgProfil.jpg) no-repeat;
+  background-size: cover;
+  border-radius: 7px;
+  z-index: -1;
+}
 body>div.container3>p:nth-child(1) {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
   margin-top: 2rem;
-  color: #D7C5A8;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 body>div.container3>p:nth-child(2) {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
-  color: #D7C5A8;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
 }
 
 body>div.container3>p:nth-child(3) {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
-  color: #D7C5A8;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 body>div.container3>p:nth-child(4) {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
-  color: #D7C5A8;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 body>div.container3>p:nth-child(5) {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
-  color: #D7C5A8;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 body>div.container3>p:nth-child(6) {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
-  color: #D7C5A8;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 body>div.container3>p:nth-child(7) {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
-  color: #D7C5A8;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* RESPONSIVE */
