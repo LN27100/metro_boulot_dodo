@@ -16,9 +16,9 @@ if (!isset($_SESSION['user'])) {
 }
 // Récupère le pseudo de l'utilisateur
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
-$transport = isset($_SESSION['ride']['transport_id']) ? isset($_SESSION['ride']['transport_id']) : "Transport non défini";
-$date = isset($_SESSION['ride']['ride_date']) ? isset($_SESSION['ride']['ride_date']) : "Date non défini";
-$kilometers = isset($_SESSION['ride']['ride_distance']) ? isset($_SESSION['ride']['ride_distance']) : "Kilomètres non défini";
+$transport = isset($_SESSION['user']['transport_id']) ? isset($_SESSION['user']['transport_id']) : "Transport non défini";
+$date = isset($_SESSION['user']['ride_date']) ? isset($_SESSION['user']['ride_date']) : "Date non défini";
+$kilometers = isset($_SESSION['user']['ride_distance']) ? isset($_SESSION['user']['ride_distance']) : "Kilomètres non défini";
 
 // Inclure la vue home uniquement si l'utilisateur est connecté
 include_once '../views/view-ride.php';

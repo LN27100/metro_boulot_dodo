@@ -40,9 +40,9 @@
 
     <div class="container5">
 
-        <?php echo "<p>Transport utilisé:  $date</p>"; ?>
-        <?php echo "<p>Transport utilisé:  $transport</p>"; ?>
-        <?php echo "<p>Kilomètres effectués:  $kilometers</p>"; ?>
+        <?php echo "<p>Transport utilisé: <span style='color: black;'>  $date</span></p>"; ?>
+        <?php echo "<p>Transport utilisé:  <span style='color: black;'>$transport</span></p>"; ?>
+        <?php echo "<p>Kilomètres effectués:  <span style='color: black;'>$kilometers</span></p>"; ?>
 
 
         <a href="../controllers/controller-home.php" class="returnHome">Accueil</a>
