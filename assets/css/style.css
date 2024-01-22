@@ -438,6 +438,15 @@ body>div.container3>p:nth-child(7) {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* PAGE TRAJETS */
+
+body > div:nth-child(7) > p {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.5rem;
+  color: #B5CA69;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 /* RESPONSIVE */
 
 /* NAVBAR */

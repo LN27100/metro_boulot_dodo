@@ -32,14 +32,26 @@
 
     <div class="container4">
 
-        <?php echo "<h3>Bienvenue $pseudo</h3>"; ?>
+        <?php echo "<h3> $pseudo</h3>"; ?>
 
         <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
- 
 
-    
+    <div class="container4">
+
+        <?php echo "<p>Transport utilisé:  $date</p>"; ?>
+        <?php echo "<p>Transport utilisé:  $transport</p>"; ?>
+        <?php echo "<p>Kilomètres effectués:  $kilometers</p>"; ?>
+
+
+        <a href="../controllers/controller-home.php" class="returnHome">Accueil</a>
+
+
+    </div>
+
+
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const navbarToggle = document.getElementById("navbar-toggle");
