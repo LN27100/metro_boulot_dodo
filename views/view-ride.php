@@ -39,10 +39,30 @@
 
 
     <div class="container5">
+    <div class="container7">
+            <label for="dateStart" class="form-label2">Date:</label>
+            <input type="date" id="dateStart" name="dateStart" required>
+            <div class="invalid-feedback" id="dateValidationFeedback">
 
-        <?php echo "<p>Transport utilisé: <span style='color: black;'>  $date</span></p>"; ?>
-        <?php echo "<p>Transport utilisé:  <span style='color: black;'>$transport</span></p>"; ?>
-        <?php echo "<p>Kilomètres effectués:  <span style='color: black;'>$kilometers</span></p>"; ?>
+            </div>
+        </div>
+
+        <div class="container7">
+        <label for="transports" class="form-labels">Moyen de transport:</label>
+        <select class="form-select" aria-label="Default select example" name="transports" id="transport">
+            <option value="" selected>Sélectionnez un transport</option>
+            <option value="1" <?= isset($_POST['ride']) && $_POST['ride'] == 1 ? 'selected' : '' ?>>Vélo</option>
+            <option value="2" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Trotinette</option>
+            <option value="3" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Roller</option>
+            <option value="4" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Skate</option>
+            <option value="5" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Marche</option>
+        </select>
+        </div>
+
+        <div class="container7">
+        <label for="kms" class="form-label2">Kilomètres parcourus:</label>
+        <input type="text" class="form-control" id="kms" name="kms" placeholder="ex.11kms" required>
+        </div>
 
 
         <a href="../controllers/controller-home.php" class="returnHome">Accueil</a>

@@ -40,35 +40,5 @@ class Ride
         }
     }
     
-public static function getInfos(string $utilisateurInfos): array
-    {
-        try {
-            // Création d'un objet $db selon la classe PDO
-            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
-
-            // stockage de ma requete dans une variable
-            $sql = "SELECT transport.*, transport.transport_id 
-            FROM `ride` 
-            INNER JOIN `transport` ON ride.transport_id = transport.transport_id";
-
-            // je prepare ma requête pour éviter les injections SQL
-            $query = $db->prepare($sql);
-
-            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
-            $query->bindValue(':user', $utilisateurInfos, PDO::PARAM_STR);
-
-            // on execute la requête
-            $query->execute();
-
-            // on récupère le résultat de la requête dans une variable
-            $result = $query->fetch(PDO::FETCH_ASSOC);
-
-            // on retourne le résultat
-            return $result ?? [];
-        } catch (PDOException $e) {
-            echo 'Erreur : ' . $e->getMessage();
-            die();
-        }
-    }
 }
 

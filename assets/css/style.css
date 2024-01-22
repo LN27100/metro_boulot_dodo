@@ -469,8 +469,8 @@ body>div.container3>p:nth-child(7) {
   align-items: center;
   flex-direction: column;
   margin-top: 2rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 body>div:nth-child(7)>p {
@@ -479,6 +479,34 @@ body>div:nth-child(7)>p {
   color: #B5CA69;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+.container7 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+body > div.container5 > div:nth-child(1) > label {
+  text-align: center;
+  width: 10rem;
+
+}
+
+body > div.container5 > div:nth-child(2) > label {
+  text-align: center;
+  width: 10rem;
+}
+
+body > div.container5 > div:nth-child(3) > label {
+  text-align: center;
+  width: 10rem;
+}
+
+
 
 /* RESPONSIVE */
 
