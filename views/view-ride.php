@@ -20,6 +20,8 @@
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
+    <form class="row" method="POST" action="../controllers/controller-ride.php" novalidate>
+
     <div class="container4">
         <?php
         // Date avec le fuseau horaire correct
@@ -69,9 +71,10 @@
 
 
         <div class="container7">
-            <button class="button">Valider</button>
+            <button class="button" type="submit">Valider</button>
         </div>
     </div>
+    </form>
 
     <div class="container6">
         <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>

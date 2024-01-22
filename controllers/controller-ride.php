@@ -14,7 +14,7 @@ if (!isset($_SESSION['user'])) {
     header("Location: ../controllers/controller-signin.php");
     exit();
 }
-
+var_dump($_POST);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
 
