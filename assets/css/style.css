@@ -284,15 +284,15 @@ body>h2 {
   margin-top: 4rem;
 }
 
-body>div:nth-child(5) {
+body>div:nth-child(3) {
   color: #206D3C;
   font-weight: bold;
   font-family: 'Exo', sans-serif;
 }
 
-body>div:nth-child(6)>h3 {
+body > div:nth-child(4) > h3 {
   font-family: 'Marhey', sans-serif;
-  margin-top: 2rem;
+  margin-top: 1rem;
   color: #D7C5A8;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
@@ -306,7 +306,7 @@ body>div:nth-child(6)>h3 {
 }
 
 
-body>div:nth-child(6)>img {
+body > div:nth-child(4) > img {
   margin-top: 1rem;
   width: 10rem;
   height: auto;
@@ -468,7 +468,6 @@ body>div.container3>p:nth-child(7) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -506,6 +505,10 @@ body > div.container5 > div:nth-child(3) > label {
   width: 10rem;
 }
 
+body > div.container5 > div:nth-child(4) > label {
+  text-align: center;
+  width: 10rem;
+}
 
 
 /* RESPONSIVE */

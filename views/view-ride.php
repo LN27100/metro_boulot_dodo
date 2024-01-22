@@ -14,8 +14,6 @@
 <body>
 
     <?php
-    include('../templates/header.php');
-
     // Bouton de déconnexion
     echo '<a href="../controllers/controller-signout.php" class="buttonHome2">Déconnexion</a>';
     ?>
@@ -40,7 +38,7 @@
 
     <div class="container5">
         <div class="container7">
-            <label for="dateStart" class="form-label2">Date:</label>
+            <label for="dateStart" class="form-label2">Date</label>
             <input type="date" id="dateStart" name="dateStart" required>
             <div class="invalid-feedback" id="dateValidationFeedback">
 
@@ -48,7 +46,7 @@
         </div>
 
         <div class="container7">
-            <label for="transports" class="form-labels">Moyen de transport:</label>
+            <label for="transports" class="form-labels">Moyen de transport</label>
             <select class="form-select" aria-label="Default select example" name="transports" id="transport">
                 <option value="" selected>Sélectionnez un transport</option>
                 <option value="1" <?= isset($_POST['ride']) && $_POST['ride'] == 1 ? 'selected' : '' ?>>Vélo</option>
@@ -60,20 +58,26 @@
         </div>
 
         <div class="container7">
-            <label for="kms" class="form-label2">Kilomètres parcourus:</label>
-            <input type="text" class="form-control" id="kms" name="kms" placeholder="ex.11kms" required>
+            <label class="form-label" for="typeNumber">Kilomètres</label>
+            <input step="0.01" value="" type="number" id="typeNumber" class="form-control" />
+        </div>
+
+        <div class="container7">
+            <label for="appt">Temps de trajet</label>
+            <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
         </div>
 
 
-        <div class="container6">
-            <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
-            <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
-            <a href="#" class="buttonNav">Historique</a>
+        <div class="container7">
+            <button class="button">Valider</button>
         </div>
-
     </div>
 
-
+    <div class="container6">
+        <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
+        <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
+        <a href="#" class="buttonNav">Historique</a>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
