@@ -40,8 +40,14 @@
     <div class="container4">
         <a href="../controllers/controller-ride.php" class="buttonHome">Commencer un trajet</a>
 
-        <button class="buttonHome">Historique des tajets</button>
     </div>
+
+    <div class="container6">
+    <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
+    <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
+    <a href="#" class="buttonNav">Historique</a>
+    </div>
+
 
     
     <script>
