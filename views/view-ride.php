@@ -37,11 +37,7 @@
         <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
-    <div class="container4">
-        <a href="../controllers/controller-ride.php" class="buttonHome">Commencer un trajet</a>
-
-        <button class="buttonHome">Historique des tajets</button>
-    </div>
+ 
 
     
     <script>

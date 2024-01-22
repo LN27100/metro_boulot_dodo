@@ -194,4 +194,34 @@ public static function getEntrepriseNom(string $entreprise_id): string
         die();
     }
 }
+
 }
+
+// public static function create(int $ride_id, string $date, string $distance, int $user_id, $transport_id)
+//     {
+//         try {
+//             // Conexion à la base de données
+//             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+//             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//             // Stockage de la requete dans une variable
+//             $sql = "INSERT INTO ride (ride_id, ride_date, ride_distance, user_id, transport_id)
+//              VALUES (:id_ride, :dateride, :distanceride, :id_user, :id_transport)";
+
+//             // Préparation de la requête
+//             $query = $db->prepare($sql);
+
+//             // Relier les valeurs aux marqueurs nominatifs
+//             $query->bindValue(':id_ride', htmlspecialchars($nom), PDO::PARAM_INT);
+//             $query->bindValue(':dateride', htmlspecialchars($prenom), PDO::PARAM_STR);
+//             $query->bindValue(':distanceride', htmlspecialchars($pseudo), PDO::PARAM_STR);
+//             $query->bindValue(':id_user', $date_naissance, PDO::PARAM_INT);
+//             $query->bindValue(':id_transport', $email, PDO::PARAM_INT);
+        
+
+//             $query->execute();
+//         } catch (PDOException $e) {
+//             echo 'Erreur :' . $e->getMessage();
+//             die();
+//         }
+//     }
