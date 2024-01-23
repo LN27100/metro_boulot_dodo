@@ -234,12 +234,13 @@ body>h2 {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  position: fixed; 
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #D7C5A8;
   padding: 0.6rem;
-  z-index: 1000; /* Assure que la navbar soit au-dessus du reste du contenu */
+  z-index: 1000;
+  /* Assure que la navbar soit au-dessus du reste du contenu */
 }
 
 .buttonNav {
@@ -253,6 +254,7 @@ body>h2 {
   text-align: center;
   margin: 0 1rem 0 1rem;
 }
+
 /*  PAGE ACCUEIL */
 
 .titreAccueil {
@@ -272,7 +274,7 @@ body>div:nth-child(2) {
   margin-top: 2rem;
 }
 
-body > div:nth-child(3) > h3 {
+body>div:nth-child(3)>h3 {
   font-family: 'Marhey', sans-serif;
   margin-top: 1rem;
   color: #D7C5A8;
@@ -288,7 +290,7 @@ body > div:nth-child(3) > h3 {
 }
 
 
-body > div:nth-child(3) > img {
+body>div:nth-child(3)>img {
   margin-top: 1rem;
   width: 10rem;
   height: auto;
@@ -323,11 +325,11 @@ body>a {
 /* Bouton de déconnexion */
 
 .buttonHome2 {
-display: flex;
-margin-top: 1rem;
-margin-left: 1rem;
-width: max-content;
-align-items: center;
+  display: flex;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: max-content;
+  align-items: center;
 }
 
 .buttonHome2:hover {
@@ -339,14 +341,14 @@ align-items: center;
 }
 
 
-body > form {
+body>form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-body > form {
+body>form {
   padding: 2rem 2rem;
   margin-top: 3rem;
   position: relative;
@@ -354,7 +356,7 @@ body > form {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-body > form ::before {
+body>form ::before {
   content: "";
   position: absolute;
   top: 0;
@@ -476,27 +478,27 @@ body>div:nth-child(7)>p {
   margin-right: 1rem;
 }
 
-body > form > div.container5 > div:nth-child(1) > label {
+body>form>div.container5>div:nth-child(1)>label {
   text-align: center;
   width: 10rem;
 }
 
-body > form > div.container5 > div:nth-child(2) > label {
+body>form>div.container5>div:nth-child(2)>label {
   text-align: center;
   width: 10rem;
 }
 
-body > form > div.container5 > div:nth-child(3) > label {
+body>form>div.container5>div:nth-child(3)>label {
   text-align: center;
   width: 10rem;
 }
 
-body > form > div.container5 > div:nth-child(4) > label {
+body>form>div.container5>div:nth-child(4)>label {
   text-align: center;
   width: 10rem;
 }
 
-body > form > div:nth-child(2) > img {
+body>form>div:nth-child(2)>img {
   margin-top: 1rem;
   width: 10rem;
   height: auto;
@@ -508,12 +510,9 @@ body > form > div:nth-child(2) > img {
   color: #D7C5A8;
   text-align: center;
   font-family: 'Marhey', sans-serif;
+
 }
 
-body > div.container4 > img {
-  width: 10rem;
-  height: auto;
-}
 
 .container8 {
   display: flex;
@@ -540,6 +539,26 @@ body > div.container4 > img {
   background-size: cover;
   border-radius: 7px;
   z-index: -1;
+}
+
+.table {
+  border: 2px solid #7A9855 ;
+}
+
+
+body>div.container8>div>section>table>thead>tr>th {
+  color: #EAEBE6 ;
+  background-color:#B5CA69;
+  border: 2px solid #7A9855 ;
+  text-align: center;
+}
+
+body>div.container8>div>section>table>tbody>tr>td {
+  background-color: rgba(181, 202, 105, 0.6);
+  border: 1px solid #7A9855 ;
+  color: #206D3C;
+  font-weight: bold;
+  text-align: center;
 }
 
 /* RESPONSIVE */
@@ -649,7 +668,7 @@ body > div.container4 > img {
     margin-bottom: 0.5em;
     margin-left: 0.6rem;
     background-color: rgba(215, 197, 168, 0.9);
-padding: 0.1rem;
+    padding: 0.1rem;
   }
 
   .form-check-label {
