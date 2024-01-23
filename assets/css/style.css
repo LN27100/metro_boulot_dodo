@@ -197,6 +197,10 @@ body>div>form>div:nth-child(5)>a {
   color: #206D3C;
 }
 
+.conditionPassword {
+  background-color: rgba(215, 197, 168, 0.7);
+}
+
 body>div>form>div.col>a {
   color: #B5CA69;
   text-decoration-thickness: 0.2rem;
@@ -286,7 +290,7 @@ body>h2 {
   color: #B5CA69;
   font-weight: bolder;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 body>div:nth-child(2) {
@@ -432,7 +436,7 @@ body>form ::before {
 p {
   font-family: 'Exo', sans-serif;
   color: black;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 
