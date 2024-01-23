@@ -515,6 +515,33 @@ body > div.container4 > img {
   height: auto;
 }
 
+.container8 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container8 {
+  padding: 2rem 2rem;
+  margin-top: 3rem;
+  position: relative;
+  background-color: rgba(215, 197, 168, 0.7);
+}
+
+.container8 ::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/bgProfil.jpg) no-repeat;
+  background-size: cover;
+  border-radius: 7px;
+  z-index: -1;
+}
+
 /* RESPONSIVE */
 
 /* NAVBAR */

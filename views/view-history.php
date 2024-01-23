@@ -24,7 +24,17 @@
 
     </div>
 
-   
+    <div class="container8">
+
+<p>Trajet 1</p>
+<p>Trajet 2</p>
+<p>Trajet 3</p>
+<p>Trajet 4</p>
+<p>Trajet 5</p>
+
+
+    </div>
+
 
     <div class="container6">
         <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
