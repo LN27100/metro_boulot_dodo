@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
 
-    <title>Accueil Eco'Mouv</title>
+    <title>Historique trajets</title>
 </head>
 
 <body>
@@ -16,14 +16,9 @@
 
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
+    <h2>Historique de vos trajets</h2>
 
-    <div class="container4">
-        <?php
-        // Date avec le fuseau horaire correct
-        $dateActuelle = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        echo $dateActuelle->format('d/m/Y');
-        ?>
-    </div>
+
 
     <div class="container4">
 
@@ -32,19 +27,16 @@
         <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
-    <div class="container4">
-        <a href="../controllers/controller-ride.php" class="buttonHome">Commencer un trajet</a>
-
-    </div>
-
-    <div class="container6">
-    <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
-    <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
-    <a href="../controllers/controller-history.php" class="buttonNav">Historique</a>
-    </div>
-
-
+   
     
+    <div class="container6">
+        <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
+        <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
+        <a href="#" class="buttonNav">Historique</a>
+    </div>
+
+
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const navbarToggle = document.getElementById("navbar-toggle");

@@ -37,8 +37,9 @@
     <div class="container6">
     <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
     <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
-    <a href="#" class="buttonNav">Historique</a>
+    <a href="../controllers/controller-history.php" class="buttonNav">Historique</a>
     </div>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const navbarToggle = document.getElementById("navbar-toggle");
