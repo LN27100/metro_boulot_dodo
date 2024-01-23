@@ -464,7 +464,6 @@ body>div:nth-child(7)>p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -477,16 +476,22 @@ body>form>div.container5>div:nth-child(1)>label {
 body>form>div.container5>div:nth-child(2)>label {
   text-align: center;
   width: 10rem;
+  margin-bottom :0;
+
 }
 
 body>form>div.container5>div:nth-child(3)>label {
   text-align: center;
   width: 10rem;
+  margin-bottom :0;
+
 }
 
 body>form>div.container5>div:nth-child(4)>label {
   text-align: center;
   width: 10rem;
+  margin-bottom :0;
+
 }
 
 body>form>div:nth-child(2)>img {
