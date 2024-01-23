@@ -50,7 +50,8 @@
             </div>
 
             <div class="text-center">
-                <p>Pas encore membre? <a href="../controllers/controller-signup.php">Inscrivez-vous!</a></p>
+                <p>Pas encore membre?</p>
+                <a href="../controllers/controller-signup.php">Inscrivez-vous!</a>
             </div>
         </form>
     </div>
