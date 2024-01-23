@@ -12,26 +12,35 @@
 </head>
 
 <body>
+    <?php
 
+    // Bouton de déconnexion
+    echo '<a href="../controllers/controller-signout.php" class="buttonHome2">Déconnexion</a>';
+    ?>
     <?php include('../templates/header.php'); ?>
 
     <h1 class="titreAccueil">Votre profil</h1>
     <div class="container3">
 
-    <?php echo "<img src='" . $img . "' alt='photo de profil'>"; ?>
-    <?php echo "<p>Nom: <span style='color: black;'>$nom</span></p>"; ?>
-    <?php echo "<p>Prenom: <span style='color: black;'>$prenom</span></p>"; ?>
-    <?php echo "<p>Pseudo: <span style='color: black;'>$pseudo</span></p>"; ?>
-    <?php echo "<p>Date de naissance:<span style='color: black;'>$date_naissance</span></p>"; ?>
-    <?php echo "<p>Email: <span style='color: black;'>$email</span></p>"; ?>
-    <?php echo "<p>Entreprise: <span style='color: black;'>$entreprise</span></p>"; ?>
+        <?php echo "<img src='" . $img . "' alt='photo de profil'>"; ?>
+        <?php echo "<p>Nom: <span style='color: black;'>$nom</span></p>"; ?>
+        <?php echo "<p>Prenom: <span style='color: black;'>$prenom</span></p>"; ?>
+        <?php echo "<p>Pseudo: <span style='color: black;'>$pseudo</span></p>"; ?>
+        <?php echo "<p>Date de naissance:<span style='color: black;'>$date_naissance</span></p>"; ?>
+        <?php echo "<p>Email: <span style='color: black;'>$email</span></p>"; ?>
+        <?php echo "<p>Entreprise: <span style='color: black;'>$entreprise</span></p>"; ?>
 
 
 
-    <a href="../controllers/controller-home.php" class="returnHome">Accueil</a>
+    </div>
+
+    <div class="container6">
+    <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
+    <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
+    <a href="#" class="buttonNav">Historique</a>
     </div>
     <script>
-  document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() {
             const navbarToggle = document.getElementById("navbar-toggle");
             const navbarNav = document.getElementById("navbar-nav");
 
@@ -39,7 +48,7 @@
                 navbarNav.classList.toggle("active");
             });
         });
-</script>
+    </script>
 </body>
 
 </html>

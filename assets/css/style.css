@@ -262,16 +262,17 @@ body>h2 {
   color: #B5CA69;
   font-weight: bolder;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 1.5rem;
+  margin-top: 5rem;
 }
 
-body>div:nth-child(3) {
+body>div:nth-child(2) {
   color: #206D3C;
   font-weight: bold;
   font-family: 'Exo', sans-serif;
+  margin-top: 2rem;
 }
 
-body > div:nth-child(4) > h3 {
+body > div:nth-child(3) > h3 {
   font-family: 'Marhey', sans-serif;
   margin-top: 1rem;
   color: #D7C5A8;
@@ -287,7 +288,7 @@ body > div:nth-child(4) > h3 {
 }
 
 
-body > div:nth-child(4) > img {
+body > div:nth-child(3) > img {
   margin-top: 1rem;
   width: 10rem;
   height: auto;

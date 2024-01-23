@@ -13,12 +13,7 @@
 
 <body>
 
-    <?php
-    include('../templates/header.php');
 
-    // Bouton de déconnexion
-    echo '<a href="../controllers/controller-signout.php" class="buttonHome2">Déconnexion</a>';
-    ?>
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
