@@ -25,14 +25,19 @@
     </div>
 
     <div class="container8">
-
-<p>Trajet 1</p>
-<p>Trajet 2</p>
-<p>Trajet 3</p>
-<p>Trajet 4</p>
-<p>Trajet 5</p>
-
-
+<div class="row">
+    <section class="col-12">
+        <table class="table">
+            <thead></thead>
+<th>Trajet 1</th>
+<th>Trajet 2</th>
+<th>Trajet 3</th>
+<th>Trajet 4</th>
+<th>Trajet 5</th>
+</thead>
+</table>
+</section>
+</div>
     </div>
 
 

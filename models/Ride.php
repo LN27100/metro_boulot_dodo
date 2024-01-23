@@ -41,7 +41,6 @@ class Ride
         }
     }
 
-    // Méthode pour enregister les données de trajet dans la bdd
     
 }
 
