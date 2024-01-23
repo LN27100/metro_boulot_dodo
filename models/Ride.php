@@ -45,7 +45,7 @@ class Ride
         try {
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
     
-            $sql = "SELECT * FROM `ride`NATURAL JOIN `transport` WHERE `user_id`= :id_user ORDER BY `ride_date` DESC";
+            $sql = "SELECT * , DATE_FORMAT(ride_date, '%d/%m/%Y') AS date_fr FROM `ride`NATURAL JOIN `transport` WHERE `user_id`= :id_user ORDER BY `ride_date` DESC";
             $query = $db->prepare($sql);
             $query->bindValue(':id_user', $user_id, PDO::PARAM_INT);
             $query->execute();
