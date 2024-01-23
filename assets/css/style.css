@@ -299,7 +299,7 @@ body > div:nth-child(4) > img {
   border: none;
   border-radius: 50px;
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 7rem;
   height: 5rem;
   font-size: 1.5rem;
   font-family: 'Exo', sans-serif;
@@ -317,6 +317,12 @@ body>a {
   font-size: 0.8rem;
   font-family: 'Exo', sans-serif;
   text-decoration: none;
+}
+
+/* Bouton de déconnexion */
+
+.buttonHome2 {
+  margin-top: 1rem !important;
 }
 
 .buttonHome2:hover {
