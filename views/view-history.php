@@ -16,19 +16,16 @@
 
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
-    <h2>Historique de vos trajets</h2>
-
 
 
     <div class="container4">
 
-        <?php echo "<h3>Bienvenue $pseudo</h3>"; ?>
+        <?php echo "<h2 class='tittleHistory'>Historique trajets $pseudo</h2>"; ?>
 
-        <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
     </div>
 
    
-    
+
     <div class="container6">
         <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
         <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
