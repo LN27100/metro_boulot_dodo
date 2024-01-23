@@ -20,7 +20,7 @@
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
-    <form class="row" method="POST" action="../controllers/controller-ride.php" novalidate>
+    <form class="container" method="POST" action="../controllers/controller-ride.php" novalidate>
 
     <div class="container4">
         <?php
@@ -48,8 +48,8 @@
         </div>
 
         <div class="container7">
-            <label for="transports" class="form-labels">Moyen de transport</label>
-            <select class="form-select" aria-label="Default select example" name="transports" id="transport">
+            <label for="transptransport_idorts" class="form-labels">Moyen de transport</label>
+            <select class="form-select" aria-label="Default select example" name="transport_id" id="transport">
                 <option value="" selected>Sélectionnez un transport</option>
                 <option value="1" <?= isset($_POST['ride']) && $_POST['ride'] == 1 ? 'selected' : '' ?>>Vélo</option>
                 <option value="2" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Trotinette</option>
@@ -61,12 +61,12 @@
 
         <div class="container7">
             <label class="form-label" for="typeNumber">Kilomètres</label>
-            <input step="0.01" value="" type="number" id="typeNumber" class="form-control" />
+            <input step="0.01" value="" type="number" id="typeNumber" class="form-control" name="kilometers"/>
         </div>
 
         <div class="container7">
-            <label for="appt">Temps de trajet</label>
-            <input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+            <label for="time_id">Temps de trajet</label>
+            <input type="time" id="appt" name="time_id" min="09:00" max="18:00" required />
         </div>
 
 

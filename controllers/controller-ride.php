@@ -5,6 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+
 require_once '../config.php';
 require_once __DIR__ . '/../models/Ride.php';
 
@@ -19,22 +20,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
 
     // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
-    $transport = trim($_POST['transport']);
-    $date = trim($_POST['date']);
+    $date = trim($_POST['dateStart']);
     $kilometers = trim($_POST['kilometers']);
-    $user_id = trim($_POST['user_id']);
-    $transport_id = trim($_POST['transport_id']);
-
+    $user_id = trim($_SESSION['user']['user_id']);
+    $transport_id = ($_POST['transport_id']);
+    $timeId = trim($_POST['time_id']);
 
 
     // Contrôle du transport
-    if (empty($_POST["transport"])) {
-        $errors["transport"] = "Champ obligatoire";
+    if (empty($_POST["transports"])) {
+        $errors["transports"] = "Champ obligatoire";
     } 
 
     // Contrôle du date
-    if (empty($_POST["date"])) {
-        $errors["date"] = "Champ obligatoire";
+    if (empty($_POST["dateStart"])) {
+        $errors["dateStart"] = "Champ obligatoire";
     } 
 
     // Contrôle du kilometers
@@ -52,6 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["transport_id"] = "Champ obligatoire";
     }
 
+     // Contrôle transport_id
+     if (empty($_POST["time_id"])) {
+        $errors["time_id"] = "Champ obligatoire";
+    }
     // On s'assure qu'il n'y a pas d'erreur dans le formuaire
     if (empty($errors)) {
 
@@ -70,8 +74,8 @@ $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pse
 $transport = isset($_SESSION['user']['transport_id']) ? isset($_SESSION['user']['transport_id']) : "Transport non défini";
 $date = isset($_SESSION['user']['ride_date']) ? isset($_SESSION['user']['ride_date']) : "Date non défini";
 $kilometers = isset($_SESSION['user']['ride_distance']) ? isset($_SESSION['user']['ride_distance']) : "Kilomètres non défini";
-$user_id = isset($_SESSION['user']['user_id']) ? isset($_SESSION['user']['user_id']) : "Kilomètres non défini";
-$transport_id = isset($_SESSION['user']['transport_id']) ? isset($_SESSION['user']['transport_id']) : "Kilomètres non défini";
+$user_id = isset($_SESSION['user']['user_id']) ? isset($_SESSION['user']['user_id']) : "Id user non défini";
+$transport_id = isset($_SESSION['user']['transport_id']) ? isset($_SESSION['user']['transport_id']) : "Id transport non défini";
 
 // Inclure la vue home uniquement si l'utilisateur est connecté
 include_once '../views/view-ride.php';

@@ -287,7 +287,7 @@ body > div:nth-child(4) > h3 {
 }
 
 
-body > div:nth-child(4) > img {
+body > form > div:nth-child(2) > img {
   margin-top: 1rem;
   width: 10rem;
   height: auto;
@@ -337,15 +337,18 @@ body>a {
 
 /* PAGE PROFIL */
 
+body > form {
+background-color: #7A9855;
+background-size: cover;
+background-repeat: no-repeat;
+}
+
 .container3 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
-
-
 
 .container3 {
   padding: 2rem 2rem;
