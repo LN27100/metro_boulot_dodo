@@ -49,7 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["time_id"] = "Champ obligatoire";
     }
     // On s'assure qu'il n'y a pas d'erreur dans le formuaire
-    var_dump($errors);
     if (empty($errors)) {
 
         Ride::create( $date,  $transport_id,  $distance, $ride_time,  $user_id);

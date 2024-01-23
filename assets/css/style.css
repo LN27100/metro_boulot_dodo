@@ -262,7 +262,7 @@ body>h2 {
   color: #B5CA69;
   font-weight: bolder;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 4rem;
+  margin-top: 1.5rem;
 }
 
 body>div:nth-child(3) {
@@ -287,7 +287,7 @@ body > div:nth-child(4) > h3 {
 }
 
 
-body > form > div:nth-child(2) > img {
+body > div:nth-child(4) > img {
   margin-top: 1rem;
   width: 10rem;
   height: auto;
@@ -322,7 +322,11 @@ body>a {
 /* Bouton de déconnexion */
 
 .buttonHome2 {
-  margin-top: 1rem !important;
+display: flex;
+margin-top: 1rem;
+margin-left: 1rem;
+width: max-content;
+align-items: center;
 }
 
 .buttonHome2:hover {
@@ -470,6 +474,11 @@ body > div.container5 > div:nth-child(4) > label {
   width: 10rem;
 }
 
+body > form > div:nth-child(2) > img {
+  margin-top: 1rem;
+  width: 10rem;
+  height: auto;
+}
 
 /* RESPONSIVE */
 
@@ -578,7 +587,7 @@ body > div.container5 > div:nth-child(4) > label {
     margin-bottom: 0.5em;
     margin-left: 0.6rem;
     background-color: rgba(215, 197, 168, 0.9);
-
+padding: 0.1rem;
   }
 
   .form-check-label {
