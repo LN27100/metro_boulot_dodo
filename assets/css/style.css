@@ -7,61 +7,6 @@ body {
   background-color: #7A9855;
 }
 
-/* NAVBAR */
-.navbar {
-  background-color: #206D3C;
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #fff;
-}
-
-.navbar-brand {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-toggle {
-  font-size: 1.2rem;
-  cursor: pointer;
-  margin-left: 0.5rem;
-}
-
-.navbar-nav {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  background-color: #206D3C;
-  text-align: center;
-  width: 5.5rem;
-}
-
-.navbar-nav :hover {
-  background-color: #7A9855;
-  color: #D7C5A8;
-}
-
-.navbar-nav.active {
-  display: flex;
-}
-
-.nav-link {
-  color: #D7C5A8;
-  text-decoration: none;
-  margin: 0.3rem;
-  font-family: 'Exo', sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.nav-link.multi-line {
-  white-space: normal;
-  /* Permet au texte de revenir à la ligne */
-}
 
 /* PAGE INSCRIPTION */
 h1 {
@@ -271,7 +216,43 @@ body>h2 {
   z-index: -1;
 }
 
+/* NAVBAR */
 
+.returnHome {
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.container6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: fixed; 
+  bottom: 0;
+  width: 100%;
+  background-color: #D7C5A8;
+  padding: 0.6rem;
+  z-index: 1000; /* Assure que la navbar soit au-dessus du reste du contenu */
+}
+
+.buttonNav {
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  margin: 0 1rem 0 1rem;
+}
 /*  PAGE ACCUEIL */
 
 .titreAccueil {
@@ -346,28 +327,7 @@ body>a {
   background-color: rgba(215, 197, 168, 0.7);
 }
 
-.container6 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  position:absolute;
-  bottom:0;  
-  background-color: #D7C5A8;
-  padding: 0.6rem;
-}
 
-.buttonNav {
-  background-color: #206D3C;
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 20px;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-  margin: 0 1rem 0 1rem;
-}
 
 /* PAGE PROFIL */
 
@@ -378,16 +338,7 @@ body>a {
   flex-direction: column;
 }
 
-.returnHome {
-  background-color: #206D3C;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-}
+
 
 
 .container3 {
