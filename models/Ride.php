@@ -10,7 +10,7 @@ class Ride
      * @param string $user_id Id de l'utilisateur
      * @param int $transport_id Id du moyen de transport
      */
-    
+
  public static function create(string $date, int $transport_id, string $distance,string $ride_time, int $user_id )
     {
         try {
@@ -41,6 +41,23 @@ class Ride
         }
     }
 
+    public static function getAllTrajets(int $user_id) {
+        try {
+            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
     
+            $sql = "SELECT * FROM `ride`NATURAL JOIN `transport` WHERE `user_id`= :id_user";
+            $query = $db->prepare($sql);
+            $query->bindValue(':id_user', $user_id, PDO::PARAM_INT);
+            $query->execute();
+    
+            // Utiliser fetchAll pour récupérer tous les résultats
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $result;  // Retourner le tableau des trajets
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
 }
 

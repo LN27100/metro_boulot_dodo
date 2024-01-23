@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once '../config.php';
-require_once __DIR__ . '/../models/Userprofil.php';
+require_once __DIR__ . '/../models/Ride.php';
 
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
@@ -14,9 +14,23 @@ if (!isset($_SESSION['user'])) {
     header("Location: ../controllers/controller-signin.php");
     exit();
 }
+
+// Récupère l'ID de l'utilisateur depuis la session
+$user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : null;
+
+// Vérifie si l'ID de l'utilisateur est défini
+if ($user_id === null) {
+   
+    header("Location: ../controllers/controller-home.php");
+    exit();
+}
+
 // Récupère le pseudo de l'utilisateur
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
 
-// Inclure la vue home uniquement si l'utilisateur est connecté
+// Appelle la méthode getAllTrajets en passant l'ID de l'utilisateur
+$allTrajets = Ride::getAllTrajets($user_id);
+
+// Inclure la vue history uniquement si l'utilisateur est connecté
 include_once '../views/view-history.php';
 ?>

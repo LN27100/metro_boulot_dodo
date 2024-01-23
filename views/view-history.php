@@ -25,19 +25,36 @@
     </div>
 
     <div class="container8">
-<div class="row">
-    <section class="col-12">
-        <table class="table">
-            <thead></thead>
-<th>Trajet 1</th>
-<th>Trajet 2</th>
-<th>Trajet 3</th>
-<th>Trajet 4</th>
-<th>Trajet 5</th>
-</thead>
-</table>
-</section>
-</div>
+        <div class="row">
+            <section class="col-12">
+                <table class="table">
+                    <thead>
+                        <th>Date</th>
+                        <th>Transport</th>
+                        <th>Distance</th>
+                        <th>Durée</th>
+                    </thead>
+                    <tbody>
+                        <!-- je parcours le tableau de tous les trajets et je stocke chaque fois que je tombe sur une ligne -->
+                        <?php foreach ($allTrajets as $trajet) {
+                        ?>
+
+                            <tr>
+                                <td><?= $trajet['ride_date'] ?></td>
+                                <td><?= $trajet['transport_type'] ?></td>
+                                <td><?= $trajet['ride_distance'] .'kms' ?></td>
+                                <td><?= $trajet['ride_time'] ?></td>
+                            </tr>
+
+                        <?php
+                        }
+                        ?>
+
+
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </div>
 
 
@@ -50,18 +67,8 @@
 
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const navbarToggle = document.getElementById("navbar-toggle");
-            const navbarNav = document.getElementById("navbar-nav");
 
-            navbarToggle.addEventListener("click", function() {
-                navbarNav.classList.toggle("active");
-            });
-        });
     </script>
 </body>
 
 </html>
-
-<!-- LEXIQUE -->
-<!-- exit(); est une mesure de sécurité pour s'assurer qu'aucun code supplémentaire n'est exécuté après une redirection, ce qui pourrait potentiellement causer des problèmes ou générer un contenu non désiré dans la réponse HTTP. -->
