@@ -338,14 +338,36 @@ align-items: center;
 }
 
 
+body > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body > form {
+  padding: 2rem 2rem;
+  margin-top: 3rem;
+  position: relative;
+  background-color: rgba(215, 197, 168, 0.7);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body > form ::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/bgTrajet.jpg) no-repeat;
+  background-size: cover;
+  border-radius: 7px;
+  z-index: -1;
+}
 
 /* PAGE PROFIL */
 
-body > form {
-background-color: #7A9855;
-background-size: cover;
-background-repeat: no-repeat;
-}
 
 .container3 {
   display: flex;
@@ -453,23 +475,22 @@ body>div:nth-child(7)>p {
   margin-right: 1rem;
 }
 
-body > div.container5 > div:nth-child(1) > label {
-  text-align: center;
-  width: 10rem;
-
-}
-
-body > div.container5 > div:nth-child(2) > label {
+body > form > div.container5 > div:nth-child(1) > label {
   text-align: center;
   width: 10rem;
 }
 
-body > div.container5 > div:nth-child(3) > label {
+body > form > div.container5 > div:nth-child(2) > label {
   text-align: center;
   width: 10rem;
 }
 
-body > div.container5 > div:nth-child(4) > label {
+body > form > div.container5 > div:nth-child(3) > label {
+  text-align: center;
+  width: 10rem;
+}
+
+body > form > div.container5 > div:nth-child(4) > label {
   text-align: center;
   width: 10rem;
 }
