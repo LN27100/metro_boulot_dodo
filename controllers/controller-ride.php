@@ -15,22 +15,19 @@ if (!isset($_SESSION['user'])) {
     header("Location: ../controllers/controller-signin.php");
     exit();
 }
-var_dump($_POST);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
 
     // Récupération des données du formulaire en le rendant "safe" (enlever les caractères spéciaux etc)
     $date = trim($_POST['dateStart']);
-    $kilometers = trim($_POST['kilometers']);
+    $distance = trim($_POST['kilometers']);
     $user_id = trim($_SESSION['user']['user_id']);
     $transport_id = ($_POST['transport_id']);
-    $timeId = trim($_POST['time_id']);
+    $ride_time = trim($_POST['ride_time']);
 
 
-    // Contrôle du transport
-    if (empty($_POST["transports"])) {
-        $errors["transports"] = "Champ obligatoire";
-    } 
+ 
 
     // Contrôle du date
     if (empty($_POST["dateStart"])) {
@@ -42,28 +39,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["kilometers"] = "Champ obligatoire";
     } 
 
-    // Contrôle user_id
-    if (empty($_POST["user_id"])) {
-        $errors["user_id"] = "Champ obligatoire";
-    } 
-
     // Contrôle transport_id
     if (empty($_POST["transport_id"])) {
         $errors["transport_id"] = "Champ obligatoire";
     }
 
      // Contrôle transport_id
-     if (empty($_POST["time_id"])) {
+     if (empty($_POST["ride_time"])) {
         $errors["time_id"] = "Champ obligatoire";
     }
     // On s'assure qu'il n'y a pas d'erreur dans le formuaire
+    var_dump($errors);
     if (empty($errors)) {
 
-        Userprofil::create($nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id, 1);
-        Ride::create($transport, $date, $kilometers, $user_id, $transport_id);
+        Ride::create( $date,  $transport_id,  $distance, $ride_time,  $user_id);
 
-        $showform = false;
-        
+
     }
 
     // Donne toutes les propriétés du serveur
@@ -71,11 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 // Récupèration données
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
-$transport = isset($_SESSION['user']['transport_id']) ? isset($_SESSION['user']['transport_id']) : "Transport non défini";
-$date = isset($_SESSION['user']['ride_date']) ? isset($_SESSION['user']['ride_date']) : "Date non défini";
-$kilometers = isset($_SESSION['user']['ride_distance']) ? isset($_SESSION['user']['ride_distance']) : "Kilomètres non défini";
-$user_id = isset($_SESSION['user']['user_id']) ? isset($_SESSION['user']['user_id']) : "Id user non défini";
-$transport_id = isset($_SESSION['user']['transport_id']) ? isset($_SESSION['user']['transport_id']) : "Id transport non défini";
+
 
 // Inclure la vue home uniquement si l'utilisateur est connecté
 include_once '../views/view-ride.php';

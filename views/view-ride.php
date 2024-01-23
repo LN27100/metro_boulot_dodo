@@ -48,14 +48,14 @@
         </div>
 
         <div class="container7">
-            <label for="transptransport_idorts" class="form-labels">Moyen de transport</label>
+            <label for="transptransport_id" class="form-labels">Moyen de transport</label>
             <select class="form-select" aria-label="Default select example" name="transport_id" id="transport">
                 <option value="" selected>Sélectionnez un transport</option>
                 <option value="1" <?= isset($_POST['ride']) && $_POST['ride'] == 1 ? 'selected' : '' ?>>Vélo</option>
                 <option value="2" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Trotinette</option>
-                <option value="3" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Roller</option>
-                <option value="4" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Skate</option>
-                <option value="5" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Marche</option>
+                <option value="3" <?= isset($_POST['ride']) && $_POST['ride'] == 3 ? 'selected' : '' ?>>Roller</option>
+                <option value="4" <?= isset($_POST['ride']) && $_POST['ride'] == 4 ? 'selected' : '' ?>>Skate</option>
+                <option value="5" <?= isset($_POST['ride']) && $_POST['ride'] == 5 ? 'selected' : '' ?>>Marche</option>
             </select>
         </div>
 
@@ -65,8 +65,8 @@
         </div>
 
         <div class="container7">
-            <label for="time_id">Temps de trajet</label>
-            <input type="time" id="appt" name="time_id" min="09:00" max="18:00" required />
+            <label for="ride_time">Temps de trajet</label>
+            <input type="time" id="appt" name="ride_time" min="09:00" max="18:00"  required />
         </div>
 
 
