@@ -22,13 +22,13 @@
     <h1 class="titreAccueil">Votre profil</h1>
     <div class="container3">
 
-        <?php echo "<img src='" . $img . "' alt='photo de profil'>"; ?>
-        <?php echo "<p>Nom: <span style='color: black;'>$nom</span></p>"; ?>
-        <?php echo "<p>Prenom: <span style='color: black;'>$prenom</span></p>"; ?>
-        <?php echo "<p>Pseudo: <span style='color: black;'>$pseudo</span></p>"; ?>
-        <?php echo "<p>Date de naissance:<span style='color: black;'>$date_naissance</span></p>"; ?>
-        <?php echo "<p>Email: <span style='color: black;'>$email</span></p>"; ?>
-        <?php echo "<p>Entreprise: <span style='color: black;'>$entreprise</span></p>"; ?>
+        <img src= "<?= $img ?>" alt="photo de profil">
+       <p><span class="styleProfil"> Nom:</span> <?= $nom?></p>
+       <p><span class="styleProfil">Prenom: </span> <?= $prenom?></p>
+       <p><span class="styleProfil">Pseudo:</span> <?= $pseudo?></p>
+       <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance?></p>
+       <p><span class="styleProfil">Email: </span> <?= $email?></p>
+       <p><span class="styleProfil">Entreprise:</span><?=  $entreprise?></p>
 
 
 

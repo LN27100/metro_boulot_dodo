@@ -399,56 +399,21 @@ body>form ::before {
   z-index: -1;
 }
 
-body>div.container3>p:nth-child(1) {
+.styleProfil {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
-  margin-top: 2rem;
-  color: #B5CA69;
+  color: #206D3C;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
 }
 
-body>div.container3>p:nth-child(2) {
+p {
   font-family: 'Exo', sans-serif;
+  color:black;
   font-size: 1.5rem;
-  color: #B5CA69;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
 }
 
-body>div.container3>p:nth-child(3) {
-  font-family: 'Exo', sans-serif;
-  font-size: 1.5rem;
-  color: #B5CA69;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
 
-body>div.container3>p:nth-child(4) {
-  font-family: 'Exo', sans-serif;
-  font-size: 1.5rem;
-  color: #B5CA69;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-body>div.container3>p:nth-child(5) {
-  font-family: 'Exo', sans-serif;
-  font-size: 1.5rem;
-  color: #B5CA69;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-body>div.container3>p:nth-child(6) {
-  font-family: 'Exo', sans-serif;
-  font-size: 1.5rem;
-  color: #B5CA69;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-body>div.container3>p:nth-child(7) {
-  font-family: 'Exo', sans-serif;
-  font-size: 1.5rem;
-  color: #B5CA69;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
 
 /* PAGE TRAJETS */
 
@@ -542,20 +507,20 @@ body>form>div:nth-child(2)>img {
 }
 
 .table {
-  border: 2px solid #7A9855 ;
+  border: 2px solid #7A9855;
 }
 
 
 body>div.container8>div>section>table>thead>tr>th {
-  color: #EAEBE6 ;
-  background-color:#B5CA69;
-  border: 2px solid #7A9855 ;
+  color: #EAEBE6;
+  background-color: #B5CA69;
+  border: 2px solid #7A9855;
   text-align: center;
 }
 
 body>div.container8>div>section>table>tbody>tr>td {
   background-color: rgba(181, 202, 105, 0.6);
-  border: 1px solid #7A9855 ;
+  border: 1px solid #7A9855;
   color: #206D3C;
   font-weight: bold;
   text-align: center;
