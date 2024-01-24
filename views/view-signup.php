@@ -12,8 +12,8 @@
 </head>
 
 <body>
-<?php if ($showform): ?>
-    <h1>Formulaire d'inscription</h1>
+    <?php if ($showform) : ?>
+        <h1>Formulaire d'inscription</h1>
     <?php endif; ?>
 
     <div class="container">
@@ -27,10 +27,10 @@
                     <input type="text" class="form-control <?php if (isset($errors['nom'])) echo 'is-invalid'; ?>" id="validationServer01" name="nom" placeholder="ex.Poirier-Halley" value="<?= isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '' ?>" required>
                     <div class="invalid-feedback" id="nomValidationFeedback">
                         <?php
-                            if (isset($errors['nom'])) {
-                                echo $errors['nom'];
-                            } 
-                            ?></div>
+                        if (isset($errors['nom'])) {
+                            echo $errors['nom'];
+                        }
+                        ?></div>
                 </div>
 
                 <div class="col-md-4">
@@ -38,21 +38,21 @@
                     <input type="text" class="form-control <?php if (isset($errors['prenom'])) echo 'is-invalid'; ?>" id="validationServer02" name="prenom" placeholder="ex.Hélène" value="<?= isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : '' ?>" required>
                     <div class="invalid-feedback" id="prenomValidationFeedback">
                         <?php
-                            if (isset($errors['prenom'])) {
-                                echo $errors['prenom'];
-                            } 
-                            ?></div>
+                        if (isset($errors['prenom'])) {
+                            echo $errors['prenom'];
+                        }
+                        ?></div>
                 </div>
 
                 <div class="col-md-4">
                     <label for="validationServer03" class="form-label">Pseudo: </label>
                     <input type="text" class="form-control <?php if (isset($errors['pseudo'])) echo 'is-invalid'; ?>" id="validationServer03" name="pseudo" pattern="^[a-zA-ZÀ-ÿ\d]*$" placeholder="ex.LNwarrior" value="<?= isset($_POST['pseudo']) ? htmlspecialchars($_POST['pseudo']) : '' ?>" required>
                     <div class="invalid-feedback" id="pseudoValidationFeedback">
-                    <?php
-                            if (isset($errors['pseudo'])) {
-                                echo $errors['pseudo'];
-                            } 
-                            ?>
+                        <?php
+                        if (isset($errors['pseudo'])) {
+                            echo $errors['pseudo'];
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -60,11 +60,11 @@
                     <label for="start" class="form-label2">Date de naissance:</label>
                     <input type="date" id="start" name="date_naissance" value="<?= isset($_POST['date_naissance']) ? htmlspecialchars($_POST['date_naissance']) : '' ?>" min="1940-01-01" max="2024-12-31" class="form-control <?php if (isset($errors['date_naissance'])) echo 'is-invalid'; ?>" required>
                     <div class="invalid-feedback" id="dateValidationFeedback">
-                    <?php
-                            if (isset($errors['date_naissance'])) {
-                                echo $errors['date_naissance'];
-                            } 
-                            ?>
+                        <?php
+                        if (isset($errors['date_naissance'])) {
+                            echo $errors['date_naissance'];
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -76,7 +76,7 @@
                             <?php
                             if (isset($errors['email'])) {
                                 echo $errors['email'];
-                            } 
+                            }
                             ?>
                         </div>
                     </div>
@@ -86,11 +86,11 @@
                         <div class="input-group d-flex">
                             <input type="password" class="form-control rounded mt-1 password-input <?php if (isset($errors['mot_de_passe'])) echo 'is-invalid'; ?>" name="mot_de_passe" placeholder="Votre mot de passe" aria-label="password" aria-describedby="password" id="password-input">
                             <div class="invalid-feedback" id="passwordValidationFeedback">
-                            <?php
-                            if (isset($errors['mot_de_passe'])) {
-                                echo $errors['mot_de_passe'];
+                                <?php
+                                if (isset($errors['mot_de_passe'])) {
+                                    echo $errors['mot_de_passe'];
                                 }
-                            ?>
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -133,11 +133,20 @@
                     </div>
 
                     <label for="entreprise" class="form-labels">Choix de l'entreprise:</label>
-                    <select class="form-select <?php if (isset($errors['entreprise'])) echo 'is-invalid'; ?>" aria-label="Default select example" name="entreprise" id="entreprise">
+                    <select class="form-select" aria-label="Default select example" name="entreprise" id="entreprise">
                         <option value="" selected>Sélectionnez une entreprise</option>
-                        <option value="1" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 1 ? 'selected' : '' ?>>Plume Futée</option>
-                        <option value="2" <?= isset($_POST['entreprise']) && $_POST['entreprise'] == 2 ? 'selected' : '' ?>>Dream Stones</option>
+
+                        <?php foreach ($allEnterprises as $enterprise) {
+                        ?>
+
+                            <option value=<?= $enterprise['enterprise_id'] ?>> <?= $enterprise['enterprise_name'] ?></option>
+
+                        <?php
+                        }
+                        ?>
                     </select>
+
+
                     <div class="invalid-feedback" id="entrepriseValidationFeedback">Veuillez choisir une entreprise.</div>
 
                     <div class="texte form-check">

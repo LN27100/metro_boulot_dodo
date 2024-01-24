@@ -3,6 +3,8 @@
 //lier le fichier config
 require_once '../config.php';
 require_once '../models/Userprofil.php';
+require_once '../models/Enterprise.php';
+
 
 // permet d'afficher le formulaire
 $showform = true;
@@ -72,10 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["conf_mot_de_passe"] = "Les mots de passe ne correspondent pas";
     }
 
-    // Contrôle du choix de l'entreprise
-    if (empty($_POST["entreprise"])) {
-        $errors["entreprise"] = "Veuillez choisir une entreprise";
-    }
+
 
     // Contrôle des CGU
     if (empty($_POST["cgu"]) || $_POST["cgu"] !== "on") {
@@ -87,12 +86,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         Userprofil::create($nom, $prenom, $pseudo, $date_naissance, $email, $mot_de_passe, $enterprise_id, 1);
         $showform = false;
-        
+
     }
 
     // Donne toutes les propriétés du serveur
     // var_dump($_SERVER)
 }
+$allEnterprises = Enterprise::getAllEnterprises();
+
+
+
 
 // Affichage du formulaire ou des erreurs
 include_once __DIR__ . '/../views/view-signup.php';

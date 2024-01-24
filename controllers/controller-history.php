@@ -30,6 +30,8 @@ $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pse
 
 // Appelle la méthode getAllTrajets en passant l'ID de l'utilisateur
 $allTrajets = Ride::getAllTrajets($user_id);
+// Appelle de la méthode updateRide pour modifier un trajet
+// Ride::updateRide($ride_id, $new_date, $new_distance, $new_ride_time, $new_transport_id, $new_user_id);
 
 // Inclure la vue history uniquement si l'utilisateur est connecté
 include_once '../views/view-history.php';
