@@ -290,7 +290,7 @@ body>h2 {
   color: #B5CA69;
   font-weight: bolder;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 
 body>div:nth-child(2) {
@@ -498,6 +498,9 @@ body>form>div:nth-child(2)>img {
   margin-top: 1rem;
   width: 10rem;
   height: auto;
+}
+body > form > div.container5 > div:nth-child(5) > button {
+  margin-top: 0.5rem;
 }
 
 /* PAGE HISTORIQUE */
