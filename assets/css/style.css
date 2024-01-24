@@ -510,13 +510,12 @@ body > div.container8 > div > section > table > tbody > tr > td > form > i > but
   height: 2rem;
   width: 2rem;
   border-radius: 10px;
-  position: relative;
+  background-color: #ca2121;
 }
 
 .bryan {
   color: white;
   font-size: 1rem;
-  /* Ajustez la taille selon vos besoins */
   background-color: #ca2121;
   height: 3rem;
 }
@@ -709,7 +708,10 @@ body>div.container8>div>section>table>tbody>tr>td {
   .btnSupp {
     width: 2rem;
     font-size: 0.7rem;
+    background-color: #ca2121;
+
   }
+ 
 
   body>div.container8>div>section>table {
     width: 100%;
