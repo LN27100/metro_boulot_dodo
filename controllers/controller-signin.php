@@ -2,6 +2,7 @@
 require_once '../config.php';
 require_once '../models/Userprofil.php';
 
+
         // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
         if (session_status() === PHP_SESSION_NONE) {
             // Si non, démarrer la session
@@ -51,8 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
-    
 }
+
 
 // Inclure la vue du formulaire de connexion
 include_once '../views/view-signin.php';

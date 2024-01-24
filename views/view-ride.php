@@ -17,58 +17,63 @@
 
     <form class="container" method="POST" action="../controllers/controller-ride.php" novalidate>
 
-    <div class="container4">
-        <?php
-        // Date avec le fuseau horaire correct
-        $dateActuelle = new DateTime('now', new DateTimeZone('Europe/Paris'));
-        echo $dateActuelle->format('d/m/Y');
-        ?>
-    </div>
+        <div class="container4">
+            <?php
+            // Date avec le fuseau horaire correct
+            $dateActuelle = new DateTime('now', new DateTimeZone('Europe/Paris'));
+            echo $dateActuelle->format('d/m/Y');
+            ?>
+        </div>
 
-    <div class="container4">
+        <div class="container4">
 
-        <?php echo "<h3> $pseudo</h3>"; ?>
+            <?php echo "<h3> $pseudo</h3>"; ?>
 
-        <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
-    </div>
+            <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
+        </div>
 
 
-    <div class="container5">
-        <div class="container7">
-            <label for="dateStart" class="form-label2">Date</label>
-            <input type="date" id="dateStart" name="dateStart" required>
-            <div class="invalid-feedback" id="dateValidationFeedback">
+        <div class="container5">
+            <div class="container7">
+                <label for="dateStart" class="form-label2">Date</label>
+                <input type="date" id="dateStart" name="dateStart" required>
+                <div class="invalid-feedback" id="dateValidationFeedback">
+
+                </div>
+            </div>
+
+            <div class="container7">
+                <label for="transptransport_id" class="form-labels">Moyen de transport</label>
+                <select class="form-select" aria-label="Default select example" name="transport_id" id="transport">
+                    <option value="" selected>Sélectionnez un transport</option>
+
+                    <?php foreach ($allTransports as $transport) {
+                    ?>
+
+                        <option value=<?= $transport['transport_id'] ?>> <?= $transport['transport_type'] ?></option>
+
+                    <?php
+                    }
+                    ?>
+                </select>
 
             </div>
-        </div>
 
-        <div class="container7">
-            <label for="transptransport_id" class="form-labels">Moyen de transport</label>
-            <select class="form-select" aria-label="Default select example" name="transport_id" id="transport">
-                <option value="" selected>Sélectionnez un transport</option>
-                <option value="1" <?= isset($_POST['ride']) && $_POST['ride'] == 1 ? 'selected' : '' ?>>Vélo</option>
-                <option value="2" <?= isset($_POST['ride']) && $_POST['ride'] == 2 ? 'selected' : '' ?>>Trotinette</option>
-                <option value="3" <?= isset($_POST['ride']) && $_POST['ride'] == 3 ? 'selected' : '' ?>>Roller</option>
-                <option value="4" <?= isset($_POST['ride']) && $_POST['ride'] == 4 ? 'selected' : '' ?>>Skate</option>
-                <option value="5" <?= isset($_POST['ride']) && $_POST['ride'] == 5 ? 'selected' : '' ?>>Marche</option>
-            </select>
-        </div>
+            <div class="container7">
+                <label class="form-label" for="typeNumber">Kilomètres</label>
+                <input step="0.01" value="" type="number" id="typeNumber" class="form-control" name="kilometers" />
+            </div>
 
-        <div class="container7">
-            <label class="form-label" for="typeNumber">Kilomètres</label>
-            <input step="0.01" value="" type="number" id="typeNumber" class="form-control" name="kilometers"/>
-        </div>
-
-        <div class="container7">
-            <label for="ride_time">Temps de trajet</label>
-            <input type="time" id="appt" name="ride_time" min="09:00" max="18:00"  required />
-        </div>
+            <div class="container7">
+                <label for="ride_time">Temps de trajet</label>
+                <input type="time" id="appt" name="ride_time" min="09:00" max="18:00" required />
+            </div>
 
 
-        <div class="container7">
-            <button class="button" type="submit">Valider</button>
+            <div class="container7">
+                <button class="button" type="submit">Valider</button>
+            </div>
         </div>
-    </div>
     </form>
 
     <div class="container6">

@@ -7,6 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once '../config.php';
 require_once __DIR__ . '/../models/Ride.php';
+require_once __DIR__ . '/../models/Transport.php';
 
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
@@ -61,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 // Récupèration données
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
+$allTransports = Transport::getAllTransports();
 
 
 // Inclure la vue home uniquement si l'utilisateur est connecté
