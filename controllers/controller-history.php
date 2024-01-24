@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Redirigez l'utilisateur vers la page history après la suppression
-    header("Location: chemin/vers/votre/controller-history.php");
+    header("Location: ../controllers/controller-history.php");
     exit();
 }
 
@@ -27,7 +27,7 @@ require_once __DIR__ . '/../models/Ride.php';
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
     // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
-    header("Location: chemin/vers/votre/controller-signin.php");
+    header("Location: ../controllers/controller-signin.php");
     exit();
 }
 
@@ -36,7 +36,7 @@ $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 
 
 // Vérifie si l'ID de l'utilisateur est défini
 if ($user_id === null) {
-    header("Location: chemin/vers/votre/controller-home.php");
+    header("Location: ../controllers/controller-home.php");
     exit();
 }
 
