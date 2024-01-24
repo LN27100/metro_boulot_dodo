@@ -158,41 +158,74 @@ class Userprofil
     }
 
     /**
- * Methode permettant de récupérer le nom de l'entreprise à partir de son ID
- * 
- * @param string $entreprise_id ID de l'entreprise
- * 
- * @return string Nom de l'entreprise
- */
-public static function getEntrepriseNom(string $entreprise_id): string
-{
-    try {
-        // Création d'un objet $db selon la classe PDO
-        $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+     * Methode permettant de récupérer le nom de l'entreprise à partir de son ID
+     * 
+     * @param string $entreprise_id ID de l'entreprise
+     * 
+     * @return string Nom de l'entreprise
+     */
+    public static function getEntrepriseNom(string $entreprise_id): string
+    {
+        try {
+            // Création d'un objet $db selon la classe PDO
+            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
-        // stockage de ma requete dans une variable
-        $sql = "SELECT `enterprise_name` FROM `enterprise` WHERE `enterprise_id` = :id_entreprise";
+            // stockage de ma requete dans une variable
+            $sql = "SELECT `enterprise_name` FROM `enterprise` WHERE `enterprise_id` = :id_entreprise";
 
-        // je prepare ma requête pour éviter les injections SQL
-        $query = $db->prepare($sql);
+            // je prepare ma requête pour éviter les injections SQL
+            $query = $db->prepare($sql);
 
-        // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
-        $query->bindValue(':id_entreprise', $entreprise_id, PDO::PARAM_STR);
+            // on relie les paramètres à nos marqueurs nominatifs à l'aide d'un bindValue
+            $query->bindValue(':id_entreprise', $entreprise_id, PDO::PARAM_STR);
 
-        // on execute la requête
-        $query->execute();
+            // on execute la requête
+            $query->execute();
 
-        // on récupère le résultat de la requête dans une variable
-        $result = $query->fetch(PDO::FETCH_ASSOC);
+            // on récupère le résultat de la requête dans une variable
+            $result = $query->fetch(PDO::FETCH_ASSOC);
 
-      
 
-        // on retourne le nom de l'entreprise
-        return $result['enterprise_name'];
-    } catch (PDOException $e) {
-        echo 'Erreur : ' . $e->getMessage();
-        die();
+            // on retourne le nom de l'entreprise
+            return $result['enterprise_name'];
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
     }
 }
 
-}
+// Modification de trajet (Update)
+
+    // public static function updateRide($ride_id, $date, $distance, $ride_time, $transport_id, $user_id)
+    // {
+    //     try {
+    //         $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+    //         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    //         $sql = "UPDATE ride 
+    //                 SET ride_date = :dateride,
+    //                     transport_id = :id_transport,
+    //                     ride_distance = :distanceride,
+    //                     ride_time = :ride_time,
+    //                     user_id = :id_user
+    //                 WHERE ride_id = :id_ride";
+    
+    //         $query = $db->prepare($sql);
+    
+    //         $query->bindValue(':dateride', htmlspecialchars($date), PDO::PARAM_STR);
+    //         $query->bindValue(':distanceride', htmlspecialchars($distance), PDO::PARAM_STR);
+    //         $query->bindValue(':id_user', $user_id, PDO::PARAM_INT);
+    //         $query->bindValue(':id_transport', $transport_id, PDO::PARAM_INT);
+    //         $query->bindValue(':ride_time', $ride_time, PDO::PARAM_STR);
+    //         $query->bindValue(':id_ride', $ride_id, PDO::PARAM_INT);
+    
+    //         $query->execute();
+    //     } catch (PDOException $e) {
+    //         echo 'Erreur :' . $e->getMessage();
+    //         die();
+    //     }
+    // }
+    
+    // // Utilisation de la fonction
+    // Ride::updateJeu($bdd, $nvprix, $nv_nb_joueurs, $nom_jeu);

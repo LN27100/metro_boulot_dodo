@@ -476,21 +476,21 @@ body>form>div.container5>div:nth-child(1)>label {
 body>form>div.container5>div:nth-child(2)>label {
   text-align: center;
   width: 10rem;
-  margin-bottom :0;
+  margin-bottom: 0;
 
 }
 
 body>form>div.container5>div:nth-child(3)>label {
   text-align: center;
   width: 10rem;
-  margin-bottom :0;
+  margin-bottom: 0;
 
 }
 
 body>form>div.container5>div:nth-child(4)>label {
   text-align: center;
   width: 10rem;
-  margin-bottom :0;
+  margin-bottom: 0;
 
 }
 
@@ -499,17 +499,29 @@ body>form>div:nth-child(2)>img {
   width: 10rem;
   height: auto;
 }
-body > form > div.container5 > div:nth-child(5) > button {
+
+body>form>div.container5>div:nth-child(5)>button {
   margin-top: 0.5rem;
 }
 
 /* PAGE HISTORIQUE */
 
+.btnSupp {
+  height: 1rem;
+  width: 2rem;
+  background-color: #ca2121;
+  border-radius: 10px;
+}
+
+body>div.container8>div>section>table>tbody>tr>td>form {
+  background-color: rgba(181, 202, 105, 0.6);
+  width: 5rem;
+}
+
 .tittleHistory {
   color: #D7C5A8;
   text-align: center;
   font-family: 'Marhey', sans-serif;
-
 }
 
 .container8 {
@@ -517,9 +529,6 @@ body > form > div.container5 > div:nth-child(5) > button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.container8 {
   padding: 2rem 2rem;
   margin-top: 1.5rem;
   position: relative;
@@ -542,7 +551,6 @@ body > form > div.container5 > div:nth-child(5) > button {
 .table {
   border: 2px solid #7A9855;
 }
-
 
 body>div.container8>div>section>table>thead>tr>th {
   color: #EAEBE6;
@@ -675,5 +683,39 @@ body>div.container8>div>section>table>tbody>tr>td {
     margin-bottom: 0.5em;
     background-color: rgba(215, 197, 168, 0.9);
 
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  body>div.container8>div>section>table>thead>tr>th,
+  body>div.container8>div>section>table>tbody>tr>td {
+    font-size: 0.8rem; 
+  }
+
+  .btnSupp {
+    width: 1.5rem; 
+  }
+
+  body>div.container8>div>section>table {
+    overflow-x: auto; 
+  }
+}
+/* Styles spécifiques pour les écrans de petite taille (smartphones) */
+@media only screen and (max-width: 360px) {
+  body>div.container8>div>section>table>thead>tr>th,
+  body>div.container8>div>section>table>tbody>tr>td {
+    font-size: 0.7rem; 
+    padding: 0.3rem; 
+  }
+
+  .btnSupp {
+    width: 1.5rem; 
+    font-size: 0.7rem; 
+  }
+
+  body>div.container8>div>section>table {
+    width: 100%; 
+    box-sizing: border-box; 
+    overflow-x: auto; 
   }
 }

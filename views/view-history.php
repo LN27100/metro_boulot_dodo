@@ -29,6 +29,7 @@
             <section class="col-12">
                 <table class="table">
                     <thead>
+                        <th>Supp</th>
                         <th>Date</th>
                         <th>Transport</th>
                         <th>Distance</th>
@@ -40,9 +41,17 @@
                         ?>
 
                             <tr>
+                                <td>
+                                    <form action="../controllers/controller-history.php" method="post">
+                                        <input class="suppRide" type="hidden" name="ride_id" value="<?= $trajet['ride_id'] ?>">
+                                        <button class="btnSupp" type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce trajet ?')">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                    </form>
+                                </td>
                                 <td><?= $trajet['date_fr'] ?></td>
                                 <td><?= $trajet['transport_type'] ?></td>
-                                <td><?= $trajet['ride_distance'] .'kms' ?></td>
+                                <td><?= $trajet['ride_distance'] . 'kms' ?></td>
                                 <td><?= $trajet['ride_time'] ?></td>
                             </tr>
 

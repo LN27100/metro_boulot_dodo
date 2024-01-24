@@ -1,5 +1,21 @@
 <?php
-// Empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
+// Assurez-vous de valider et sécuriser vos données avant de les utiliser
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $ride_id = isset($_POST['ride_id']) ? intval($_POST['ride_id']) : 0;
+
+    if ($ride_id > 0) {
+        require_once '../config.php';
+        require_once __DIR__ . '/../models/Ride.php';
+
+        Ride::deleteRide($ride_id);
+    }
+
+    // Redirigez l'utilisateur vers la page history après la suppression
+    header("Location: chemin/vers/votre/controller-history.php");
+    exit();
+}
+
+// Le reste de votre code pour récupérer les trajets
 if (session_status() === PHP_SESSION_NONE) {
     // Si non, démarrer la session
     session_start();
@@ -11,7 +27,7 @@ require_once __DIR__ . '/../models/Ride.php';
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
     // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
-    header("Location: ../controllers/controller-signin.php");
+    header("Location: chemin/vers/votre/controller-signin.php");
     exit();
 }
 
@@ -20,8 +36,7 @@ $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 
 
 // Vérifie si l'ID de l'utilisateur est défini
 if ($user_id === null) {
-   
-    header("Location: ../controllers/controller-home.php");
+    header("Location: chemin/vers/votre/controller-home.php");
     exit();
 }
 
@@ -30,8 +45,6 @@ $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pse
 
 // Appelle la méthode getAllTrajets en passant l'ID de l'utilisateur
 $allTrajets = Ride::getAllTrajets($user_id);
-// Appelle de la méthode updateRide pour modifier un trajet
-// Ride::updateRide($ride_id, $new_date, $new_distance, $new_ride_time, $new_transport_id, $new_user_id);
 
 // Inclure la vue history uniquement si l'utilisateur est connecté
 include_once '../views/view-history.php';
