@@ -507,10 +507,17 @@ body>form>div.container5>div:nth-child(5)>button {
 /* PAGE HISTORIQUE */
 
 .btnSupp {
+  
   height: 1rem;
-  width: 2rem;
+  width: 3rem;
   background-color: #ca2121;
   border-radius: 10px;
+}
+
+.bryan {  
+  height: 10rem;
+  width: 10rem;
+  color: white;
 }
 
 body>div.container8>div>section>table>tbody>tr>td>form {
