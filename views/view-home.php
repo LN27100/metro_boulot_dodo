@@ -38,9 +38,12 @@
     </div>
 
     <div class="container6">
-    <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
-    <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
-    <a href="../controllers/controller-history.php" class="buttonNav">Historique</a>
+    <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i>
+Accueil</a>
+    <a href="../controllers/controller-profil.php" class="buttonNav"><i class="bi bi-person"></i>
+Profil</a>
+    <a href="../controllers/controller-history.php" class="buttonNav"><i class="bi bi-clock-history"></i>
+Historique</a>
     </div>
 
 

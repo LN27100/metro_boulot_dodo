@@ -173,7 +173,7 @@ body>div>a {
 /* PAGE INSCRIPTION REUSSIE */
 
 body>div>h2 {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   color: #D7C5A8;
   font-family: 'Exo', sans-serif;
 }
@@ -512,7 +512,6 @@ body > form > div.container5 > div:nth-child(5) > button {
 
 }
 
-
 .container8 {
   display: flex;
   justify-content: center;
@@ -522,7 +521,7 @@ body > form > div.container5 > div:nth-child(5) > button {
 
 .container8 {
   padding: 2rem 2rem;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   position: relative;
   background-color: rgba(215, 197, 168, 0.7);
 }
