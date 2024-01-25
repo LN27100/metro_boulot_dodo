@@ -5,6 +5,7 @@
 
 body {
   background-color: #7A9855;
+  overflow-y: auto;
 }
 
 
@@ -393,6 +394,9 @@ body > form::after {
 }
 
 /* PAGE PROFIL */
+body.page-profil {
+  overflow-y: auto; 
+}
 
 .container3 {
   display: flex;
@@ -402,8 +406,7 @@ body > form::after {
   margin-top: 3rem;
   position: relative;
   background-color: rgba(215, 197, 168, 0.7);
-  overflow-y: auto; /* Ajout pour activer la barre de défilement */
-  max-height: 80vh; /* Ajustez la hauteur maximale selon vos besoins */
+  max-height: 80vh;
 }
 
 .container3::after {
@@ -435,7 +438,9 @@ p {
 
 body > div.container3 > div.profile-image-container > form {
   height: 5rem; 
+  width: 20rem;
   background-color: transparent; 
+  margin-right: 5rem;
 }
 
 .profile-image-container {
@@ -445,11 +450,23 @@ body > div.container3 > div.profile-image-container > form {
 }
 
 .profile-image {
-  max-width: 5rem; 
-  max-height: 5rem; 
+  max-width: 10rem; 
+  max-height: 10rem; 
   width: 100%; 
   height: auto; 
   margin-bottom: 1rem;
+  margin-left: 10rem;
+}
+
+.file-label {
+  background-color: white;
+}
+.file-input-container {
+  display: flex;
+  flex-direction: column;
+}
+.file-input-container label {
+  margin-bottom: 5px;
 }
 
 .file-input-text {
@@ -485,10 +502,7 @@ body > div.container3 > div.profile-image-container > form {
   border-radius: 5px;
 }
 
-/* Masquer le champ de fichier par défaut */
-.file-input-hidden {
-  display: none;
-}
+
 
 /* PAGE TRAJETS */
 
@@ -804,7 +818,7 @@ body>div.container8>div>section>table>tbody>tr>td {
   }
 
   .profile-image {
-    max-width: 2rem; 
-    max-height: 2rem; 
+    max-width: 5rem; 
+    max-height: 5rem; 
   }
 }

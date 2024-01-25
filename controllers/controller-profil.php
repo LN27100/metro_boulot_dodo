@@ -24,13 +24,14 @@ $img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']
 
 // Gestion de la mise à jour de l'image de profil
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_image'])) {
-    // Ajoutez ces lignes pour afficher les erreurs
+    // indique à PHP de signaler toutes les erreurs
     error_reporting(E_ALL);
+    // autorise l'affichage des erreurs directement dans la sortie de la page web pendant le développement pour repérer et résoudre les erreurs.
     ini_set('display_errors', 1);
     
     $uploadDir = '../assets/uploads/';
 
-    // Vérifier et créer le dossier si nécessaire
+    // Vérification du dossier de sauvegarde des images
     if (!file_exists($uploadDir)) {
         mkdir($uploadDir, 0777, true);
     }
@@ -38,12 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_image'])) {
     $uploadFile = $uploadDir . basename($_FILES['profile_image']['name']);
 
     if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
-        // Mettez à jour le chemin de l'image dans la session et la base de données
         $_SESSION['user']['user_photo'] = $uploadFile;
         Userprofil::updateProfileImage($_SESSION['user']['user_id'], $uploadFile);
     } else {
         echo "Erreur lors du téléchargement du fichier : " . $_FILES['profile_image']['error'];
     }
+    
 
 }
 
