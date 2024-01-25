@@ -23,19 +23,22 @@
     <h1 class="titreAccueil">Votre profil</h1>
 
     <div class="container3">
-    <div class="profile-image-container">
-    <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
-    <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
-        <label for="profile_image" class="file-label">Choisir un fichier</label>
-        <input type="file" name="profile_image" id="profile_image" required>
-        <input type="submit" value="Télécharger">
-    </form>
-</div>
+        <div class="profile-image-container">
+            <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
+            <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
+                <label for="profile_image" class="file-label">Choisir un fichier</label>
+                <input type="file" name="profile_image" id="profile_image" required>
+                <input type="submit" value="Télécharger">
+            </form>
+        </div>
 
         <div class="profile-info">
             <p><span class="styleProfil"> Nom:</span> <?= $nom ?></p>
             <p><span class="styleProfil">Prenom: </span> <?= $prenom ?></p>
             <p><span class="styleProfil">Pseudo:</span> <?= $pseudo ?></p>
+            <p class="styleProfil">Décrivez-vous:</p>
+            <textarea id="story" name="story" rows="5" cols="33">
+                </textarea>
             <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance ?></p>
             <p><span class="styleProfil">Email: </span> <?= $email ?></p>
             <p><span class="styleProfil">Entreprise:</span><?= $entreprise ?></p>
@@ -72,7 +75,7 @@
             } else {
                 fileNameInput.value = '';
             }
-            
+
         }
     </script>
 </body>

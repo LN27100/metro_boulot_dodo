@@ -461,6 +461,9 @@ body > div.container3 > div.profile-image-container > form {
   margin-left: 10rem;
 }
 
+#story {
+  height: 5rem;
+}
 .file-label {
   background-color: white;
 }
