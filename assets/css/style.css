@@ -394,19 +394,16 @@ body > form::after {
 
 /* PAGE PROFIL */
 
-
 .container3 {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
-
-.container3 {
   padding: 2rem 2rem;
   margin-top: 3rem;
   position: relative;
   background-color: rgba(215, 197, 168, 0.7);
+  overflow-y: auto; /* Ajout pour activer la barre de défilement */
+  max-height: 80vh; /* Ajustez la hauteur maximale selon vos besoins */
 }
 
 .container3::after {
@@ -424,6 +421,7 @@ body > form::after {
 .styleProfil {
   font-family: 'Exo', sans-serif;
   font-size: 1.5rem;
+  font-weight: bold;
   color: #206D3C;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-decoration: underline;
@@ -435,7 +433,62 @@ p {
   font-size: 1rem;
 }
 
+body > div.container3 > div.profile-image-container > form {
+  height: 5rem; 
+  background-color: transparent; 
+}
 
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  max-width: 5rem; 
+  max-height: 5rem; 
+  width: 100%; 
+  height: auto; 
+  margin-bottom: 1rem;
+}
+
+.file-input-text {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  flex-grow: 1;
+  width: 10rem;
+}
+
+.file-input-container {
+  display: flex;
+  align-items: center;
+  width: 30%;
+}
+
+.file-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: calc(100% - 80px);
+  margin-right: 10px;
+}
+
+.file-input-button,
+.file-input-container input[type="submit"] {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Masquer le champ de fichier par défaut */
+.file-input-hidden {
+  display: none;
+}
 
 /* PAGE TRAJETS */
 
@@ -698,7 +751,6 @@ body>div.container8>div>section>table>tbody>tr>td {
   }
 }
 
-/* Styles spécifiques pour les écrans de petite taille (smartphones) */
 
 @media only screen and (min-width: 320px) and (max-width: 450px) {
 
@@ -726,5 +778,33 @@ body>div.container8>div>section>table>tbody>tr>td {
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
+  }
+
+  body > div.container3 > form {
+    height: 4rem;
+  }
+  
+  .file-input-text {
+    width: 100%;
+  }
+
+  .file-input-container {
+    width: 100%;
+  }
+
+  .file-input {
+    width: 100%;
+  }
+
+  .file-input-button,
+  .file-input-container input[type="submit"] {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+
+  .profile-image {
+    max-width: 2rem; 
+    max-height: 2rem; 
   }
 }

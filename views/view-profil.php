@@ -20,35 +20,58 @@
     <?php include('../templates/header.php'); ?>
 
     <h1 class="titreAccueil">Votre profil</h1>
+
     <div class="container3">
+        <div class="profile-image-container">
+            <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
+            <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
+            <input type="file" name="profile_image">
+    <input type="submit" value="Télécharger">
 
-        <img src= "<?= $img ?>" alt="photo de profil">
-       <p><span class="styleProfil"> Nom:</span> <?= $nom?></p>
-       <p><span class="styleProfil">Prenom: </span> <?= $prenom?></p>
-       <p><span class="styleProfil">Pseudo:</span> <?= $pseudo?></p>
-       <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance?></p>
-       <p><span class="styleProfil">Email: </span> <?= $email?></p>
-       <p><span class="styleProfil">Entreprise:</span><?=  $entreprise?></p>
+            </form>
+        </div>
 
-
-
+        <div class="profile-info">
+            <p><span class="styleProfil"> Nom:</span> <?= $nom ?></p>
+            <p><span class="styleProfil">Prenom: </span> <?= $prenom ?></p>
+            <p><span class="styleProfil">Pseudo:</span> <?= $pseudo ?></p>
+            <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance ?></p>
+            <p><span class="styleProfil">Email: </span> <?= $email ?></p>
+            <p><span class="styleProfil">Entreprise:</span><?= $entreprise ?></p>
+        </div>
     </div>
 
     <div class="container6">
-    <a href="../controllers/controller-home.php" class="buttonNav">Accueil</a>
-    <a href="../controllers/controller-profil.php" class="buttonNav">Profil</a>
-    <a href="../controllers/controller-history.php" class="buttonNav">Historique</a>
+        <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i>
+            Accueil</a>
+        <a href="../controllers/controller-profil.php" class="buttonNav"><i class="bi bi-person"></i>
+            Profil</a>
+        <a href="../controllers/controller-history.php" class="buttonNav"><i class="bi bi-clock-history"></i>
+            Historique</a>
     </div>
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const navbarToggle = document.getElementById("navbar-toggle");
             const navbarNav = document.getElementById("navbar-nav");
 
-            navbarToggle.addEventListener("click", function() {
-                navbarNav.classList.toggle("active");
-            });
+            if (navbarToggle && navbarNav) {
+                navbarToggle.addEventListener("click", function() {
+                    navbarNav.classList.toggle("active");
+                });
+            }
         });
+
+        function updateFileName() {
+            var input = document.getElementById('formFile');
+            var fileNameInput = document.getElementById('fileName');
+
+            if (input.files.length > 0) {
+                fileNameInput.value = input.files[0].name;
+            } else {
+                fileNameInput.value = '';
+            }
+        }
     </script>
 </body>
 

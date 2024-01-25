@@ -132,7 +132,7 @@ class Userprofil
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
             // stockage de ma requete dans une variable
-            $sql = "SELECT userprofil.*, enterprise.enterprise_name 
+            $sql = "SELECT userprofil.*, enterprise.enterprise_name
                 FROM `userprofil` 
                 INNER JOIN `enterprise` ON userprofil.enterprise_id = enterprise.enterprise_id
                 WHERE `user_email` = :mail";
@@ -190,6 +190,32 @@ class Userprofil
             return $result['enterprise_name'];
         } catch (PDOException $e) {
             echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
+
+     /**
+     * Methode permettant de mettre à jour le chemin de l'image de profil dans la base de données
+     * 
+     * @param int $user_id ID de l'utilisateur
+     * @param string $new_image_path Nouveau chemin de l'image de profil
+     */
+    public static function updateProfileImage(int $user_id, string $new_image_path)
+    {
+        try {
+            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "UPDATE userprofil SET user_photo = :new_image_path WHERE user_id = :user_id";
+
+            $query = $db->prepare($sql);
+
+            $query->bindValue(':new_image_path', $new_image_path, PDO::PARAM_STR);
+            $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+
+            $query->execute();
+        } catch (PDOException $e) {
+            echo 'Erreur :' . $e->getMessage();
             die();
         }
     }
