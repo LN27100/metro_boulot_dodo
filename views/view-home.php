@@ -34,7 +34,6 @@
 
     <div class="container4">
         <a href="../controllers/controller-ride.php" class="buttonHome">Commencer un trajet</a>
-
     </div>
 
     <div class="container6">

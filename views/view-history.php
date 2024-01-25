@@ -67,7 +67,10 @@
             </section>
         </div>
     </div>
-
+    
+    <div class="text-center">
+        <a href="../controllers/controller-ride.php" class="newTrajet">Nouveau trajet</a>
+    </div>
 
     <div class="container6">
         <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i>

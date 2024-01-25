@@ -651,6 +651,21 @@ body>div.container8>div>section>table>tbody>tr>td {
   vertical-align: middle;
 }
 
+body > div.text-center {
+  margin-top: 2rem;
+}
+
+.newTrajet {
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  height: 2rem;
+  font-size: 1rem;
+  font-family: 'Exo', sans-serif;
+}
+
 
 /* RESPONSIVE */
 
@@ -830,7 +845,7 @@ body>div.container8>div>section>table>tbody>tr>td {
 
   .titreAccueil {
     font-size: 2rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
 }
