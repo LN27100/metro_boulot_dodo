@@ -409,7 +409,6 @@ body.page-profil {
   margin-top: 3rem;
   position: relative;
   background-color: rgba(215, 197, 168, 0.7);
-  max-height: 80vh;
 }
 
 .container3::after {
@@ -461,9 +460,6 @@ body > div.container3 > div.profile-image-container > form {
   margin-left: 10rem;
 }
 
-#story {
-  height: 5rem;
-}
 .file-label {
   background-color: white;
 }
@@ -508,7 +504,37 @@ body > div.container3 > div.profile-image-container > form {
   border-radius: 5px;
 }
 
+.transparent-form {
+  background-color: transparent;
+  height: 10rem;
+margin-top: 0;
+}
 
+.transparent-form textarea {
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  height: 5rem;
+}
+
+#editDescriptionBtn {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+  margin-right: 1rem;
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.file-input-button {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
+  margin-right: 1rem;
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
 
 /* PAGE TRAJETS */
 

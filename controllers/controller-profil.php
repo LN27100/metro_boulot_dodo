@@ -46,6 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_image'])) {
     }
     
 
+// Enregistrement et mise à jour de la description
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_description'])) {
+    $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0;
+    $user_describ = isset($_POST['user_describ']) ? htmlspecialchars($_POST['user_describ']) : "";
+    
+    try {
+        Userprofil::updateProfilDescrib($user_id, $user_describ);
+        $_SESSION['user']['user_describ'] = $user_describ;  
+    } catch (Exception $e) {
+        echo "Erreur lors de la mise à jour de la description : " . $e->getMessage();
+    }
+}
 }
 
 include_once '../views/view-profil.php';

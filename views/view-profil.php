@@ -36,9 +36,26 @@
             <p><span class="styleProfil"> Nom:</span> <?= $nom ?></p>
             <p><span class="styleProfil">Prenom: </span> <?= $prenom ?></p>
             <p><span class="styleProfil">Pseudo:</span> <?= $pseudo ?></p>
-            <p class="styleProfil">Décrivez-vous:</p>
-            <textarea id="story" name="story" rows="5" cols="33">
-                </textarea>
+
+            <!-- Affichage de la description de l'utilisateur -->
+            <div class="profile-info">
+                <p class="styleProfil">Description:</p>
+                <div id="descriptionDisplay">
+                    <?php echo isset($_SESSION['user']['user_describ']) ? htmlspecialchars($_SESSION['user']['user_describ']) : "Aucune description disponible"; ?>
+                </div>
+                <button id="editDescriptionBtn">Modifier</button>
+            </div>
+
+            <!-- Formulaire de modification de la description (masqué par défaut) -->
+            <form method="post" action="../controllers/controller-profil.php" class="transparent-form" enctype="multipart/form-data" id="editDescriptionForm" style="display: none;">
+                <div class="profile-info">
+                    <p class="styleProfil">Modifier votre description:</p>
+                    <textarea id="user_describ" name="user_describ" rows="5" cols="33"><?= isset($_SESSION['user']['user_describ']) ? htmlspecialchars($_SESSION['user']['user_describ']) : "" ?></textarea>
+                    <input type="submit" name="save_description" value="Enregistrer" class="file-input-button">
+                    <button type="button" id="cancelEditBtn" class="file-input-button">Annuler</button>
+                </div>
+            </form>
+
             <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance ?></p>
             <p><span class="styleProfil">Email: </span> <?= $email ?></p>
             <p><span class="styleProfil">Entreprise:</span><?= $entreprise ?></p>
@@ -64,6 +81,15 @@
                     navbarNav.classList.toggle("active");
                 });
             }
+        });
+        document.getElementById('editDescriptionBtn').addEventListener('click', function() {
+            document.getElementById('descriptionDisplay').style.display = 'none';
+            document.getElementById('editDescriptionForm').style.display = 'block';
+        });
+
+        document.getElementById('cancelEditBtn').addEventListener('click', function() {
+            document.getElementById('descriptionDisplay').style.display = 'block';
+            document.getElementById('editDescriptionForm').style.display = 'none';
         });
 
         function updateFileName() {

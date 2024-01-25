@@ -219,5 +219,25 @@ class Userprofil
             die();
         }
     }
+
+    public static function updateProfilDescrib(int $user_id, string $user_describ)
+    {
+        try {
+            $db = new PDO(DBNAME, DBUSER, DBPASSWORD, array(PDO::ATTR_PERSISTENT => true));
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            $sql = "UPDATE userprofil SET user_describ = :user_describ WHERE user_id = :user_id";
+    
+            $query = $db->prepare($sql);
+    
+            $query->bindValue(':user_describ', $user_describ, PDO::PARAM_STR);
+            $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+    
+            $query->execute();
+        } catch (PDOException $e) {
+            error_log('Erreur lors de la mise à jour du profil : ' . $e->getMessage());
+            throw new Exception('Une erreur s\'est produite lors de la mise à jour du profil.');
+        }
+    }
 }
 
