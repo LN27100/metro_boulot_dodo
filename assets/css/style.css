@@ -16,7 +16,7 @@ h1 {
   color: #B5CA69;
   font-weight: bolder;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 
@@ -839,8 +839,8 @@ body > div.text-center {
   }
 
   .profile-image {
-    max-width: 5rem; 
-    max-height: 5rem; 
+    max-width: 6rem; 
+    max-height: 6rem; 
   }
 
   .titreAccueil {
