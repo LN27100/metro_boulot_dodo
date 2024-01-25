@@ -15,7 +15,8 @@
     <?php
 
     // Bouton de déconnexion
-    echo '<a href="../controllers/controller-signout.php" class="buttonHome2">Déconnexion</a>';
+    echo '<a href="../controllers/controller-signout.php" class="buttonHome2"><i class="bi bi-box-arrow-left"></i>
+    </a>';
     ?>
     <?php include('../templates/header.php'); ?>
 
