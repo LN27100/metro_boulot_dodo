@@ -256,7 +256,7 @@ body>h2 {
 
 .container6 {
   display: flex;
-  justify-content: center;
+  justify-content: space-around; 
   align-items: center;
   flex-direction: row;
   position: fixed;
@@ -264,8 +264,7 @@ body>h2 {
   width: 100%;
   background-color: #D7C5A8;
   padding: 0.6rem;
-  z-index: 1000;
-  /* Assure que la navbar soit au-dessus du reste du contenu */
+  z-index: 1000; /* Assure que la navbar soit au-dessus du reste du contenu */
 }
 
 .buttonNav {
@@ -273,11 +272,11 @@ body>h2 {
   color: #fff;
   border: none;
   border-radius: 50px;
-  padding: 10px 20px;
+  padding: 10px 15px; 
   cursor: pointer;
   text-decoration: none;
   text-align: center;
-  margin: 0 1rem 0 1rem;
+  margin: 0 0.5rem;
 }
 
 /*  PAGE ACCUEIL */
@@ -582,14 +581,15 @@ body>div.container8>div>section>table>tbody>tr>td {
 
 /* RESPONSIVE */
 
-/* NAVBAR */
-@media screen and (max-width: 768px) {
-  .navbar-nav {
-    top: 50px;
+/* Responsive pour les écrans entre 320px et 780px */
+@media only screen and (min-width: 320px) and (max-width: 780px) {
+  .container6 {
+    justify-content: center; /* Centrer les boutons */
   }
 
-  .nav-link {
-    margin: 0.3rem 0;
+  .buttonNav {
+    padding: 8px 12px; /* Ajuster la taille des boutons */
+    margin: 0 0.3rem; /* Espacement entre les boutons */
   }
 }
 
