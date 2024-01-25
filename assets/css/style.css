@@ -616,11 +616,10 @@ body > div.container8 > div > section > table > tbody > tr > td:nth-child(1) > f
   width: 2rem;
 }
 
-.bryan {
+body > div.container8 > div > section > table > tbody > tr > td:nth-child(1) > form > button > i{
   color: white;
   font-size: 1rem;
   background-color: #ca2121;
-  height: 3rem;
 }
 
 body > div.container8 > div > section > table > tbody > tr > td > form {
