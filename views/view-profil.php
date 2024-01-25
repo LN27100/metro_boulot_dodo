@@ -41,7 +41,7 @@
             <div class="profile-info">
                 <p class="styleProfil">Description:</p>
                 <div id="descriptionDisplay">
-                    <?php echo isset($_SESSION['user']['user_describ']) ? htmlspecialchars($_SESSION['user']['user_describ']) : "Aucune description disponible"; ?>
+                <?php echo isset($_SESSION['user']['user_describ']) ? html_entity_decode($_SESSION['user']['user_describ']) : "Aucune description disponible"; ?>
                 </div>
                 <button id="editDescriptionBtn">Modifier</button>
             </div>
