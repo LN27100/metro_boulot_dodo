@@ -26,7 +26,7 @@
 
     <div class="container8">
         <div class="row">
-        
+
 
             <section class="col-12">
                 <table class="table">
@@ -46,8 +46,9 @@
                                 <td>
                                     <form action="../controllers/controller-history.php" method="post">
                                         <input class="suppRide" type="hidden" name="ride_id" value="<?= $trajet['ride_id'] ?>">
-                                        <button class="btnSupp" type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce trajet du <?= $trajet['date_fr'] ?> ?')"><i class="bryan bi bi-trash3"></button>
-
+                                        <button class="btnSupp bryan" type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce trajet du <?= $trajet['date_fr'] ?> ?">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
                                     </form>
                                 </td>
                                 <td><?= $trajet['date_fr'] ?></td>

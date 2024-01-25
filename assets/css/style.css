@@ -229,15 +229,14 @@ body>h2 {
   background-color: rgba(215, 197, 168, 0.7);
 }
 
-.container2 form::before {
+.container2 form::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(../img/formConnexion.jpg) no-repeat;
-  background-size: cover;
+  background: url(../img/formConnexion.jpg) no-repeat center center / cover;
   border-radius: 7px;
   z-index: -1;
 }
@@ -374,7 +373,7 @@ body>form {
   flex-direction: column;
 }
 
-body>form {
+body > form {
   padding: 2rem 2rem;
   margin-top: 3rem;
   position: relative;
@@ -382,15 +381,14 @@ body>form {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-body>form ::before {
+body > form::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(../img/bgTrajet.jpg) no-repeat;
-  background-size: cover;
+  background: url(../img/bgTrajet.jpg) no-repeat center center / cover;
   border-radius: 7px;
   z-index: -1;
 }
@@ -412,15 +410,14 @@ body>form ::before {
   background-color: rgba(215, 197, 168, 0.7);
 }
 
-.container3 ::before {
+.container3::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(../img/bgProfil.jpg) no-repeat;
-  background-size: cover;
+  background: url(../img/bgProfil.jpg) no-repeat center center / cover;
   border-radius: 7px;
   z-index: -1;
 }
@@ -506,11 +503,19 @@ body>form>div.container5>div:nth-child(5)>button {
 
 /* PAGE HISTORIQUE */
 
-body > div.container8 > div > section > table > tbody > tr > td > form > i > button {
+body > div.container8 > div > section > table > tbody > tr > td > form > button.btnSupp::before {
+  content: none;
+}
+
+.btnSupp {
   height: 2rem;
   width: 2rem;
   border-radius: 10px;
   background-color: #ca2121;
+}
+body > div.container8 > div > section > table > tbody > tr > td:nth-child(1) > form > button {
+  height: 2rem;
+  width: 2rem;
 }
 
 .bryan {
@@ -520,7 +525,7 @@ body > div.container8 > div > section > table > tbody > tr > td > form > i > but
   height: 3rem;
 }
 
-body>div.container8>div>section>table>tbody>tr>td>form {
+body > div.container8 > div > section > table > tbody > tr > td > form {
   background-color: rgba(181, 202, 105, 0.6);
   width: 5rem;
 }
@@ -542,18 +547,17 @@ body>div.container8>div>section>table>tbody>tr>td>form {
   background-color: rgba(215, 197, 168, 0.7);
 }
 
-/* .container8 ::before {
+.container8::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(../img/bgHistory.jpg) no-repeat;
-  background-size: cover;
+  background: url(../img/bgHistory.jpg) no-repeat center center / cover;
   border-radius: 7px;
   z-index: -1;
-} */
+}
 
 .table {
   border: 2px solid #7A9855;
@@ -582,7 +586,6 @@ body>div.container8>div>section>table>tbody>tr>td {
 @media screen and (max-width: 768px) {
   .navbar-nav {
     top: 50px;
-    /* Ajustez la position verticale */
   }
 
   .nav-link {
@@ -699,21 +702,27 @@ body>div.container8>div>section>table>tbody>tr>td {
 
 @media only screen and (min-width: 320px) and (max-width: 450px) {
 
-  body>div.container8>div>section>table>thead>tr>th,
-  body>div.container8>div>section>table>tbody>tr>td {
+  body > div.container8 > div > section > table > thead > tr > th,
+  body > div.container8 > div > section > table > tbody > tr > td {
     font-size: 0.7rem;
     padding: 0.2rem;
   }
 
   .btnSupp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 2rem;
+    height: 2rem;
     font-size: 0.7rem;
     background-color: #ca2121;
-
   }
- 
 
-  body>div.container8>div>section>table {
+  .btnSupp i {
+    font-size: 0.7rem;  
+  }
+
+  body > div.container8 > div > section > table {
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
