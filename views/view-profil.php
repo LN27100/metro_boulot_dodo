@@ -23,12 +23,10 @@
     <h1 class="titreAccueil">Votre profil</h1>
 
     <div class="container3">
-        <div class="profile-image-container">
+    <div class="profile-image-container">
             <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
             <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
-                <label for="profile_image" class="file-label">Choisir un fichier</label>
                 <input type="file" name="profile_image" id="profile_image" required>
-                <span id="fileNameDisplay">Aucun fichier choisi</span>
                 <input type="submit" value="Télécharger">
             </form>
         </div>
@@ -73,45 +71,41 @@
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const navbarToggle = document.getElementById("navbar-toggle");
-        const navbarNav = document.getElementById("navbar-nav");
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbarToggle = document.getElementById("navbar-toggle");
+            const navbarNav = document.getElementById("navbar-nav");
 
-        if (navbarToggle && navbarNav) {
-            navbarToggle.addEventListener("click", function() {
-                navbarNav.classList.toggle("active");
+            if (navbarToggle && navbarNav) {
+                navbarToggle.addEventListener("click", function() {
+                    navbarNav.classList.toggle("active");
+                });
+            }
+
+            document.getElementById('editDescriptionBtn').addEventListener('click', function() {
+                document.getElementById('descriptionDisplay').style.display = 'none';
+                document.getElementById('editDescriptionForm').style.display = 'block';
             });
-        }
 
-        document.getElementById('editDescriptionBtn').addEventListener('click', function() {
-            console.log("Bouton d'édition cliqué");
-            document.getElementById('descriptionDisplay').style.display = 'none';
-            document.getElementById('editDescriptionForm').style.display = 'block';
-        });
-
-        document.getElementById('cancelEditBtn').addEventListener('click', function() {
-            console.log("Bouton d'annulation d'édition cliqué");
-            document.getElementById('descriptionDisplay').style.display = 'block';
-            document.getElementById('editDescriptionForm').style.display = 'none';
-        });
-
-        const fileInput = document.getElementById("profile_image");
-        const fileNameDisplay = document.getElementById("fileNameDisplay");
-
-        if (fileInput && fileNameDisplay) {
-            fileInput.addEventListener("change", function(event) {
-                event.preventDefault();
-                console.log("Changement du fichier sélectionné");
-
-                if (fileInput.files.length > 0) {
-                    fileNameDisplay.textContent = fileInput.files[0].name;
-                } else {
-                    fileNameDisplay.textContent = "Aucun fichier choisi";
-                }
+            document.getElementById('cancelEditBtn').addEventListener('click', function() {
+                document.getElementById('descriptionDisplay').style.display = 'block';
+                document.getElementById('editDescriptionForm').style.display = 'none';
             });
-        }
-    });
-</script>
+
+            const fileInput = document.getElementById("profile_image");
+            const fileNameDisplay = document.getElementById("fileNameDisplay");
+
+            if (fileInput && fileNameDisplay) {
+                fileInput.addEventListener("change", function(event) {
+                    event.preventDefault();
+                    if (fileInput.files.length > 0) {
+                        fileNameDisplay.textContent = fileInput.files[0].name;
+                    } else {
+                        fileNameDisplay.textContent = "Aucun fichier";
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 
