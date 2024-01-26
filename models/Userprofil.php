@@ -202,6 +202,7 @@ class Userprofil
      */
     public static function updateProfileImage(int $user_id, string $new_image_path)
     {
+        
         try {
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

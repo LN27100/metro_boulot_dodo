@@ -406,7 +406,7 @@ body.page-profil {
   justify-content: center;
   flex-direction: column;
   padding: 2rem 2rem;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   position: relative;
   background-color: rgba(215, 197, 168, 0.7);
 }

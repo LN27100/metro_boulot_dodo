@@ -24,6 +24,7 @@ $img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']
 
 // Gestion du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
     // Gestion de la mise à jour de l'image de profil
     if (isset($_FILES['profile_image'])) {
         try {

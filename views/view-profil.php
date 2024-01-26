@@ -23,11 +23,12 @@
     <h1 class="titreAccueil">Votre profil</h1>
 
     <div class="container3">
-    <div class="profile-image-container">
+        <div class="profile-image-container">
             <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
             <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
                 <label for="profile_image" class="file-label">Choisir un fichier</label>
                 <input type="file" name="profile_image" id="profile_image" required>
+                <span id="fileNameDisplay">Aucun fichier choisi</span>
                 <input type="submit" value="Télécharger">
             </form>
         </div>
@@ -41,7 +42,7 @@
             <div class="profile-info">
                 <p class="styleProfil">Description:</p>
                 <div id="descriptionDisplay">
-                <?php echo isset($_SESSION['user']['user_describ']) ? html_entity_decode($_SESSION['user']['user_describ']) : "Aucune description disponible"; ?>
+                    <?php echo isset($_SESSION['user']['user_describ']) ? html_entity_decode($_SESSION['user']['user_describ']) : "Aucune description disponible"; ?>
                 </div>
                 <button id="editDescriptionBtn">Modifier</button>
             </div>
@@ -72,39 +73,45 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const navbarToggle = document.getElementById("navbar-toggle");
-            const navbarNav = document.getElementById("navbar-nav");
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbarToggle = document.getElementById("navbar-toggle");
+        const navbarNav = document.getElementById("navbar-nav");
 
-            if (navbarToggle && navbarNav) {
-                navbarToggle.addEventListener("click", function() {
-                    navbarNav.classList.toggle("active");
-                });
-            }
-        });
+        if (navbarToggle && navbarNav) {
+            navbarToggle.addEventListener("click", function() {
+                navbarNav.classList.toggle("active");
+            });
+        }
+
         document.getElementById('editDescriptionBtn').addEventListener('click', function() {
+            console.log("Bouton d'édition cliqué");
             document.getElementById('descriptionDisplay').style.display = 'none';
             document.getElementById('editDescriptionForm').style.display = 'block';
         });
 
         document.getElementById('cancelEditBtn').addEventListener('click', function() {
+            console.log("Bouton d'annulation d'édition cliqué");
             document.getElementById('descriptionDisplay').style.display = 'block';
             document.getElementById('editDescriptionForm').style.display = 'none';
         });
 
-        function updateFileName() {
-            var input = document.getElementById('formFile');
-            var fileNameInput = document.getElementById('fileName');
+        const fileInput = document.getElementById("profile_image");
+        const fileNameDisplay = document.getElementById("fileNameDisplay");
 
-            if (input.files.length > 0) {
-                fileNameInput.value = input.files[0].name;
-            } else {
-                fileNameInput.value = '';
-            }
+        if (fileInput && fileNameDisplay) {
+            fileInput.addEventListener("change", function(event) {
+                event.preventDefault();
+                console.log("Changement du fichier sélectionné");
 
+                if (fileInput.files.length > 0) {
+                    fileNameDisplay.textContent = fileInput.files[0].name;
+                } else {
+                    fileNameDisplay.textContent = "Aucun fichier choisi";
+                }
+            });
         }
-    </script>
-
+    });
+</script>
 
 </body>
 
