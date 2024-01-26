@@ -257,7 +257,7 @@ body>h2 {
 
 .container6 {
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
   position: fixed;
@@ -265,7 +265,8 @@ body>h2 {
   width: 100%;
   background-color: #D7C5A8;
   padding: 0.6rem;
-  z-index: 1000; /* Assure que la navbar soit au-dessus du reste du contenu */
+  z-index: 1000;
+  /* Assure que la navbar soit au-dessus du reste du contenu */
 }
 
 .buttonNav {
@@ -273,7 +274,7 @@ body>h2 {
   color: #fff;
   border: none;
   border-radius: 50px;
-  padding: 10px 15px; 
+  padding: 10px 15px;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -360,7 +361,7 @@ body>form {
   flex-direction: column;
 }
 
-body > form {
+body>form {
   padding: 2rem 2rem;
   margin-top: 3rem;
   position: relative;
@@ -368,7 +369,7 @@ body > form {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-body > form::after {
+body>form::after {
   content: "";
   position: absolute;
   top: 0;
@@ -390,7 +391,7 @@ body > form::after {
   width: 2rem;
   height: 2rem;
   align-items: center;
-  padding: 0.2rem 0.5rem; 
+  padding: 0.2rem 0.5rem;
 }
 
 .buttonHome2:hover {
@@ -398,7 +399,7 @@ body > form::after {
 }
 
 body.page-profil {
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .container3 {
@@ -438,10 +439,10 @@ p {
   font-size: 1rem;
 }
 
-body > div.container3 > div.profile-image-container > form {
-  height: 5rem; 
+body>div.container3>div.profile-image-container>form {
+  height: 5rem;
   width: 20rem;
-  background-color: transparent; 
+  background-color: transparent;
   margin-right: 5rem;
 }
 
@@ -452,21 +453,23 @@ body > div.container3 > div.profile-image-container > form {
 }
 
 .profile-image {
-  max-width: 10rem; 
-  max-height: 10rem; 
-  width: 100%; 
-  height: auto; 
+  max-width: 10rem;
+  max-height: 10rem;
+  width: 100%;
+  height: auto;
   margin-bottom: 1rem;
-  margin-left: 10rem;
+  margin-left: 8rem;
 }
 
 .file-label {
   background-color: white;
 }
+
 .file-input-container {
   display: flex;
   flex-direction: column;
 }
+
 .file-input-container label {
   margin-bottom: 5px;
 }
@@ -506,8 +509,7 @@ body > div.container3 > div.profile-image-container > form {
 
 .transparent-form {
   background-color: transparent;
-  height: 10rem;
-margin-top: 0;
+  margin-top: 0;
 }
 
 
@@ -530,20 +532,25 @@ margin-top: 0;
   border: none;
   border-radius: 5px;
 }
+
 #profile_image {
-width: 15.5rem;
-margin-bottom: 1rem;
+  width: 14rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.7rem;
 }
 
-body > div.container3 > div.profile-image-container > form {
-height: 8rem;
+body>div.container3>div.profile-image-container>form {
+  height: 6rem;
+  font-size: 0.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+body>div.container3>div.profile-image-container>form>input[type=submit]:nth-child(2) {
+  font-size: 0.7rem;
+  padding: 0.2rem;
 }
 
-body > div.container3 > div.profile-image-container > form {
-    margin-top: 0;
-}
-
-  /* PAGE TRAJETS */
+/* PAGE TRAJETS */
 
 .container5 {
   display: flex;
@@ -608,7 +615,7 @@ body>form>div.container5>div:nth-child(5)>button {
 
 /* PAGE HISTORIQUE */
 
-body > div.container8 > div > section > table > tbody > tr > td > form > button.btnSupp::before {
+body>div.container8>div>section>table>tbody>tr>td>form>button.btnSupp::before {
   content: none;
 }
 
@@ -618,18 +625,19 @@ body > div.container8 > div > section > table > tbody > tr > td > form > button.
   border-radius: 10px;
   background-color: #ca2121;
 }
-body > div.container8 > div > section > table > tbody > tr > td:nth-child(1) > form > button {
+
+body>div.container8>div>section>table>tbody>tr>td:nth-child(1)>form>button {
   height: 2rem;
   width: 2rem;
 }
 
-body > div.container8 > div > section > table > tbody > tr > td:nth-child(1) > form > button > i{
+body>div.container8>div>section>table>tbody>tr>td:nth-child(1)>form>button>i {
   color: white;
   font-size: 1rem;
   background-color: #ca2121;
 }
 
-body > div.container8 > div > section > table > tbody > tr > td > form {
+body>div.container8>div>section>table>tbody>tr>td>form {
   background-color: rgba(181, 202, 105, 0.6);
   width: 5rem;
 }
@@ -683,7 +691,7 @@ body>div.container8>div>section>table>tbody>tr>td {
   vertical-align: middle;
 }
 
-body > div.text-center {
+body>div.text-center {
   margin-top: 2rem;
 }
 
@@ -704,12 +712,15 @@ body > div.text-center {
 /* Responsive pour les écrans entre 320px et 780px */
 @media only screen and (min-width: 320px) and (max-width: 780px) {
   .container6 {
-    justify-content: center; /* Centrer les boutons */
+    justify-content: center;
+    /* Centrer les boutons */
   }
 
   .buttonNav {
-    padding: 8px 12px; /* Ajuster la taille des boutons */
-    margin: 0 0.3rem; /* Espacement entre les boutons */
+    padding: 8px 12px;
+    /* Ajuster la taille des boutons */
+    margin: 0 0.3rem;
+    /* Espacement entre les boutons */
   }
 }
 
@@ -821,8 +832,8 @@ body > div.text-center {
 
 @media only screen and (min-width: 320px) and (max-width: 450px) {
 
-  body > div.container8 > div > section > table > thead > tr > th,
-  body > div.container8 > div > section > table > tbody > tr > td {
+  body>div.container8>div>section>table>thead>tr>th,
+  body>div.container8>div>section>table>tbody>tr>td {
     font-size: 0.7rem;
     padding: 0.2rem;
   }
@@ -838,19 +849,17 @@ body > div.text-center {
   }
 
   .btnSupp i {
-    font-size: 0.7rem;  
+    font-size: 0.7rem;
   }
 
-  body > div.container8 > div > section > table {
+  body>div.container8>div>section>table {
     width: 100%;
     box-sizing: border-box;
     overflow-x: auto;
   }
 
-  body > div.container3 > form {
-    height: 4rem;
-  }
-  
+
+
   .file-input-text {
     width: 100%;
   }
@@ -866,18 +875,18 @@ body > div.text-center {
   .file-input-button,
   .file-input-container input[type="submit"] {
     padding: 0.3rem 0.6rem;
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     margin-right: 0.5rem;
   }
 
   .profile-image {
-    max-width: 6rem; 
-    max-height: 6rem; 
+    max-width: 8rem;
+    max-height: 8rem;
   }
 
   .titreAccueil {
     font-size: 2rem;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
   }
 
 }

@@ -91,19 +91,7 @@
                 document.getElementById('editDescriptionForm').style.display = 'none';
             });
 
-            const fileInput = document.getElementById("profile_image");
-            const fileNameDisplay = document.getElementById("fileNameDisplay");
-
-            if (fileInput && fileNameDisplay) {
-                fileInput.addEventListener("change", function(event) {
-                    event.preventDefault();
-                    if (fileInput.files.length > 0) {
-                        fileNameDisplay.textContent = fileInput.files[0].name;
-                    } else {
-                        fileNameDisplay.textContent = "Aucun fichier";
-                    }
-                });
-            }
+           
         });
     </script>
 
