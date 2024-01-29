@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_pseudo = isset($_POST['user_pseudo']) ? ($_POST['user_pseudo']) : "";
         $new_email = isset($_POST['user_email']) ? ($_POST['user_email']) : "";
         $new_dateofbirth = isset($_POST['user_dateofbirth']) ? ($_POST['user_dateofbirth']) : "";
+        header("Location: ../controllers/controller-profil.php");
 
         try {
             Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth);
