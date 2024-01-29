@@ -42,11 +42,17 @@
                 <div id="descriptionDisplay">
                     <?php echo isset($_SESSION['user']['user_describ']) ? html_entity_decode($_SESSION['user']['user_describ']) : "Aucune description disponible"; ?>
                 </div>
-                <button id="editDescriptionBtn">Modifier</button>
             </div>
 
-            <!-- Formulaire de modification de la description (masqué par défaut) -->
-            <form method="post" action="../controllers/controller-profil.php" class="transparent-form" enctype="multipart/form-data" id="editDescriptionForm" style="display: none;">
+            <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance ?></p>
+            <p><span class="styleProfil">Email: </span> <?= $email ?></p>
+            <p><span class="styleProfil">Entreprise: </span><?= $entreprise ?></p>
+        </div>
+    </div>
+    <button id="editDescriptionBtn">Modifier</button>
+
+           <!-- Formulaire de modification de la description (masqué par défaut) -->
+           <form method="post" action="../controllers/controller-profil.php" class="transparent-form" enctype="multipart/form-data" id="editDescriptionForm" style="display: none;">
     <div class="profile-info">
         <p class="styleProfil">Modifier votre description:</p>
         <textarea id="user_describ" name="user_describ" rows="5" cols="33"><?= isset($_SESSION['user']['user_describ']) ? ($_SESSION['user']['user_describ']) : "" ?></textarea>
@@ -70,12 +76,6 @@
         <button type="button" id="cancelEditBtn" class="file-input-button">Annuler</button>
     </div>
 </form>
-
-            <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance ?></p>
-            <p><span class="styleProfil">Email: </span> <?= $email ?></p>
-            <p><span class="styleProfil">Entreprise: </span><?= $entreprise ?></p>
-        </div>
-    </div>
 
     <div class="container6">
         <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i>
