@@ -511,9 +511,9 @@ body>div.container3>div.profile-image-container>form {
   border-radius: 5px;
 }
 
-.transparent-form {
-  background-color: transparent;
-  margin-top: 0;
+#editDescriptionForm {
+margin: 0 auto;
+height: 750px;
 }
 
 

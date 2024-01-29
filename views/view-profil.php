@@ -48,30 +48,36 @@
             <p><span class="styleProfil">Email: </span> <?= $email ?></p>
             <p><span class="styleProfil">Entreprise: </span><?= $entreprise ?></p>
         </div>
-    </div>
-    <button id="editDescriptionBtn">Modifier</button>
 
-           <!-- Formulaire de modification de la description (masqué par défaut) -->
-           <form method="post" action="../controllers/controller-profil.php" class="transparent-form" enctype="multipart/form-data" id="editDescriptionForm" style="display: none;">
+        <button id="editDescriptionBtn">Modifier</button>
+
+    </div>
+
+    <!-- Formulaire de modification du profil (masqué par défaut) -->
+    <form method="post" action="../controllers/controller-profil.php" class="transparent-form" enctype="multipart/form-data" id="editDescriptionForm" style="display: none;">
     <div class="profile-info">
         <p class="styleProfil">Modifier votre description:</p>
         <textarea id="user_describ" name="user_describ" rows="5" cols="33"><?= isset($_SESSION['user']['user_describ']) ? ($_SESSION['user']['user_describ']) : "" ?></textarea>
+    </div>
 
+    <div class="profile-info">
         <p><span class="styleProfil"> Nom:</span></p>
         <input type="text" name="user_name" placeholder="Nouveau nom" value="<?= $nom ?>">
 
         <p><span class="styleProfil"> Prénom:</span></p>
         <input type="text" name="user_firstname" placeholder="Nouveau prénom" value="<?= $prenom ?>">
 
-        <p><span class="styleProfil"> Pseudp:</span></p>
+        <p><span class="styleProfil"> Pseudo:</span></p>
         <input type="text" name="user_pseudo" placeholder="Nouveau pseudo" value="<?= $pseudo ?>">
 
         <p><span class="styleProfil"> Email:</span></p>
         <input type="text" name="user_email" placeholder="Nouveau email" value="<?= $email ?>">
-        
+
         <p><span class="styleProfil"> Date de naissance:</span></p>
         <input type="date" name="user_dateofbirth" placeholder="Nouvelle date de naissance" value="<?= $date_naissance ?>">
+    </div>
 
+    <div class="profile-info">
         <input type="submit" name="save_modification" value="Enregistrer" class="file-input-button">
         <button type="button" id="cancelEditBtn" class="file-input-button">Annuler</button>
     </div>
