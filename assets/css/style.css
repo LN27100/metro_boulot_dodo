@@ -411,7 +411,7 @@ body.page-profil {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem 2rem;
+  padding: 4rem 0.4rem 4rem 0.4rem;
   margin-top: 1.5rem;
   position: relative;
   background-color: rgba(215, 197, 168, 0.7);
