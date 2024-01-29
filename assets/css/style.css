@@ -387,6 +387,7 @@ body>form::after {
 
 /* PAGE PROFIL */
 
+
 .buttonHome2 {
   display: flex;
   font-size: 1rem;
@@ -511,9 +512,13 @@ body>div.container3>div.profile-image-container>form {
   border-radius: 5px;
 }
 
+#descriptionDisplay {
+  margin-bottom: 1rem;
+}
+
 #editDescriptionForm {
 margin: 0 auto;
-height: 750px;
+padding: 2rem 0.2rem 4.2rem 0.2rem;
 }
 
 
