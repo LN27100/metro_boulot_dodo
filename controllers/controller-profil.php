@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         try {
             Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth);
-
             $_SESSION['user']['user_describ'] = $new_description;
             $_SESSION['user']['user_name'] = $new_name;
             $_SESSION['user']['user_firstname'] = $new_firstname;

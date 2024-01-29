@@ -84,6 +84,7 @@
             <p><span class="styleProfil"> Date de naissance:</span></p>
             <input type="date" name="user_dateofbirth" placeholder="Nouvelle date de naissance" value="<?= $date_naissance ?>">
 
+
      
 
         <div class="profile-info">
