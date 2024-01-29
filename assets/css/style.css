@@ -657,7 +657,7 @@ body>div.container8>div>section>table>tbody>tr>td>form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2rem 2rem;
+  padding: 2rem 0 4.2rem 0;
   margin-top: 1.5rem;
   position: relative;
   background-color: rgba(215, 197, 168, 0.7);
@@ -707,7 +707,9 @@ body>div.text-center {
   text-align: center;
   height: 2rem;
   font-size: 1rem;
+  padding: 0.2rem;
   font-family: 'Exo', sans-serif;
+  text-decoration: none;
 }
 
 

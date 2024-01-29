@@ -43,7 +43,7 @@
                         ?>
 
                             <tr>
-                            <td>
+                                <td>
                                     <form action="../controllers/controller-history.php" method="post">
                                         <input class="suppRide" type="hidden" name="ride_id" value="<?= $trajet['ride_id'] ?>">
                                         <button class="btnSupp" type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce trajet ?')">
@@ -66,11 +66,14 @@
                 </table>
             </section>
         </div>
+
+        <div class="text-center">
+            <a href="../controllers/controller-ride.php" class="newTrajet">Nouveau trajet</a>
+        </div>
+
     </div>
-    
-    <div class="text-center">
-        <a href="../controllers/controller-ride.php" class="newTrajet">Nouveau trajet</a>
-    </div>
+
+
 
     <div class="container6">
         <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i>
@@ -83,7 +86,7 @@
 
 
 
-   
+
 </body>
 
 </html>
