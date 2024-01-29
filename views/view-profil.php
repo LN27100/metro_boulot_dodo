@@ -84,7 +84,19 @@
             <p><span class="styleProfil"> Date de naissance:</span></p>
             <input type="date" name="user_dateofbirth" placeholder="Nouvelle date de naissance" value="<?= $date_naissance ?>">
 
+            <p><span class="styleProfil"> Entreprise:</span></p>
+                    <select class="form-select" aria-label="Default select example" name="entreprise" id="entreprise">
+                        <option value="" selected>Sélectionnez une entreprise</option>
 
+                        <?php foreach ($allEnterprises as $enterprise) {
+                        ?>
+
+                            <option value=<?= $enterprise['enterprise_id'] ?>> <?= $enterprise['enterprise_name'] ?></option>
+
+                        <?php
+                        }
+                        ?>
+                    </select>
      
 
         <div class="profile-info">

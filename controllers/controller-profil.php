@@ -5,6 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once '../config.php';
 require_once '../models/Userprofil.php';
+require_once '../models/Enterprise.php';
+
 
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
@@ -74,6 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+$allEnterprises = Enterprise::getAllEnterprises();
 
 include_once '../views/view-profil.php';
 ?>
