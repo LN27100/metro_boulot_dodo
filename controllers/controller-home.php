@@ -14,8 +14,10 @@ if (!isset($_SESSION['user'])) {
     header("Location: ../controllers/controller-signin.php");
     exit();
 }
+
 // Récupère le pseudo de l'utilisateur
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
+$img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']) : "Photo non définie";
 
 // Inclure la vue home uniquement si l'utilisateur est connecté
 include_once '../views/view-home.php';

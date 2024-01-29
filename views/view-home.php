@@ -29,7 +29,7 @@
 
         <?php echo "<h3>Bienvenue $pseudo</h3>"; ?>
 
-        <img src="../assets/img/avatarDefault.jpg" alt="avatar par défaut">
+        <img src="<?= $img ?>" alt="photo de profil" class="imageHome">
     </div>
 
     <div class="container4">
