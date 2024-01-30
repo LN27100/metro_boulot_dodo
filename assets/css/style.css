@@ -705,6 +705,18 @@ body>div.container8>div>section>table>tbody>tr>td {
   vertical-align: middle;
 }
 
+.totalKms{
+  color: #7A9855;
+  font-family: 'Exo', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+} 
+.sommeKms {
+  background-color: #206D3C;
+  color: white;
+}
+
 body>div.text-center {
   margin-top: 2rem;
 }

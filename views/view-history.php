@@ -37,9 +37,10 @@
                         <th>Distance</th>
                         <th>Durée</th>
                     </thead>
+
                     <tbody>
                         <!-- je parcours le tableau de tous les trajets et je stocke chaque fois que je tombe sur une ligne -->
-                        <?php foreach ($allTrajets as $trajet) {
+                        <?php foreach (Ride::getAllTrajets($user_id) as $trajet) {
                         ?>
 
                             <tr>
@@ -53,7 +54,7 @@
                                 </td>
                                 <td><?= $trajet['date_fr'] ?></td>
                                 <td><?= $trajet['transport_type'] ?></td>
-                                <td><?= $trajet['ride_distance'] . 'kms' ?></td>
+                                <td><?= $trajet['ride_distance'] . ' kms' ?></td>
                                 <td><?= $trajet['ride_time'] ?></td>
                             </tr>
 
@@ -66,6 +67,12 @@
                 </table>
             </section>
         </div>
+
+        <div class="text-center">
+            <p class="totalKms">Total kilomètres parcourus :</p>
+            <p class="sommeKms"><?= Ride::sommeKms($user_id)['total'] . ' kms'  ?></p>
+        </div>
+
 
         <div class="text-center">
             <a href="../controllers/controller-ride.php" class="newTrajet">Nouveau trajet</a>
@@ -85,15 +92,15 @@
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const params = new URLSearchParams(window.location.search);
-        const trajetAdded = params.get('trajetAdded');
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            const trajetAdded = params.get('trajetAdded');
 
-        if (trajetAdded) {
-            alert("Le trajet a bien été ajouté !");
-        }
-    });
-</script>
+            if (trajetAdded) {
+                alert("Le trajet a bien été ajouté !");
+            }
+        });
+    </script>
 
 
 </body>

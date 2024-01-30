@@ -74,6 +74,25 @@ class Ride
             die();
         }
     }
+
+    public static function sommeKms(int $user_id) {
+        try {
+            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+    
+            $sql = "SELECT Sum(ride_distance) AS 'total' FROM `ride` WHERE `user_id`= :id_user ";
+            $query = $db->prepare($sql);
+            $query->bindValue(':id_user', $user_id, PDO::PARAM_INT);
+            $query->execute();
+    
+            // Utiliser fetchAll pour récupérer tous les résultats
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+    
+            return $result;  // Retourner le tableau des trajets
+        } catch (PDOException $e) {
+            echo 'Erreur : ' . $e->getMessage();
+            die();
+        }
+    }
 }
 
     

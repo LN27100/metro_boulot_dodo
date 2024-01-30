@@ -43,9 +43,6 @@ if ($user_id === null) {
 // Récupère le pseudo de l'utilisateur
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
 
-// Appelle la méthode getAllTrajets en passant l'ID de l'utilisateur
-$allTrajets = Ride::getAllTrajets($user_id);
-
 // Inclure la vue history uniquement si l'utilisateur est connecté
 include_once '../views/view-history.php';
 ?>
