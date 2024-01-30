@@ -32,20 +32,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             // Dossier de sauvegarde des images
             $uploadDir = '../assets/uploads/';
-    
+
             // Vérification du dossier de sauvegarde des images
             if (!file_exists($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
             }
-    
+
             $file_extension = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
             // Construire un nom de fichier unique en combinant "profile_", l'ID de l'utilisateur et l'extension du fichier
             $new_file_name = "profile_" . $_SESSION['user']['user_id'] . "." . $file_extension;
-    
+
             // // Construire le chemin complet du fichier en concaténant le dossier de sauvegarde avec le nouveau nom de fichier
 
             $uploadFile = $uploadDir . $new_file_name;
-    
+
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
                 $_SESSION['user']['user_photo'] = $uploadFile;
                 Userprofil::updateProfileImage($_SESSION['user']['user_id'], $uploadFile);
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erreur lors de la mise à jour de l'image de profil : " . $e->getMessage();
         }
     }
-    
+
     // Enregistrement et mise à jour du profil
     if (isset($_POST['save_modification'])) {
         $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0;
@@ -68,8 +68,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_email = isset($_POST['user_email']) ? ($_POST['user_email']) : "";
         $new_dateofbirth = isset($_POST['user_dateofbirth']) ? ($_POST['user_dateofbirth']) : "";
         $new_enterprise = isset($_POST['new_enterprise']) ? ($_POST['new_enterprise']) : "";
+        // Vérification du pseudo
+        if (empty($new_pseudo)) {
+            $errors["pseudo"] = "Champ obligatoire";
+        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $new_pseudo)) {
+            $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
+        } elseif (strlen($new_pseudo) < 6) {
+            $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
+        } elseif (Userprofil::checkPseudoExists($new_pseudo, $user_id)) {
+            $errors["pseudo"] = 'Pseudo déjà utilisé';
+        }
 
-        header("Location: ../controllers/controller-profil.php");
+        // Vérification de l'email
+        if (empty($new_email)) {
+            $errors["email"] = "Champ obligatoire";
+        } elseif (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+            $errors["email"] = "Le format de l'adresse email n'est pas valide";
+        } elseif (Userprofil::checkMailExists($new_email, $user_id)) {
+            $errors["email"] = 'Mail déjà utilisé';
+        }
+
+        // Si des erreurs sont détectées, redirigez l'utilisateur vers le formulaire avec les erreurs
+        if (!empty($errors)) {
+            include_once '../views/view-profil.php';
+            exit();
+        }
 
         try {
             Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth, $new_enterprise);
@@ -84,10 +107,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erreur lors de la mise à jour du profil : " . $e->getMessage();
         }
     }
-
+    // Redirigez l'utilisateur vers la page du profil après la mise à jour
+    header("Location: ../controllers/controller-profil.php");
+    exit();
 }
 
 $allEnterprises = Enterprise::getAllEnterprises();
 
 include_once '../views/view-profil.php';
-?>

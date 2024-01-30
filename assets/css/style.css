@@ -283,8 +283,8 @@ body>h2 {
 
 /*  PAGE ACCUEIL */
 
-body > div:nth-child(3) > img {
-align-items: center;
+body>div:nth-child(3)>img {
+  align-items: center;
 }
 
 .titreAccueil {
@@ -520,8 +520,8 @@ body>div.container3>div.profile-image-container>form {
 }
 
 #editDescriptionForm {
-margin: 0 auto;
-padding: 2rem 0.2rem 4.2rem 0.2rem;
+  margin: 0 auto;
+  padding: 2rem 0.2rem 4.2rem 0.2rem;
 }
 
 
@@ -557,6 +557,7 @@ body>div.container3>div.profile-image-container>form {
   margin-top: 0;
   margin-bottom: 0;
 }
+
 body>div.container3>div.profile-image-container>form>input[type=submit]:nth-child(2) {
   font-size: 0.7rem;
   padding: 0.2rem;
@@ -705,13 +706,14 @@ body>div.container8>div>section>table>tbody>tr>td {
   vertical-align: middle;
 }
 
-.totalKms{
+.totalKms {
   color: #7A9855;
   font-family: 'Exo', sans-serif;
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 0;
-} 
+}
+
 .sommeKms {
   background-color: rgba(181, 202, 105, 0.6);
   color: #206D3C;

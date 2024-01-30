@@ -64,7 +64,21 @@
 
     <!-- Formulaire de modification du profil (masqué par défaut) -->
     <form method="post" action="../controllers/controller-profil.php" class="transparent-form" enctype="multipart/form-data" id="editDescriptionForm" style="display: none;">
-        <div class="profile-info">
+        
+     <!-- Affichage des erreurs pour le pseudo -->
+     <?php if (isset($errors['pseudo'])) : ?>
+            <div class="alert alert-danger">
+                <?= $errors['pseudo']; ?>
+            </div>
+        <?php endif; ?>
+
+        <!-- Affichage des erreurs pour l'email -->
+        <?php if (isset($errors['email'])) : ?>
+            <div class="alert alert-danger">
+                <?= $errors['email']; ?>
+            </div>
+        <?php endif; ?>
+    <div class="profile-info">
             <p class="styleProfil">Modifier votre description:</p>
             <textarea id="user_describ" name="user_describ" rows="5" cols="33"><?= isset($_SESSION['user']['user_describ']) ? ($_SESSION['user']['user_describ']) : "" ?></textarea>
         </div>
