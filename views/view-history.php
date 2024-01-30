@@ -84,7 +84,16 @@
             Historique</a>
     </div>
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const params = new URLSearchParams(window.location.search);
+        const trajetAdded = params.get('trajetAdded');
 
+        if (trajetAdded) {
+            alert("Le trajet a bien été ajouté !");
+        }
+    });
+</script>
 
 
 </body>

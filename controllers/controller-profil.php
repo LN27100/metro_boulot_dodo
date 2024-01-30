@@ -43,6 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
                 $_SESSION['user']['user_photo'] = $uploadFile;
                 Userprofil::updateProfileImage($_SESSION['user']['user_id'], $uploadFile);
+                header("Location: ../controllers/controller-profil.php");
+
             } else {
                 echo "Erreur lors du téléchargement du fichier : " . $_FILES['profile_image']['error'];
             }

@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($errors)) {
 
         Ride::create( $date,  $transport_id,  $distance, $ride_time,  $user_id);
-        header("Location: ../controllers/controller-history.php");
+        header("Location: ../controllers/controller-history.php?trajetAdded=true");
 
     }
 
