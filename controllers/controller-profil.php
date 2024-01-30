@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_pseudo = isset($_POST['user_pseudo']) ? ($_POST['user_pseudo']) : "";
         $new_email = isset($_POST['user_email']) ? ($_POST['user_email']) : "";
         $new_dateofbirth = isset($_POST['user_dateofbirth']) ? ($_POST['user_dateofbirth']) : "";
-        $new_enterprise = isset($_POST['enterprise_id']) ? ($_POST['enterprise_id']) : "";
+        $new_enterprise = isset($_POST['user']['enterprise_id']) ? Userprofil::getEntrepriseNom($_POST['user']['enterprise_id']) : "";
 
         header("Location: ../controllers/controller-profil.php");
 
@@ -87,6 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $allEnterprises = Enterprise::getAllEnterprises();
-
+// var_dump($new_enterprise);
 include_once '../views/view-profil.php';
 ?>
