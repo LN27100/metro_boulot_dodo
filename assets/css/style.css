@@ -464,6 +464,7 @@ body>div.container3>div.profile-image-container>form {
   height: auto;
   margin-bottom: 1rem;
   margin-left: 8rem;
+  border: solid 2px #206D3C;
 }
 
 .file-label {

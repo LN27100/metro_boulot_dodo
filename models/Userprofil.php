@@ -223,30 +223,39 @@ class Userprofil
     }
 }
     
-    public static function updateProfil(int $user_id, string $new_description, string $new_name, string $new_firstname, string $new_pseudo, string $new_email, string $new_dateofbirth)
-    {
-        try {
-            $db = new PDO(DBNAME, DBUSER, DBPASSWORD, array(PDO::ATTR_PERSISTENT => true));
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-            $sql = "UPDATE userprofil SET user_describ = :new_description, user_name = :new_name, user_firstname = :new_firstname, user_pseudo = :new_pseudo, user_email = :new_email, user_dateofbirth = :new_dateofbirth WHERE user_id = :user_id";
-    
-            $query = $db->prepare($sql);
-    
-            $query->bindValue(':new_description', $new_description, PDO::PARAM_STR);
-            $query->bindValue(':new_name', $new_name, PDO::PARAM_STR);
-            $query->bindValue(':new_firstname', $new_firstname, PDO::PARAM_STR);
-            $query->bindValue(':new_pseudo', $new_pseudo, PDO::PARAM_STR);
-            $query->bindValue(':new_email', $new_email, PDO::PARAM_STR);
-            $query->bindValue(':new_dateofbirth', $new_dateofbirth, PDO::PARAM_STR);
-            $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
-    
-            $query->execute();
-        } catch (PDOException $e) {
-            error_log('Erreur lors de la mise à jour du profil : ' . $e->getMessage());
-            throw new Exception('Une erreur s\'est produite lors de la mise à jour du profil.');
-        }
+public static function updateProfil(int $user_id, string $new_description, string $new_name, string $new_firstname, string $new_pseudo, string $new_email, string $new_dateofbirth, string $new_enterprise)
+{
+    try {
+        $db = new PDO(DBNAME, DBUSER, DBPASSWORD, array(PDO::ATTR_PERSISTENT => true));
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "UPDATE userprofil 
+                SET user_describ = :new_description, 
+                    user_name = :new_name, 
+                    user_firstname = :new_firstname, 
+                    user_pseudo = :new_pseudo, 
+                    user_email = :new_email, 
+                    user_dateofbirth = :new_dateofbirth, 
+                    enterprise_id = :new_enterprise 
+                WHERE user_id = :user_id";
+
+        $query = $db->prepare($sql);
+
+        $query->bindValue(':new_description', $new_description, PDO::PARAM_STR);
+        $query->bindValue(':new_name', $new_name, PDO::PARAM_STR);
+        $query->bindValue(':new_firstname', $new_firstname, PDO::PARAM_STR);
+        $query->bindValue(':new_pseudo', $new_pseudo, PDO::PARAM_STR);
+        $query->bindValue(':new_email', $new_email, PDO::PARAM_STR);
+        $query->bindValue(':new_dateofbirth', $new_dateofbirth, PDO::PARAM_STR);
+        $query->bindValue(':new_enterprise', $new_enterprise, PDO::PARAM_STR);
+        $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+
+        $query->execute();
+    } catch (PDOException $e) {
+        error_log('Erreur lors de la mise à jour du profil : ' . $e->getMessage());
+        throw new Exception('Une erreur s\'est produite lors de la mise à jour du profil.');
     }
+}
 
 }
 
