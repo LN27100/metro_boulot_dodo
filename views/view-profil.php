@@ -26,7 +26,7 @@
         <div class="profile-image-container">
             <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
             <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
-                <input type="file" name="profile_image" id="profile_image" required>
+                <input type="file" name="profile_image" id="profile_image" accept= "image/png, image/gif, image/jpeg, image/jpg" required>
                 <input type="submit" value="Télécharger">
             </form>
         </div>

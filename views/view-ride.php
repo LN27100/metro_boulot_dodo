@@ -71,7 +71,7 @@
 
 
             <div class="container7">
-                <button class="button" type="submit">Valider</button>
+                <button class="button" type="submit" onclick="return confirm('Regarde dans l\'historique idiot, ton trajet y est bien!')">Valider</button>
             </div>
         </div>
     </form>
