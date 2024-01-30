@@ -223,7 +223,7 @@ class Userprofil
     }
 }
     
-public static function updateProfil(int $user_id, string $new_description, string $new_name, string $new_firstname, string $new_pseudo, string $new_email, string $new_dateofbirth, string $new_enterprise)
+    public static function updateProfil(int $user_id, string $new_description, string $new_name, string $new_firstname, string $new_pseudo, string $new_email, string $new_dateofbirth, string $new_enterprise)
 {
     try {
         $db = new PDO(DBNAME, DBUSER, DBPASSWORD, array(PDO::ATTR_PERSISTENT => true));

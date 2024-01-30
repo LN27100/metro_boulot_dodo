@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erreur lors de la mise à jour de l'image de profil : " . $e->getMessage();
         }
     }
+    
     // Enregistrement et mise à jour du profil
     if (isset($_POST['save_modification'])) {
         $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0;
