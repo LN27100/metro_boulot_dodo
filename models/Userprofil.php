@@ -200,10 +200,10 @@ class Userprofil
         $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Obtenez l'extension du fichier à partir du chemin de l'image
+        // Obtenir l'extension du fichier à partir du chemin de l'image
         $file_extension = pathinfo($new_image_path, PATHINFO_EXTENSION);
 
-        // Construisez un nom de fichier unique avec le user_id
+        // Construire un nom de fichier unique avec le user_id
         $new_file_name = "profile_" . $user_id . "." . $file_extension;
 
         // Nouveau chemin de l'image avec le nom de fichier unique

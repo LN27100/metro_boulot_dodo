@@ -39,8 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
     
             $file_extension = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
+            // Construire un nom de fichier unique en combinant "profile_", l'ID de l'utilisateur et l'extension du fichier
             $new_file_name = "profile_" . $_SESSION['user']['user_id'] . "." . $file_extension;
     
+            // // Construire le chemin complet du fichier en concaténant le dossier de sauvegarde avec le nouveau nom de fichier
+
             $uploadFile = $uploadDir . $new_file_name;
     
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
