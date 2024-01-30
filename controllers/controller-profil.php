@@ -32,19 +32,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             // Dossier de sauvegarde des images
             $uploadDir = '../assets/uploads/';
-
+    
             // Vérification du dossier de sauvegarde des images
             if (!file_exists($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
             }
-
-            $uploadFile = $uploadDir . basename($_FILES['profile_image']['name']);
-
+    
+            $file_extension = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
+            $new_file_name = "profile_" . $_SESSION['user']['user_id'] . "." . $file_extension;
+    
+            $uploadFile = $uploadDir . $new_file_name;
+    
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
                 $_SESSION['user']['user_photo'] = $uploadFile;
                 Userprofil::updateProfileImage($_SESSION['user']['user_id'], $uploadFile);
                 header("Location: ../controllers/controller-profil.php");
-
             } else {
                 echo "Erreur lors du téléchargement du fichier : " . $_FILES['profile_image']['error'];
             }
@@ -52,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erreur lors de la mise à jour de l'image de profil : " . $e->getMessage();
         }
     }
-
     // Enregistrement et mise à jour du profil
     if (isset($_POST['save_modification'])) {
         $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0;

@@ -194,33 +194,34 @@ class Userprofil
         }
     }
 
-     /**
-     * Methode permettant de mettre à jour le chemin de l'image de profil dans la base de données
-     * 
-     * @param int $user_id ID de l'utilisateur
-     * @param string $new_image_path Nouveau chemin de l'image de profil
-     */
     public static function updateProfileImage(int $user_id, string $new_image_path)
-    {
-        
-        try {
-            $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+{
+    try {
+        $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "UPDATE userprofil SET user_photo = :new_image_path WHERE user_id = :user_id";
+        // Obtenez l'extension du fichier à partir du chemin de l'image
+        $file_extension = pathinfo($new_image_path, PATHINFO_EXTENSION);
 
-            $query = $db->prepare($sql);
+        // Construisez un nom de fichier unique avec le user_id
+        $new_file_name = "profile_" . $user_id . "." . $file_extension;
 
-            $query->bindValue(':new_image_path', $new_image_path, PDO::PARAM_STR);
-            $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        // Nouveau chemin de l'image avec le nom de fichier unique
+        $new_image_path_with_user_id = '../assets/uploads/' . $new_file_name;
 
-            $query->execute();
-        } catch (PDOException $e) {
-            echo 'Erreur :' . $e->getMessage();
-            die();
-        }
+        $sql = "UPDATE userprofil SET user_photo = :new_image_path WHERE user_id = :user_id";
+
+        $query = $db->prepare($sql);
+
+        $query->bindValue(':new_image_path', $new_image_path_with_user_id, PDO::PARAM_STR);
+        $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+
+        $query->execute();
+    } catch (PDOException $e) {
+        echo 'Erreur :' . $e->getMessage();
+        die();
     }
-
+}
     
     public static function updateProfil(int $user_id, string $new_description, string $new_name, string $new_firstname, string $new_pseudo, string $new_email, string $new_dateofbirth)
     {
