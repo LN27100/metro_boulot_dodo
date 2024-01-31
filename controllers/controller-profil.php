@@ -24,8 +24,9 @@ $entreprise = isset($_SESSION['user']['enterprise_id']) ? Userprofil::getEntrepr
 $img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']) : "Photo non définie";
 
 // Gestion du formulaire
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$errors = array(); // Tableau pour stocker les erreurs
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Gestion de la mise à jour de l'image de profil
     if (isset($_FILES['profile_image'])) {
         try {
@@ -41,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Construire un nom de fichier unique en combinant "profile_", l'ID de l'utilisateur et l'extension du fichier
             $new_file_name = "profile_" . $_SESSION['user']['user_id'] . "." . $file_extension;
 
-            // // Construire le chemin complet du fichier en concaténant le dossier de sauvegarde avec le nouveau nom de fichier
+            // Construire le chemin complet du fichier en concaténant le dossier de sauvegarde avec le nouveau nom de fichier
             $uploadFile = $uploadDir . $new_file_name;
 
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
@@ -55,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erreur lors de la mise à jour de l'image de profil : " . $e->getMessage();
         }
     }
+
+    $errorsExist = false;
 
     // Enregistrement et mise à jour du profil
     if (isset($_POST['save_modification'])) {
@@ -76,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors["pseudo"] = 'Pseudo déjà utilisé';
         }
 
-
         // Vérification de l'email
         if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
             $errors["email"] = "Le format de l'adresse email n'est pas valide";
@@ -84,16 +86,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors["email"] = 'Mail déjà utilisé';
         }
 
-        // Si des erreurs sont détectées, redirigez l'utilisateur vers le formulaire avec les erreurs
+
         if (!empty($errors)) {
+            $errorsExist = true; 
             include_once '../views/view-profil.php';
             exit();
         }
 
-       
-
         try {
-            Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth, $new_enterprise);
+            Userprofil::updateProfil(
+                $user_id,
+                $new_description,
+                $new_name,
+                $new_firstname,
+                $new_pseudo,
+                $new_email,
+                $new_dateofbirth,
+                $new_enterprise
+            );
+
+            // Mettez à jour les informations de session
             $_SESSION['user']['user_describ'] = $new_description;
             $_SESSION['user']['user_name'] = $new_name;
             $_SESSION['user']['user_firstname'] = $new_firstname;
@@ -101,15 +113,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user']['user_email'] = $new_email;
             $_SESSION['user']['user_dateofbirth'] = $new_dateofbirth;
             $_SESSION['user']['enterprise_id'] = $new_enterprise;
+
+            // Redirigez l'utilisateur vers la page du profil après la mise à jour
+            header("Location: ../controllers/controller-profil.php");
+            exit();
         } catch (Exception $e) {
             echo "Erreur lors de la mise à jour du profil : " . $e->getMessage();
         }
     }
-    // Redirigez l'utilisateur vers la page du profil après la mise à jour
-    header("Location: ../controllers/controller-profil.php");
-    exit();
 }
 
 $allEnterprises = Enterprise::getAllEnterprises();
 
 include_once '../views/view-profil.php';
+?>

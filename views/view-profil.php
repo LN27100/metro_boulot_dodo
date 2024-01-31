@@ -16,9 +16,7 @@
     <?php
 
     // Bouton de déconnexion
-    echo '<a href="../controllers/controller-signout.php" class="buttonHome2"><i class="fa-solid fa-power-off"></i>
-
-    </a>';
+    echo '<a href="../controllers/controller-signout.php" class="buttonHome2"><i class="fa-solid fa-power-off"></i></a>';
     ?>
     <?php include('../templates/header.php'); ?>
 
@@ -38,7 +36,6 @@
             <p><span class="styleProfil">Prenom: </span> <?= $prenom ?></p>
             <p><span class="styleProfil">Pseudo:</span> <?= $pseudo ?></p>
 
-            <!-- Affichage de la description de l'utilisateur -->
             <div class="profile-info">
                 <p class="styleProfil">Description:</p>
                 <div id="descriptionDisplay">
@@ -52,23 +49,17 @@
         </div>
 
         <button id="editDescriptionBtn">Modifier</button>
-
+        <button id="deleteAccountBtn">Supprimer le compte</button>
     </div>
+
     <div class="container6">
-        <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i>
-            Accueil</a>
-        <a href="../controllers/controller-profil.php" class="buttonNav"><i class="bi bi-person"></i>
-            Profil</a>
-        <a href="../controllers/controller-history.php" class="buttonNav"><i class="bi bi-clock-history"></i>
-            Historique</a>
+        <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i> Accueil</a>
+        <a href="../controllers/controller-profil.php" class="buttonNav"><i class="bi bi-person"></i> Profil</a>
+        <a href="../controllers/controller-history.php" class="buttonNav"><i class="bi bi-clock-history"></i> Historique</a>
     </div>
 
     <!-- Formulaire de modification du profil (masqué par défaut) -->
     <form method="post" action="../controllers/controller-profil.php" class="transparent-form" enctype="multipart/form-data" id="editDescriptionForm" style="display: none;">
-
-
-
-
 
         <div class="profile-info">
             <p class="styleProfil">Modifier votre description:</p>
@@ -98,7 +89,6 @@
                 <span class="error-message"><?= $errors['email']; ?></span>
             <?php } ?>
 
-
             <p><span class="styleProfil"> Date de naissance:</span></p>
             <input type="date" name="user_dateofbirth" placeholder="Nouvelle date de naissance" value="<?= $date_naissance ?>">
 
@@ -110,41 +100,43 @@
                 <?php } ?>
             </select>
 
-
             <div class="profile-info">
                 <input type="submit" name="save_modification" value="Enregistrer" class="file-input-button">
                 <button type="button" id="cancelEditBtn" class="file-input-button">Annuler</button>
             </div>
     </form>
 
-
-
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const navbarToggle = document.getElementById("navbar-toggle");
-            const navbarNav = document.getElementById("navbar-nav");
+    document.addEventListener("DOMContentLoaded", function() {
+        const navbarToggle = document.getElementById("navbar-toggle");
+        const navbarNav = document.getElementById("navbar-nav");
 
-            if (navbarToggle && navbarNav) {
-                navbarToggle.addEventListener("click", function() {
-                    navbarNav.classList.toggle("active");
-                });
-            }
+        if (navbarToggle && navbarNav) {
+            navbarToggle.addEventListener("click", function() {
+                navbarNav.classList.toggle("active");
+            });
+        }
 
-            document.getElementById('editDescriptionBtn').addEventListener('click', function() {
-                // Masquer la div avec la classe profile-info
+        document.getElementById('editDescriptionBtn').addEventListener('click', function() {
+            const errorsExist = <?= isset($errorsExist) && $errorsExist ? 'true' : 'false'; ?>;
+
+            // Masquer la div avec la classe profile-info si des erreurs existent
+            if (!errorsExist) {
                 document.querySelector('.profile-info').style.display = 'none';
                 // Afficher le formulaire de modification
                 document.getElementById('editDescriptionForm').style.display = 'block';
-            });
-
-            document.getElementById('cancelEditBtn').addEventListener('click', function() {
-                // Afficher à nouveau la div avec la classe profile-info
-                document.querySelector('.profile-info').style.display = 'block';
-                // Masquer le formulaire de modification
-                document.getElementById('editDescriptionForm').style.display = 'none';
-            });
+            }
         });
-    </script>
+
+        document.getElementById('cancelEditBtn').addEventListener('click', function() {
+            // Afficher à nouveau la div avec la classe profile-info
+            document.querySelector('.profile-info').style.display = 'block';
+            // Masquer le formulaire de modification
+            document.getElementById('editDescriptionForm').style.display = 'none';
+        });
+    });
+</script>
+
 
 
 </body>
