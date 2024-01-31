@@ -7,6 +7,21 @@ require_once '../config.php';
 require_once '../models/Userprofil.php';
 require_once '../models/Enterprise.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete_profile'])) {
+        // Appelle la méthode pour supprimer le profil
+        $delete_result = Userprofil::deleteUser($user_id);
+
+        if ($delete_result === true) {
+            // Redirige l'utilisateur vers la page d'inscription si la suppression est réussiee
+            header("Location: controllers/controller-signup.php");
+            exit();
+        } else {
+            echo "Erreur lors de la suppression du profil : " . $delete_result;
+        }
+    }
+}
+
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
     // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
@@ -120,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+$user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : null;
 
 $allEnterprises = Enterprise::getAllEnterprises();
 

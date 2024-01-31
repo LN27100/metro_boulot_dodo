@@ -222,7 +222,9 @@ class Userprofil
         die();
     }
 }
-    
+    /**
+     * * Méthode pour modifier le profil utilisateur
+     */
     public static function updateProfil(int $user_id, string $new_description, string $new_name, string $new_firstname, string $new_pseudo, string $new_email, string $new_dateofbirth, string $new_enterprise)
 {
     try {
@@ -257,5 +259,24 @@ class Userprofil
     }
 }
 
+/**
+ * Méthode pour supprimer le profil utilisateur
+ * @param int $user_id est l'id de l'utilisateur
+ * @return bool|string Renvoie true si la suppression est réussie, sinon renvoie un message d'erreur
+ */
+public static function deleteUser(int $user_id) {
+    try {
+        $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
+
+        $sql = "DELETE FROM `user` WHERE `user_id` = :user_id";
+        $query = $db->prepare($sql);
+        $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $query->execute();
+
+        return true; // Suppression réussie
+    } catch (PDOException $e) {
+        return 'Erreur : ' . $e->getMessage(); // Erreur lors de la suppression
+    }
+}
 }
 

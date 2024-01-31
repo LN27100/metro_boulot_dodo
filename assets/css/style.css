@@ -393,6 +393,24 @@ body>form::after {
 
 /* PAGE PROFIL */
 
+.deleteProfil {
+background-color: transparent;
+width: 8rem;
+height: 2rem;
+padding: 0;
+margin: 0;
+}
+
+.delete_profile {
+  width: 8rem;
+  padding: 0.3rem 0.2rem;
+  font-size: 0.8rem;
+  background-color: #206D3C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
 .error-message {
   color: red;
 }
