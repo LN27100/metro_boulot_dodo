@@ -16,7 +16,9 @@
     <?php
 
     // Bouton de déconnexion
-    echo '<a href="../controllers/controller-signout.php" class="buttonHome2"><i class="fa-solid fa-power-off"></i></a>';
+    echo '<a href="../controllers/controller-signout.php" class="buttonHome2"><i class="fa-solid fa-power-off"></i>
+
+    </a>';
     ?>
     <?php include('../templates/header.php'); ?>
 
@@ -49,13 +51,17 @@
         </div>
 
         <button id="editDescriptionBtn">Modifier</button>
-        <button id="deleteAccountBtn">Supprimer le compte</button>
-    </div>
+        <button id="editDescriptionBtn">Supprimer le compte</button>
 
+
+    </div>
     <div class="container6">
-        <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i> Accueil</a>
-        <a href="../controllers/controller-profil.php" class="buttonNav"><i class="bi bi-person"></i> Profil</a>
-        <a href="../controllers/controller-history.php" class="buttonNav"><i class="bi bi-clock-history"></i> Historique</a>
+        <a href="../controllers/controller-home.php" class="buttonNav"><i class="bi bi-house"></i>
+            Accueil</a>
+        <a href="../controllers/controller-profil.php" class="buttonNav"><i class="bi bi-person"></i>
+            Profil</a>
+        <a href="../controllers/controller-history.php" class="buttonNav"><i class="bi bi-clock-history"></i>
+            Historique</a>
     </div>
 
     <!-- Formulaire de modification du profil (masqué par défaut) -->
@@ -89,6 +95,7 @@
                 <span class="error-message"><?= $errors['email']; ?></span>
             <?php } ?>
 
+
             <p><span class="styleProfil"> Date de naissance:</span></p>
             <input type="date" name="user_dateofbirth" placeholder="Nouvelle date de naissance" value="<?= $date_naissance ?>">
 
@@ -100,11 +107,14 @@
                 <?php } ?>
             </select>
 
+
             <div class="profile-info">
                 <input type="submit" name="save_modification" value="Enregistrer" class="file-input-button">
                 <button type="button" id="cancelEditBtn" class="file-input-button">Annuler</button>
             </div>
     </form>
+
+
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
