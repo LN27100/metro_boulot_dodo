@@ -389,6 +389,10 @@ body>form::after {
 
 /* PAGE PROFIL */
 
+.error-message {
+  color: red;
+}
+
 
 .buttonHome2 {
   display: flex;

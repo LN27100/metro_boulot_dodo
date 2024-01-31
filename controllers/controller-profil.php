@@ -7,7 +7,6 @@ require_once '../config.php';
 require_once '../models/Userprofil.php';
 require_once '../models/Enterprise.php';
 
-
 // Vérifie si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
     // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
@@ -43,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $new_file_name = "profile_" . $_SESSION['user']['user_id'] . "." . $file_extension;
 
             // // Construire le chemin complet du fichier en concaténant le dossier de sauvegarde avec le nouveau nom de fichier
-
             $uploadFile = $uploadDir . $new_file_name;
 
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
@@ -68,23 +66,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_email = isset($_POST['user_email']) ? ($_POST['user_email']) : "";
         $new_dateofbirth = isset($_POST['user_dateofbirth']) ? ($_POST['user_dateofbirth']) : "";
         $new_enterprise = isset($_POST['new_enterprise']) ? ($_POST['new_enterprise']) : "";
+
         // Vérification du pseudo
-        if (empty($new_pseudo)) {
-            $errors["pseudo"] = "Champ obligatoire";
-        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $new_pseudo)) {
+        if (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $new_pseudo)) {
             $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
         } elseif (strlen($new_pseudo) < 6) {
             $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
-        } elseif (Userprofil::checkPseudoExists($new_pseudo, $user_id)) {
+        } elseif (Userprofil::checkPseudoExists($new_pseudo)) {
             $errors["pseudo"] = 'Pseudo déjà utilisé';
         }
 
+
         // Vérification de l'email
-        if (empty($new_email)) {
-            $errors["email"] = "Champ obligatoire";
-        } elseif (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
             $errors["email"] = "Le format de l'adresse email n'est pas valide";
-        } elseif (Userprofil::checkMailExists($new_email, $user_id)) {
+        } elseif (Userprofil::checkMailExists($new_email)) {
             $errors["email"] = 'Mail déjà utilisé';
         }
 
@@ -93,6 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             include_once '../views/view-profil.php';
             exit();
         }
+
+       
 
         try {
             Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth, $new_enterprise);
