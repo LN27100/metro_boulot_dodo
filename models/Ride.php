@@ -60,7 +60,10 @@ class Ride
         }
     }
 
-
+/**
+ * Methode permettant de supprimer un trajet
+ * @param int $ride_id est l'id du trajet
+ */
     public static function deleteRide(int $ride_id) {
         try {
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
@@ -75,6 +78,10 @@ class Ride
         }
     }
 
+    /**
+     * Methode permettant de faire la somme des kms (ride_distance) de tous les trajets
+     * @param in $user_id est l'id de l'utilisateur
+     */
     public static function sommeKms(int $user_id) {
         try {
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);

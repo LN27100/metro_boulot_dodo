@@ -50,9 +50,10 @@
             <p><span class="styleProfil">Entreprise: </span><?= $entreprise ?></p>
         </div>
 
-        <button id="editDescriptionBtn">Modifier</button>
-        <button id="editDescriptionBtn">Supprimer le compte</button>
-
+        <div class="contnair">
+            <button id="editDescriptionBtn">Modifier le profil</button>
+            <button id="editDescriptionBtn">Supprimer le compte</button>
+        </div>
 
     </div>
     <div class="container6">
@@ -117,36 +118,35 @@
 
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const navbarToggle = document.getElementById("navbar-toggle");
-        const navbarNav = document.getElementById("navbar-nav");
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbarToggle = document.getElementById("navbar-toggle");
+            const navbarNav = document.getElementById("navbar-nav");
 
-        if (navbarToggle && navbarNav) {
-            navbarToggle.addEventListener("click", function() {
-                navbarNav.classList.toggle("active");
-            });
-        }
+            if (navbarToggle && navbarNav) {
+                navbarToggle.addEventListener("click", function() {
+                    navbarNav.classList.toggle("active");
+                });
+            }
 
-        document.getElementById('editDescriptionBtn').addEventListener('click', function() {
-            const errorsExist = <?= isset($errorsExist) && $errorsExist ? 'true' : 'false'; ?>;
-
-            // Masquer la div avec la classe profile-info si des erreurs existent
-            if (!errorsExist) {
+            document.getElementById('editDescriptionBtn').addEventListener('click', function() {
+                // Masquer la div avec la classe profile-info
                 document.querySelector('.profile-info').style.display = 'none';
                 // Afficher le formulaire de modification
                 document.getElementById('editDescriptionForm').style.display = 'block';
-            }
-        });
+                if (!empty($errors)) {
+                    document.getElementById('editDescriptionForm').style.display = 'block';
+                }
 
-        document.getElementById('cancelEditBtn').addEventListener('click', function() {
-            // Afficher à nouveau la div avec la classe profile-info
-            document.querySelector('.profile-info').style.display = 'block';
-            // Masquer le formulaire de modification
-            document.getElementById('editDescriptionForm').style.display = 'none';
-        });
-    });
-</script>
+            });
 
+            document.getElementById('cancelEditBtn').addEventListener('click', function() {
+                // Afficher à nouveau la div avec la classe profile-info
+                document.querySelector('.profile-info').style.display = 'block';
+                // Masquer le formulaire de modification
+                document.getElementById('editDescriptionForm').style.display = 'none';
+            });
+        });
+    </script>
 
 
 </body>

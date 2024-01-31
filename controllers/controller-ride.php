@@ -16,7 +16,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-
+// 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $errors = array();
 
@@ -27,8 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $transport_id = ($_POST['transport_id']);
     $ride_time = trim($_POST['ride_time']);
 
-
- 
 
     // Contrôle du date
     if (empty($_POST["dateStart"])) {

@@ -1,17 +1,26 @@
 <?php
-// Assurez-vous de valider et sécuriser vos données avant de les utiliser
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Récupère l'identifiant de la balade à supprimer depuis le formulaire POST
     $ride_id = isset($_POST['ride_id']) ? intval($_POST['ride_id']) : 0;
 
+    // Vérifie si l'identifiant de la balade est valide (supérieur à 0)
     if ($ride_id > 0) {
+
+        // Inclut les fichiers de configuration et le modèle Ride
         require_once '../config.php';
         require_once __DIR__ . '/../models/Ride.php';
 
+        // Appelle la méthode statique pour supprimer la balade
         Ride::deleteRide($ride_id);
     }
 
-    // Redirigez l'utilisateur vers la page history après la suppression
+    // Redirige l'utilisateur vers la page d'historique après la suppression
     header("Location: ../controllers/controller-history.php");
+
+    // Termine l'exécution du script pour éviter toute exécution supplémentaire après la redirection
     exit();
 }
 
@@ -45,4 +54,3 @@ $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pse
 
 // Inclure la vue history uniquement si l'utilisateur est connecté
 include_once '../views/view-history.php';
-?>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
     <title>Historique trajets</title>
 </head>
@@ -45,7 +45,7 @@
 
                             <tr>
                                 <td>
-                                    <form action="../controllers/controller-history.php" method="post">
+                                    <form action="" method="post">
                                         <input class="suppRide" type="hidden" name="ride_id" value="<?= $trajet['ride_id'] ?>">
                                         <button class="btnSupp" type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce trajet ?')">
                                             <i class="bi bi-trash3"></i>
@@ -62,9 +62,11 @@
                         }
                         ?>
 
-
                     </tbody>
+
                 </table>
+                <p class="emptyTable"><?= empty(Ride::getAllTrajets($user_id)) ? 'Aucun trajets à afficher ! ' : ''  ?></p>
+
             </section>
         </div>
 

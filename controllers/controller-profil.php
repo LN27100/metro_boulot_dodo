@@ -57,7 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $errorsExist = false;
 
     // Enregistrement et mise à jour du profil
     if (isset($_POST['save_modification'])) {
@@ -88,7 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         if (!empty($errors)) {
-            $errorsExist = true; 
             include_once '../views/view-profil.php';
             exit();
         }
