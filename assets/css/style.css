@@ -255,7 +255,7 @@ body>h2 {
   text-align: center;
 }
 
-.buttonNav:hover{
+.buttonNav:hover {
   background-color: #7A9855;
 }
 
@@ -394,11 +394,11 @@ body>form::after {
 /* PAGE PROFIL */
 
 .deleteProfil {
-background-color: transparent;
-width: 8rem;
-height: 2rem;
-padding: 0;
-margin: 0;
+  background-color: transparent;
+  width: 8rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0;
 }
 
 .delete_profile {
@@ -409,6 +409,10 @@ margin: 0;
   color: #fff;
   border: none;
   border-radius: 5px;
+}
+
+.delete_profile:hover {
+  background-color: #7A9855;
 }
 
 .error-message {
@@ -552,7 +556,7 @@ body>div.container3>div.profile-image-container>form {
 .contnair {
   display: flex;
   justify-content: space-around;
-  align-items: center; 
+  align-items: center;
 }
 
 #editDescriptionBtn {
@@ -676,6 +680,7 @@ body>form>div.container5>div:nth-child(5)>button {
   text-align: center;
   background-color: #D7C5A8;
 }
+
 body>div.container8>div>section>table>tbody>tr>td>form>button.btnSupp::before {
   content: none;
 }
@@ -691,10 +696,12 @@ body>div.container8>div>section>table>tbody>tr>td:nth-child(1)>form>button {
   height: 2rem;
   width: 2rem;
 }
+
 .newTrajet:hover {
   background-color: #7A9855;
 
 }
+
 body>div.container8>div>section>table>tbody>tr>td:nth-child(1)>form>button>i {
   color: white;
   font-size: 1rem;

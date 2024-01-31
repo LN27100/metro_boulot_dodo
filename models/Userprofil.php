@@ -268,7 +268,7 @@ public static function deleteUser(int $user_id) {
     try {
         $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
-        $sql = "DELETE FROM `user` WHERE `user_id` = :user_id";
+        $sql = "DELETE FROM `userprofil` WHERE `user_id` = :user_id";
         $query = $db->prepare($sql);
         $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
         $query->execute();
