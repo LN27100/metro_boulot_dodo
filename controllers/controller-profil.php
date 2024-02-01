@@ -100,32 +100,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Contrôle du pseudo
-        if (isset($_POST["user_pseudo"]) && $_POST["user_pseudo"] !== $pseudo) {
             if (empty($_POST["user_pseudo"])) {
                 $errors["user_pseudo"] = "Champ obligatoire";
             } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["user_pseudo"])) {
                 $errors["user_pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
             } elseif (strlen($_POST["user_pseudo"]) < 6) {
                 $errors["user_pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
-            } elseif (Userprofil::checkPseudoExists($_POST["pseudo"])) {
+            } elseif (Userprofil::checkPseudoExists($_POST["user_pseudo"]) && $_POST["user_pseudo"] != $_SESSION["user"]["user_pseudo"]) {
                 $errors["user_pseudo"] = 'Pseudo déjà utilisé';
             }
-        } else {
-            // Le pseudo n'a pas changé, pas de contrôle nécessaire
-        }
+       
 
         // Contrôle de l'email 
-        if (isset($_POST["user_email"]) && $_POST["user_email"] !== $email) {
             if (empty($_POST["user_email"])) {
                 $errors["user_email"] = "Champ obligatoire";
             } elseif (!filter_var($_POST["user_email"], FILTER_VALIDATE_EMAIL)) {
                 $errors["user_email"] = "Le format de l'adresse email n'est pas valide";
-            } elseif (Userprofil::checkMailExists($_POST["user_email"])) {
+            } elseif (Userprofil::checkMailExists($_POST["user_email"]) && $_POST ["user_email"] != $_SESSION["user"]["user_email"]){
                 $errors["user_email"] = 'Mail déjà utilisé';
             }
-        } else {
-            // L'email n'a pas changé, pas de contrôle nécessaire
-        }
+
 
 
         // Contrôle de la date de naissance
