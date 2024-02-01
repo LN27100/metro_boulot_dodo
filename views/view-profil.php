@@ -52,6 +52,7 @@
 
         <div class="contnair">
             <button id="editDescriptionBtn">Modifier le profil</button>
+            
             <form action="../index.php" method="post" class="deleteProfil">
                 <input type="hidden" name="user_id" value="<?= $user_id ?>">
                 <button class="delete_profile" type="submit" name="delete_profile" onclick="return confirm('Voulez-vous vraiment supprimer ce profil ?')">Supprimer le profil</button>
