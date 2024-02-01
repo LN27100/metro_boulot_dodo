@@ -393,6 +393,14 @@ body>form::after {
 
 /* PAGE PROFIL */
 
+.tittleProfil {
+  color: #D7C5A8;
+  text-align: center;
+  font-family: 'Marhey', sans-serif;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .deleteProfil {
   background-color: transparent;
   width: 8rem;

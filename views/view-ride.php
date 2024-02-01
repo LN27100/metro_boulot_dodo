@@ -14,6 +14,8 @@
 <body>
 
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
+    <h2 class="tittleProfil">Ajouter un trajet</h1>
+
 
     <form class="container" method="POST" action="../controllers/controller-ride.php" novalidate>
 

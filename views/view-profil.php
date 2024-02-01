@@ -21,8 +21,9 @@
     </a>';
     ?>
     <?php include('../templates/header.php'); ?>
+    <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
-    <h1 class="titreAccueil">Votre profil</h1>
+    <h2 class="tittleProfil">Votre profil</h1>
 
     <div class="container3">
         <div class="profile-image-container">
