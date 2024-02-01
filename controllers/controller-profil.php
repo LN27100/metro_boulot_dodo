@@ -85,28 +85,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_dateofbirth = isset($_POST['user_dateofbirth']) ? ($_POST['user_dateofbirth']) : "";
         $new_enterprise = isset($_POST['new_enterprise']) ? ($_POST['new_enterprise']) : "";
 
-        // // Vérification du pseudo
-        // if (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $new_pseudo)) {
-        //     $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
-        // } elseif (strlen($new_pseudo) < 6) {
-        //     $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
-        // } elseif (Userprofil::checkPseudoExists($new_pseudo)) {
-        //     $errors["pseudo"] = 'Pseudo déjà utilisé';
-        // }
+        // Contrôle du nom
+    if (empty($_POST["nom"])) {
+        $errors["nom"] = "Champ obligatoire";
+    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["nom"])) {
+        $errors["nom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom";
+    }
 
-        // // Vérification de l'email
-        // if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
-        //     $errors["email"] = "Le format de l'adresse email n'est pas valide";
-        // } elseif (Userprofil::checkMailExists($new_email)) {
-        //     $errors["email"] = 'Mail déjà utilisé';
-        // }
+    // Contrôle du prénom
+    if (empty($_POST["prenom"])) {
+        $errors["prenom"] = "Champ obligatoire";
+    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["prenom"])) {
+        $errors["prenom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom";
+    }
 
-        // // Si des erreurs sont détectées, redirigez l'utilisateur vers le formulaire avec les erreurs
-        // if (!empty($errors)) {
-        //     include_once '../views/view-profil.php';
-        //     exit();
-        // }
+    // Contrôle du pseudo
+    if (empty($_POST["pseudo"])) {
+        $errors["pseudo"] = "Champ obligatoire";
+    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
+        $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
+    } elseif (strlen($_POST["pseudo"]) < 6) {
+        $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
+    } elseif (Userprofil::checkPseudoExists($_POST["pseudo"])) {
+        $errors["pseudo"] = 'Pseudo déjà utilisé';
+    }
 
+    // Contrôle de l'email
+    if (empty($_POST["email"])) {
+        $errors["email"] = "Champ obligatoire";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $errors["email"] = "Le format de l'adresse email n'est pas valide";
+    } elseif (Userprofil::checkMailExists($_POST["email"])) {
+        $errors["email"] = 'mail déjà utilisé';
+    }
+
+    // Contrôle de la date de naissance
+    if (empty($_POST["date_naissance"])) {
+        $errors["date_naissance"] = "Champ obligatoire";
+    }
+
+        // Si des erreurs sont détectées, redirigez l'utilisateur vers le formulaire avec les erreurs
+        if (!empty($errors)) {
         try {
             Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth, $new_enterprise);
             $_SESSION['user']['user_describ'] = $new_description;
@@ -124,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ../controllers/controller-profil.php");
         exit();
     }
+}
 }
 
 $allEnterprises = Enterprise::getAllEnterprises();
