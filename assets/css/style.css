@@ -116,6 +116,7 @@ select#entreprise {
   border-radius: 5px;
   text-align: center;
   font-family: 'Exo', sans-serif;
+  margin-bottom: 3.5rem;
 }
 
 .button:hover {
@@ -981,7 +982,7 @@ body>div.text-center {
 
   .titreAccueil {
     font-size: 2rem;
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
   }
 
 }
