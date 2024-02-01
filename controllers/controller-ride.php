@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
      // Contrôle transport_id
      if (empty($_POST["ride_time"])) {
-        $errors["time_id"] = "Champ obligatoire";
+        $errors["ride_time"] = "Champ obligatoire";
     }
     // On s'assure qu'il n'y a pas d'erreur dans le formuaire
     if (empty($errors)) {

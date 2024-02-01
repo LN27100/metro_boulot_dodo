@@ -40,9 +40,12 @@
                 <label for="dateStart" class="form-label2">Date</label>
                 <input type="date" id="dateStart" name="dateStart" required>
                 <div class="invalid-feedback" id="dateValidationFeedback">
-
                 </div>
             </div>
+             <!-- Affichage des erreurs pour la date -->
+             <?php if (isset($errors['dateStart'])) { ?>
+                <span class="error-message"><?= $errors['dateStart']; ?></span>
+            <?php } ?>
 
             <div class="container7">
                 <label for="transptransport_id" class="form-labels">Moyen de transport</label>
@@ -58,18 +61,30 @@
                     }
                     ?>
                 </select>
-
             </div>
+
+             <!-- Affichage des erreurs pour le moyen de transport -->
+             <?php if (isset($errors['transport_id'])) { ?>
+                <span class="error-message"><?= $errors['transport_id']; ?></span>
+            <?php } ?>
 
             <div class="container7">
                 <label class="form-label" for="typeNumber">Kilomètres</label>
                 <input step="0.01" value="" type="number" id="typeNumber" class="form-control" name="kilometers" />
             </div>
+             <!-- Affichage des erreurs pour les kilomètres -->
+             <?php if (isset($errors['kilometers'])) { ?>
+                <span class="error-message"><?= $errors['kilometers']; ?></span>
+            <?php } ?>
 
             <div class="container7">
                 <label for="ride_time">Temps de trajet</label>
                 <input type="time" id="appt" name="ride_time" min="09:00" max="18:00" required />
             </div>
+            <!-- Affichage des erreurs pour le temps de trajets -->
+            <?php if (isset($errors['ride_time'])) { ?>
+                <span class="error-message"><?= $errors['ride_time']; ?></span>
+            <?php } ?>
 
 
             <div class="container7">
