@@ -26,14 +26,18 @@
     </div>
 
     <div class="container4">
-
         <?php echo "<h3>Bienvenue $pseudo</h3>"; ?>
+        </div>
+
+        <div class="global">
+        <div class="container4">
 
         <img src="<?= $img ?>" alt="photo de profil" class="imageHome">
     </div>
 
     <div class="container4">
         <a href="../controllers/controller-ride.php" class="buttonHome">Commencer un trajet</a>
+    </div>
     </div>
 
     <div class="container6">

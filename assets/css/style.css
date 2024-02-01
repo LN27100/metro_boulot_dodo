@@ -288,6 +288,33 @@ body>h2 {
 
 /*  PAGE ACCUEIL */
 
+.global {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.global {
+  padding: 2rem 2rem;
+  margin-top: 0;
+  position: relative;
+  background-color: rgba(215, 197, 168, 0.7);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.global::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/bgAccueil.jpg) no-repeat center center / cover;
+  border-radius: 7px;
+  z-index: -1;
+}
+
 body>div:nth-child(3)>img {
   align-items: center;
 }
@@ -300,13 +327,15 @@ body>div:nth-child(3)>img {
   font-weight: bolder;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-top: 1.5rem;
+  margin-bottom: 0;
 }
 
 body>div:nth-child(2) {
   color: #206D3C;
   font-weight: bold;
+  font-size: 1.3rem;
   font-family: 'Exo', sans-serif;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 body>div:nth-child(3)>h3 {
@@ -314,7 +343,7 @@ body>div:nth-child(3)>h3 {
   margin-top: 1rem;
   color: #D7C5A8;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
+  margin-bottom: 0.5rem;
 }
 
 .container4 {
@@ -325,7 +354,7 @@ body>div:nth-child(3)>h3 {
 }
 
 
-body>div:nth-child(3)>img {
+.imageHome {
   margin-top: 1rem;
   width: 10rem;
   height: auto;
@@ -334,6 +363,7 @@ body>div:nth-child(3)>img {
 }
 
 .buttonHome {
+  text-decoration: none;
   background-color: #206D3C;
   color: #fff;
   border: none;
@@ -343,7 +373,8 @@ body>div:nth-child(3)>img {
   height: 5rem;
   font-size: 1.5rem;
   font-family: 'Exo', sans-serif;
-  padding-top: 1.2rem;
+  padding: 1.2rem 1rem 0 1rem;
+  margin-bottom: 4rem;
 }
 
 body>a {
@@ -365,32 +396,6 @@ body>a {
 }
 
 
-body>form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-body>form {
-  padding: 2rem 2rem;
-  margin-top: 3rem;
-  position: relative;
-  background-color: rgba(215, 197, 168, 0.7);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-body>form::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url(../img/bgTrajet.jpg) no-repeat center center / cover;
-  border-radius: 7px;
-  z-index: -1;
-}
 
 /* PAGE PROFIL */
 
@@ -617,6 +622,32 @@ body>div.container3>div.profile-image-container>form>input[type=submit]:nth-chil
 
 /* PAGE TRAJETS */
 
+body>form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body>form {
+  padding: 2rem 2rem;
+  margin-top: 3rem;
+  position: relative;
+  background-color: rgba(215, 197, 168, 0.7);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+body>form::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/bgTrajet.jpg) no-repeat center center / cover;
+  border-radius: 7px;
+  z-index: -1;
+}
 .container5 {
   display: flex;
   justify-content: center;
@@ -679,6 +710,9 @@ body>form>div:nth-child(2)>img {
 body>form>div.container5>div:nth-child(5)>button {
   margin-top: 0.5rem;
 }
+
+
+
 
 /* PAGE HISTORIQUE */
 
