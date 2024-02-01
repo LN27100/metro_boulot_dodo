@@ -52,7 +52,7 @@
 
         <div class="contnair">
             <button id="editDescriptionBtn">Modifier le profil</button>
-            
+
             <form action="../index.php" method="post" class="deleteProfil">
                 <input type="hidden" name="user_id" value="<?= $user_id ?>">
                 <button class="delete_profile" type="submit" name="delete_profile" onclick="return confirm('Voulez-vous vraiment supprimer ce profil ?')">Supprimer le profil</button>
@@ -82,28 +82,43 @@
             <p><span class="styleProfil"> Nom:</span></p>
             <input type="text" name="user_name" placeholder="Nouveau nom" value="<?= $nom ?>">
 
+            <!-- Affichage des erreurs pour le nom -->
+            <?php if (isset($errors['user_name'])) { ?>
+                <span class="error-message"><?= $errors['user_name']; ?></span>
+            <?php } ?>
+
             <p><span class="styleProfil"> Prénom:</span></p>
             <input type="text" name="user_firstname" placeholder="Nouveau prénom" value="<?= $prenom ?>">
+
+            <!-- Affichage des erreurs pour le prénom -->
+            <?php if (isset($errors['user_firstname'])) { ?>
+                <span class="error-message"><?= $errors['user_firstname']; ?></span>
+            <?php } ?>
 
             <p><span class="styleProfil">Pseudo:</span></p>
             <input type="text" name="user_pseudo" placeholder="Nouveau pseudo" value="<?= $pseudo ?>">
 
             <!-- Affichage des erreurs pour le pseudo -->
-            <?php if (isset($errors['pseudo'])) { ?>
-                <span class="error-message"><?= $errors['pseudo']; ?></span>
+            <?php if (isset($errors['user_pseudo'])) { ?>
+                <span class="error-message"><?= $errors['user_pseudo']; ?></span>
             <?php } ?>
 
             <p><span class="styleProfil">Email:</span></p>
             <input type="text" name="user_email" placeholder="Nouveau email" value="<?= $email ?>">
 
             <!-- Affichage des erreurs pour l'email -->
-            <?php if (isset($errors['email'])) { ?>
-                <span class="error-message"><?= $errors['email']; ?></span>
+            <?php if (isset($errors['user_email'])) { ?>
+                <span class="error-message"><?= $errors['user_email']; ?></span>
             <?php } ?>
 
 
             <p><span class="styleProfil"> Date de naissance:</span></p>
             <input type="date" name="user_dateofbirth" placeholder="Nouvelle date de naissance" value="<?= $date_naissance ?>">
+
+              <!-- Affichage des erreurs pour la date de naissance -->
+              <?php if (isset($errors['user_dateofbirth'])) { ?>
+                <span class="error-message"><?= $errors['user_dateofbirth']; ?></span>
+            <?php } ?>
 
             <p><span class="styleProfil">Entreprise:</span></p>
             <select class="form-select" aria-label="Default select example" name="new_enterprise" id="new_enterprise">
@@ -138,11 +153,12 @@
                 document.querySelector('.profile-info').style.display = 'none';
                 // Afficher le formulaire de modification
                 document.getElementById('editDescriptionForm').style.display = 'block';
-                if (!empty($errors)) {
-                    document.getElementById('editDescriptionForm').style.display = 'block';
-                }
-
             });
+
+            // Afficher le formulaire de modification si des erreurs sont présentes
+            if (<?= !empty($errors) ? 'true' : 'false' ?>) {
+                document.getElementById('editDescriptionForm').style.display = 'block';
+            }
 
             document.getElementById('cancelEditBtn').addEventListener('click', function() {
                 // Afficher à nouveau la div avec la classe profile-info

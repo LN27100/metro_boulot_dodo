@@ -86,42 +86,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_enterprise = isset($_POST['new_enterprise']) ? ($_POST['new_enterprise']) : "";
 
         // Contrôle du nom
-        if (empty($_POST["nom"])) {
-            $errors["nom"] = "Champ obligatoire";
-        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["nom"])) {
-            $errors["nom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom";
+        if (empty($_POST["user_name"])) {
+            $errors["user_name"] = "Champ obligatoire";
+        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["user_name"])) {
+            $errors["user_name"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom";
         }
 
         // Contrôle du prénom
-        if (empty($_POST["prenom"])) {
-            $errors["prenom"] = "Champ obligatoire";
-        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["prenom"])) {
-            $errors["prenom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom";
+        if (empty($_POST["user_firstname"])) {
+            $errors["user_firstname"] = "Champ obligatoire";
+        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["user_firstname"])) {
+            $errors["user_firstname"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom";
         }
 
         // Contrôle du pseudo
-        if (isset($_POST["pseudo"]) && $_POST["pseudo"] !== $pseudo) {
-            if (empty($_POST["pseudo"])) {
-                $errors["pseudo"] = "Champ obligatoire";
-            } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
-                $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
-            } elseif (strlen($_POST["pseudo"]) < 6) {
-                $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
+        if (isset($_POST["user_pseudo"]) && $_POST["user_pseudo"] !== $pseudo) {
+            if (empty($_POST["user_pseudo"])) {
+                $errors["user_pseudo"] = "Champ obligatoire";
+            } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["user_pseudo"])) {
+                $errors["user_pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
+            } elseif (strlen($_POST["user_pseudo"]) < 6) {
+                $errors["user_pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
             } elseif (Userprofil::checkPseudoExists($_POST["pseudo"])) {
-                $errors["pseudo"] = 'Pseudo déjà utilisé';
+                $errors["user_pseudo"] = 'Pseudo déjà utilisé';
             }
         } else {
             // Le pseudo n'a pas changé, pas de contrôle nécessaire
         }
 
         // Contrôle de l'email 
-        if (isset($_POST["email"]) && $_POST["email"] !== $email) {
-            if (empty($_POST["email"])) {
-                $errors["email"] = "Champ obligatoire";
-            } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-                $errors["email"] = "Le format de l'adresse email n'est pas valide";
-            } elseif (Userprofil::checkMailExists($_POST["email"])) {
-                $errors["email"] = 'Mail déjà utilisé';
+        if (isset($_POST["user_email"]) && $_POST["user_email"] !== $email) {
+            if (empty($_POST["user_email"])) {
+                $errors["user_email"] = "Champ obligatoire";
+            } elseif (!filter_var($_POST["user_email"], FILTER_VALIDATE_EMAIL)) {
+                $errors["user_email"] = "Le format de l'adresse email n'est pas valide";
+            } elseif (Userprofil::checkMailExists($_POST["user_email"])) {
+                $errors["user_email"] = 'Mail déjà utilisé';
             }
         } else {
             // L'email n'a pas changé, pas de contrôle nécessaire
@@ -129,8 +129,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         // Contrôle de la date de naissance
-        if (empty($_POST["date_naissance"])) {
-            $errors["date_naissance"] = "Champ obligatoire";
+        if (empty($_POST["user_dateofbirth"])) {
+            $errors["user_dateofbirth"] = "Champ obligatoire";
         }
 
         // Si des erreurs sont détectées, redirigez l'utilisateur vers le formulaire avec les erreurs
