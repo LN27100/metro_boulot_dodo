@@ -40,40 +40,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erreur lors de la suppression du profil : " . $delete_result;
         }
     }
- // Gestion de la mise à jour de l'image de profil
- if (isset($_FILES['profile_image'])) {
-    try {
-        // Dossier de sauvegarde des images
-        $uploadDir = '../assets/uploads/';
+    // Gestion de la mise à jour de l'image de profil
+    if (isset($_FILES['profile_image'])) {
+        try {
+            // Dossier de sauvegarde des images
+            $uploadDir = '../assets/uploads/';
 
 
-        // Vérification du dossier de sauvegarde des images
-        if (!file_exists($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
+            // Vérification du dossier de sauvegarde des images
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+
+            $file_extension = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
+            // Construire un nom de fichier unique en combinant "profile_", l'ID de l'utilisateur et l'extension du fichier
+            $new_file_name = "profile_" . $_SESSION['user']['user_id'] . "." . $file_extension;
+
+
+            // // Construire le chemin complet du fichier en concaténant le dossier de sauvegarde avec le nouveau nom de fichier
+
+            $uploadFile = $uploadDir . $new_file_name;
+
+
+            if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
+                $_SESSION['user']['user_photo'] = $uploadFile;
+                Userprofil::updateProfileImage($_SESSION['user']['user_id'], $uploadFile);
+                header("Location: ../controllers/controller-profil.php");
+            } else {
+                echo "Erreur lors du téléchargement du fichier : " . $_FILES['profile_image']['error'];
+            }
+        } catch (Exception $e) {
+            echo "Erreur lors de la mise à jour de l'image de profil : " . $e->getMessage();
         }
-
-
-        $file_extension = pathinfo($_FILES['profile_image']['name'], PATHINFO_EXTENSION);
-        // Construire un nom de fichier unique en combinant "profile_", l'ID de l'utilisateur et l'extension du fichier
-        $new_file_name = "profile_" . $_SESSION['user']['user_id'] . "." . $file_extension;
-
-
-        // // Construire le chemin complet du fichier en concaténant le dossier de sauvegarde avec le nouveau nom de fichier
-
-        $uploadFile = $uploadDir . $new_file_name;
-
-
-        if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $uploadFile)) {
-            $_SESSION['user']['user_photo'] = $uploadFile;
-            Userprofil::updateProfileImage($_SESSION['user']['user_id'], $uploadFile);
-            header("Location: ../controllers/controller-profil.php");
-        } else {
-            echo "Erreur lors du téléchargement du fichier : " . $_FILES['profile_image']['error'];
-        }
-    } catch (Exception $e) {
-        echo "Erreur lors de la mise à jour de l'image de profil : " . $e->getMessage();
     }
-}
     // Gestion du formulaire
     if (isset($_POST['save_modification'])) {
         $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0;
@@ -86,67 +86,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_enterprise = isset($_POST['new_enterprise']) ? ($_POST['new_enterprise']) : "";
 
         // Contrôle du nom
-    if (empty($_POST["nom"])) {
-        $errors["nom"] = "Champ obligatoire";
-    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["nom"])) {
-        $errors["nom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom";
-    }
-
-    // Contrôle du prénom
-    if (empty($_POST["prenom"])) {
-        $errors["prenom"] = "Champ obligatoire";
-    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["prenom"])) {
-        $errors["prenom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom";
-    }
-
-    // Contrôle du pseudo
-    if (empty($_POST["pseudo"])) {
-        $errors["pseudo"] = "Champ obligatoire";
-    } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
-        $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
-    } elseif (strlen($_POST["pseudo"]) < 6) {
-        $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
-    } elseif (Userprofil::checkPseudoExists($_POST["pseudo"])) {
-        $errors["pseudo"] = 'Pseudo déjà utilisé';
-    }
-
-    // Contrôle de l'email
-    if (empty($_POST["email"])) {
-        $errors["email"] = "Champ obligatoire";
-    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $errors["email"] = "Le format de l'adresse email n'est pas valide";
-    } elseif (Userprofil::checkMailExists($_POST["email"])) {
-        $errors["email"] = 'mail déjà utilisé';
-    }
-
-    // Contrôle de la date de naissance
-    if (empty($_POST["date_naissance"])) {
-        $errors["date_naissance"] = "Champ obligatoire";
-    }
-
-        // Si des erreurs sont détectées, redirigez l'utilisateur vers le formulaire avec les erreurs
-        if (!empty($errors)) {
-        try {
-            Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth, $new_enterprise);
-            $_SESSION['user']['user_describ'] = $new_description;
-            $_SESSION['user']['user_name'] = $new_name;
-            $_SESSION['user']['user_firstname'] = $new_firstname;
-            $_SESSION['user']['user_pseudo'] = $new_pseudo;
-            $_SESSION['user']['user_email'] = $new_email;
-            $_SESSION['user']['user_dateofbirth'] = $new_dateofbirth;
-            $_SESSION['user']['enterprise_id'] = $new_enterprise;
-        } catch (Exception $e) {
-            echo "Erreur lors de la mise à jour du profil : " . $e->getMessage();
+        if (empty($_POST["nom"])) {
+            $errors["nom"] = "Champ obligatoire";
+        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["nom"])) {
+            $errors["nom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom";
         }
 
-        // Redirigez l'utilisateur vers la page du profil après la mise à jour
-        header("Location: ../controllers/controller-profil.php");
-        exit();
+        // Contrôle du prénom
+        if (empty($_POST["prenom"])) {
+            $errors["prenom"] = "Champ obligatoire";
+        } elseif (!preg_match("/^[a-zA-ZÀ-ÿ -]*$/", $_POST["prenom"])) {
+            $errors["prenom"] = "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom";
+        }
+
+        // Contrôle du pseudo
+        if (isset($_POST["pseudo"]) && $_POST["pseudo"] !== $pseudo) {
+            if (empty($_POST["pseudo"])) {
+                $errors["pseudo"] = "Champ obligatoire";
+            } elseif (!preg_match("/^[a-zA-ZÀ-ÿ\d]+$/", $_POST["pseudo"])) {
+                $errors["pseudo"] = "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo";
+            } elseif (strlen($_POST["pseudo"]) < 6) {
+                $errors["pseudo"] = "Le pseudo doit contenir au moins 6 caractères";
+            } elseif (Userprofil::checkPseudoExists($_POST["pseudo"])) {
+                $errors["pseudo"] = 'Pseudo déjà utilisé';
+            }
+        } else {
+            // Le pseudo n'a pas changé, pas de contrôle nécessaire
+        }
+
+        // Contrôle de l'email 
+        if (isset($_POST["email"]) && $_POST["email"] !== $email) {
+            if (empty($_POST["email"])) {
+                $errors["email"] = "Champ obligatoire";
+            } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+                $errors["email"] = "Le format de l'adresse email n'est pas valide";
+            } elseif (Userprofil::checkMailExists($_POST["email"])) {
+                $errors["email"] = 'Mail déjà utilisé';
+            }
+        } else {
+            // L'email n'a pas changé, pas de contrôle nécessaire
+        }
+
+
+        // Contrôle de la date de naissance
+        if (empty($_POST["date_naissance"])) {
+            $errors["date_naissance"] = "Champ obligatoire";
+        }
+
+        // Si des erreurs sont détectées, redirigez l'utilisateur vers le formulaire avec les erreurs
+        if (empty($errors)) {
+            try {
+                Userprofil::updateProfil($user_id, $new_description, $new_name, $new_firstname, $new_pseudo, $new_email, $new_dateofbirth, $new_enterprise);
+                $_SESSION['user']['user_describ'] = $new_description;
+                $_SESSION['user']['user_name'] = $new_name;
+                $_SESSION['user']['user_firstname'] = $new_firstname;
+                $_SESSION['user']['user_pseudo'] = $new_pseudo;
+                $_SESSION['user']['user_email'] = $new_email;
+                $_SESSION['user']['user_dateofbirth'] = $new_dateofbirth;
+                $_SESSION['user']['enterprise_id'] = $new_enterprise;
+            } catch (Exception $e) {
+                echo "Erreur lors de la mise à jour du profil : " . $e->getMessage();
+            }
+
+            // Redirigez l'utilisateur vers la page du profil après la mise à jour
+            header("Location: ../controllers/controller-profil.php");
+            exit();
+        }
     }
-}
 }
 
 $allEnterprises = Enterprise::getAllEnterprises();
 
 include_once '../views/view-profil.php';
-?>
