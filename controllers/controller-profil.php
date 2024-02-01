@@ -27,19 +27,8 @@ $errors = array(); // Tableau pour stocker les erreurs
 
 $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['delete_profile'])) {
-        // Appelle la méthode pour supprimer le profil
-        $delete_result = Userprofil::deleteUser($user_id);
 
-        if ($delete_result === true) {
-            // Redirige l'utilisateur vers la page d'inscription si la suppression est réussiee
-            header("Location: controllers/controller-profil.php");
-            exit();
-        } else {
-            echo "Erreur lors de la suppression du profil : " . $delete_result;
-        }
-    }
+
     // Gestion de la mise à jour de l'image de profil
     if (isset($_FILES['profile_image'])) {
         try {
@@ -147,7 +136,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     }
-}
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_profile'])) {
+            // Appelle la méthode pour supprimer le profil
+            $delete_result = Userprofil::deleteUser($user_id);
+        
+            if ($delete_result === true) {
+                // Suppression réussie, redirigez vers la page d'accueil avec un message de succès
+                header("Location: ../index.php?message=Redirection+reussie");
+                exit();
+            } else {
+                echo "Erreur lors de la suppression du profil : " . $delete_result;
+                exit();
+            }
+        }
+
 
 $allEnterprises = Enterprise::getAllEnterprises();
 

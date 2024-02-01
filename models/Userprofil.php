@@ -270,15 +270,16 @@ public static function deleteUser(int $user_id) {
     try {
         $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
 
-        $sql = "DELETE FROM `userprofil` WHERE `user_id` = :user_id";
+        $sql = "DELETE FROM userprofil WHERE user_id = :user_id";
         $query = $db->prepare($sql);
         $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
         $query->execute();
 
-        return true; // Suppression réussie
+        
+        return true;
     } catch (PDOException $e) {
-        return 'Erreur : ' . $e->getMessage(); // Erreur lors de la suppression
+        // Si une erreur se produit, retourner le message d'erreur
+        return 'Erreur : ' . $e->getMessage();
     }
 }
 }
-

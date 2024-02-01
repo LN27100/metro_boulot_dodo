@@ -12,6 +12,10 @@
 </head>
 
 <body>
+
+<?php
+
+?>
     <h1>Eco'Mouv !!</h1>
     
     <h2>Veuillez vous connecter</h2>
