@@ -86,7 +86,7 @@
 
                 document.getElementById('editDescriptionBtn').addEventListener('click', function() {
                     // Masquer la div avec la classe profile-info
-                    document.querySelector('.profile-info').style.display = 'none';
+                    document.querySelector('.adminprofil-info').style.display = 'none';
                     // Afficher le formulaire de modification
                     document.getElementById('editDescriptionForm').style.display = 'block';
                 });
@@ -94,12 +94,12 @@
                 // Afficher le formulaire de modification si des erreurs sont présentes
                 if (<?= !empty($errors) ? 'true' : 'false' ?>) {
                     document.getElementById('editDescriptionForm').style.display = 'block';
-                    document.querySelector('.profile-info').style.display = 'none';
+                    document.querySelector('.adminprofil-info').style.display = 'none';
                 }
 
                 document.getElementById('cancelEditBtn').addEventListener('click', function() {
-                    // Afficher à nouveau la div avec la classe profile-info
-                    document.querySelector('.profile-info').style.display = 'block';
+                    // Afficher à nouveau la div avec la classe adminprofil-info
+                    document.querySelector('.adminprofil-info').style.display = 'block';
                     // Masquer le formulaire de modification
                     document.getElementById('editDescriptionForm').style.display = 'none';
                 });

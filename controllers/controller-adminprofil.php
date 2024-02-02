@@ -53,6 +53,7 @@ $admin_id = isset($_SESSION['admin']['admin_id']) ? $_SESSION['admin']['admin_id
         }
     }
 
+    //supprimer le profil administrateur
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_profile'])) {
             // Appelle la méthode pour supprimer le profil
             $delete_result = Admin::deleteAdmin($admin_id);

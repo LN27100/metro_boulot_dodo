@@ -27,6 +27,9 @@
     <div class="container8">
         <div class="row">
 
+        <div class="d-flex align-items-center justify-content-center">
+                <p class="sommeKms">Total kilomètres parcourus : <?= Ride::sommeKms($user_id)['total'] . ' kms'  ?></p>
+            </div>
 
             <section class="col-12">
                 <table class="table">
@@ -70,10 +73,7 @@
             </section>
         </div>
 
-        <div class="text-center">
-            <p class="totalKms">Total kilomètres parcourus :</p>
-            <p class="sommeKms"><?= Ride::sommeKms($user_id)['total'] . ' kms'  ?></p>
-        </div>
+
 
 
         <div class="text-center">

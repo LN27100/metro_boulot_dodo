@@ -205,7 +205,7 @@ body>h2 {
   text-align: center;
 }
 
-body > div > form > div:nth-child(3){
+body>div>form>div:nth-child(3) {
   height: 5rem;
 }
 
@@ -478,6 +478,7 @@ body.page-profil {
   border-radius: 7px;
   z-index: -1;
 }
+
 .styleProfil {
   font-family: 'Exo', sans-serif;
   font-size: 1rem;
@@ -812,20 +813,21 @@ body>div.container8>div>section>table>tbody>tr>td {
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
+  font-family: 'Exo', sans-serif;
 }
 
-.totalKms {
-  color: #206D3C;
+body>div.container8>div.row>div>p.sommeKms {
+  margin-bottom: 1rem;
   font-family: 'Exo', sans-serif;
   font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 0;
 }
 
 .sommeKms {
-  background-color: rgba(181, 202, 105, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 20rem;
   color: #206D3C;
   font-weight: bold;
+  text-align: center;
 }
 
 body>div.text-center {
@@ -847,10 +849,10 @@ body>div.text-center {
 
 /* COMPTE ADMINISTRATEUR */
 
-body > div > form > div:nth-child(5) > a {
+body>div>form>div:nth-child(5)>a {
   text-decoration: none;
-  color:#206D3C;
-  margin-top:1rem;
+  color: #206D3C;
+  margin-top: 1rem;
 }
 
 .buttonadminhome {
@@ -888,9 +890,9 @@ body > div > form > div:nth-child(5) > a {
 }
 
 .adminprofil-info {
-margin-top: 2rem; 
-margin-bottom: 2rem;
-margin-left: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
 }
 
 /* RESPONSIVE */
