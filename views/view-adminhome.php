@@ -36,11 +36,11 @@
     </div>
 
     <div class="container4">
-        <a href="#" class="buttonHome">Valider les entreprises</a>
+        <a href="#" class="buttonadminhome">Valider les entreprises</a>
     </div>
 
     <div class="container4">
-        <a href="#" class="buttonHome">Valider les utilisateurs</a>
+        <a href="#" class="buttonadminhome">Valider les utilisateurs</a>
     </div>
     </div>
 

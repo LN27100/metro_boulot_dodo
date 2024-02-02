@@ -53,6 +53,11 @@
             <div class="text-center">
                 <a href="../controllers/controller-adminsignup.php">Devenir administrateur !</a>
             </div>
+
+            <div class="text-center">
+            <p>------------------------</p>
+                <a href="../controllers/controller-signin.php">Compte utilisateur</a>
+            </div>
         </form>
     </div>
 
