@@ -439,7 +439,7 @@ body.page-profil {
   padding: 4rem 0.4rem 4rem 0.4rem;
   margin-top: 1.5rem;
   position: relative;
-  background-color: rgba(215, 197, 168, 0.7);
+  background-color: rgba(215, 197, 168, 0.8);
 }
 
 .container3::after {
@@ -454,6 +454,27 @@ body.page-profil {
   z-index: -1;
 }
 
+#editDescriptionForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4rem 0.4rem 4rem 0.4rem;
+  margin-top: 1.5rem;
+  position: relative;
+  background-color: rgba(215, 197, 168, 0.8);
+}
+
+#editDescriptionForm::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../img/bfModifProfil.jpg) no-repeat center center / cover;
+  border-radius: 7px;
+  z-index: -1;
+}
 .styleProfil {
   font-family: 'Exo', sans-serif;
   font-size: 1rem;
@@ -755,7 +776,7 @@ body>div.container8>div>section>table>tbody>tr>td>form {
   padding: 2rem 0 4.2rem 0;
   margin-top: 1.5rem;
   position: relative;
-  background-color: rgba(215, 197, 168, 0.7);
+  background-color: rgba(215, 197, 168, 0.5);
 }
 
 .container8::after {
@@ -791,7 +812,7 @@ body>div.container8>div>section>table>tbody>tr>td {
 }
 
 .totalKms {
-  color: #7A9855;
+  color: #206D3C;
   font-family: 'Exo', sans-serif;
   font-weight: bold;
   font-size: 1.2rem;
