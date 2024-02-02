@@ -32,7 +32,7 @@
         <div class="global">
         <div class="container4">
 
-        <img src="/assets/img/avatarDefault.jpg" alt="photo de profil" class="imageHome">
+        <img src="/assets/img/img01.jpeg" alt="photo de profil" class="imageHome">
     </div>
 
     <div class="container4">

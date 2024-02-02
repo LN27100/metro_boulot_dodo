@@ -50,9 +50,6 @@
                 <button class="button" type="submit" id="submitButton">Se connecter</button>
             </div>
 
-            <div class="text-center">
-                <a href="../controllers/controller-adminsignup.php">Devenir administrateur !</a>
-            </div>
 
             <div class="text-center">
             <p>------------------------</p>
