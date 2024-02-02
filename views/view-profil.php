@@ -46,7 +46,7 @@
                     </div>
                 </div>
 
-                <p><span class="styleProfil">Date de naissance: </span> <?= $date_naissance ?></p>
+                <p><span class="styleProfil">Date de naissance: </span> <?= empty($date_naissance) ? "Non définie" : date('d/m/Y', strtotime($date_naissance)) ?></p>
                 <p><span class="styleProfil">Email: </span> <?= $email ?></p>
                 <p><span class="styleProfil">Entreprise: </span><?= $entreprise ?></p>
             </div>
