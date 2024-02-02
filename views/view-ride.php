@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <title>Accueil Eco'Mouv</title>
+    <title>Ajouter un trajet</title>
 </head>
 
 <body>
@@ -88,7 +88,7 @@
 
 
             <div class="container7">
-                <button class="button" type="submit">Valider</button>
+                <button class="button3" type="submit">Valider</button>
             </div>
         </div>
     </form>

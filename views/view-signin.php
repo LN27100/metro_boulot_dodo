@@ -45,9 +45,6 @@
                 </div>
             </div>
 
-            <div class="col">
-                <a href="#">Mot de passe perdu?</a>
-            </div>
 
             <div class="text-center">
                 <button class="button" type="submit" id="submitButton">Se connecter</button>

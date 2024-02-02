@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-// Le reste de votre code pour récupérer les trajets
 if (session_status() === PHP_SESSION_NONE) {
     // Si non, démarrer la session
     session_start();
