@@ -161,7 +161,13 @@
                         <button class="button" type="submit" id="submitButton">S'enregistrer</button>
                     </div>
 
+                    <label for="submitButton" class="form-labels">Déjà inscrit?</label>
+                    <div class="text-center">
+                        <button class="buttonRetourCo" type="submit" id="submitButton">Se connecter</button>
+                    </div>
+
                 </form>
+
 
             <?php } else { ?>
                 <h2>Inscription réussie</h2>
