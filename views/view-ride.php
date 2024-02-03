@@ -38,7 +38,7 @@
         <div class="container5">
             <div class="container7">
                 <label for="dateStart" class="form-label2">Date</label>
-                <input type="date" id="dateStart" name="dateStart" required>
+                <input class="input-select-width" type="date" id="dateStart" name="dateStart" required>
                 <div class="invalid-feedback" id="dateValidationFeedback">
                 </div>
             </div>
@@ -49,7 +49,7 @@
 
             <div class="container7">
                 <label for="transptransport_id" class="form-labels">Moyen de transport</label>
-                <select class="form-select" aria-label="Default select example" name="transport_id" id="transport">
+                <select class="form-select input-select-width" aria-label="Default select example" name="transport_id" id="transport">
                     <option value="" selected>Sélectionnez un transport</option>
 
                     <?php foreach ($allTransports as $transport) {
@@ -70,7 +70,7 @@
 
             <div class="container7">
                 <label class="form-label" for="typeNumber">Kilomètres</label>
-                <input step="0.01" value="" type="number" id="typeNumber" class="form-control" name="kilometers" />
+                <input step="0.01" value="" type="number" id="typeNumber" class="form-control input-select-width" name="kilometers" />
             </div>
              <!-- Affichage des erreurs pour les kilomètres -->
              <?php if (isset($errors['kilometers'])) { ?>
@@ -79,7 +79,7 @@
 
             <div class="container7">
                 <label for="ride_time">Temps de trajet</label>
-                <input type="time" id="appt" name="ride_time" min="09:00" max="18:00" required />
+                <input class="input-select-width" type="time" id="appt" name="ride_time" min="09:00" max="18:00" required />
             </div>
             <!-- Affichage des erreurs pour le temps de trajets -->
             <?php if (isset($errors['ride_time'])) { ?>
