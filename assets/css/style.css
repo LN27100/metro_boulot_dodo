@@ -116,16 +116,36 @@ select#entreprise {
   background-color: #7A9855;
 }
 
+.retoutCo {
+  background-color: rgba(215, 197, 168, 0.7);
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  color: #206D3C;
+  font-size: 1rem;
+  width: 7rem;
+}
+
 .buttonRetourCo {
   padding: 8px 12px;
   font-size: 1rem;
+  font-weight: bold;
   background-color: #206D3C;
+  text-decoration: none;
   color: #fff;
   border: none;
   border-radius: 5px;
   text-align: center;
   font-family: 'Exo', sans-serif;
   margin-bottom: 3.5rem;
+}
+
+.buttonRetourCo:hover {
+  background-color: #7A9855;
+}
+
+.returnConnexion {
+  text-align: center;
+  font-weight: bold;
 }
 body>div>a {
   background-color: #206D3C;

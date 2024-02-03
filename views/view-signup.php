@@ -157,13 +157,17 @@
                         <div class="invalid-feedback" id="cguValidationFeedback">Veuillez accepter les conditions d'utilisation</div>
                     </div>
 
-                    <div class="col-12 mt-4 mt-xxl-0 w-auto">
+                    <div class="text-center">
                         <button class="button" type="submit" id="submitButton">S'enregistrer</button>
                     </div>
+                    <p class="returnConnexion">------------------------</p>
 
-                    <label for="submitButton" class="form-labels">Déjà inscrit?</label>
                     <div class="text-center">
-                        <button class="buttonRetourCo" type="submit" id="submitButton">Se connecter</button>
+                    <label for="submitButton" class="retoutCo">Déjà inscrit?</label>
+                    </div>
+
+                    <div class="text-center">
+                <a href="../controllers/controller-signin.php" class="buttonRetourCo">Connexion</a>
                     </div>
 
                 </form>

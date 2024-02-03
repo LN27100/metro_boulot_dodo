@@ -13,11 +13,11 @@
 
 <body>
 
-<?php
+    <?php
 
-?>
+    ?>
     <h1>Eco'Mouv !!</h1>
-    
+
     <h2>Veuillez vous connecter</h2>
     <div class="container2">
         <form class="row" method="POST" action="../controllers/controller-signin.php" novalidate>
@@ -56,7 +56,7 @@
             </div>
 
             <div class="text-center">
-            <p>------------------------</p>
+                <p>------------------------</p>
                 <a href="../controllers/controller-adminsignin.php">Compte administrateur</a>
             </div>
 
