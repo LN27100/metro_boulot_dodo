@@ -195,13 +195,18 @@ body>form>div.container5>div:nth-child(4)>label {
   width: 10rem;
   position: absolute;
   top: 0;
-  right: -2rem; /* Ajustez la valeur selon vos besoins */
+  right: -2rem; 
+}
+
+.requirements {
+  font-size: 0.8rem; 
 }
 
 #password-input {
   display: block;
-  margin-top: 1rem; /* Ajustez la marge selon vos besoins */
+  margin-top: 1rem; 
 }
+
 .container {
   position: relative;
 }
