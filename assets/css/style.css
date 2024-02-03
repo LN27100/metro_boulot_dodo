@@ -147,6 +147,7 @@ select#entreprise {
   text-align: center;
   font-weight: bold;
 }
+
 body>div>a {
   background-color: #206D3C;
   color: #fff;
@@ -164,10 +165,45 @@ body>div>a {
   display: none;
 }
 
+body>form>div.container5>div:nth-child(4) {
+  position: relative;
+}
+
+body>form>div.container5>div:nth-child(4)>label {
+  text-align: center;
+  width: 10rem;
+  margin-bottom: 0;
+  z-index: 1;
+}
+
 .invalid-feedback {
   color: #dc3545;
   display: none;
   background-color: #D7C5A8;
+  font-size: 0.8rem;
+  left: 7rem;
+  width: 7rem;
+  position: absolute;
+  z-index: 2;
+}
+#passwordValidationFeedback {
+  color: #dc3545;
+  display: none;
+  background-color: #D7C5A8;
+  font-size: 0.8rem;
+  text-align: right;
+  width: 10rem;
+  position: absolute;
+  top: 0;
+  right: -2rem; /* Ajustez la valeur selon vos besoins */
+}
+
+#password-input {
+  display: block;
+  margin-top: 1rem; /* Ajustez la marge selon vos besoins */
+}
+.container {
+  position: relative;
 }
 
 /* Style des messages d'alerte */
@@ -720,13 +756,6 @@ body>form>div.container5>div:nth-child(2)>label {
 }
 
 body>form>div.container5>div:nth-child(3)>label {
-  text-align: center;
-  width: 10rem;
-  margin-bottom: 0;
-
-}
-
-body>form>div.container5>div:nth-child(4)>label {
   text-align: center;
   width: 10rem;
   margin-bottom: 0;
