@@ -44,8 +44,9 @@ class Ride
     public static function getAllTrajets(int $user_id) {
         try {
             $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
-    
-            $sql = "SELECT * , DATE_FORMAT(ride_date, '%d/%m/%Y') AS date_fr FROM `ride`NATURAL JOIN `transport` WHERE `user_id`= :id_user ORDER BY `ride_date` DESC";
+    //  `heure_minute` qui concatène les heures et les minutes de la colonne `ride_time` au format "00h00min"
+
+            $sql = "SELECT *, DATE_FORMAT(ride_date, '%d/%m/%Y') AS date_fr, CONCAT(TIME_FORMAT(ride_time, '%H'), 'h', TIME_FORMAT(ride_time, '%i'), 'min') AS heure_minute FROM `ride` NATURAL JOIN `transport` WHERE `user_id`= :id_user ORDER BY `ride_date` DESC";
             $query = $db->prepare($sql);
             $query->bindValue(':id_user', $user_id, PDO::PARAM_INT);
             $query->execute();

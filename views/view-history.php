@@ -58,7 +58,7 @@
                                 <td><?= $trajet['date_fr'] ?></td>
                                 <td><?= $trajet['transport_type'] ?></td>
                                 <td><?= $trajet['ride_distance'] . ' kms' ?></td>
-                                <td><?= $trajet['ride_time'] ?></td>
+                                <td><?= $trajet['heure_minute'] ?></td>
                             </tr>
 
                         <?php
