@@ -700,11 +700,13 @@ body>div.container3>div.profile-image-container>form>input[type=submit]:nth-chil
 /* PAGE AJOUT TRAJETS */
 
 .input-select-width {
-  width: 160px;
+  width: 250px;
 }
 
+body > form > div.container5 > div:nth-child(1) {
+  width: 250px;
 
-
+}
 body>form {
   display: flex;
   justify-content: center;
@@ -968,7 +970,7 @@ body>div>form>div:nth-child(5)>a {
 
 /* RESPONSIVE */
 
-@media only screen and (min-width: 320px) and (max-width: 780px) {
+@media only screen and (min-width: 300px) and (max-width: 780px) {
   .container6 {
     justify-content: center;
   }

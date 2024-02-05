@@ -20,7 +20,7 @@
         <?php
         if ($showform) {
         ?>
-            <form class="row" method="POST" action="../controllers/controller-signup.php" novalidate>
+            <form class="row " method="POST" action="../controllers/controller-signup.php" novalidate>
 
                 <div class="col-md-4">
                     <label for="validationServer01" class="form-label">Nom: </label>

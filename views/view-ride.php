@@ -38,7 +38,7 @@
         <div class="container5">
             <div class="container7">
                 <label for="dateStart" class="form-label2">Date</label>
-                <input class="input-width" type="date" id="dateStart" name="dateStart" required>
+                <input class="inputWidth" type="date" id="dateStart" name="dateStart" required>
                 <div class="invalid-feedback" id="dateValidationFeedback">
                 </div>
             </div>
