@@ -700,8 +700,10 @@ body>div.container3>div.profile-image-container>form>input[type=submit]:nth-chil
 /* PAGE AJOUT TRAJETS */
 
 .input-select-width {
-  width: 200px; /* Définissez la largeur souhaitée en pixels ou avec une unité de votre choix */
+  width: 160px;
 }
+
+
 
 body>form {
   display: flex;
