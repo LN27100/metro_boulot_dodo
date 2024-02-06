@@ -17,7 +17,15 @@ if (!isset($_SESSION['user'])) {
 
 // Récupère le pseudo de l'utilisateur
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
-$img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']) : "Photo non définie";
+
+// Vérifie si une photo d'utilisateur est définie dans la session
+if (isset($_SESSION['user']['user_photo']) && !empty($_SESSION['user']['user_photo'])) {
+    // Utilise la photo de l'utilisateur s'il en existe une
+    $img = $_SESSION['user']['user_photo'];
+} else {
+    // Utilise une photo par défaut si aucune photo d'utilisateur n'est définie
+    $img = "../assets/img/avatarDefault.jpg";
+}
 
 // Inclure la vue home uniquement si l'utilisateur est connecté
 include_once '../views/view-home.php';

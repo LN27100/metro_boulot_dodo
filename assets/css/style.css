@@ -25,6 +25,7 @@ h1 {
   margin-left: calc(2em + 0.25rem + 1.5rem);
 }
 
+
 .container form {
   background-image: url(/assets/img/bginscription.jpg);
   background-size: cover;
@@ -705,7 +706,6 @@ body>div.container3>div.profile-image-container>form>input[type=submit]:nth-chil
 
 body > form > div.container5 > div:nth-child(1) {
   width: 250px;
-
 }
 body>form {
   display: flex;

@@ -20,14 +20,17 @@ $prenom = isset($_SESSION['user']['user_firstname']) ? ($_SESSION['user']['user_
 $date_naissance = isset($_SESSION['user']['user_dateofbirth']) ? ($_SESSION['user']['user_dateofbirth']) : "Date de naissance non définie";
 $email = isset($_SESSION['user']['user_email']) ? ($_SESSION['user']['user_email']) : "Email non défini";
 $entreprise = isset($_SESSION['user']['enterprise_id']) ? Userprofil::getEntrepriseNom($_SESSION['user']['enterprise_id']) : "Entreprise non définie";
-$img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']) : "Photo non définie";
+// Vérifie si une photo d'utilisateur est définie dans la session
+if (isset($_SESSION['user']['user_photo']) && !empty($_SESSION['user']['user_photo'])) {
+    $img = $_SESSION['user']['user_photo'];
+} else {
+    $img = "../assets/img/avatarDefault.jpg";
+}
 
 // Gestion du formulaire
 $errors = array(); // Tableau pour stocker les erreurs
 
 $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : null;
-
-
 
     // Gestion de la mise à jour de l'image de profil
     if (isset($_FILES['profile_image'])) {
@@ -57,12 +60,17 @@ $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 
                 Userprofil::updateProfileImage($_SESSION['user']['user_id'], $uploadFile);
                 header("Location: ../controllers/controller-profil.php");
             } else {
+                $uploadDir = '../assets/img/avatarDefault.jpg';
+
                 echo "Erreur lors du téléchargement du fichier : " . $_FILES['profile_image']['error'];
             }
         } catch (Exception $e) {
             echo "Erreur lors de la mise à jour de l'image de profil : " . $e->getMessage();
         }
     }
+
+
+
     // Gestion du formulaire
     if (isset($_POST['save_modification'])) {
         $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 0;
@@ -98,7 +106,7 @@ $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 
             } elseif (Userprofil::checkPseudoExists($_POST["user_pseudo"]) && $_POST["user_pseudo"] != $_SESSION["user"]["user_pseudo"]) {
                 $errors["user_pseudo"] = 'Pseudo déjà utilisé';
             }
-       
+
 
         // Contrôle de l'email 
             if (empty($_POST["user_email"])) {
@@ -108,7 +116,6 @@ $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 
             } elseif (Userprofil::checkMailExists($_POST["user_email"]) && $_POST ["user_email"] != $_SESSION["user"]["user_email"]){
                 $errors["user_email"] = 'Mail déjà utilisé';
             }
-
 
 
         // Contrôle de la date de naissance
@@ -130,7 +137,6 @@ $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 
             } catch (Exception $e) {
                 echo "Erreur lors de la mise à jour du profil : " . $e->getMessage();
             }
-
             // Redirigez l'utilisateur vers la page du profil après la mise à jour
             header("Location: ../controllers/controller-profil.php");
             exit();

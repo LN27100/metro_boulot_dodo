@@ -30,10 +30,10 @@
         </div>
 
         <div class="global">
+            
         <div class="container4">
-
-        <img src="<?= $img ?>" alt="photo de profil" class="imageHome">
-    </div>
+                <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
+        </div>
 
     <div class="container4">
         <a href="../controllers/controller-ride.php" class="buttonHome">Commencer un trajet</a>
