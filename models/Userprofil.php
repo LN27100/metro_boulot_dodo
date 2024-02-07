@@ -213,13 +213,13 @@ class Userprofil
         $new_file_name = "profile_" . $user_id . "." . $file_extension;
 
         // Nouveau chemin de l'image avec le nom de fichier unique
-        $new_image_path_with_user_id = '../assets/uploads/' . $new_file_name;
+        $new_image_path = $new_file_name;
 
         $sql = "UPDATE userprofil SET user_photo = :new_image_path WHERE user_id = :user_id";
 
         $query = $db->prepare($sql);
 
-        $query->bindValue(':new_image_path', $new_image_path_with_user_id, PDO::PARAM_STR);
+        $query->bindValue(':new_image_path', $new_image_path, PDO::PARAM_STR);
         $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 
         $query->execute();
