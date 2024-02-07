@@ -200,26 +200,20 @@ class Userprofil
      * @param int $user_id est l'id de l'utilisateur
      */
 
-    public static function updateProfileImage(int $user_id, string $new_image_path)
+     public static function updateProfileImage(int $user_id, string $new_image_path)
 {
     try {
         $db = new PDO(DBNAME, DBUSER, DBPASSWORD);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Obtenir l'extension du fichier à partir du chemin de l'image
-        $file_extension = pathinfo($new_image_path, PATHINFO_EXTENSION);
+        // Obtenir le nom de fichier à partir du chemin de l'image
+        $file_name = basename($new_image_path);
 
-        // Construire un nom de fichier unique avec le user_id
-        $new_file_name = "profile_" . $user_id . "." . $file_extension;
-
-        // Nouveau chemin de l'image avec le nom de fichier unique
-        $new_image_path = $new_file_name;
-
-        $sql = "UPDATE userprofil SET user_photo = :new_image_path WHERE user_id = :user_id";
+        $sql = "UPDATE userprofil SET user_photo = :new_image_name WHERE user_id = :user_id";
 
         $query = $db->prepare($sql);
 
-        $query->bindValue(':new_image_path', $new_image_path, PDO::PARAM_STR);
+        $query->bindValue(':new_image_name', $file_name, PDO::PARAM_STR);
         $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 
         $query->execute();
@@ -228,6 +222,7 @@ class Userprofil
         die();
     }
 }
+
 
     /**
      * * Méthode pour modifier le profil utilisateur

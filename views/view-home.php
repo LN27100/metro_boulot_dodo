@@ -32,7 +32,7 @@
         <div class="global">
             
         <div class="container4">
-                <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
+                <img src="../assets/uploads/<?= $img ?>" alt="photo de profil" class="profile-image">
         </div>
 
     <div class="container4">
