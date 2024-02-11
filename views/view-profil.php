@@ -26,9 +26,9 @@
 
     <div class="container3">
         <div class="profile-image-container">
-         
-                <img src="../assets/uploads/<?= $img ?>" alt="photo de profil" class="profile-image">
 
+            <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
+            
             <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
                 <input type="file" name="profile_image" id="profile_image" accept="image/png, image/gif, image/jpeg, image/jpg" required>
                 <input type="submit" value="Télécharger">
@@ -122,6 +122,7 @@
                 <span class="error-message"><?= $errors['user_dateofbirth']; ?></span>
             <?php } ?>
 
+            <!-- Affichage des erreurs pour l'entreprise -->
             <p><span class="styleProfil">Entreprise:</span></p>
             <select class="form-select" aria-label="Default select example" name="new_enterprise" id="new_enterprise">
                 <option value="" selected disabled>Sélectionnez une entreprise</option>

@@ -276,6 +276,12 @@ public static function deleteUser(int $user_id) {
         $query->bindValue(':user_id', $user_id, PDO::PARAM_INT);
         $query->execute();
 
+          // Détruire la session
+          session_destroy();
+
+          // Supprimer le mot de passe de la session
+          unset($_SESSION['mdp']);
+
         
         return true;
     } catch (PDOException $e) {

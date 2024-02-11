@@ -58,11 +58,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Donne toutes les propriétés du serveur
     // var_dump($_SERVER)
 }
+
 // Récupèration données
 $pseudo = isset($_SESSION['user']['user_pseudo']) ? ($_SESSION['user']['user_pseudo']) : "Pseudo non défini";
 $allTransports = Transport::getAllTransports();
-$img = isset($_SESSION['user']['user_photo']) ? ($_SESSION['user']['user_photo']) : "Photo non définie";
 
+// Vérifie si une photo d'utilisateur est définie dans la session
+if (isset($_SESSION['user']['user_photo']) && !empty($_SESSION['user']['user_photo'])) {
+    // Utilise la photo de l'utilisateur s'il en existe une
+    $img = $_SESSION['user']['user_photo'];
+} else {
+    // Utilise une photo par défaut si aucune photo d'utilisateur n'est définie
+    $img = "../assets/img/avatarDefault.jpg";
+}
 
 // Inclure la vue home uniquement si l'utilisateur est connecté
 include_once '../views/view-ride.php';
