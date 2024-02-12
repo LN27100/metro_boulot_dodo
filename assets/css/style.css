@@ -10,6 +10,11 @@ body {
 
 
 /* PAGE INSCRIPTION */
+
+#cgu {
+  border: solid 1px #7A9855 !important;
+}
+
 h1 {
   font-family: 'Marhey', sans-serif;
   text-align: center;
