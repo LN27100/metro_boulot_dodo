@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets//css//style.css">
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Le6MHApAAAAAAgz5TL14sgGMqRH-uu3pYQU0dDJ"></script>
 
     <title>Inscription Eco'Mouv !</title>
 </head>
@@ -157,17 +158,20 @@
                         <div class="invalid-feedback" id="cguValidationFeedback">Veuillez accepter les conditions d'utilisation</div>
                     </div>
 
+                    <!-- reCaptcha -->
+                    <div class="g-recaptcha" data-sitekey="6Le6MHApAAAAAAgz5TL14sgGMqRH-uu3pYQU0dDJ"></div>
+
                     <div class="text-center">
                         <button class="button" type="submit" id="submitButton">S'enregistrer</button>
                     </div>
                     <p class="returnConnexion">------------------------</p>
 
                     <div class="text-center">
-                    <label for="submitButton" class="retoutCo">Déjà inscrit?</label>
+                        <label for="submitButton" class="retoutCo">Déjà inscrit?</label>
                     </div>
 
                     <div class="text-center">
-                <a href="../controllers/controller-signin.php" class="buttonRetourCo">Connexion</a>
+                        <a href="../controllers/controller-signin.php" class="buttonRetourCo">Connexion</a>
                     </div>
 
                 </form>
@@ -421,6 +425,7 @@
                 if (formIsValid) {}
             });
         });
+ 
     </script>
 </body>
 
