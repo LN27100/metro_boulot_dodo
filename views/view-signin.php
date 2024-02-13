@@ -55,9 +55,9 @@
             <div class="g-recaptcha" data-sitekey="6LcPI3EpAAAAAJVdfd-HYDpxyls1CC6bDa8kSwfq"></div>
                    
                    <?php
-                    if (isset($msg)) {
+                    if (isset($errors['recaptcha'])) {
                     ?>
-                        <p class="recaptchas"><?= $msg; ?></p>
+                        <p class="recaptchas"><?= $errors['recaptcha']; ?></p>
                     <?php
                     }
                     ?>

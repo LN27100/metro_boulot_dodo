@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST["mot_de_passe"])) {
         $errors["mot_de_passe"] = "Champ obligatoire";
     }
+    
 
     if (isset($_POST["g-recaptcha-response"])) {
         // print_r($_POST);
@@ -41,11 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // print_r($dataRow);
 
-            if($dataRow['success']==true) {
-                $msg = 'Recaptcha vérifié avec succès';
-                    } else {
-                 $msg = 'Recaptcha non valide';
-                        }
+            if(!$dataRow['success']==true) {
+                $errors['recaptcha'] = 'Recaptcha obligatoire';
+                    } 
             }
 
     // Si aucune erreur, procédez à la vérification de l'utilisateur
