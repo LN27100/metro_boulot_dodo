@@ -260,6 +260,9 @@ body>div>p>strong>em {
   color: red; 
 }
 
+body > div.container2 > form > div:nth-child(3) > div > div > div > iframe {
+  width: 18.2rem;
+}
 
 body > div.container2 > form > div:nth-child(3) > div {
   display: flex;
