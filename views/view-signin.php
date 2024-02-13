@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 
     <title>Connexion</title>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <body>
@@ -47,10 +50,22 @@
 
 
             <div class="text-center">
+
+            <!-- reCaptcha -->
+            <div class="g-recaptcha" data-sitekey="6LcPI3EpAAAAAJVdfd-HYDpxyls1CC6bDa8kSwfq"></div>
+                   
+                   <?php
+                    if (isset($msg)) {
+                    ?>
+                        <p class="recaptchas"><?= $msg; ?></p>
+                    <?php
+                    }
+                    ?>
+
                 <button class="button" type="submit" id="submitButton">Se connecter</button>
             </div>
 
-            <div class="text-center">
+            <div class="pushbottom text-center">
                 <p>Pas encore membre?</p>
                 <a href="../controllers/controller-signup.php">Inscrivez-vous!</a>
             </div>
