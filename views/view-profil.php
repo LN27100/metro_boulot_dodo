@@ -126,7 +126,7 @@
             <p><span class="styleProfil">Entreprise:</span></p>
             <select class="form-select" aria-label="Default select example" name="new_enterprise" id="new_enterprise">
                 <option value="" selected disabled>Sélectionnez une entreprise</option>
-                <?php foreach ($allEnterprises as $enterprise) { ?>
+                <?php foreach ($allEnterprises['data'] as $enterprise) { ?>
                     <option value="<?= $enterprise['enterprise_id'] ?>" <?= $enterprise['enterprise_id'] == $_SESSION['user']['enterprise_id'] ? 'selected' : '' ?>><?= $enterprise['enterprise_name'] ?></option>
                 <?php } ?>
             </select>

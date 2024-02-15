@@ -152,6 +152,6 @@ if (isset($_FILES['profile_image'])) {
         }
 
 
-$allEnterprises = Enterprise::getAllEnterprises();
-
+        $allEnterprisesJson = Enterprise::newGetAllEntreprise();
+        $allEnterprises = json_decode($allEnterprisesJson, true);
 include_once '../views/view-profil.php';
