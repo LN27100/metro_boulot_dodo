@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -134,15 +135,9 @@
                 <label for="entreprise" class="form-labels">Choix de l'entreprise:</label>
                 <select class="form-select" aria-label="Default select example" name="entreprise" id="entreprise">
                     <option value="" selected>Sélectionnez une entreprise</option>
-
-                    <?php foreach ($allEnterprises as $enterprise) {
-                    ?>
-
-                        <option value=<?= $enterprise['enterprise_id'] ?>> <?= $enterprise['enterprise_name'] ?></option>
-
-                    <?php
-                    }
-                    ?>
+                    <?php foreach ($allEnterprises['data'] as $enterprise) { ?>
+                        <option value="<?= $enterprise['enterprise_id'] ?>"><?= $enterprise['enterprise_name'] ?></option>
+                    <?php } ?>
                 </select>
 
 
@@ -159,7 +154,7 @@
 
 
                 <div class="text-center">
-                   
+
                     <button class="button" type="submit" id="submitButton">S'enregistrer</button>
                 </div>
 
@@ -186,202 +181,203 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("Le DOM est chargé. Le script fonctionne.");
+                    console.log("Le DOM est chargé. Le script fonctionne.");
 
-            const password = document.getElementById("password-input");
-            const confirmPassword = document.getElementById("confirm-password-input");
-            const passwordAlert = document.getElementById("password-alert");
-	
-            const bigLetter = document.querySelector(".big-letter");
-            const num = document.querySelector(".num");
-            const specialChar = document.querySelector(".special-char");
+                    const password = document.getElementById("password-input");
+                    const confirmPassword = document.getElementById("confirm-password-input");
+                    const passwordAlert = document.getElementById("password-alert");
+
+                    const bigLetter = document.querySelector(".big-letter");
+                    const num = document.querySelector(".num");
+                    const specialChar = document.querySelector(".special-char");
 
 
-            requirements.forEach((element) => element.classList.add("wrong"));
+                    requirements.forEach((element) => element.classList.add("wrong"));
 
-            password.addEventListener("focus", () => {
-                passwordAlert.classList.remove("d-none");
-                if (!password.classList.contains("is-valid")) {
-                    password.classList.add("is-invalid");
-                }
-            });
-
-            password.addEventListener("input", () => {
-                const value = password.value;
-                const isLengthValid = value.length >= 8;
-                const hasUpperCase = /[A-Z]/.test(value);
-                const hasNumber = /\d/.test(value);
-                const hasSpecialChar = /[!@#$%^&*()\[\]{}\\|;:'",<.>/?`~]/.test(value);
-
-                leng.querySelector(".bi-x").classList.toggle("d-none", isLengthValid);
-                leng.querySelector(".bi-check").classList.toggle("d-none", !isLengthValid);
-                bigLetter.querySelector(".bi-x").classList.toggle("d-none", hasUpperCase);
-	
-                num.querySelector(".bi-check").classList.toggle("d-none", !hasNumber);
-                specialChar.querySelector(".bi-x").classList.toggle("d-none", hasSpecialChar);
-                specialChar.querySelector(".bi-check").classList.toggle("d-none", !hasSpecialChar);
-
-                const isPasswordValid = isLengthValid && hasUpperCase && hasNumber && hasSpecialChar;
-                const isPasswordMatching = password.value === confirmPassword.value;
-
-                if (confirmPassword.value.length > 0) {
-                    if (isPasswordMatching) {
-                        confirmPassword.classList.remove("is-invalid");
-	
-                if (isPasswordValid) {
-                    password.classList.remove("is-invalid");
-                    password.classList.add("is-valid");
-
-                    requirements.forEach((element) => {
-                        element.classList.add("good");
+                    password.addEventListener("focus", () => {
+                        passwordAlert.classList.remove("d-none");
+                        if (!password.classList.contains("is-valid")) {
+                            password.classList.add("is-invalid");
+                        }
                     });
-	
-                    passwordAlert.classList.remove("alert-success");
-                }
-            });
 
-            confirmPassword.addEventListener("input", () => {
-                const isPasswordMatching = password.value === confirmPassword.value;
+                    password.addEventListener("input", () => {
+                                const value = password.value;
+                                const isLengthValid = value.length >= 8;
+                                const hasUpperCase = /[A-Z]/.test(value);
+                                const hasNumber = /\d/.test(value);
+                                const hasSpecialChar = /[!@#$%^&*()\[\]{}\\|;:'",<.>/?`~]/.test(value);
 
-                if (confirmPassword.value.length > 0) {
-                    if (isPasswordMatching) {
-                        confirmPassword.classList.remove("is-invalid");
-	
-                    }
-                }
-            });
+                                leng.querySelector(".bi-x").classList.toggle("d-none", isLengthValid);
+                                leng.querySelector(".bi-check").classList.toggle("d-none", !isLengthValid);
+                                bigLetter.querySelector(".bi-x").classList.toggle("d-none", hasUpperCase);
 
-            password.addEventListener("blur", () => {
-                passwordAlert.classList.add("d-none");
-            });
+                                num.querySelector(".bi-check").classList.toggle("d-none", !hasNumber);
+                                specialChar.querySelector(".bi-x").classList.toggle("d-none", hasSpecialChar);
+                                specialChar.querySelector(".bi-check").classList.toggle("d-none", !hasSpecialChar);
 
-            const nomInput = document.getElementById("validationServer01");
-            const prenomInput = document.getElementById("validationServer02");
-            const pseudoInput = document.getElementById("validationServer03");
-            const emailInput = document.getElementById("email");
-            const dateInput = document.getElementById("start");
+                                const isPasswordValid = isLengthValid && hasUpperCase && hasNumber && hasSpecialChar;
+                                const isPasswordMatching = password.value === confirmPassword.value;
 
-            const nomFeedback = document.getElementById("nomValidationFeedback");
-            const prenomFeedback = document.getElementById("prenomValidationFeedback");
-            const pseudoFeedback = document.getElementById("pseudoValidationFeedback");
-            const emailFeedback = document.getElementById("emailValidationFeedback");
-            const dateFeedback = document.getElementById("dateValidationFeedback");
-            const entrepriseSelect = document.getElementById("entreprise");
-            const entrepriseFeedback = document.getElementById("entrepriseValidationFeedback");
+                                if (confirmPassword.value.length > 0) {
+                                    if (isPasswordMatching) {
+                                        confirmPassword.classList.remove("is-invalid");
 
-            entrepriseSelect.addEventListener("input", function() {
-                toggleValidity(entrepriseSelect, entrepriseFeedback);
-            });
+                                        if (isPasswordValid) {
+                                            password.classList.remove("is-invalid");
+                                            password.classList.add("is-valid");
 
-            nomInput.addEventListener("input", function() {
-                toggleValidity(nomInput, nomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom");
-            });
+                                            requirements.forEach((element) => {
+                                                element.classList.add("good");
+                                            });
 
-            prenomInput.addEventListener("input", function() {
-                toggleValidity(prenomInput, prenomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom");
-            });
+                                            passwordAlert.classList.remove("alert-success");
+                                        }
+                                    });
+
+                                confirmPassword.addEventListener("input", () => {
+                                    const isPasswordMatching = password.value === confirmPassword.value;
+
+                                    if (confirmPassword.value.length > 0) {
+                                        if (isPasswordMatching) {
+                                            confirmPassword.classList.remove("is-invalid");
+
+                                        }
+                                    }
+                                });
+
+                                password.addEventListener("blur", () => {
+                                    passwordAlert.classList.add("d-none");
+                                });
+
+                                const nomInput = document.getElementById("validationServer01");
+                                const prenomInput = document.getElementById("validationServer02");
+                                const pseudoInput = document.getElementById("validationServer03");
+                                const emailInput = document.getElementById("email");
+                                const dateInput = document.getElementById("start");
+
+                                const nomFeedback = document.getElementById("nomValidationFeedback");
+                                const prenomFeedback = document.getElementById("prenomValidationFeedback");
+                                const pseudoFeedback = document.getElementById("pseudoValidationFeedback");
+                                const emailFeedback = document.getElementById("emailValidationFeedback");
+                                const dateFeedback = document.getElementById("dateValidationFeedback");
+                                const entrepriseSelect = document.getElementById("entreprise");
+                                const entrepriseFeedback = document.getElementById("entrepriseValidationFeedback");
+
+                                entrepriseSelect.addEventListener("input", function() {
+                                    toggleValidity(entrepriseSelect, entrepriseFeedback);
+                                });
+
+                                nomInput.addEventListener("input", function() {
+                                    toggleValidity(nomInput, nomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Nom");
+                                });
+
+                                prenomInput.addEventListener("input", function() {
+                                    toggleValidity(prenomInput, prenomFeedback, /^[a-zA-ZÀ-ÿ -]*$/, "Seules les lettres, les espaces et les tirets sont autorisés dans le champ Prénom");
+                                });
 
 
-            dateInput.addEventListener("input", function() {
-                toggleValidity(dateInput, dateFeedback);
-            });
-	 function toggleValidity(input, feedback, regex, errorMessage) {
-                    feedback.innerText = errorMessage || "Champ obligatoire";
-                }
-            }
+                                dateInput.addEventListener("input", function() {
+                                    toggleValidity(dateInput, dateFeedback);
+                                });
 
-            pseudoInput.addEventListener("input", function() {
-                toggleValidity(pseudoInput, pseudoFeedback, /^[a-zA-ZÀ-ÿ\d]+$/, "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo");
-                if (pseudoInput.value.length < 6) {
-                    formIsValid = false;
-                    toggleValidity(pseudoInput, pseudoFeedback, null, "Le pseudo doit contenir au moins 6 caractères");
-                }
-            });
+                                function toggleValidity(input, feedback, regex, errorMessage) {
+                                    feedback.innerText = errorMessage || "Champ obligatoire";
+                                }
+                            }
+
+                            pseudoInput.addEventListener("input", function() {
+                                toggleValidity(pseudoInput, pseudoFeedback, /^[a-zA-ZÀ-ÿ\d]+$/, "Seules les lettres et les chiffres sont autorisés dans le champ Pseudo");
+                                if (pseudoInput.value.length < 6) {
+                                    formIsValid = false;
+                                    toggleValidity(pseudoInput, pseudoFeedback, null, "Le pseudo doit contenir au moins 6 caractères");
+                                }
+                            });
 
 
-            emailInput.addEventListener("input", function() {
+                            emailInput.addEventListener("input", function() {
 
-                var emailValue = emailInput.value;
+                                    var emailValue = emailInput.value;
 
-                // vérifier la validité de l'email
-                if (filter_var(emailValue, FILTER_VALIDATE_EMAIL)) {
-                    emailInput.classList.remove("is-invalid");
-	 function toggleValidity(input, feedback, regex, errorMessage) {
-                } else {
-                    emailInput.classList.remove("is-valid");
-                    emailInput.classList.add("is-invalid");
+                                    // vérifier la validité de l'email
+                                    if (filter_var(emailValue, FILTER_VALIDATE_EMAIL)) {
+                                        emailInput.classList.remove("is-invalid");
 
-                    emailFeedback.innerText = "Email non valide";
-                    emailFeedback.style.display = "block";
-                }
-            });
+                                        function toggleValidity(input, feedback, regex, errorMessage) {} else {
+                                            emailInput.classList.remove("is-valid");
+                                            emailInput.classList.add("is-invalid");
 
-            const submitButton = document.getElementById("submitButton");
-            submitButton.addEventListener("click", function(event) {
-                let formIsValid = true;
+                                            emailFeedback.innerText = "Email non valide";
+                                            emailFeedback.style.display = "block";
+                                        }
+                                    });
 
-                // Vérification du champ Nom
-                if (!nomInput.value) {
-                    formIsValid = false;
-                    toggleValidity(nomInput, nomFeedback);
-                }
+                                const submitButton = document.getElementById("submitButton"); submitButton.addEventListener("click", function(event) {
+                                        let formIsValid = true;
 
-                // Vérification du champ Prénom
-                if (!prenomInput.value) {
-                    formIsValid = false;
-                    toggleValidity(prenomInput, prenomFeedback);
-                }
+                                        // Vérification du champ Nom
+                                        if (!nomInput.value) {
+                                            formIsValid = false;
+                                            toggleValidity(nomInput, nomFeedback);
+                                        }
 
-                // Vérification du champ Pseudo
-                if (!pseudoInput.value) {
-                    formIsValid = false;
-                    toggleValidity(pseudoInput, pseudoFeedback);
-                }
+                                        // Vérification du champ Prénom
+                                        if (!prenomInput.value) {
+                                            formIsValid = false;
+                                            toggleValidity(prenomInput, prenomFeedback);
+                                        }
 
-                // Vérification du champ Email
-                if (!emailInput.value) {
-                    formIsValid = false;
-                    toggleValidity(emailInput, emailFeedback);
-                }
+                                        // Vérification du champ Pseudo
+                                        if (!pseudoInput.value) {
+                                            formIsValid = false;
+                                            toggleValidity(pseudoInput, pseudoFeedback);
+                                        }
 
-                // Vérification du champ Date de naissance
-                if (!dateInput.value) {
-                    formIsValid = false;
-                    toggleValidity(dateInput, dateFeedback);
-                }
+                                        // Vérification du champ Email
+                                        if (!emailInput.value) {
+                                            formIsValid = false;
+                                            toggleValidity(emailInput, emailFeedback);
+                                        }
 
-                // Vérification du champ Mot de passe
-                if (!password.value || password.classList.contains("is-invalid")) {
-                    formIsValid = false;
-                }
+                                        // Vérification du champ Date de naissance
+                                        if (!dateInput.value) {
+                                            formIsValid = false;
+                                            toggleValidity(dateInput, dateFeedback);
+                                        }
 
-                // Vérification du champ Confirmation de mot de passe
-                if (!confirmPassword.value || confirmPassword.classList.contains("is-invalid")) {
-                    formIsValid = false;
-                }
+                                        // Vérification du champ Mot de passe
+                                        if (!password.value || password.classList.contains("is-invalid")) {
+                                            formIsValid = false;
+                                        }
 
-                // Vérification du champ sélection d'entreprise
-                if (!entrepriseSelect.value) {
-                    formIsValid = false;
-                    toggleValidity(entrepriseFeedback);
-                }
+                                        // Vérification du champ Confirmation de mot de passe
+                                        if (!confirmPassword.value || confirmPassword.classList.contains("is-invalid")) {
+                                            formIsValid = false;
+                                        }
 
-                // Validation des CGU
-                const cguCheckbox = document.getElementById("cgu");
-                const cguValidationFeedback = document.getElementById("cguValidationFeedback");
+                                        // Vérification du champ sélection d'entreprise
+                                        if (!entrepriseSelect.value) {
+                                            formIsValid = false;
+                                            toggleValidity(entrepriseFeedback);
+                                        }
 
-                if (cguCheckbox && submitButton) {
-                    if (!cguCheckbox.checked) {
-                        event.preventDefault(); // Empêche l'envoi du formulaire
-	 function toggleValidity(input, feedback, regex, errorMessage) {
-                        cguValidationFeedback.style.display = "none"; // Cache l'alerte si les CGU sont acceptées
-                    }
-                }
+                                        // Validation des CGU
+                                        const cguCheckbox = document.getElementById("cgu");
+                                        const cguValidationFeedback = document.getElementById("cguValidationFeedback");
 
-                // Si le formulaire est valide on l'envoi
-                if (formIsValid) {}
-            });
-        });
+                                        if (cguCheckbox && submitButton) {
+                                            if (!cguCheckbox.checked) {
+                                                event.preventDefault(); // Empêche l'envoi du formulaire
+                                                function toggleValidity(input, feedback, regex, errorMessage) {
+                                                    cguValidationFeedback.style.display = "none"; // Cache l'alerte si les CGU sont acceptées
+                                                }
+                                            }
+
+                                            // Si le formulaire est valide on l'envoi
+                                            if (formIsValid) {}
+                                        });
+                                });
     </script>
 </body>
+
 </html>
