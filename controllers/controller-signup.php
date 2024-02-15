@@ -92,9 +92,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Donne toutes les propriétés du serveur
     // var_dump($_SERVER)
 }
-$allEnterprises = Enterprise::getAllEnterprises();
+$allEnterprises = Enterprise::newGetAllEntreprise();
 
+// var_dump(Enterprise::newGetAllEntreprise());
 
+// // Afficher le JSON
+// echo $jsonData;
 
 
 // Affichage du formulaire ou des erreurs

@@ -27,6 +27,7 @@ if (isset($_SESSION['user']['user_photo']) && !empty($_SESSION['user']['user_pho
     $img = "../../assets/img/avatarDefault.jpg";
 }
 
+
 // Inclure la vue home uniquement si l'utilisateur est connecté
 include_once '../views/view-home.php';
 ?>
