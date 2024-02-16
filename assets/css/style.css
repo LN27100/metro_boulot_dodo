@@ -822,7 +822,91 @@ body>form>div:nth-child(2)>img {
 
 
 /* PAGE HISTORIQUE */
+ 
+/* pop-up confirmation */
 
+#popupConfirm > div {
+  width: 20rem;
+  background-color: #206D3C;
+}
+
+#deleteText {
+  color: white;
+
+}
+
+#deleteForm {
+  width: 20rem;
+  background-color: #206D3C;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center; 
+  margin-top: 10px; 
+}
+
+.btnNo {
+  background-color: #ca2121;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 5px; 
+}
+
+.btnYes {
+  background-color: #B5CA69;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 5px; 
+}
+
+/* pop-up confirmation ajout trajet */
+
+#trajetAddedConfirm {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #206D3C;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  width: 20rem; 
+  height: 4rem;
+
+}
+
+#trajetAddedConfirm > div {
+  height: 4rem;
+  width: 20rem; 
+
+}
+
+#trajetAddedConfirm p {
+  color: white;
+}
+
+
+/*  */
 .emptyTable {
   font-family: 'Exo', sans-serif;
   color: #206D3C;

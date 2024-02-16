@@ -24,10 +24,31 @@
 
     </div>
 
+    <!-- Ajoute cette div pour le pop-up de confirmation -->
+    <div id="trajetAddedConfirm" class="popup-confirm">
+        <div class="popup-content">
+            <p>Le trajet a bien été ajouté !</p>
+        </div>
+    </div>
+
     <div class="container8">
         <div class="row">
 
-        <div class="d-flex align-items-center justify-content-center">
+            <!-- Popup confirmation suppression -->
+            <div id="popupConfirm" class="popup-confirm">
+                <div class="popup-content">
+                    <p id="deleteText"></p>
+                    <form id="deleteForm" action="../controllers/controller-history.php" method="POST">
+                        <input type="hidden" name="ride_id" id="ride_id" value="">
+                        <div class="btn-container">
+                            <button id="btn-accept" class="btnYes" type="submit">Oui</button>
+                            <button id="btn-cancel" class="btnNo">Non</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center">
                 <p class="sommeKms">Total kilomètres parcourus : <?= Ride::sommeKms($user_id)['total'] . ' kms'  ?></p>
             </div>
 
@@ -50,7 +71,7 @@
                                 <td>
                                     <form action="" method="post">
                                         <input class="suppRide" type="hidden" name="ride_id" value="<?= $trajet['ride_id'] ?>">
-                                        <button class="btnSupp" type="submit" onclick="return confirm('Voulez-vous vraiment supprimer ce trajet ?')">
+                                        <button class="btnSupp" type="submit">
                                             <i class="bi bi-trash3"></i>
                                         </button>
                                     </form>
@@ -99,8 +120,49 @@
             const trajetAdded = params.get('trajetAdded');
 
             if (trajetAdded) {
-                alert("Le trajet a bien été ajouté !");
+                const trajetAddedConfirm = document.getElementById("trajetAddedConfirm");
+                trajetAddedConfirm.style.display = "block"; 
+                setTimeout(function() {
+                    trajetAddedConfirm.style.display = "none"; 
+                }, 1500); // 1500 millisecondes (1 secondes et demi) avant de masquer le pop-up
             }
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let popupConfirm = document.getElementById("popupConfirm");
+            let btnCancel = document.getElementById("btn-cancel");
+            let btnDelete = document.querySelectorAll(".btnSupp");
+            let rideIdInput = document.getElementById("ride_id");
+            let deleteText = document.getElementById("deleteText");
+
+            // Cache le pop-up de confirmation au chargement de la page
+            popupConfirm.style.display = "none";
+
+            btnDelete.forEach(function(button) {
+                button.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    let rideId = button.parentElement.querySelector('input[type="hidden"]').value;
+                    let rideDistance = button.parentElement.parentElement.nextElementSibling.innerText;
+                    let rideDate = button.parentElement.parentElement.nextElementSibling.nextElementSibling.innerText;
+
+                    rideIdInput.value = rideId;
+                    deleteText.innerHTML = "<b>Supprimer ce trajet ?</b> </br>" + rideDistance + "</br>" + rideDate;
+                    popupConfirm.style.display = "block"; // Affiche le pop-up de confirmation
+                });
+            });
+
+            btnCancel.addEventListener("click", function(event) {
+                event.preventDefault(); // Empêche le formulaire de soumettre ses données
+                popupConfirm.style.display = "none"; // Masque le pop-up de confirmation lorsque "Non" est cliqué
+            });
+
+            window.onclick = function(event) {
+                if (event.target == popupConfirm) {
+                    popupConfirm.style.display = "none"; // Masque le pop-up de confirmation lorsque l'utilisateur clique en dehors du pop-up
+                }
+            };
         });
     </script>
 
