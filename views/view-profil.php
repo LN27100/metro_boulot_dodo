@@ -27,8 +27,19 @@
     <div class="container3">
         <div class="profile-image-container">
 
+            <!-- Popup confirmation suppression du profil -->
+            <div id="deleteProfileConfirm" class="popup-confirm" style="display: none;">
+                <div class="popup-content">
+                    <p id="deleteProfileText">Voulez-vous vraiment supprimer votre profil ?</p>
+                    <form id="deleteProfileForm" action="../controllers/controller-profil.php" method="POST">
+                        <button id="confirmDeleteProfile" class="btnYes" type="submit">Oui</button>
+                        <button id="cancelDeleteProfile" class="btnNo">Non</button>
+                    </form>
+                </div>
+            </div>
+
             <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
-            
+
             <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
                 <input type="file" name="profile_image" id="profile_image" accept="image/png, image/gif, image/jpeg, image/jpg" required>
                 <input type="submit" value="Télécharger">
@@ -57,7 +68,7 @@
 
             <form action="../controllers/controller-profil.php" method="post" class="deleteProfil">
                 <input type="hidden" name="delete_profile" value="<?= $user_id ?>">
-                <button class="delete_profile" type="submit" name="delete_profile" onclick="return confirm('Voulez-vous vraiment supprimer ce profil ?')">Supprimer le profil</button>
+                <button class="delete_profile" type="submit" name="delete_profile">Supprimer le profil</button>
             </form>
         </div>
     </div>
@@ -141,6 +152,31 @@
 
 
     <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const deleteProfileBtn = document.querySelector('.delete_profile');
+
+    // Afficher le pop-up de confirmation lors du clic sur le bouton de suppression du profil
+    deleteProfileBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Empêche l'envoi du formulaire
+
+        document.getElementById('deleteProfileConfirm').style.display = 'block';
+    });
+
+    // Cacher le pop-up de confirmation lors du clic sur le bouton "Non"
+    document.getElementById('cancelDeleteProfile').addEventListener('click', function() {
+        document.getElementById('deleteProfileConfirm').style.display = 'none';
+    });
+
+    // Cacher le pop-up de confirmation lors du clic en dehors du pop-up
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('deleteProfileConfirm')) {
+            document.getElementById('deleteProfileConfirm').style.display = "none";
+        }
+    };
+});
+
+
+
         document.addEventListener("DOMContentLoaded", function() {
             const navbarToggle = document.getElementById("navbar-toggle");
             const navbarNav = document.getElementById("navbar-nav");
