@@ -24,12 +24,10 @@ h1 {
   margin-top: 1.5rem;
 }
 
-/* validation champs */
 .valid-feedback,
 .invalid-feedback {
-  margin-left: calc(2em + 0.25rem + 1.5rem);
+  margin-left: 3rem; 
 }
-
 
 .container form {
   background-image: url(/assets/img/bginscription.jpg);
@@ -184,24 +182,19 @@ body>form>div.container5>div:nth-child(4)>label {
 
 .invalid-feedback {
   color: #dc3545;
-  display: none;
   background-color: #D7C5A8;
   font-size: 0.8rem;
   left: 7rem;
   width: 7rem;
-  position: absolute;
-  z-index: 2;
+  position: relative;
 }
 #passwordValidationFeedback {
   color: #dc3545;
-  display: none;
   background-color: #D7C5A8;
   font-size: 0.8rem;
-  text-align: right;
-  width: 10rem;
-  position: absolute;
-  top: 0;
-  right: -2rem; 
+  width: 7rem;
+  position: relative;
+
 }
 
 .requirements {
@@ -256,6 +249,9 @@ body>div>p>strong>em {
 }
 
 /* PAGE CONNEXION */
+
+
+
 .recaptchas {
   color: red; 
 }
