@@ -14,7 +14,6 @@
 <body>
 
 
-
     <h1 class="titreAccueil">Eco'Mouv !!</h1>
 
     <div class="container4">
@@ -32,7 +31,7 @@
         <div class="global">
             
         <div class="container4">
-        <img src="<?= $img ?>" alt="photo de profil" class="imageHome">
+        <img src="../assets/uploads/<?= $img ?>" alt="photo de profil" class="imageHome">
         </div>
 
     <div class="container4">
