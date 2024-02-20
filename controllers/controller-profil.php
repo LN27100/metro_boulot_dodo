@@ -37,7 +37,7 @@ $user_id = isset($_SESSION['user']['user_id']) ? $_SESSION['user']['user_id'] : 
 if (isset($_FILES['profile_image'])) {
     try {
         // Dossier de sauvegarde des images
-        $uploadDir = '../assets/uploads/';
+        $uploadDir = '/assets/uploads/';
 
         // Vérification du dossier de sauvegarde des images
         if (!file_exists($uploadDir)) {
