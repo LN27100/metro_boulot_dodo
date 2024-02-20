@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <img src="<?= $img ?>" alt="photo de profil" class="profile-image">
+            <img src="../assets/uploads/<?= $img ?>" alt="photo de profil" class="profile-image">
 
             <form method="post" action="../controllers/controller-profil.php" enctype="multipart/form-data" class="file-input-container">
                 <input type="file" name="profile_image" id="profile_image" accept="image/png, image/gif, image/jpeg, image/jpg" required>

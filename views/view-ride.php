@@ -31,7 +31,7 @@
 
             <?php echo "<h3> $pseudo</h3>"; ?>
 
-            <img src="<?= $img ?>" alt="photo de profil" class="imageHome">
+            <img src="../assets/uploads/<?= $img ?>" alt="photo de profil" class="imageHome">
         </div>
 
 
