@@ -25,19 +25,9 @@
         ?>
     </div>
 
-    <div class="container4">
-        <h3>Bienvenue</h3>
-        </div>
+   
 
-        <div class="global">
-        <div class="container4">
-
-        <img src="/assets/img/avatarDefault.jpg" alt="photo de profil" class="imageHome">
-    </div>
-    <div class="container4">
-        <a href="../controllers/controller-adminvalidate.php" class="buttonadminhome">Valider les entreprises</a>
-    </div>
-
+    
     
 
     <div class="container6">
