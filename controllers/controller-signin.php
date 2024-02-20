@@ -3,11 +3,11 @@ require_once '../config.php';
 require_once '../models/Userprofil.php';
 
 
-        // empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
-        if (session_status() === PHP_SESSION_NONE) {
-            // Si non, démarrer la session
-            session_start();
-        }
+// empêche l'accès à la page home si l'utilisateur n'est pas connecté et vérifie si la session n'est pas déjà active
+if (session_status() === PHP_SESSION_NONE) {
+    // Si non, démarrer la session
+    session_start();
+}
 
 
 // Vérifiez si un formulaire a été soumis
@@ -27,34 +27,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($_POST["mot_de_passe"])) {
         $errors["mot_de_passe"] = "Champ obligatoire";
     }
-    
+
 
     if (isset($_POST["g-recaptcha-response"])) {
         // print_r($_POST);
-        $secret='6LcPI3EpAAAAAAiT_WAJYuLsDrpmyYvSBmFjIxCa';
+        $secret = '6LcPI3EpAAAAAAiT_WAJYuLsDrpmyYvSBmFjIxCa';
         $reponse = $_POST['g-recaptcha-response'];
-        $remoteip= $_SERVER ['REMOTE_ADDR'];
+        $remoteip = $_SERVER['REMOTE_ADDR'];
 
-        $url= "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$reponse&remoteip=$remoteip ";
-        
+        $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$reponse&remoteip=$remoteip ";
+
         $reponseData = file_get_contents($url);
         $dataRow = json_decode($reponseData, true);
 
         // print_r($dataRow);
 
-            if(!$dataRow['success']==true) {
-                $errors['recaptcha'] = 'Recaptcha obligatoire';
-                    } 
-            }
+        if (!$dataRow['success'] == true) {
+            $errors['recaptcha'] = 'Recaptcha obligatoire';
+        }
+    }
 
     // Si aucune erreur, procédez à la vérification de l'utilisateur
     if (empty($errors)) {
         // Vérifiez si l'email existe dans la base de données
         if (!Userprofil::checkMailExists($email)) {
             $errors['email'] = 'Utilisateur Inconnu';
+        }
+
+        // Récupérez les informations de l'utilisateur
+        $utilisateurInfos = Userprofil::getInfos($email);
+
+        // Bloquer la connexion si l'utilisateur a été suspendu
+        if ($utilisateurInfos['user_validate'] == 0) {
+            echo '<div style="color: red; font-weight: bold; text-align: center; margin-top: 1rem">Votre compte a été suspendu temporairement</div>';
         } else {
-            // Récupérez les informations de l'utilisateur
-            $utilisateurInfos = Userprofil::getInfos($email);
+
 
             // Comparaison du mot de passe
             if (password_verify($_POST["mot_de_passe"], $utilisateurInfos['user_password'])) {
@@ -72,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
+
 
 
 // Inclure la vue du formulaire de connexion
